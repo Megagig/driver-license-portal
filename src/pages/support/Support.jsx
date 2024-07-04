@@ -1,11 +1,14 @@
-import React from 'react';
+
+import SupportForm from './components/SupportForm';
+import SupportHero from './components/SupportHero';
 
 const Support = () => {
-  return (
-    <div>
-      <h2>The Support page</h2>
-    </div>
-  );
+    return (
+        <main className='px-20 py10'>
+            <SupportHero />
+            <SupportForm />
+        </main>
+    );
 };
 
 export default Support;
