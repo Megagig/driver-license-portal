@@ -1,5 +1,6 @@
 import './App.css';
 import './index.css';
+import Router from './router/Router';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
         Nigeria Driver License Portal
       </h1>
       <p>Seamless Licensure For The Nigerian populace</p>
+      <Router />
     </div>
   );
 }
