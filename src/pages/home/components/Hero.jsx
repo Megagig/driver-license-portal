@@ -17,18 +17,18 @@ export const Hero = () => {
       clearInterval(interval)
     };
   }, [index]);
-console.log({index})
+
   return (
-    <section className="flex flex-1 items-center bg-white flex-row h-screen">
-      <aside className='flex bg-[url("src/assets/images/img7.jpg")] p-24 justify-center items-center flex-1 flex-col'>
+    <section className="flex flex-1 bg-white flex-row h-screen">
+      <aside className='flex bg-bottom bg-[url("src/assets/images/img7.jpg")] backdrop-opacity-25 pl-32 justify-center flex-1 flex-col'>
         <span className="text-black w-3/5 text-[24px]/[38.4px] w-3/4 font-normal text-wrap text-left">
           <h3 className="text-[32px]/[51.1px] font-semibold text-pretty mb-4">
-              SINC Partners is a service incubation company 
+             Driver's lincense Application
           </h3>
           Connecting experts in product development and growth marketing willing to offer their services to amazing startups in exchange for minute equity (usually 0.5% to 2%).
           SINC With Us
         </span>
-        <button className=" mt-4 bg-[#22C55E] text-[18px]/[19.2px] text-white px-8 py-6 mr-auto font-medium rounded-full w-fit">Apply to SIP 1.0</button>
+        <button className=" mt-4 bg-[#22C55E] text-[18px]/[19.2px] text-white px-8 py-6 font-medium rounded-full w-fit">New Application</button>
 
       </aside>
       <aside className="flex-1 h-full">
