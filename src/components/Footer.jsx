@@ -1,15 +1,119 @@
+import { Link } from "react-router-dom"
+import facebook from "../assets/facebook.svg"
+import instagram from "../assets/instagram.svg"
+import twitter from "../assets/twitter.svg"
 
+import youtube from "../assets/youtube.svg"
+import angleright from "../assets/angle-right.svg"
 
 const Footer = () => {
     return (
-        <div>
-            <div>
-                <div>
-                    call us on
+        <footer>
+
+            <div className="flex justify-between px-20 pt-16 pb-12 mt-10 bg-black">
+                <div className="logo grid content-start text-center w-1/4 justify-start">
+                    <h1 className="text-green-500 text-5xl font-bold">ACME</h1>
+                    <p className="text-gray-50">Drivers Lincese Portal</p>
 
                 </div>
+
+                <div>
+                    <p className="font-bold mb-4 text-green-500">Quick Links</p>
+                    <ul className="grid gap-2">
+
+                        <li>
+                            <Link className="flex text-gray-50 gap-2">
+                                <img className="w-2 " src={angleright} alt="" />  New Drivers License
+                            </Link>
+                        </li>
+
+                        <li>
+                            <Link className="flex text-gray-50 gap-2">
+                                <img className="w-2" src={angleright} /> Drivers License Renewal
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className="flex  text-gray-100 gap-2">
+                                <img className="w-2" src={angleright} /> FAQ
+                            </Link>
+
+                        </li>
+                        <li>
+                            <Link className="flex text-gray-200 gap-2">
+                                <img className="w-2" src={angleright} /> Contact
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className="flex text-gray-100 gap-2">
+                                <img className="w-2" src={angleright} /> Aknowledgement Slip
+                            </Link>
+                        </li>
+
+
+                    </ul>
+                </div>
+                <div>
+                    <p className="font-bold mb-4 text-green-500">Other Links</p>
+                    <ul className="grid gap-2">
+
+                        <li>
+                            <Link className="flex text-gray-50 gap-2">
+                                <img className="w-2 " src={angleright} alt="" />  Contact Us
+                            </Link>
+                        </li>
+
+                        <li>
+                            <Link className="flex text-gray-200 gap-2">
+                                <img className="w-2" src={angleright} /> Forms
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className="flex text-gray-50 gap-2">
+                                <img className="w-2" src={angleright} /> Condition of use
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className="flex text-gray-100 gap-2">
+                                <img className="w-2" src={angleright} /> News & Media
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className="flex  text-gray-100 gap-2">
+                                <img className="w-2" src={angleright} /> Privacy and Security Statement
+                            </Link>
+
+                        </li>
+
+
+                    </ul>
+                </div>
+
+                <div>
+                    <p className="mb-4 font-bold text-green-500">Follow Us:</p>
+                    <ul className="flex gap-4">
+                        <li><img className="w-8" src={facebook} alt="" />
+                        </li>
+                        <li>
+                            <img className="w-8" src={instagram} alt="" />
+                        </li>
+                        <li>
+                            <img className="w-8" src={twitter} alt="" />
+                        </li>
+                        <li>
+                            <img className="w-8" src={youtube} alt="" />
+                        </li>
+                    </ul>
+
+                </div>
+
+
+
             </div>
-        </div>
+            <div className="text-center text-sm h-10 border-t grid content-center bg-black text-white">
+                Copyright &copy; ACME 2024
+
+            </div>
+        </footer>
     )
 }
 
