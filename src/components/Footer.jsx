@@ -10,8 +10,8 @@ import Logo from "./utils/Logo"
 const Footer = () => {
     const logoStyle = {
         container: "logo grid content-start text-center md:w-1/4 justify-start",
-        h1: "text-green-500 text-5xl font-bold",
-        p: "text-gray-50"
+        h1: "text-green-500 text-6xl font-extrabold",
+        p: "text-gray-50 text-[10px]"
     }
 
     return (

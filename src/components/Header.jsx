@@ -6,11 +6,11 @@ const Header = () => {
 
     const logoStyle = {
         container: "logo grid content-start text-center  justify-start",
-        h1: "text-green-500 text-2xl md:text-4xl font-bold",
-        p: "text-gray-500 text-[9px] md:text-xs"
+        h1: "text-green-500 text-3xl md:text-6xl font-extrabold",
+        p: "text-gray-500 text-[7px] md:text-xs"
     }
     return (
-        <header className="px-4 py-3 md:px-20 flex    md:flex-row justify-between Md:pt-6 md:pb-4 border-b">
+        <header className="px-4 py-3 md:px-20 flex   md:flex-row justify-between Md:pt-6 md:pb-4 border-b">
 
             <Logo
                 container={logoStyle.container}
