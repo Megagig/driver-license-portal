@@ -10,7 +10,7 @@ const Header = () => {
         p: "text-gray-500 text-[7px] md:text-xs"
     }
     return (
-        <header className="px-4 py-3 md:px-20 flex   md:flex-row justify-between Md:pt-6 md:pb-4 border-b">
+        <header className="px-4 py-3 hidden md:px-20 md:flex   md:flex-row justify-between Md:pt-6 md:pb-4 border-b">
 
             <Logo
                 container={logoStyle.container}

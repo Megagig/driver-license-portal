@@ -17,7 +17,7 @@ const Footer = () => {
     return (
         <footer>
 
-            <div className="flex md:flex-row flex-col gap-10 justify-between px-4 py-8 md:px-20 md:pt-16 md:pb-12 md:mt-10 bg-black">
+            <div className="flex md:flex-row flex-col gap-10 justify-between px-4 py-8 md:px-20 md:pt-16 md:pb-12 mt-10 bg-black">
 
                 <Logo
                     container={logoStyle.container}
