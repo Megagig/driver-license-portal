@@ -1,11 +1,11 @@
 
 
 const SupportForm = () => {
-    const inputStyle = "border outline-0 rounded-md w-full py-3 px-4 text-base"
+    const inputStyle = "border outline-0 rounded-md w-full py-3 px-4 text-sm md:text-base"
 
     return (
-        <div className="mt-8 border-t pt-10">
-            <div className="grid grid-cols-2 text-sm gap-x-16 gap-y-6">
+        <div className="md:mt-8 mt-4 border-t pt-4 md:pt-10">
+            <div className="grid md:grid-cols-2 text-sm gap-x-16 gap-y-6">
 
                 <div >
                     <small className="block text-xs mb-2">Application ID <span className="text-red-500">*</span></small>

@@ -5,18 +5,25 @@ import twitter from "../assets/twitter.svg"
 
 import youtube from "../assets/youtube.svg"
 import angleright from "../assets/angle-right.svg"
+import Logo from "./utils/Logo"
 
 const Footer = () => {
+    const logoStyle = {
+        container: "logo grid content-start text-center md:w-1/4 justify-start",
+        h1: "text-green-500 text-5xl font-bold",
+        p: "text-gray-50"
+    }
+
     return (
         <footer>
 
-            <div className="flex justify-between px-20 pt-16 pb-12 mt-10 bg-black">
-                <div className="logo grid content-start text-center w-1/4 justify-start">
-                    <h1 className="text-green-500 text-5xl font-bold">ACME</h1>
-                    <p className="text-gray-50">Drivers Lincese Portal</p>
+            <div className="flex md:flex-row flex-col gap-10 justify-between px-4 py-8 md:px-20 md:pt-16 md:pb-12 md:mt-10 bg-black">
 
-                </div>
-
+                <Logo
+                    container={logoStyle.container}
+                    h1Style={logoStyle.h1}
+                    pStyle={logoStyle.p}
+                />
                 <div>
                     <p className="font-bold mb-4 text-green-500">Quick Links</p>
                     <ul className="grid gap-2">
