@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { MdMenu, MdClose } from "react-icons/md";
+import { FiChevronDown, FiChevronUp, FiPlus, FiMinus } from "react-icons/fi";
 
 const NavBar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -10,7 +11,7 @@ const NavBar = () => {
 
     const toggleDrawer = () => {
         setIsMenuOpen(!isMenuOpen);
-    }
+    };
 
     return (
         <nav className="bg-[#3d4249]">
@@ -27,9 +28,19 @@ const NavBar = () => {
                         onMouseEnter={() => setIsDropdownOpen(true)}
                         onMouseLeave={() => setIsDropdownOpen(false)}
                     >
-                        <span className="text-white transition-colors">
-                            Application
-                        </span>
+                        <div className="flex items-center gap-2 text-white">
+                            <span className="text-white transition-colors">
+                                Applications
+                            </span>
+                            <span className="">
+                                {isDropdownOpen ? (
+                                    <FiChevronUp />
+                                ) : (
+                                    <FiChevronDown />
+                                )}
+                            </span>
+                        </div>
+
                         {isDropdownOpen && (
                             <div className="flex flex-col absolute left-0 mt-4 min-w-56 bg-[#3d4249] text-white shadow-lg divide-y divide-solid divide-neutral-600">
                                 <Link
@@ -58,9 +69,17 @@ const NavBar = () => {
                         onMouseEnter={() => setIsServicesOpen(true)}
                         onMouseLeave={() => setIsServicesOpen(false)}
                     >
-                        <span className="text-white transition-colors">
-                            Services
-                        </span>
+                        <div className="flex items-center gap-2 text-white">
+                            <span className="transition-colors">Services</span>
+                            <span className="">
+                                {isServicesOpen ? (
+                                    <FiChevronUp />
+                                ) : (
+                                    <FiChevronDown />
+                                )}
+                            </span>
+                        </div>
+
                         {isServicesOpen && (
                             <div className="flex flex-col absolute left-0 mt-4 min-w-56 bg-[#3d4249] text-white shadow-lg divide-y divide-solid divide-neutral-600">
                                 <Link
@@ -95,9 +114,17 @@ const NavBar = () => {
                         onMouseEnter={() => setIsContactOpen(true)}
                         onMouseLeave={() => setIsContactOpen(false)}
                     >
-                        <span className="text-white transition-colors">
-                            Contact
-                        </span>
+                        <div className="flex items-center gap-2 text-white">
+                            <span className="transition-colors">Contact</span>
+                            <span className="">
+                                {isContactOpen ? (
+                                    <FiChevronUp />
+                                ) : (
+                                    <FiChevronDown />
+                                )}
+                            </span>
+                        </div>
+
                         {isContactOpen && (
                             <div className="flex flex-col absolute left-0 mt-4 min-w-56 bg-[#3d4249] text-white shadow-lg divide-y divide-solid divide-neutral-600">
                                 <Link
@@ -134,7 +161,7 @@ const NavBar = () => {
             </div>
 
             {isMenuOpen && (
-                <div className="absolute top-0 right-0 z-20 h-full w-full md:hidden bg-[#3d4249]" >
+                <div className="absolute top-0 right-0 z-20 h-full w-full md:hidden bg-[#3d4249]">
                     <button
                         className="absolute right-6 top-6 text-white text-3xl"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -154,27 +181,28 @@ const NavBar = () => {
                             className="relative px-6 py-4 "
                             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                         >
-                            <span className="text-white transition-colors">
-                                Application
-                            </span>
+                            <div className="flex items-center justify-between text-white">
+                                <span className="transition-colors">
+                                    Applications
+                                </span>
+                                <span className="">
+                                    {isDropdownOpen ? (
+                                        <FiMinus />
+                                    ) : (
+                                        <FiPlus />
+                                    )}
+                                </span>
+                            </div>
+
                             {isDropdownOpen && (
                                 <div className="flex flex-col absolute z-30 left-0 mt-4 min-w-56 bg-[whitesmoke] text-[#3d4249] shadow-lg divide-y divide-solid divide-neutral-600">
-                                    <Link
-                                        to="/new"
-                                        className="py-2 px-6"
-                                    >
+                                    <Link to="/new" className="py-2 px-6">
                                         New Application
                                     </Link>
-                                    <Link
-                                        to="/renewal"
-                                        className="py-2 px-6"
-                                    >
+                                    <Link to="/renewal" className="py-2 px-6">
                                         Renewal
                                     </Link>
-                                    <Link
-                                        to="/re-issue"
-                                        className="py-2 px-6"
-                                    >
+                                    <Link to="/re-issue" className="py-2 px-6">
                                         Re-Issue
                                     </Link>
                                 </div>
@@ -184,21 +212,25 @@ const NavBar = () => {
                             className="relative px-6 py-4"
                             onClick={() => setIsServicesOpen(!isServicesOpen)}
                         >
-                            <span className="text-white transition-colors">
-                                Services
-                            </span>
+                            <div className="flex items-center justify-between text-white">
+                                <span className="transition-colors">
+                                    Services
+                                </span>
+                                <span className="">
+                                    {isServicesOpen ? (
+                                        <FiMinus />
+                                    ) : (
+                                        <FiPlus />
+                                    )}
+                                </span>
+                            </div>
+
                             {isServicesOpen && (
                                 <div className="flex flex-col absolute z-30 left-0 mt-4 min-w-56 bg-[whitesmoke] text-[#3d4249] shadow-lg divide-y divide-solid divide-neutral-600">
-                                    <Link
-                                        to="/update"
-                                        className="py-2 px-6"
-                                    >
+                                    <Link to="/update" className="py-2 px-6">
                                         Update Application
                                     </Link>
-                                    <Link
-                                        to="/get-slip"
-                                        className="py-2 px-6"
-                                    >
+                                    <Link to="/get-slip" className="py-2 px-6">
                                         Acknowledgement Slip
                                     </Link>
                                 </div>
@@ -220,9 +252,19 @@ const NavBar = () => {
                             className="relative px-6 py-4"
                             onClick={() => setIsContactOpen(!isContactOpen)}
                         >
-                            <span className="text-white transition-colors">
-                                Contact
-                            </span>
+                            <div className="flex items-center justify-between text-white">
+                                <span className="transition-colors">
+                                    Contact
+                                </span>
+                                <span className="">
+                                    {isContactOpen ? (
+                                        <FiMinus />
+                                    ) : (
+                                        <FiPlus />
+                                    )}
+                                </span>
+                            </div>
+
                             {isContactOpen && (
                                 <div className="flex flex-col absolute z-30 left-0 mt-4 min-w-56 bg-[whitesmoke] text-[#3d4249] shadow-lg divide-y divide-solid divide-neutral-600">
                                     <Link
