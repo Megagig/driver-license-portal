@@ -3,11 +3,65 @@ import { Link } from "react-router-dom";
 import { MdMenu, MdClose } from "react-icons/md";
 import { FiChevronDown, FiChevronUp, FiPlus, FiMinus } from "react-icons/fi";
 
+const DropDownMenu = ({ menuArray }) => {
+    return (
+        <div className="flex flex-col absolute z-30 md:z-0 left-6 md:left-0 mt-4 min-w-60 bg-white md:bg-[#3d4249] text-[#3d4249] md:text-white shadow-lg divide-y divide-solid divide-neutral-200 md:divide-neutral-600">
+            {menuArray.map((menu, index) => (
+                <Link
+                    key={index}
+                    to={menu.to}
+                    className="md:hover:bg-green-700 py-2 px-6 capitalize"
+                >
+                    {menu.title}
+                </Link>
+            ))}
+        </div>
+    );
+};
+
+const DropDownButton = ({ isOpen, isMobile, title }) => {
+    return (
+        <div
+            className={`flex items-center ${
+                isMobile ? "justify-between" : "gap-2 cursor-pointer"
+            } text-white`}
+        >
+            <span className="text-white transition-colors">{title}</span>
+            {isMobile ? (
+                <span className="">{isOpen ? <FiMinus /> : <FiPlus />}</span>
+            ) : (
+                <span className="">
+                    {isOpen ? <FiChevronUp /> : <FiChevronDown />}
+                </span>
+            )}
+        </div>
+    );
+};
+
+const dropdownData = {
+    applications: [
+        { title: "new application", to: "/new" },
+        { title: "renewal", to: "/renewal" },
+        { title: "re-Issue", to: "/re-issue" },
+    ],
+    services: [
+        { title: "update your data", to: "/update" },
+        { title: "get appointment slip", to: "/get-slip" },
+        { title: "verify license", to: "/verify" },
+    ],
+    contact: [
+        { title: "support center", to: "/support" },
+        { title: "capture centers", to: "/centers" },
+        { title: "driving schools", to: "/driving-schools" },
+    ],
+};
+
 const NavBar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const [isContactOpen, setIsContactOpen] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { applications, services, contact } = dropdownData;
 
     const toggleDrawer = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -28,40 +82,14 @@ const NavBar = () => {
                         onMouseEnter={() => setIsDropdownOpen(true)}
                         onMouseLeave={() => setIsDropdownOpen(false)}
                     >
-                        <div className="flex items-center gap-2 text-white">
-                            <span className="text-white transition-colors">
-                                Applications
-                            </span>
-                            <span className="">
-                                {isDropdownOpen ? (
-                                    <FiChevronUp />
-                                ) : (
-                                    <FiChevronDown />
-                                )}
-                            </span>
-                        </div>
+                        <DropDownButton
+                            isOpen={isDropdownOpen}
+                            isMobile={false}
+                            title="License Applications"
+                        />
 
                         {isDropdownOpen && (
-                            <div className="flex flex-col absolute left-0 mt-4 min-w-56 bg-[#3d4249] text-white shadow-lg divide-y divide-solid divide-neutral-600">
-                                <Link
-                                    to="/new"
-                                    className="hover:bg-green-700 py-2 px-6"
-                                >
-                                    New Application
-                                </Link>
-                                <Link
-                                    to="/renewal"
-                                    className="hover:bg-green-700 py-2 px-6"
-                                >
-                                    Renewal
-                                </Link>
-                                <Link
-                                    to="/re-issue"
-                                    className="hover:bg-green-700 py-2 px-6"
-                                >
-                                    Re-Issue
-                                </Link>
-                            </div>
+                            <DropDownMenu menuArray={applications} />
                         )}
                     </div>
                     <div
@@ -69,32 +97,14 @@ const NavBar = () => {
                         onMouseEnter={() => setIsServicesOpen(true)}
                         onMouseLeave={() => setIsServicesOpen(false)}
                     >
-                        <div className="flex items-center gap-2 text-white">
-                            <span className="transition-colors">Services</span>
-                            <span className="">
-                                {isServicesOpen ? (
-                                    <FiChevronUp />
-                                ) : (
-                                    <FiChevronDown />
-                                )}
-                            </span>
-                        </div>
+                        <DropDownButton
+                            isOpen={isServicesOpen}
+                            isMobile={false}
+                            title="Services"
+                        />
 
                         {isServicesOpen && (
-                            <div className="flex flex-col absolute left-0 mt-4 min-w-56 bg-[#3d4249] text-white shadow-lg divide-y divide-solid divide-neutral-600">
-                                <Link
-                                    to="/update"
-                                    className="hover:bg-green-700 py-2 px-6"
-                                >
-                                    Update Application
-                                </Link>
-                                <Link
-                                    to="/get-slip"
-                                    className="hover:bg-green-700 py-2 px-6"
-                                >
-                                    Acknowledgement Slip
-                                </Link>
-                            </div>
+                            <DropDownMenu menuArray={services} />
                         )}
                     </div>
                     <Link
@@ -103,44 +113,19 @@ const NavBar = () => {
                     >
                         FAQ
                     </Link>
-                    <Link
-                        to="/support"
-                        className="text-white px-6 py-4 hover:bg-green-700 transition-colors"
-                    >
-                        Support
-                    </Link>
+
                     <div
                         className="relative px-6 py-4 hover:bg-green-700"
                         onMouseEnter={() => setIsContactOpen(true)}
                         onMouseLeave={() => setIsContactOpen(false)}
                     >
-                        <div className="flex items-center gap-2 text-white">
-                            <span className="transition-colors">Contact</span>
-                            <span className="">
-                                {isContactOpen ? (
-                                    <FiChevronUp />
-                                ) : (
-                                    <FiChevronDown />
-                                )}
-                            </span>
-                        </div>
+                        <DropDownButton
+                            isOpen={isContactOpen}
+                            isMobile={false}
+                            title="Contact"
+                        />
 
-                        {isContactOpen && (
-                            <div className="flex flex-col absolute left-0 mt-4 min-w-56 bg-[#3d4249] text-white shadow-lg divide-y divide-solid divide-neutral-600">
-                                <Link
-                                    to="/capture-centers"
-                                    className="hover:bg-green-700 py-2 px-6"
-                                >
-                                    Capture Centers
-                                </Link>
-                                <Link
-                                    to="/driving-schools"
-                                    className="hover:bg-green-700 py-2 px-6"
-                                >
-                                    Driving Schools
-                                </Link>
-                            </div>
-                        )}
+                        {isContactOpen && <DropDownMenu menuArray={contact} />}
                     </div>
                 </div>
             </div>
@@ -170,7 +155,12 @@ const NavBar = () => {
                         <MdClose />
                     </button>
 
-                    <div className="flex flex-col px-6 py-4 mt-6 divide-y divide-solid divide-neutral-600">
+                    <div className="absolute top-4 left-6 flex flex-col items-center p-4 border border-neutral-500 text-white text-sm">
+                        <h3 className="">Instant</h3>
+                        <h3 className="">Drivers Licence</h3>
+                    </div>
+
+                    <div className="flex flex-col px-6 py-4 mt-20 divide-y divide-solid divide-neutral-600">
                         <Link
                             to="/"
                             className="text-white px-6 py-4  transition-colors"
@@ -181,59 +171,28 @@ const NavBar = () => {
                             className="relative px-6 py-4 "
                             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                         >
-                            <div className="flex items-center justify-between text-white">
-                                <span className="transition-colors">
-                                    Applications
-                                </span>
-                                <span className="">
-                                    {isDropdownOpen ? (
-                                        <FiMinus />
-                                    ) : (
-                                        <FiPlus />
-                                    )}
-                                </span>
-                            </div>
+                            <DropDownButton
+                                isOpen={isDropdownOpen}
+                                isMobile={true}
+                                title="License Applications"
+                            />
 
                             {isDropdownOpen && (
-                                <div className="flex flex-col absolute z-30 left-0 mt-4 min-w-56 bg-[whitesmoke] text-[#3d4249] shadow-lg divide-y divide-solid divide-neutral-600">
-                                    <Link to="/new" className="py-2 px-6">
-                                        New Application
-                                    </Link>
-                                    <Link to="/renewal" className="py-2 px-6">
-                                        Renewal
-                                    </Link>
-                                    <Link to="/re-issue" className="py-2 px-6">
-                                        Re-Issue
-                                    </Link>
-                                </div>
+                                <DropDownMenu menuArray={applications} />
                             )}
                         </div>
                         <div
                             className="relative px-6 py-4"
                             onClick={() => setIsServicesOpen(!isServicesOpen)}
                         >
-                            <div className="flex items-center justify-between text-white">
-                                <span className="transition-colors">
-                                    Services
-                                </span>
-                                <span className="">
-                                    {isServicesOpen ? (
-                                        <FiMinus />
-                                    ) : (
-                                        <FiPlus />
-                                    )}
-                                </span>
-                            </div>
+                            <DropDownButton
+                                isOpen={isServicesOpen}
+                                isMobile={true}
+                                title="Services"
+                            />
 
                             {isServicesOpen && (
-                                <div className="flex flex-col absolute z-30 left-0 mt-4 min-w-56 bg-[whitesmoke] text-[#3d4249] shadow-lg divide-y divide-solid divide-neutral-600">
-                                    <Link to="/update" className="py-2 px-6">
-                                        Update Application
-                                    </Link>
-                                    <Link to="/get-slip" className="py-2 px-6">
-                                        Acknowledgement Slip
-                                    </Link>
-                                </div>
+                                <DropDownMenu menuArray={services} />
                             )}
                         </div>
                         <Link
@@ -242,44 +201,18 @@ const NavBar = () => {
                         >
                             FAQ
                         </Link>
-                        <Link
-                            to="/support"
-                            className="text-white px-6 py-4 transition-colors"
-                        >
-                            Support
-                        </Link>
                         <div
                             className="relative px-6 py-4"
                             onClick={() => setIsContactOpen(!isContactOpen)}
                         >
-                            <div className="flex items-center justify-between text-white">
-                                <span className="transition-colors">
-                                    Contact
-                                </span>
-                                <span className="">
-                                    {isContactOpen ? (
-                                        <FiMinus />
-                                    ) : (
-                                        <FiPlus />
-                                    )}
-                                </span>
-                            </div>
+                            <DropDownButton
+                                isOpen={isContactOpen}
+                                isMobile={true}
+                                title="Contact"
+                            />
 
                             {isContactOpen && (
-                                <div className="flex flex-col absolute z-30 left-0 mt-4 min-w-56 bg-[whitesmoke] text-[#3d4249] shadow-lg divide-y divide-solid divide-neutral-600">
-                                    <Link
-                                        to="/capture-centers"
-                                        className="py-2 px-6"
-                                    >
-                                        Capture Centers
-                                    </Link>
-                                    <Link
-                                        to="/driving-schools"
-                                        className="py-2 px-6"
-                                    >
-                                        Driving Schools
-                                    </Link>
-                                </div>
+                                <DropDownMenu menuArray={contact} />
                             )}
                         </div>
                     </div>
