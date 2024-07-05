@@ -1,6 +1,6 @@
 import {
-    // Routes,
-    // Route,
+    Routes,
+    Route,
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
