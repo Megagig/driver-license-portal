@@ -9,6 +9,7 @@ import HomePage from "../pages/home/HomePage";
 import Support from "../pages/support/Support";
 import Faq from "../pages/faq/Faq";
 import Contact from "../pages/contact/Contact";
+import NewApplicationHome from "../pages/new-application/NewApplicationHome";
 
 const router = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <HomePage />,
+            },
+            {
+                path: "new-application",
+                element: <NewApplicationHome />,
             },
             {
                 path: "faq",
