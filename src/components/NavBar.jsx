@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { MdMenu, MdClose } from "react-icons/md";
 import { FiChevronDown, FiChevronUp, FiPlus, FiMinus } from "react-icons/fi";
+import Logo from "./utils/Logo";
 
 const DropDownMenu = ({ menuArray }) => {
     return (
@@ -62,6 +63,11 @@ const NavBar = () => {
     const [isContactOpen, setIsContactOpen] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { applications, services, contact } = dropdownData;
+    const logoStyle = {
+        container: "logo grid content-start text-center justify-start",
+        h1: "text-green-500 text-3xl md:text-6xl font-extrabold tracking-widest",
+        p: "text-gray-300 text-sm md:text-sm",
+    };
 
     const toggleDrawer = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -131,10 +137,11 @@ const NavBar = () => {
             </div>
 
             <div className="flex md:hidden justify-between bg-[#3d4249] px-6 py-4">
-                <div className="flex flex-col items-center text-white text-sm">
-                    <h3 className="">Instant</h3>
-                    <h3 className="">Drivers Licence</h3>
-                </div>
+                <Logo
+                    container={logoStyle.container}
+                    h1Style={logoStyle.h1}
+                    pStyle={logoStyle.p}
+                />
 
                 <button
                     className=" text-white text-3xl"
@@ -155,9 +162,12 @@ const NavBar = () => {
                         <MdClose />
                     </button>
 
-                    <div className="absolute top-4 left-6 flex flex-col items-center p-4 border border-neutral-500 text-white text-sm">
-                        <h3 className="">Instant</h3>
-                        <h3 className="">Drivers Licence</h3>
+                    <div className="absolute top-4 left-6">
+                        <Logo
+                            container={logoStyle.container}
+                            h1Style={logoStyle.h1}
+                            pStyle={logoStyle.p}
+                        />
                     </div>
 
                     <div className="flex flex-col px-6 py-4 mt-20 divide-y divide-solid divide-neutral-600">
