@@ -1,10 +1,4 @@
 import { FaArrowRightLong } from "react-icons/fa6";
-import track from "../../../assets/images/track.png"
-import edit from "../../../assets/images/edit.png"
-import renewal from "../../../assets/images/renewal.png"
-import print from "../../../assets/images/print.png"
-import business from "../../../assets/images/business.png"
-import certificate from "../../../assets/images/certificate-of-origin.png"
 
 
 
@@ -25,7 +19,7 @@ const Services = () => {
                     ✓  Applicant must be 18 years and above <br/>
                         ✓   Apllicant must have completed driving school
                     </p>
-                    <a className='text-white p-4 bg-[#22C55E] rounded-lg font-bold text-lg flex gap-1 border-b w-fit items-center self-center'>
+                    <a className='text-white p-4 bg-[#22C55E] rounded-lg font-bold text-lg flex gap-1 border-b w-fit items-center self-center gap-4 cursor-pointer'>
                         Apply Now
                         <FaArrowRightLong />
                     </a>
@@ -39,7 +33,7 @@ const Services = () => {
                     ✓  Applicant must be 18 years and above<br/>
                     ✓  Apllicant must have completed driving school
                     </p>
-                    <a className='text-white p-4 bg-[#22C55E] rounded-lg font-bold text-lg flex gap-1 border-b w-fit items-center self-center'>
+                    <a className='text-white p-4 bg-[#22C55E] rounded-lg font-bold text-lg flex gap-1 border-b w-fit items-center self-center gap-4 cursor-pointer'>
                         Apply Now
                         <FaArrowRightLong />
                     </a>
@@ -53,7 +47,7 @@ const Services = () => {
                         ✓   Applicant must be 18 years and above <br/>
                             ✓   Apllicant must have completed driving school                     
                         </p>
-                        <a className='text-white p-4 bg-[#22C55E] rounded-lg font-bold text-lg flex gap-1 border-b w-fit items-center self-center'>
+                        <a className='text-white p-4 bg-[#22C55E] rounded-lg font-bold text-lg flex gap-1 border-b w-fit items-center self-center gap-4 cursor-pointer'>
                             Apply now
                            <FaArrowRightLong />
                         </a>
@@ -67,7 +61,7 @@ const Services = () => {
                     ✓  Applicant must be 18 years and above <br/>
                     ✓     Apllicant must have completed driving school
                     </p>
-                    <a className='text-white p-4 bg-[#22C55E] rounded-lg font-bold text-lg flex gap-1 border-b w-fit items-center self-center'>
+                    <a className='text-white p-4 bg-[#22C55E] rounded-lg font-bold text-lg flex gap-1 border-b w-fit items-center self-center gap-4 cursor-pointer'>
                        Apply Now
                         <FaArrowRightLong />
                     </a>
@@ -81,7 +75,7 @@ const Services = () => {
                     ✓  Applicant must be 18 years and above<br/>
                     ✓  Apllicant must have completed driving school
                     </p>
-                    <a className='text-white p-4 bg-[#22C55E] rounded-lg font-bold text-lg flex gap-1 border-b w-fit items-center self-center'>
+                    <a className='text-white p-4 bg-[#22C55E] rounded-lg font-bold text-lg flex gap-1 border-b w-fit items-center self-center gap-4 cursor-pointer'>
                         Apply Now
                         <FaArrowRightLong />
                     </a>
@@ -95,7 +89,7 @@ const Services = () => {
                     ✓   Applicant must be 18 years and above <br/>
                     ✓    Apllicant must have completed driving school                     
                     </p>
-                    <a className='text-white p-4 bg-[#22C55E] rounded-lg font-bold text-lg flex gap-1 border-b w-fit items-center self-center'>
+                    <a className='text-white p-4 bg-[#22C55E] rounded-lg font-bold text-lg flex gap-1 border-b w-fit items-center self-center gap-4 cursor-pointer'>
                         Apply now
                             <FaArrowRightLong />
                     </a>

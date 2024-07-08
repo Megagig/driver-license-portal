@@ -17,18 +17,21 @@ export const Hero = () => {
       clearInterval(interval)
     };
   }, [index]);
-
+  // bg-[url("src/assets/images/img7.jpg")]
   return (
     <section className="flex flex-1 bg-white flex-row h-screen">
-      <aside className='flex bg-bottom bg-[url("src/assets/images/img7.jpg")] backdrop-opacity-25 pl-32 justify-center flex-1 flex-col'>
-        <span className="text-black w-3/5 text-[24px]/[38.4px] w-3/4 font-normal text-wrap text-left">
-          <h3 className="text-[32px]/[51.1px] font-semibold text-pretty mb-4">
+      <aside className='flex bg-bottom bg-white backdrop-opacity-25 pl-32 justify-center flex-1 flex-col'>
+        <span className="text-black w-3/5 text-[32px]/[38.4px] w-3/4 font-normal text-wrap text-left">
+          <h3 className="text-[44px]/[51.1px] font-semibold text-pretty mb-4">
              Driver's lincense Application
           </h3>
-          Connecting experts in product development and growth marketing willing to offer their services to amazing startups in exchange for minute equity (usually 0.5% to 2%).
-          SINC With Us
+          Get your Driver license done anywhere in the world <em className="text-[#22C55E] ">in an instant</em>
         </span>
+        <div className="flex items-center gap-7">
+
         <button className=" mt-4 bg-[#22C55E] text-[18px]/[19.2px] text-white px-8 py-6 font-medium rounded-full w-fit">New Application</button>
+        <button className=" mt-4 text-[#22C55E] border border-[#22C55E] text-[18px]/[19.2px] bg-white px-8 py-6 font-medium rounded-full w-fit">New Application</button>
+        </div>
 
       </aside>
       <aside className="flex-1 h-full">
