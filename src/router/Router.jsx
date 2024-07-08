@@ -9,6 +9,8 @@ import HomePage from '../pages/home/HomePage';
 import Support from '../pages/support/Support';
 import Faq from '../pages/faq/Faq';
 import Contact from '../pages/contact/Contact';
+import LoginPage from '../pages/auth/login/LoginPage';
+import SignupPage from '../pages/auth/signup/SignupPage';
 
 const router = createBrowserRouter([
   {
@@ -21,7 +23,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'login',
-        element: <Faq />,
+        element: <LoginPage />,
+      },
+      {
+        path: 'signup',
+        element: <SignupPage />,
       },
       {
         path: 'faq',
