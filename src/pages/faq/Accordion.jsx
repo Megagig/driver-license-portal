@@ -4,7 +4,7 @@ export const Accordion = ({ faq }) => {
   const [show, setShow] = useState(false);
   const { question, answer } = faq;
   return (
-    <div>
+    <div className="p-2">
       <h2 id="accordion-flush-heading-1">
         <button
           onClick={() => setShow((prevShow) => !prevShow)}
@@ -50,7 +50,7 @@ export const Accordion = ({ faq }) => {
       {show && (
         <div
           id="accordion-flush-body-1"
-          className=""
+          className="px-4 py-2"
           aria-labelledby="accordion-flush-heading-1"
         >
           <div className="py-5 border-b border-gray-200 dark:border-gray-700">
