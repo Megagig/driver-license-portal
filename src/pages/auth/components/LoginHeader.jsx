@@ -4,7 +4,7 @@ export default function LoginHeader({
   heading,
   paragraph,
   linkName,
-  linkUrl = '#',
+  linkUrl = '/signup',
 }) {
   return (
     <div className="mb-10">

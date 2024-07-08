@@ -24,8 +24,6 @@ const HomePage = () => {
   return (
     <div>
       <h1>HomePage Component Here...</h1>
-      <LoginPage />
-      <SignupPage />
     </div>
   );
 };
