@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import SearchForm from './SearchForm';
-import PaymentForm from './PaymentForm';
+import PaymentForm from './components/PaymentForm';
+import SearchForm from './components/SearcForm';
 
 const ReIssueLicensePage = () => {
   const [step, setStep] = useState(1);
