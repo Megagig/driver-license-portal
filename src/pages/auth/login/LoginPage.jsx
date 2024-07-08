@@ -1,3 +1,14 @@
+import LoginHeader from '../components/LoginHeader';
+
 export default function LoginPage() {
-  return <></>;
+  return (
+    <>
+      <LoginHeader
+        heading="Login to your account"
+        paragraph="Don't have an account yet? "
+        linkName="Signup"
+        linkUrl="/signup"
+      />
+    </>
+  );
 }
