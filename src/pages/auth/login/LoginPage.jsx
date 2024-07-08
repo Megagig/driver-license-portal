@@ -1,3 +1,4 @@
+import Login from '../components/Login';
 import LoginHeader from '../components/LoginHeader';
 
 export default function LoginPage() {
@@ -9,6 +10,7 @@ export default function LoginPage() {
         linkName="Signup"
         linkUrl="/signup"
       />
+      <Login />
     </>
   );
 }
