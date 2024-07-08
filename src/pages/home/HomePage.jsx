@@ -1,4 +1,7 @@
 import React from 'react';
+import AdminLogin from '../../views/auth/AdminLogin';
+import Login from '../../views/auth/Login';
+import Register from '../../views/auth/Register';
 
 const HomePage = () => {
   return (
