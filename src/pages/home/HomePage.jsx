@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react'
 import { Hero } from "./components/Hero"
 import LicenseProcess from './components/LicenseProcess'
@@ -14,4 +15,19 @@ const HomePage = () => {
 }
 
 export default HomePage
+=======
+import React from 'react';
+import LoginPage from '../auth/login/LoginPage';
+import SignupPage from '../auth/signup/SignupPage';
+
+const HomePage = () => {
+  return (
+    <div>
+      <h1>HomePage Component Here...</h1>
+      <LoginPage />
+      <SignupPage />
+    </div>
+  );
+};
+>>>>>>> 4a2bd85 (Add the Signup page)
 
