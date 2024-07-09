@@ -1,27 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
+import { FiChevronDown, FiChevronUp, FiMinus, FiPlus } from 'react-icons/fi';
+import { MdClose, MdMenu } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import { MdMenu, MdClose } from 'react-icons/md';
-import { FiChevronDown, FiChevronUp, FiPlus, FiMinus } from 'react-icons/fi';
 import Logo from './utils/Logo';
 
 const DropDownMenu = ({ menuArray }) => {
-<<<<<<< HEAD
-  return (
-    <div className="flex flex-col absolute z-30 md:z-0 left-6 md:left-0 mt-4 min-w-60 bg-white md:bg-[#3d4249] text-[#3d4249] md:text-white shadow-lg divide-y divide-solid divide-neutral-200 md:divide-neutral-600">
-      {menuArray.map((menu, index) => (
-        <Link
-          key={index}
-          to={menu.to}
-          className="md:hover:bg-green-700 py-2 px-6 capitalize"
-        >
-          {menu.title}
-        </Link>
-      ))}
-    </div>
-  );
-=======
     return (
-        <div className="flex flex-col absolute z-30 left-6 md:left-0 mt-4 min-w-60 bg-white md:bg-[#3d4249] text-[#3d4249] md:text-white shadow-lg divide-y divide-solid divide-neutral-200 md:divide-neutral-600">
+        <div className="flex flex-col absolute z-30 md:z-0 left-6 md:left-0 mt-4 min-w-60 bg-white md:bg-[#3d4249] text-[#3d4249] md:text-white shadow-lg divide-y divide-solid divide-neutral-200 md:divide-neutral-600">
             {menuArray.map((menu, index) => (
                 <Link
                     key={index}
@@ -33,7 +18,6 @@ const DropDownMenu = ({ menuArray }) => {
             ))}
         </div>
     );
->>>>>>> 764da73 (refactor: Remove z-index on nav menu)
 };
 
 const DropDownButton = ({ isOpen, isMobile, title }) => {
@@ -54,21 +38,21 @@ const DropDownButton = ({ isOpen, isMobile, title }) => {
 };
 
 const dropdownData = {
-  applications: [
-    { title: 'new application', to: '/new' },
-    { title: 'renewal', to: '/renewal' },
-    { title: 're-Issue', to: '/re-issue' },
-  ],
-  services: [
-    { title: 'update your data', to: '/update' },
-    { title: 'get appointment slip', to: '/get-slip' },
-    { title: 'verify license', to: '/verify' },
-  ],
-  contact: [
-    { title: 'support center', to: '/support' },
-    { title: 'capture centers', to: '/centers' },
-    { title: 'driving schools', to: '/driving-schools' },
-  ],
+    applications: [
+        { title: "new application", to: "/new" },
+        { title: "renewal", to: "/renewal" },
+        { title: "re-Issue", to: "/re-issue" },
+    ],
+    services: [
+        { title: "update your data", to: "/update" },
+        { title: "get appointment slip", to: "/get-slip" },
+        { title: "verify license", to: "/verify" },
+    ],
+    contact: [
+        { title: "support center", to: "/support" },
+        { title: "capture centers", to: "/centers" },
+        { title: "driving schools", to: "/driving-schools" },
+    ],
 };
 
 const NavBar = () => {
