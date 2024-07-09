@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 import BasicDetails from "./components/BasicDetails";
 import InstantDriverDetails from "./components/InstantDriverDetails";
@@ -14,7 +15,6 @@ const Profile = () => {
             <BasicDetails />
             <LoginDetails />
             <InstantDriverDetails />
-
         </div>
     </section>
   )

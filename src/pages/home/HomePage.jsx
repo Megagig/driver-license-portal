@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 import React from 'react'
+import Profile from "../profile/Profile"
 import { Hero } from "./components/Hero"
 import LicenseProcess from './components/LicenseProcess'
 import Services from './components/Services'
@@ -9,7 +10,11 @@ const HomePage = () => {
         <div>
             <Hero />
             <LicenseProcess />
+<<<<<<< HEAD
             <Services />
+=======
+            <Profile />
+>>>>>>> 90754c5 (started the user profile)
         </div>
     )
 }
