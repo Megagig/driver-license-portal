@@ -19,7 +19,7 @@ const BasicDetails = () => {
         <div className='flex mt-16 p-6 relative border-4 border-custom-grey w-full'>
         <h4 className="p-3 bg-white text-2xl font-medium absolute top-[-29px]">Basic Details</h4>
         <FaEdit className="bg-white text-3xl font-medium absolute top-[-16px] right-0 cursor-pointer" onClick={handleEditBasicDetails} />
-        < div className='flex flex-col'>
+        < div className='flex flex-col w-full'>
 
             <SingleDetail 
                 label="Full Name"
@@ -33,6 +33,12 @@ const BasicDetails = () => {
             <SingleDetail 
                 label='Date of Birth'
                 details='Ogundeji Oluwapelumi Ayodeji' />
+            <SingleDetail 
+                label='Gender'
+                details='Male' />
+            <SingleDetail 
+                label='Home Address'
+                details='161, Onipan Bus-stop, Onipan, Lagos State' />
         </div>
         </div>
         {showModal?

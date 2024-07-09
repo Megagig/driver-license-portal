@@ -19,7 +19,7 @@ export const Hero = () => {
   }, [index]);
   // bg-[url("src/assets/images/img7.jpg")]
   return (
-    <section className="flex flex-1 bg-white flex-row h-screen">
+    <section className="flex flex-1 bg-white flex- w-screen h-screen">
       <aside className='flex bg-bottom bg-white backdrop-opacity-25 pl-32 justify-center flex-1 flex-col'>
         <span className="text-black w-3/5 text-[32px]/[38.4px] w-3/4 font-normal text-wrap text-left">
           <h3 className="text-[44px]/[51.1px] font-semibold text-pretty mb-4">
