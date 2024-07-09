@@ -7,10 +7,10 @@ import ProfilePicture from "./components/ProfilePicture";
 
 const Profile = () => {
   return (
-    <section className='w-screen p-32'>
+    <section className='w-screen py-20 px-16'>
         <h3 className='text-[44px]/[56px] font-bold'>Profile Details</h3>    
 
-        <div className="w-3/4">
+        <div className="w-full">
             <ProfilePicture />
             <BasicDetails />
             <LoginDetails />

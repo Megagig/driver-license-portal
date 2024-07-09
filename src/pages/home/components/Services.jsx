@@ -5,7 +5,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 const Services = () => {
     return (
         <section className='bg-slate-200 w-full  py-20 px-24 flex flex-col'>
-            <h3 className="text-text-custom-black text-[86px]/[67.2px] font-medium text-center">
+            <h3 className="text-text-custom-black text-3xl font-medium text-center">
             Our Services
             </h3>
 
