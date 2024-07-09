@@ -6,7 +6,7 @@ import Services from './components/Services'
 
 const HomePage = () => {
     return (
-        <div className='w-screen'>
+        <div>
             <Hero />
             <LicenseProcess />
             <Services />
