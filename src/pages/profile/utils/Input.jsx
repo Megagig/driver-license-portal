@@ -7,7 +7,7 @@ const Input = (props) => {
         <input 
             type={props.type} 
             id={props.htmlFor} 
-            className="p-5 
+            className="px-5 py-4 
                     focus-visible:outline-none
                      bg-slate-200
                      border border-green-500 
@@ -23,6 +23,7 @@ const Input = (props) => {
                     " 
             placeholder={props.placeholder}
             inputMode={props.inputMode}
+            required={props.required}
         />
     </div>
     )
