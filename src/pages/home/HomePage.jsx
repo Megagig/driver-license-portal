@@ -1,11 +1,18 @@
-import React from 'react';
+
+import React from 'react'
+import { Hero } from "./components/Hero"
+import LicenseProcess from './components/LicenseProcess'
+import Services from './components/Services'
 
 const HomePage = () => {
-  return (
-    <div>
-      <h1>HomePage Component Here...</h1>
-    </div>
-  );
-};
+    return (
+        <div>
+            <Hero />
+            <Services />
+            <LicenseProcess />
+        </div>
+    )
+}
 
-export default HomePage;
+export default HomePage
+
