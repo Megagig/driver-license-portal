@@ -9,6 +9,9 @@ import HomePage from "../pages/home/HomePage";
 import Support from "../pages/support/Support";
 import Faq from "../pages/faq/Faq";
 import Contact from "../pages/contact/Contact";
+import ApplicationHome from "../pages/applications/ApplicationHome";
+import ApplicationForm from "../pages/applications/ApplicationForm";
+import Appointment from "../pages/appointment/Appointment";
 
 const router = createBrowserRouter([
     {
@@ -18,6 +21,18 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <HomePage />,
+            },
+            {
+                path: "application",
+                element: <ApplicationHome />,
+            },
+            {
+                path: "application/form",
+                element: <ApplicationForm />,
+            },
+            {
+                path: "appointment",
+                element: <Appointment />,
             },
             {
                 path: "faq",

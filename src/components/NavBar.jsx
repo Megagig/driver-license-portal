@@ -11,6 +11,7 @@ const DropDownMenu = ({ menuArray }) => {
                 <Link
                     key={index}
                     to={menu.to}
+                    state={menu.state && menu.state}
                     className="md:hover:bg-green-700 py-2 px-6 capitalize"
                 >
                     {menu.title}
@@ -41,9 +42,9 @@ const DropDownButton = ({ isOpen, isMobile, title }) => {
 
 const dropdownData = {
     applications: [
-        { title: "new application", to: "/new" },
-        { title: "renewal", to: "/renewal" },
-        { title: "re-Issue", to: "/re-issue" },
+        { title: "new application", to: "/application", state: {type: 'new'} },
+        { title: "renewal", to: "/application", state: {type: 'renewal'} },
+        { title: "re-Issue", to: "/application", state: {type: 're-issue'} },
     ],
     services: [
         { title: "update your data", to: "/update" },
