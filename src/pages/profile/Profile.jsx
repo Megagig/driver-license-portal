@@ -8,7 +8,7 @@ const Profile = () => {
     <section className='w-screen p-32'>
         <h3 className='text-[44px]/[56px] font-bold'>Profile Details</h3>    
 
-        <div className="w-3/4 ml-auto mr-auto">
+        <div className="w-3/4">
             <BasicDetails />
             <LoginDetails />
             <InstantDriverDetails />

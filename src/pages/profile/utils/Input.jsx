@@ -1,0 +1,31 @@
+
+
+const Input = (props) => {
+    return (
+        <div className="mb-6">
+        <label htmlFor={props.htmlFor} className="block mb-2 text-[20px]/[22px] font-medium text-green-700 dark:text-green-500">{props.labelName}</label>
+        <input 
+            type={props.type} 
+            id={props.htmlFor} 
+            className="p-5 
+                    focus-visible:outline-none
+                     bg-slate-200
+                     border border-green-500 
+                     text-green-900 text-[17px]/[20px]
+                     dark:text-green-400 dark:placeholder-green-500 dark:bg-gray-700 dark:border-green-500
+                     placeholder-green-700
+                    rounded-lg 
+                    focus:ring-green-500 focus:border-green-500 
+                     block w-full 
+                     disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+                    invalid:border-pink-500 invalid:text-pink-600 
+                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                    " 
+            placeholder={props.placeholder}
+            inputMode={props.inputMode}
+        />
+    </div>
+    )
+}
+
+export default Input
