@@ -1,9 +1,8 @@
 import React from 'react'
-import phoneImg from "../../../assets/images/process.png"
 import payment from "../../../assets/images/credit-card.png"
-import fingerprint from "../../../assets/images/fingerprint.png"
 import cardImg from "../../../assets/images/credit-cards.png"
-import { IoMdFingerPrint } from "react-icons/io";
+import fingerprint from "../../../assets/images/fingerprint.png"
+import phoneImg from "../../../assets/images/process.png"
 
 const LicenseProcess = () => {
     return (
@@ -11,7 +10,7 @@ const LicenseProcess = () => {
             <div className='text-[44px]/[45px] text-black font-semibold  text-center p-8 text-wrap flex flex-col items-center justify-center'>
                 <em className="text-[#22C55E] ">Four simple steps</em> to get your license done
             </div>
-            <div className='grid grid-cols-2 h-[600px] overflow-hidden'>
+            <div className='grid grid-cols-2'>
 
             <div className='bg-custom-dark-brown flex-1 flex p-12 items-center gap-6 bg-[#d5ffe4] rounded-lg'>
                 <img src={phoneImg} className='flex-1 max-w-[150px] object-fit'/>
