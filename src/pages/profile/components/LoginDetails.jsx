@@ -7,7 +7,31 @@ import LoginDetailsForm from './Modals/LoginDetailsForm';
 const LoginDetails = () => {
     const [showModal, setShowModal] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
-    let password = "oluwapumi"
+    const [password, setpassword] = useState({
+        oldPassword: "oluwapelumi@#76666",
+        newPassword: "",
+        confirmPassword: ""
+    })
+
+    const editOldPassword = (args) => { 
+        setPassword({
+            ...password,
+            oldPassword: args
+        })
+     };
+    const editNewPassword = (args) => {
+        setPassword({
+            ...password,
+            newPassword
+        })
+      };
+    const editConfirmPassword = (args) => {  
+        setPassword({
+            ...password,
+            confirmPassword : args
+        })
+    };
+ 
     const handleEditLoginDetails = () =>{
         setShowModal(true)
     }
@@ -17,8 +41,7 @@ const LoginDetails = () => {
     const handleShowPassword = () => { 
         setShowPassword(!showPassword)
      };
-     let queryString = password.replace(/[a-zA-Z0-9]/g,"*");
-     console.log(queryString)
+     let queryString = password.oldPassword.replace(/[a-zA-Z0-9]/g,"*");
 
     return (
         <>
@@ -28,11 +51,18 @@ const LoginDetails = () => {
             <div className='flex w-full items-center'>
                 <SingleDetail
                     label='Password'
-                    details={showPassword ? password : queryString} />
+                    details={showPassword ? password.oldPassword : queryString} />
                     {showPassword ? <BsEye className='flex-auto w-1/5 text-4xl' onClick={handleShowPassword}/>: <BsEyeSlash className='flex-auto w-1/5 text-4xl' onClick={handleShowPassword} />}
             </div>
         </div>
-        {showModal ? <LoginDetailsForm oldpassword={password} closeModal ={handleCloseModal}/> : null}
+        {showModal ? 
+        <LoginDetailsForm 
+            oldpassword={password} 
+            closeModal ={handleCloseModal}
+            editConfirmPassword={editConfirmPassword}
+            editNewPassword={editNewPassword}
+            editOldPassword={editOldPassword}
+        /> : null}
     </>
     )
 }

@@ -6,14 +6,17 @@ import BasicDetailsForm from './Modals/BasicDetailsForm';
 
 const BasicDetails = (props) => {
     const [showModal, setShowModal] = useState(false)
-    const[profile, setProfile] = useState({})
-
+    const[profileDetails, setProfile] = useState({})
+   
     const handleEditBasicDetails = () => { 
         setShowModal(true)
-     };
-     const handleCloseModal = () =>{
+    }
+
+    const handleCloseModal = () =>{
         setShowModal(false)
-     }
+    }
+
+
     return (
         <>
         <div className='flex mt-16 p-6 relative border-4 border-custom-grey w-full'>
@@ -49,12 +52,25 @@ const BasicDetails = (props) => {
                 label='L.G.A'
                 details={props.state.lga}/>
           <SingleDetail 
-                label='L.G.A'
-                details={props.state.state}/>
+                label='State'
+                details={props.state.State}/>
         </div>
         </div>
         {showModal?
-        <BasicDetailsForm closeModal={handleCloseModal} /> : null   }
+        <BasicDetailsForm 
+            formData={props.state} 
+            closeModal={handleCloseModal}
+            editAddress={props.editAddress}
+            editDob={props.editDob}
+            editEmail={props.editEmail}
+            editFirstName={props.editFirstName}
+            editGender={props.editGender}
+            editMiddleName={props.editMiddleName}
+            editPhone={props.editPhone}
+            editSurname={props.editSurname}
+            editLga={props.editLga}
+            editState={props.editState}
+             /> : null   }
     </>
 =======
 import React from 'react';

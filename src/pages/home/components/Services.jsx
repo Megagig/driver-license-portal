@@ -24,7 +24,7 @@ const Services = () => {
                         <FaArrowRightLong />
                     </a>
                 </div>
-                <div className='  border-[#F4F4F4] border-t-[#ffc169] border-t-[16px] border bg-[#fdf8f1] bg-white flex flex-col rounded-xl p-4 md:p-10 gap-4 md:gap-7 items-start'>
+                <div className='  border-[#F4F4F4] border-t-[#83c6f3] border-t-[16px] border bg-[#fdf8f1] bg-white flex flex-col rounded-xl p-4 md:p-10 gap-4 md:gap-7 items-start'>
                   <div className='w-10 h-10 md:w-16 md:h-16 rounded-lg bg-contain bg-[url("src/assets/images/renewal.png")] self-center'></div>
                     <p className='font-semibold text-base md:text-[23px]/[26.4px] self-center'>
                        Renew
@@ -38,7 +38,7 @@ const Services = () => {
                         <FaArrowRightLong />
                     </a>
                 </div>
-                <div className='  border-[#F4F4F4] border-t-[#ffc169] border-t-[16px] border bg-[#fdf8f1] bg-white flex flex-col rounded-xl p-4 md:p-10 gap-4 md:gap-7 items-start'>
+                <div className='  border-[#F4F4F4] border-t-[#4cffff] border-t-[16px] border bg-[#fdf8f1] bg-white flex flex-col rounded-xl p-4 md:p-10 gap-4 md:gap-7 items-start'>
                   <div className='w-10 h-10 md:w-16 md:h-16 rounded-lg bg-contain bg-[url("src/assets/images/business.png")] self-center'></div>
                     <p className='font-semibold text-base md:text-[23px]/[26.4px] self-center'>
                             Reissue
@@ -66,7 +66,7 @@ const Services = () => {
                         <FaArrowRightLong />
                     </a>
                 </div>
-                <div className='  border-[#F4F4F4] border-t-[#ffc169] border-t-[16px] border bg-[#fdf8f1] bg-white flex flex-col rounded-xl p-4 md:p-10 gap-4 md:gap-7 items-start'>
+                <div className='  border-[#F4F4F4] border-t-[#83c6f3] border-t-[16px] border bg-[#fdf8f1] bg-white flex flex-col rounded-xl p-4 md:p-10 gap-4 md:gap-7 items-start'>
                   <div className='w-10 h-10 md:w-16 md:h-16 rounded-lg bg-contain bg-[url("src/assets/images/print.png")] self-center'></div>
                     <p className='font-semibold text-base md:text-[23px]/[26.4px] self-center'>
                         License Verification
@@ -81,7 +81,7 @@ const Services = () => {
                         <FaArrowRightLong />
                     </a>
                 </div>
-                <div className='  border-[#F4F4F4] border-t-[#ffc169] border-t-[16px] border bg-[#fdf8f1] bg-white flex flex-col rounded-xl p-4 md:p-10 gap-4 md:gap-7 items-start'>
+                <div className='  border-[#F4F4F4] border-t-[#4cffff] border-t-[16px] border bg-[#fdf8f1] bg-white flex flex-col rounded-xl p-4 md:p-10 gap-4 md:gap-7 items-start'>
                   <div className='w-10 h-10 md:w-16 md:h-16 rounded-lg bg-contain bg-[url("src/assets/images/print.png")] self-center'></div>
                     <p className='font-semibold text-base md:text-[23px]/[26.4px] text-wrap self-center'>
                         Print Acknowledgement Slip

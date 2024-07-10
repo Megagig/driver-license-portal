@@ -2,6 +2,7 @@ import React from 'react';
 import Input from '../../utils/Input';
 
 const LoginDetailsForm = (props) => {
+
     const updateBasicDetails = (event) => {
         event.preventDefault()
         props.closeModal()
@@ -15,18 +16,21 @@ const LoginDetailsForm = (props) => {
                     labelName="Old Password"
                     htmlFor='oldpassword'
                     placeholder=' Old Password' 
-                    required={true} />
+                    required={true}
+                    onChange={props.editOldPassword} />
                 <Input 
                     type="password"
                     labelName="New Password"
                     htmlFor='newpassword'
                     placeholder='New Password' 
-                    required={true} />
+                    required={true}
+                    onChange={props.editNewPassword} />
                 <Input 
                     type='password'
                     labelName="Confirm New Password"
                     htmlFor='confirmPassword'
                     placeholder='Confirm New Password'
+                    onChange={props.editConfirmPassword}
                     required={true} />
 
                      <div className="flex items-center gap-5 justify-end mt-8">

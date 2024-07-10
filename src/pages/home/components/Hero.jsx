@@ -20,25 +20,25 @@ export const Hero = () => {
   }, [index]);
   // bg-[url("src/assets/images/img7.jpg")]
   return (
-    <section className="flex flex-1 bg-white w-screen h-screen">
-      <aside className='flex bg-white p-9 md:pl-16 lg:pl-32 bg-bottom justify-center flex-1 flex-col md:bg-none bg-[url("src/assets/images/img7.jpg")]'>
-        <span className="text-black w-full md:w-3/5 md:text-[32px]/[38.4px] font-normal text-wrap text-lg text-left">
-          <h3 className="md:text-[44px]/[51.1px] text-2xl font-semibold text-pretty mb-4">
+    <section className="flex flex-1 bg-white w-full h-screen">
+      <aside className='flex bg-white p-9 md:pl-16 lg:pl-28 bg-bottom justify-center flex-1 flex-col md:bg-none bg-[url("src/assets/images/img7.jpg")]'>
+        <span className="text-black w-full md:w-3/4 md:text-[32px]/[38.4px] font-normal text-wrap text-lg text-left">
+          <h3 className="md:text-[64px]/[81.1px] text-2xl font-semibold text-pretty mb-9">
              Driver's lincense Application
           </h3>
           Get your Driver license done anywhere in the world <em className="text-[#22C55E] ">in an instant</em>
         </span>
-        <div className="flex items-center gap-7">
+        <div className="flex mt-8 items-center gap-7">
 
-        <button className=" mt-4 bg-[#22C55E] text-[18px]/[19.2px] text-white px-8 py-6 font-medium rounded-full w-fit">Get Started</button>
+        <button className=" bg-[#22C55E] text-[18px]/[19.2px] text-white px-8 py-6 font-medium rounded-full w-fit">Get Started</button>
         <Link to='profile' state={{
           firstname: "Ogundeji",
           surname: "Ogundeji",
           middlename: "Ayodeji",
-          dob:"27-12-12",
+          dob:"1992-12-27",
           phone:"+2348111206206",
           email:"ayopelumi2014@gmail.com",
-          state: "Lagos",
+          State: "Lagos",
           lga:"ifedayo",
           address:"berger",
           gender: "Male",
@@ -48,7 +48,7 @@ export const Hero = () => {
           joined : "21-12-3034",
           lastRenewal: "21-21-2021",
           nextRenewal: "21-21-2021",
-        }} className=" mt-4 text-[#22C55E] border border-[#22C55E] text-[18px]/[19.2px] bg-white px-8 py-6 font-medium rounded-full w-fit"> Application</Link>
+        }} className=" text-[#22C55E] border border-[#22C55E] text-[18px]/[19.2px] bg-white px-8 py-6 font-medium rounded-full w-fit"> Application</Link>
         </div>
 
       </aside>

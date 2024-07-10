@@ -9,7 +9,7 @@ const Input = (props) => {
             id={props.htmlFor} 
             className="px-5 py-4 
                     focus-visible:outline-none
-                     bg-slate-200
+                     bg-slate-50
                      border border-green-500 
                      text-green-900 text-[17px]/[20px]
                      dark:text-green-400 dark:placeholder-green-500 dark:bg-gray-700 dark:border-green-500
@@ -24,6 +24,8 @@ const Input = (props) => {
             placeholder={props.placeholder}
             inputMode={props.inputMode}
             required={props.required}
+            value={props.value}
+            onChange={(event)=>{props.onChange(event.target.value)}}
         />
     </div>
     )
