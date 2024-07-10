@@ -50,13 +50,13 @@ const dropdownData = {
         { title: "re-Issue", to: "/application", state: { type: "re-issue" } },
     ],
     services: [
-        { title: "update your data", to: "/update" },
-        { title: "get appointment slip", to: "/get-slip" },
-        { title: "verify license", to: "/verify" },
+        { title: "update your data", to: "/profile" },
+        { title: "get appointment slip", to: "/get-appointment-slip" },
+        { title: "verify license", to: "/verify-license" },
     ],
     contact: [
         { title: "support center", to: "/support" },
-        { title: "capture centers", to: "/centers" },
+        { title: "capture centers", to: "/capture-centers" },
         { title: "driving schools", to: "/driving-schools" },
     ],
 };

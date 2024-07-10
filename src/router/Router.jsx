@@ -2,11 +2,16 @@ import {
     createBrowserRouter,
     RouterProvider
 } from "react-router-dom";
+import AuthLayout from "../components/AuthLayout";
 import Root from "../components/Root";
+import ApplicationForm from "../pages/applications/ApplicationForm";
+import ApplicationHome from "../pages/applications/ApplicationHome";
+import Appointment from "../pages/appointment/Appointment";
+import LoginPage from "../pages/auth/login/LoginPage";
+import SignupPage from "../pages/auth/signup/SignupPage";
 import Contact from "../pages/contact/Contact";
 import Faq from "../pages/faq/Faq";
 import HomePage from "../pages/home/HomePage";
-import NewApplicationHome from "../pages/new-application/NewApplicationHome";
 import Support from "../pages/support/Support";
 
 const router = createBrowserRouter([
@@ -19,10 +24,6 @@ const router = createBrowserRouter([
                 element: <HomePage />,
             },
             {
-                path: "new-application",
-                element: <NewApplicationHome />,
-            },
-            {
                 path: "faq",
                 element: <Faq />,
             },
@@ -33,6 +34,55 @@ const router = createBrowserRouter([
             {
                 path: "contact",
                 element: <Contact />,
+            },
+            {
+                path: "login",
+                element: <LoginPage />,
+            },
+            {
+                path: "signup",
+                element: <SignupPage />,
+            },
+            {
+                path: "verify-license",
+                element: <div>License Verification Page</div>,
+            },
+            {
+                path: "capture-centers",
+                element: <div>Capture Centers Page</div>,
+            },
+            {
+                path: "driving-schools",
+                element: <div>Driving Schools Page</div>,
+            },
+            {
+                path: "get-appointment-slip",
+                element: <div>Get Appointment Slip Page</div>,
+            },
+            {
+                element: <AuthLayout />,
+                children: [
+                    {
+                        path: "dashboard",
+                        element: <div>User Dashboard</div>,
+                    },
+                    {
+                        path: "profile",
+                        element: <div>User Profile</div>,
+                    },
+                    {
+                        path: "application",
+                        element: <ApplicationHome />,
+                    },
+                    {
+                        path: "application/form",
+                        element: <ApplicationForm />,
+                    },
+                    {
+                        path: "appointment",
+                        element: <Appointment />,
+                    },
+                ]
             },
         ],
     },

@@ -1,9 +1,11 @@
 import { useLocation, Navigate, Outlet } from "react-router-dom";
-// import useAuth from '../hooks/useAuth';
+import useAuth from "../hooks/useAuth";
 
-const RequireAuth = () => {
+const AuthLayout = () => {
     const { pathname } = useLocation();
-    const { auth } = useAuth();
+    const { auth } = useAuth() || JSON.parse(sessionStorage.getItem('auth'));
+
+    console.log(auth);
 
     return auth?.user ? (
         <Outlet />
@@ -12,4 +14,4 @@ const RequireAuth = () => {
     );
 };
 
-export default RequireAuth;
+export default AuthLayout;
