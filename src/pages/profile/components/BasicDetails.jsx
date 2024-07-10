@@ -4,7 +4,7 @@ import { FaEdit } from "react-icons/fa";
 import SingleDetail from '../utils/SingleDetail';
 import BasicDetailsForm from './Modals/BasicDetailsForm';
 
-const BasicDetails = () => {
+const BasicDetails = (props) => {
     const [showModal, setShowModal] = useState(false)
     const[profile, setProfile] = useState({})
 
@@ -18,36 +18,39 @@ const BasicDetails = () => {
         <>
         <div className='flex mt-16 p-6 relative border-4 border-custom-grey w-full'>
         <h4 className="p-3 bg-white text-2xl font-medium absolute top-[-29px]">Basic Details</h4>
-        <FaEdit className="bg-white text-3xl font-medium absolute top-[-16px] right-0 cursor-pointer" onClick={handleEditBasicDetails} />
+        <FaEdit className="bg-white text-4xl font-medium absolute top-[-16px] right-10 cursor-pointer" onClick={handleEditBasicDetails} />
         < div className='grid grid-cols-3 w-full'>
 
             <SingleDetail 
                 label="Surname"
-                details ="Ogundeji " />
+                details ={props.state.surname} />
             <SingleDetail 
                 label="First Name"
-                details ="Oluwapelumi" />
+                details ={props.state.firstname} />
             <SingleDetail 
                 label="Middle Name"
-                details ="Ayodeji" />
+                details ={props.state.middlename} />
             <SingleDetail
                 label='Email'
-                details="Oluwapelumi@gail.com" />
+                details={props.state.email} />
             <SingleDetail
                 label="Phone Number"
-                details='+2348111206206' />
+                details={props.state.phone}/>
             <SingleDetail 
                 label='Date of Birth'
-                details='27th December, 1987' />
+                details={props.state.dob} />
             <SingleDetail 
                 label='Gender'
-                details='Male' />
+                details={props.state.gender} />
             <SingleDetail 
                 label='Home Address'
-                details='161, Onipan Bus-stop, Onipan, Lagos State' />
+                details={props.state.address} />
            <SingleDetail 
                 label='L.G.A'
-                details='Ifedayo' />
+                details={props.state.lga}/>
+          <SingleDetail 
+                label='L.G.A'
+                details={props.state.state}/>
         </div>
         </div>
         {showModal?

@@ -13,13 +13,13 @@ const LoginDetailsForm = (props) => {
                 <Input 
                     type="password"
                     labelName="Old Password"
-                    htmlFor='password'
+                    htmlFor='oldpassword'
                     placeholder=' Old Password' 
                     required={true} />
                 <Input 
                     type="password"
                     labelName="New Password"
-                    htmlFor='password'
+                    htmlFor='newpassword'
                     placeholder='New Password' 
                     required={true} />
                 <Input 
