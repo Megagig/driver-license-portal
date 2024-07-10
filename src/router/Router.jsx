@@ -51,17 +51,17 @@ const router = createBrowserRouter([
 ]);
 
 const Router = () => {
-    return (
-        <RouterProvider router={router} />
-        // <div>
-        //     <Routes>
-        //         <Route path="/" element={<HomePage />} />
-        //         <Route path="/support" element={<Support />} />
-        //         <Route path="/faq" element={<Faq />} />
-        //         <Route path="/contact" element={<Contact />} />
-        //     </Routes>
-        // </div>
-    );
+  return (
+    <RouterProvider router={router} />
+    // <div>
+    //     <Routes>
+    //         <Route path="/" element={<HomePage />} />
+    //         <Route path="/support" element={<Support />} />
+    //         <Route path="/faq" element={<Faq />} />
+    //         <Route path="/contact" element={<Contact />} />
+    //     </Routes>
+    // </div>
+  );
 };
 
 export default Router;
