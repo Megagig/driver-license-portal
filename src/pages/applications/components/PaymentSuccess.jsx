@@ -1,20 +1,19 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const SubmissionResponse = ({ responseData }) => {
-    const navigate = useNavigate();
-    const [isGenerating, setIsGenerating] = useState(false);
-    console.log(responseData);
+const PaymentSuccess = ({ step, setStep, setIsPaid }) => {
+    const [isProcessing, setIsProcessing] = useState(false);
 
-    const generateSlip = () => {
-        setIsGenerating(true);
+    const goToReview = () => {
+        setIsProcessing(true);
 
         setTimeout(() => {
-            setIsGenerating(false);
-            navigate("/appointment", { state: { responseData } });
-        }, 3000);
-    };
+            setIsProcessing(false);
+            setIsPaid(true);
+            setStep(step + 1);
+        }, 1000);
+    }
 
     return (
         <div className="flex flex-col gap-5 p-4">
@@ -26,26 +25,26 @@ const SubmissionResponse = ({ responseData }) => {
 
             <div className="flex flex-col items-center">
                 <h3 className="text-lg font-bold mb-5">
-                    Your application has been successfully submitted.
+                    Your payment has been successfully processed!
                 </h3>
                 <p className="">
-                    Please generate your appointment slip to get the details of
+                    Please review your biodata and contact information
                 </p>
-                <p className="">your capturing center. Thank you.</p>
+                <p className="">before you submit your application.</p>
             </div>
 
             <div className="flex flex-col gap-2 mt-1">
                 <button
                     className="w-full bg-custom-green hover:bg-green-600 px-4 py-3 text-white font-medium tracking-widest rounded-lg"
-                    onClick={generateSlip}
+                    onClick={goToReview}
                 >
-                    {isGenerating ? (
+                    {isProcessing ? (
                         <div className="flex justify-center gap-4">
                             <div className="w-6 h-6 rounded-full animate-spin border-y-4 border-solid border-white border-t-transparent shadow-md"></div>
-                            <span>Generating Slip...</span>
+                            <span>Wait...</span>
                         </div>
                     ) : (
-                        "Generate Appointment Slip"
+                        "Review Your Information"
                     )}
                 </button>
             </div>
@@ -53,4 +52,4 @@ const SubmissionResponse = ({ responseData }) => {
     );
 };
 
-export default SubmissionResponse;
+export default PaymentSuccess;
