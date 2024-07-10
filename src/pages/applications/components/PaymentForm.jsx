@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import { hasNoEmptyValue } from "../utils";
+import CustomModal from "./CustomModal";
+import PaymentSuccess from "./PaymentSuccess";
 
 const PaymentForm = ({
     formData,
@@ -15,6 +17,7 @@ const PaymentForm = ({
 }) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const licenseAmount =
         applicationType === "new"
             ? 35000
@@ -25,12 +28,14 @@ const PaymentForm = ({
     const serviceCharge = 155;
     console.log(isPaid);
 
+    const openModal = () => setIsModalOpen(true);
+
     const submit = (e) => {
         e.preventDefault();
 
         setIsSubmitting(true);
         setErrorMessage("");
-        
+
         if (!hasNoEmptyValue(formData)) {
             setErrorMessage("All fields are required.");
             return;
@@ -41,10 +46,12 @@ const PaymentForm = ({
         setTimeout(() => {
             setIsSubmitted(true);
             setIsSubmitting(false);
-            setIsPaid(true);
-            setStep(step + 1);
-        }, 3000);
+            openModal();
+            setIsSubmitting(false);
 
+            // setIsPaid(true);
+            // setStep(step + 1);
+        }, 3000);
     };
 
     const goBack = (e) => {
@@ -75,7 +82,7 @@ const PaymentForm = ({
                 className=" bg-custom-green hover:bg-green-600 px-4 py-3 text-white font-medium tracking-widest rounded-lg"
                 onClick={() => setStep(step + 1)}
             >
-               Review Your Information
+                Review Your Information
             </button>
         </div>
     ) : (
@@ -249,6 +256,15 @@ const PaymentForm = ({
                     </button>
                 </div>
             </div>
+
+            {/* Payment Success Modal */}
+            <CustomModal isOpen={isModalOpen}>
+                <PaymentSuccess
+                    step={step}
+                    setStep={setStep}
+                    setIsPaid={setIsPaid}
+                />
+            </CustomModal>
         </div>
     );
 };
