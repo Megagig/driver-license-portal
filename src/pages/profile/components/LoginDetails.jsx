@@ -7,12 +7,13 @@ import LoginDetailsForm from './Modals/LoginDetailsForm';
 const LoginDetails = () => {
     const [showModal, setShowModal] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
-    const [password, setpassword] = useState({
-        oldPassword: "oluwapelumi@#76666",
+    const [password, setPassword] = useState({
+        password: "oluwapelumi@#76666",
         newPassword: "",
         confirmPassword: ""
     })
-
+    console.log({password})
+    
     const editOldPassword = (args) => { 
         setPassword({
             ...password,
@@ -22,7 +23,7 @@ const LoginDetails = () => {
     const editNewPassword = (args) => {
         setPassword({
             ...password,
-            newPassword
+            newPassword:args
         })
       };
     const editConfirmPassword = (args) => {  
@@ -41,7 +42,7 @@ const LoginDetails = () => {
     const handleShowPassword = () => { 
         setShowPassword(!showPassword)
      };
-     let queryString = password.oldPassword.replace(/[a-zA-Z0-9]/g,"*");
+     let queryString = password.password.replace(/[a-zA-Z0-9]/g,"*");
 
     return (
         <>
@@ -51,7 +52,7 @@ const LoginDetails = () => {
             <div className='flex w-full items-center'>
                 <SingleDetail
                     label='Password'
-                    details={showPassword ? password.oldPassword : queryString} />
+                    details={showPassword ? password.password : queryString} />
                     {showPassword ? <BsEye className='flex-auto w-1/5 text-4xl' onClick={handleShowPassword}/>: <BsEyeSlash className='flex-auto w-1/5 text-4xl' onClick={handleShowPassword} />}
             </div>
         </div>
