@@ -19,10 +19,10 @@ export const Hero = () => {
   }, [index]);
   // bg-[url("src/assets/images/img7.jpg")]
   return (
-    <section className="flex flex-1 bg-white flex- w-screen h-screen">
-      <aside className='flex bg-bottom bg-white backdrop-opacity-25 pl-32 justify-center flex-1 flex-col'>
-        <span className="text-black w-3/5 text-[32px]/[38.4px] w-3/4 font-normal text-wrap text-left">
-          <h3 className="text-[44px]/[51.1px] font-semibold text-pretty mb-4">
+    <section className="flex flex-1 bg-white w-screen h-screen">
+      <aside className='flex bg-white p-9 md:pl-32 bg-bottom justify-center flex-1 flex-col md:bg-none bg-[url("src/assets/images/img7.jpg")]'>
+        <span className="text-black w-full md:w-3/5 md:text-[32px]/[38.4px] font-normal text-wrap text-lg text-left">
+          <h3 className="md:text-[44px]/[51.1px] text-2xl font-semibold text-pretty mb-4">
              Driver's lincense Application
           </h3>
           Get your Driver license done anywhere in the world <em className="text-[#22C55E] ">in an instant</em>
@@ -34,7 +34,7 @@ export const Hero = () => {
         </div>
 
       </aside>
-      <aside className="flex-1 h-full">
+      <aside className=" hidden md:flex md:flex-1 md:h-full ">
           <img src={imgArray[index]} className='object-cover w-full h-full' alt="image" />
       </aside>
 

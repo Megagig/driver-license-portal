@@ -23,22 +23,22 @@ const BasicDetails = () => {
 
             <SingleDetail 
                 label="Surname"
-                details ="Ogundeji Oluwapelumi Ayodeji" />
+                details ="Ogundeji " />
             <SingleDetail 
                 label="First Name"
-                details ="Ogundeji Oluwapelumi Ayodeji" />
+                details ="Oluwapelumi" />
             <SingleDetail 
                 label="Middle Name"
-                details ="Ogundeji Oluwapelumi Ayodeji" />
+                details ="Ayodeji" />
             <SingleDetail
                 label='Email'
-                details="Ogundeji Oluwapelumi Ayodeji" />
+                details="Oluwapelumi@gail.com" />
             <SingleDetail
                 label="Phone Number"
-                details='Ogundeji Oluwapelumi Ayodeji' />
+                details='+2348111206206' />
             <SingleDetail 
                 label='Date of Birth'
-                details='Ogundeji Oluwapelumi Ayodeji' />
+                details='27th December, 1987' />
             <SingleDetail 
                 label='Gender'
                 details='Male' />
@@ -47,7 +47,7 @@ const BasicDetails = () => {
                 details='161, Onipan Bus-stop, Onipan, Lagos State' />
            <SingleDetail 
                 label='L.G.A'
-                details='Lagos State' />
+                details='Ifedayo' />
         </div>
         </div>
         {showModal?
