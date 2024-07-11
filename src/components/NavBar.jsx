@@ -27,8 +27,8 @@ const DropDownButton = ({ isOpen, isMobile, title }) => {
     return (
         <div
             className={`flex items-center ${
-                isMobile ? "justify-between" : "gap-2 cursor-pointer"
-            } text-white`}
+                isMobile ? "justify-between" : "gap-2"
+            } text-white cursor-pointer`}
         >
             <span className="text-white transition-colors">{title}</span>
             {isMobile ? (
@@ -55,7 +55,7 @@ const dropdownData = {
     services: [
         { title: "update profile", to: "/profile" },
         { title: "get appointment slip", to: "/get-appointment-slip" },
-        { title: "verify license", to: "/verify-license" },
+        // { title: "verify license", to: "/verify-license" },
     ],
     contact: [
         { title: "support center", to: "/support" },
@@ -83,12 +83,12 @@ const NavBar = () => {
 
     const closeMobileMenu = () => {
         setIsMenuOpen(false);
-    }
+    };
 
     return (
         <nav className="bg-[#3d4249] print:hidden">
             <div className="container mx-auto flex justify-center items-center">
-                <div className="hidden md:flex">
+                <div className="hidden md:flex items-center">
                     <Link
                         to="/"
                         className="text-white px-6 py-4 hover:bg-green-700 transition-colors"
@@ -110,21 +110,31 @@ const NavBar = () => {
                             <DropDownMenu menuArray={applications} />
                         )}
                     </div>
-                    <div
-                        className="relative px-6 py-4 hover:bg-green-700"
-                        onMouseEnter={() => setIsServicesOpen(true)}
-                        onMouseLeave={() => setIsServicesOpen(false)}
-                    >
-                        <DropDownButton
-                            isOpen={isServicesOpen}
-                            isMobile={false}
-                            title="Services"
-                        />
 
-                        {isServicesOpen && (
-                            <DropDownMenu menuArray={services} />
-                        )}
-                    </div>
+                    {auth.user && (
+                        <div
+                            className="relative px-6 py-4 hover:bg-green-700"
+                            onMouseEnter={() => setIsServicesOpen(true)}
+                            onMouseLeave={() => setIsServicesOpen(false)}
+                        >
+                            <DropDownButton
+                                isOpen={isServicesOpen}
+                                isMobile={false}
+                                title="Services"
+                            />
+
+                            {isServicesOpen && (
+                                <DropDownMenu menuArray={services} />
+                            )}
+                        </div>
+                    )}
+
+                    <Link
+                        to="/verify-license"
+                        className="text-white px-6 py-4 hover:bg-green-700 transition-colors"
+                    >
+                        Verify License
+                    </Link>
                     <Link
                         to="/faq"
                         className="text-white px-6 py-4 hover:bg-green-700 transition-colors"
@@ -202,23 +212,42 @@ const NavBar = () => {
                             />
 
                             {isDropdownOpen && (
-                                <DropDownMenu menuArray={applications} closeMobileMenu={closeMobileMenu} />
+                                <DropDownMenu
+                                    menuArray={applications}
+                                    closeMobileMenu={closeMobileMenu}
+                                />
                             )}
                         </div>
-                        <div
-                            className="relative px-6 py-4"
-                            onClick={() => setIsServicesOpen(!isServicesOpen)}
-                        >
-                            <DropDownButton
-                                isOpen={isServicesOpen}
-                                isMobile={true}
-                                title="Services"
-                            />
 
-                            {isServicesOpen && (
-                                <DropDownMenu menuArray={services} closeMobileMenu={closeMobileMenu} />
-                            )}
-                        </div>
+                        {auth.user && (
+                            <div
+                                className="relative px-6 py-4"
+                                onClick={() =>
+                                    setIsServicesOpen(!isServicesOpen)
+                                }
+                            >
+                                <DropDownButton
+                                    isOpen={isServicesOpen}
+                                    isMobile={true}
+                                    title="Services"
+                                />
+
+                                {isServicesOpen && (
+                                    <DropDownMenu
+                                        menuArray={services}
+                                        closeMobileMenu={closeMobileMenu}
+                                    />
+                                )}
+                            </div>
+                        )}
+
+                        <Link
+                            to="/verify-license"
+                            className="text-white px-6 py-4 transition-colors"
+                            onClick={closeMobileMenu}
+                        >
+                            Verify License
+                        </Link>
                         <Link
                             to="/faq"
                             className="text-white px-6 py-4 transition-colors"
@@ -237,10 +266,12 @@ const NavBar = () => {
                             />
 
                             {isContactOpen && (
-                                <DropDownMenu menuArray={contact} closeMobileMenu={closeMobileMenu} />
+                                <DropDownMenu
+                                    menuArray={contact}
+                                    closeMobileMenu={closeMobileMenu}
+                                />
                             )}
                         </div>
-
                     </div>
                 </div>
             )}
