@@ -4,7 +4,7 @@ import SupportHero from './components/SupportHero';
 
 const Support = () => {
     return (
-        <main className='md:px-20 md:py10'>
+        <main className='p-4 md:px-10 lg:px-20'>
             <SupportHero />
             <SupportForm />
         </main>
