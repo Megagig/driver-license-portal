@@ -1,14 +1,11 @@
 import logo from "../assets/images/dannon-logo2.png"
 import coatofarm from "../assets/coatOfArm.png"
-import arrowRight from "../assets/arrowRight.svg"
-import search from "../assets/search.svg"
+// import arrowRight from "../assets/arrowRight.svg"
+// import search from "../assets/search.svg"
+import { Link } from "react-router-dom"
 
 const Header = () => {
-    const logoStyle = {
-        container: "logo grid content-start text-center  justify-start",
-        h1: "text-green-500 text-3xl md:text-6xl font-extrabold",
-        p: "text-gray-500 text-[7px] md:text-xs",
-    };
+
     return (
         <header className="px-4 py-3 hidden md:px-20 md:flex   md:flex-row justify-between Md:pt-6 md:pb-4 border-b">
             <div className="grid place-content-center">

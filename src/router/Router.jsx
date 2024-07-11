@@ -18,7 +18,7 @@ import LoginPage from "../pages/auth/login/LoginPage";
 import SignupPage from "../pages/auth/signup/SignupPage";
 import Verify from "../pages/verification/Verify";
 
-import Verify from "../pages/verification/Verify";
+
 
 const router = createBrowserRouter([
     {
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
                 element: <SignupPage />,
             },
             {
-                path: "verify",
+                path: "verify-license",
                 element: <Verify />
             },
             {
@@ -92,10 +92,6 @@ const router = createBrowserRouter([
                 ]
             },
             {
-<<<<<<< HEAD
-=======
-
->>>>>>> 570fcee087b91527b814d3b0ce228870ab4efe00
                 path: "verify",
                 element: <Verify />
             },
