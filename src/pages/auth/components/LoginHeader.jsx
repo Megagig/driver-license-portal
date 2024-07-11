@@ -22,7 +22,7 @@ export default function LoginHeader({
         {paragraph}{' '}
         <Link
           to={linkUrl}
-          className="font-medium text-purple-600 hover:text-purple-500"
+          className="font-medium text-custom-green hover:text-green-800"
         >
           {linkName}
         </Link>
