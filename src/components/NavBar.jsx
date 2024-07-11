@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import logo2 from "../assets/images/dannon-logo2.png";
 import useAuth from "../hooks/useAuth";
 import LinkButton from "./LinkButton";
+import coatOfArm from "../assets/coatOfArm.png";
 
 const DropDownMenu = ({ menuArray, closeMobileMenu }) => {
     return (
@@ -27,8 +28,9 @@ const DropDownMenu = ({ menuArray, closeMobileMenu }) => {
 const DropDownButton = ({ isOpen, isMobile, title }) => {
     return (
         <div
-            className={`flex items-center ${isMobile ? "justify-between" : "gap-2"
-                } text-white cursor-pointer`}
+            className={`flex items-center ${
+                isMobile ? "justify-between" : "gap-2"
+            } text-white cursor-pointer`}
         >
             <span className="text-white transition-colors">{title}</span>
             {isMobile ? (
@@ -160,11 +162,18 @@ const NavBar = () => {
             </div>
 
             <div className="flex md:hidden justify-between bg-white border-b text-grey px-6 py-4 shadow-sm">
-                <img
-                    src={logo2}
-                    alt="Dannon Group Logo"
-                    className="w-40 h-auto"
-                />
+                <div className="flex items-center">
+                    <img
+                        src={logo2}
+                        alt="Dannon Group Logo"
+                        className="w-40 h-auto"
+                    />
+                    <img
+                        src={coatOfArm}
+                        alt="Coat of Arm"
+                        className="w-12 h-auto"
+                    />
+                </div>
 
                 <button
                     className="text-3xl"
@@ -186,11 +195,16 @@ const NavBar = () => {
                         <MdClose />
                     </button>
 
-                    <div className="absolute top-5 left-6">
+                    <div className="absolute flex items-center top-4 left-6">
                         <img
                             src={logo2}
                             alt="Dannon Group Logo"
                             className="w-40 h-auto"
+                        />
+                        <img
+                            src={coatOfArm}
+                            alt="Coat of Arm"
+                            className="w-12 h-auto"
                         />
                     </div>
 
