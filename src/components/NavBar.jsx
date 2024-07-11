@@ -2,15 +2,20 @@ import React, { useState } from "react";
 import { FiChevronDown, FiChevronUp, FiMinus, FiPlus } from "react-icons/fi";
 import { MdClose, MdMenu } from "react-icons/md";
 import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import { MdMenu, MdClose } from "react-icons/md";
+import { FiChevronDown, FiChevronUp, FiPlus, FiMinus } from "react-icons/fi";
 import Logo from "./utils/Logo";
 
-const DropDownMenu = ({ menuArray }) => {
+const DropDownMenu = ({ menuArray, closeMobileMenu }) => {
     return (
         <div className="flex flex-col absolute z-30 md:z-0 left-6 md:left-0 mt-4 min-w-60 bg-white md:bg-[#3d4249] text-[#3d4249] md:text-white shadow-lg divide-y divide-solid divide-neutral-200 md:divide-neutral-600">
             {menuArray.map((menu, index) => (
                 <Link
                     key={index}
                     to={menu.to}
+                    state={menu.state && menu.state}
+                    onClick={closeMobileMenu}
                     className="md:hover:bg-green-700 py-2 px-6 capitalize"
                 >
                     {menu.title}
@@ -50,7 +55,7 @@ const dropdownData = {
         { title: "re-Issue", to: "/application", state: { type: "re-issue" } },
     ],
     services: [
-        { title: "update your data", to: "/profile" },
+        { title: "update profile", to: "/profile" },
         { title: "get appointment slip", to: "/get-appointment-slip" },
         { title: "verify license", to: "/verify-license" },
     ],
@@ -62,6 +67,7 @@ const dropdownData = {
 };
 
 const NavBar = () => {
+    const { auth } = useAuth();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const [isContactOpen, setIsContactOpen] = useState(false);
@@ -76,6 +82,10 @@ const NavBar = () => {
     const toggleDrawer = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
+    const closeMobileMenu = () => {
+        setIsMenuOpen(false);
+    }
 
     return (
         <nav className="bg-[#3d4249] print:hidden">
@@ -156,6 +166,7 @@ const NavBar = () => {
                 </button>
             </div>
 
+            {/* Mobile Menu */}
             {isMenuOpen && (
                 <div className="absolute top-0 right-0 z-20 h-full w-full md:hidden bg-[#3d4249]">
                     <button
@@ -178,6 +189,7 @@ const NavBar = () => {
                         <Link
                             to="/"
                             className="text-white px-6 py-4  transition-colors"
+                            onClick={closeMobileMenu}
                         >
                             Home
                         </Link>
@@ -192,7 +204,7 @@ const NavBar = () => {
                             />
 
                             {isDropdownOpen && (
-                                <DropDownMenu menuArray={applications} />
+                                <DropDownMenu menuArray={applications} closeMobileMenu={closeMobileMenu} />
                             )}
                         </div>
                         <div
@@ -206,12 +218,13 @@ const NavBar = () => {
                             />
 
                             {isServicesOpen && (
-                                <DropDownMenu menuArray={services} />
+                                <DropDownMenu menuArray={services} closeMobileMenu={closeMobileMenu} />
                             )}
                         </div>
                         <Link
                             to="/faq"
                             className="text-white px-6 py-4 transition-colors"
+                            onClick={closeMobileMenu}
                         >
                             FAQ
                         </Link>
@@ -226,9 +239,10 @@ const NavBar = () => {
                             />
 
                             {isContactOpen && (
-                                <DropDownMenu menuArray={contact} />
+                                <DropDownMenu menuArray={contact} closeMobileMenu={closeMobileMenu} />
                             )}
                         </div>
+
                     </div>
                 </div>
             )}
