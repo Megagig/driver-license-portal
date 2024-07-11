@@ -12,9 +12,13 @@ import Contact from "../pages/contact/Contact";
 import ApplicationHome from "../pages/applications/ApplicationHome";
 import ApplicationForm from "../pages/applications/ApplicationForm";
 import Appointment from "../pages/appointment/Appointment";
+
 import AuthLayout from "../components/AuthLayout";
 import LoginPage from "../pages/auth/login/LoginPage";
 import SignupPage from "../pages/auth/signup/SignupPage";
+import Verify from "../pages/verification/Verify";
+
+
 
 const router = createBrowserRouter([
     {
@@ -38,6 +42,7 @@ const router = createBrowserRouter([
                 element: <Contact />,
             },
             {
+
                 path: "login",
                 element: <LoginPage />,
             },
@@ -47,7 +52,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "verify-license",
-                element: <div>License Verification Page</div>,
+                element: <Verify />
             },
             {
                 path: "capture-centers",
@@ -86,22 +91,27 @@ const router = createBrowserRouter([
                     },
                 ]
             },
+            {
+                path: "verify",
+                element: <Verify />
+            },
+
         ],
     },
 ]);
 
 const Router = () => {
-  return (
-    <RouterProvider router={router} />
-    // <div>
-    //     <Routes>
-    //         <Route path="/" element={<HomePage />} />
-    //         <Route path="/support" element={<Support />} />
-    //         <Route path="/faq" element={<Faq />} />
-    //         <Route path="/contact" element={<Contact />} />
-    //     </Routes>
-    // </div>
-  );
+    return (
+        <RouterProvider router={router} />
+        // <div>
+        //     <Routes>
+        //         <Route path="/" element={<HomePage />} />
+        //         <Route path="/support" element={<Support />} />
+        //         <Route path="/faq" element={<Faq />} />
+        //         <Route path="/contact" element={<Contact />} />
+        //     </Routes>
+        // </div>
+    );
 };
 
 export default Router;
