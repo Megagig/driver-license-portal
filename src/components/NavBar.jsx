@@ -24,9 +24,8 @@ const DropDownMenu = ({ menuArray }) => {
 const DropDownButton = ({ isOpen, isMobile, title }) => {
     return (
         <div
-            className={`flex items-center ${
-                isMobile ? "justify-between" : "gap-2 cursor-pointer"
-            } text-white`}
+            className={`flex items-center ${isMobile ? "justify-between" : "gap-2 cursor-pointer"
+                } text-white`}
         >
             <span className="text-white transition-colors">{title}</span>
             {isMobile ? (
@@ -53,7 +52,7 @@ const dropdownData = {
     services: [
         { title: "update your data", to: "/profile" },
         { title: "get appointment slip", to: "/get-appointment-slip" },
-        { title: "verify license", to: "/verify-license" },
+        { title: "verify license", to: "/verify" },
     ],
     contact: [
         { title: "support center", to: "/support" },
