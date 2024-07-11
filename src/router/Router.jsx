@@ -14,7 +14,6 @@ import Faq from "../pages/faq/Faq";
 import HomePage from "../pages/home/HomePage";
 import Profile from "../pages/profile/Profile";
 import Support from "../pages/support/Support";
-import AuthLayout from "../components/AuthLayout";
 import Verify from "../pages/verification/Verify";
 
 

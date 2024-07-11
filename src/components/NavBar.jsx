@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import { FiChevronDown, FiChevronUp, FiMinus, FiPlus } from "react-icons/fi";
 import { MdClose, MdMenu } from "react-icons/md";
 import { Link } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
-import { MdMenu, MdClose } from "react-icons/md";
-import { FiChevronDown, FiChevronUp, FiPlus, FiMinus } from "react-icons/fi";
-import LinkButton from "./LinkButton";
 import logo2 from "../assets/images/dannon-logo2.png";
-import logo from "../assets/images/dannon-logo.png";
+import useAuth from "../hooks/useAuth";
+import LinkButton from "./LinkButton";
 
 const DropDownMenu = ({ menuArray, closeMobileMenu }) => {
     return (
