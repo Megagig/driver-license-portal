@@ -47,8 +47,8 @@ const router = createBrowserRouter([
                 element: <SignupPage />,
             },
             {
-                path: "verify-license",
-                element: <div>License Verification Page</div>,
+                path: "verify",
+                element: <Verify />
             },
             {
                 path: "capture-centers",
