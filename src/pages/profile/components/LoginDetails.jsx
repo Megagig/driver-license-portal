@@ -42,18 +42,18 @@ const LoginDetails = () => {
     const handleShowPassword = () => { 
         setShowPassword(!showPassword)
      };
-     let queryString = password.password.replace(/[a-zA-Z0-9]/g,"*");
+     let queryString = password.password.replace(/[a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~@]/g,"*");
 
     return (
         <>
-        <div className='flex mt-10 p-6 relative border-4 border-custom-grey '>
-            <h4 className="p-3 bg-white text-3xl font-medium absolute top-[-29px]">Login Details</h4>
-            <FaEdit className="bg-white text-4xl font-medium absolute top-[-16px] right-10 cursor-pointer" onClick={handleEditLoginDetails} />
-            <div className='flex w-full items-center'>
+        <div className='flex mt-10 md:p-6 relative border-4 border-custom-grey '>
+            <h4 className="p-3 bg-white text-lg md:text-2xl font-medium absolute top-[-29px]">Login Details</h4>
+            <FaEdit className="bg-white text-2xl md:text-4xl font-medium absolute top-[-16px] right-10 cursor-pointer" onClick={handleEditLoginDetails} />
+            <div className=' mt-5 md:mt-0 flex md:flex-row flex-col w-full items-end md:items-center'>
+                {showPassword ? <BsEye className='flex-auto text-xl md:text-4xl mr-3' onClick={handleShowPassword}/>: <BsEyeSlash className='flex-auto text-xl md:text-4xl mr-3' onClick={handleShowPassword} />}
                 <SingleDetail
                     label='Password'
                     details={showPassword ? password.password : queryString} />
-                    {showPassword ? <BsEye className='flex-auto w-1/5 text-4xl' onClick={handleShowPassword}/>: <BsEyeSlash className='flex-auto w-1/5 text-4xl' onClick={handleShowPassword} />}
             </div>
         </div>
         {showModal ? 

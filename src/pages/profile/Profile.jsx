@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import BasicDetails from "./components/BasicDetails";
 import InstantDriverDetails from "./components/InstantDriverDetails";
@@ -11,11 +11,10 @@ const Profile = () => {
   const [profileDetails, setProfile] = useState({})
   useEffect(() => {
     state ? setProfile(state) : null
-    return () => {
-      
-    };
   }, [state]);
-console.log({profileDetails})
+
+  console.log({profileDetails})
+
   const editFirstName = (args) => {
     setProfile({
         ...profileDetails,
@@ -66,24 +65,43 @@ console.log({profileDetails})
   }
   const editState = (args) => { 
     console.log(args)
-        setProfile({
+    setProfile({
             ...profileDetails,
-            State:args
-  })
+            StateofAddress:args
+    })
   };
   const editLga = (args) => { 
     setProfile({
         ...profileDetails,
         lga:args
-})
-};
+    })
+  };
+  const editImage = (event) => {
+        
+    let reader = new FileReader();
+    let file = event.target.files[0];
+    console.log(event.target.files[0])
+    reader.onloadend = () => {
+
+      setProfile({
+        ...profileDetails,
+        image: reader.result,
+        file: file
+
+      })
+    };
+    reader.readAsDataURL(file);
+}
 
   return (
-    <section className='w-screen py-20 px-16'>
-        <h3 className='text-[44px]/[56px] font-bold'>Profile Details</h3>    
+    <section className='w-screen py-7 md:py-12 xl:py-20 px-4 md:px-10 xl:px-16'>
+        <h3 className='text-[28px]/[36px] md:text-[44px]/[56px] font-bold'>Profile Details</h3>    
 
         <div className="w-full">
-            <ProfilePicture  state={profileDetails}/>
+            <ProfilePicture  
+              state={profileDetails}
+              editImage={editImage}
+            />
             <BasicDetails  
               state={profileDetails}
               editAddress={editAddress}

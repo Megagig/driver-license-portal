@@ -12,6 +12,7 @@ import SignupPage from "../pages/auth/signup/SignupPage";
 import Contact from "../pages/contact/Contact";
 import Faq from "../pages/faq/Faq";
 import HomePage from "../pages/home/HomePage";
+import Profile from "../pages/profile/Profile";
 import Support from "../pages/support/Support";
 
 const router = createBrowserRouter([
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
                 element: <div>Get Appointment Slip Page</div>,
             },
             {
+                path: "pro",
+                element: <Profile />
+            },
+            {
                 element: <AuthLayout />,
                 children: [
                     {
@@ -68,7 +73,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "profile",
-                        element: <div>User Profile</div>,
+                        element: <Profile />,
                     },
                     {
                         path: "application",
