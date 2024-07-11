@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { MdMenu, MdClose } from "react-icons/md";
 import { FiChevronDown, FiChevronUp, FiPlus, FiMinus } from "react-icons/fi";
-import Logo from "./utils/Logo";
+import LinkButton from "./LinkButton";
+import logo2 from "../assets/images/dannon-logo2.png";
+import logo from "../assets/images/dannon-logo.png";
 
 const DropDownMenu = ({ menuArray, closeMobileMenu }) => {
     return (
@@ -158,15 +160,15 @@ const NavBar = () => {
                 </div>
             </div>
 
-            <div className="flex md:hidden justify-between bg-[#3d4249] px-6 py-4">
-                <Logo
-                    container={logoStyle.container}
-                    h1Style={logoStyle.h1}
-                    pStyle={logoStyle.p}
+            <div className="flex md:hidden justify-between bg-white border-b text-grey px-6 py-4 shadow-sm">
+                <img
+                    src={logo2}
+                    alt="Dannon Group Logo"
+                    className="w-40 h-auto"
                 />
 
                 <button
-                    className=" text-white text-3xl"
+                    className="text-3xl"
                     onClick={toggleDrawer}
                     aria-label="Toggle menu"
                 >
@@ -176,24 +178,24 @@ const NavBar = () => {
 
             {/* Mobile Menu */}
             {isMenuOpen && (
-                <div className="absolute top-0 right-0 z-20 h-full w-full md:hidden bg-[#3d4249]">
+                <div className="absolute top-0 right-0 z-20 w-full md:hidden bg-white">
                     <button
-                        className="absolute right-6 top-6 text-white text-3xl"
+                        className="absolute right-6 top-6 text-grey text-3xl"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         aria-label="Toggle menu"
                     >
                         <MdClose />
                     </button>
 
-                    <div className="absolute top-4 left-6">
-                        <Logo
-                            container={logoStyle.container}
-                            h1Style={logoStyle.h1}
-                            pStyle={logoStyle.p}
+                    <div className="absolute top-5 left-6">
+                        <img
+                            src={logo2}
+                            alt="Dannon Group Logo"
+                            className="w-40 h-auto"
                         />
                     </div>
 
-                    <div className="flex flex-col px-6 py-4 mt-20 divide-y divide-solid divide-neutral-600">
+                    <div className="flex flex-col h-full px-6 py-4 mt-20 divide-y divide-solid bg-grey divide-neutral-600">
                         <Link
                             to="/"
                             className="text-white px-6 py-4  transition-colors"
@@ -273,6 +275,24 @@ const NavBar = () => {
                             )}
                         </div>
                     </div>
+
+                    {!auth.user && (
+                        <div className="flex flex-col sm:flex-row sm:justify-end gap-4 w-full px-6 py-6 bg-grey sm:gap-6">
+                            <LinkButton
+                                buttonText="Login"
+                                linkTo="/login"
+                                classAttr="text-white hover:bg-green-600 hover:border-green-600 px-4 py-3 text-center bg-transparent border border-white font-medium tracking-widest rounded-lg"
+                                onClick={closeMobileMenu}
+                            />
+
+                            <LinkButton
+                                buttonText="Sign Up"
+                                linkTo="/signup"
+                                classAttr="bg-custom-green hover:bg-green-600 px-4 py-3 text-center text-white font-medium tracking-widest rounded-lg"
+                                onClick={closeMobileMenu}
+                            />
+                        </div>
+                    )}
                 </div>
             )}
         </nav>
