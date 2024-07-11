@@ -25,6 +25,7 @@ const LoginDetails = () => {
         </div>
         {showModal ? <LoginDetailsForm  closeModal ={handleCloseModal}/> : null}
     </>
+
     )
 }
 
