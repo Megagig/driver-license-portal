@@ -3,7 +3,8 @@ import { useState, createContext } from "react";
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-    const [auth, setAuth] = useState({});
+    const sessionStorageAuth = JSON.parse(sessionStorage.getItem('auth'));
+    const [auth, setAuth] = useState(sessionStorageAuth || {});
 
     return (
         <AuthContext.Provider value={{ auth, setAuth }}>
