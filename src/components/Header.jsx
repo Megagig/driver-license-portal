@@ -1,6 +1,7 @@
-import Logo from "./utils/Logo";
-import arrowRight from "../assets/arrowRight.svg";
-import search from "../assets/search.svg";
+import Logo from "./utils/Logo"
+import coatofarm from "../assets/coatOfArm.png"
+import arrowRight from "../assets/arrowRight.svg"
+import search from "../assets/search.svg"
 
 const Header = () => {
     const logoStyle = {
@@ -16,7 +17,8 @@ const Header = () => {
                 pStyle={logoStyle.p}
             />
 
-            <div className="flex items-center">
+
+            {/* <div className="flex items-center">
                 <div className="relative">
                     <input
                         className="pl-14 pr-4 py-2 h-10 border rounded-bl-full outline-0 border-green-500 w-40 md:w-80"
@@ -32,7 +34,21 @@ const Header = () => {
                 <button className="bg-green-500 h-10 w-14 grid rounded-tr-full items-center justify-center">
                     <img className=" w-4" src={arrowRight} alt="" />
                 </button>
+            </div> */}
+            <div className="flex gap-6">
+                <div className="flex gap-4 items-center">
+                    <button className="bg-custom-green py-3 w-28 rounded-2xl text-white">
+                        Login
+                    </button>
+
+                    <button className="border-custom-green border py-3 w-28  rounded-2xl font-semibold text-custom-green">
+                        Sign up
+                    </button>
+
+                </div>
+                <img className="h-20" src={coatofarm} alt="" />
             </div>
+
         </header>
     );
 };
