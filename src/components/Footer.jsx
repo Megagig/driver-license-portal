@@ -3,6 +3,7 @@ import facebook from "../assets/facebook.svg";
 import instagram from "../assets/instagram.svg";
 import twitter from "../assets/twitter.svg";
 
+import logo from "../assets/images/dannon-logo2.png"
 import youtube from "../assets/youtube.svg";
 import angleright from "../assets/angle-right.svg";
 import Logo from "./utils/Logo";
@@ -17,11 +18,11 @@ const Footer = () => {
     return (
         <footer className="print:hidden">
             <div className="flex md:flex-row flex-col gap-10 justify-between px-4 py-8 md:px-20 md:pt-16 md:pb-12 mt-10 bg-black">
-                <Logo
-                    container={logoStyle.container}
-                    h1Style={logoStyle.h1}
-                    pStyle={logoStyle.p}
-                />
+
+                <div className="grid place-content-start">
+                    <img src={logo} alt="" />
+                </div>
+
                 <div>
                     <p className="font-bold mb-4 text-green-500">Quick Links</p>
                     <ul className="grid gap-2">

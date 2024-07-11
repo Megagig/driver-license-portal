@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import BasicDetails from "./components/BasicDetails";
@@ -6,6 +7,7 @@ import LoginDetails from "./components/LoginDetails";
 import ProfilePicture from "./components/ProfilePicture";
 
 const Profile = () => {
+
   let { state } = useLocation();
   console.log('state:', state)
   const [profileDetails, setProfile] = useState({})

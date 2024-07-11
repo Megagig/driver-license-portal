@@ -28,6 +28,7 @@ const InstantDriverDetails = (props) => {
                 <SingleDetail
                     label='Next Renewal'
                     details={props.state.nextRenewal}
+
                 />
             </div>
         </div>

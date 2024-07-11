@@ -29,6 +29,7 @@ export const Hero = () => {
         </span>
         <div className="flex mt-8 items-center gap-7">
         <button className=" bg-[#22C55E] text-[18px]/[19.2px] text-white px-8 py-4 font-medium rounded-full min-w-36">Get Started</button>
+
         </div>
 
       </aside>

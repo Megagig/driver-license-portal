@@ -14,6 +14,9 @@ import Faq from "../pages/faq/Faq";
 import HomePage from "../pages/home/HomePage";
 import Profile from "../pages/profile/Profile";
 import Support from "../pages/support/Support";
+import AuthLayout from "../components/AuthLayout";
+import Verify from "../pages/verification/Verify";
+
 
 const router = createBrowserRouter([
     {
@@ -46,7 +49,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "verify-license",
-                element: <div>License Verification Page</div>,
+                element: <Verify />
             },
             {
                 path: "capture-centers",
@@ -59,10 +62,6 @@ const router = createBrowserRouter([
             {
                 path: "get-appointment-slip",
                 element: <div>Get Appointment Slip Page</div>,
-            },
-            {
-                path: "pro",
-                element: <Profile />
             },
             {
                 element: <AuthLayout />,

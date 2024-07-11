@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { FaEdit } from "react-icons/fa";
 import SingleDetail from '../utils/SingleDetail';

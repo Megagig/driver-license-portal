@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { FaEdit } from "react-icons/fa";
@@ -32,13 +33,14 @@ const LoginDetails = () => {
             confirmPassword : args
         })
     };
- 
+
     const handleEditLoginDetails = () =>{
         setShowModal(true)
     }
     const handleCloseModal = () =>{
         setShowModal(false)
     }
+
     const handleShowPassword = () => { 
         setShowPassword(!showPassword)
      };

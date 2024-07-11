@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { FiChevronDown, FiChevronUp, FiMinus, FiPlus } from "react-icons/fi";
 import { MdClose, MdMenu } from "react-icons/md";
 import { Link } from "react-router-dom";
-import logo2 from "../assets/images/dannon-logo2.png";
 import useAuth from "../hooks/useAuth";
+import { MdMenu, MdClose } from "react-icons/md";
+import { FiChevronDown, FiChevronUp, FiPlus, FiMinus } from "react-icons/fi";
 import LinkButton from "./LinkButton";
+import logo2 from "../assets/images/dannon-logo2.png";
+import logo from "../assets/images/dannon-logo.png";
 
 const DropDownMenu = ({ menuArray, closeMobileMenu }) => {
     return (
-        <div className="flex flex-col absolute z-30 md:z-0 left-6 md:left-0 mt-4 min-w-60 bg-white md:bg-[#3d4249] text-[#3d4249] md:text-white shadow-lg divide-y divide-solid divide-neutral-200 md:divide-neutral-600">
+        <div className="flex flex-col absolute z-30 left-6 md:left-0 mt-4 min-w-60 bg-white md:bg-[#3d4249] text-[#3d4249] md:text-white shadow-lg divide-y divide-solid divide-neutral-200 md:divide-neutral-600">
             {menuArray.map((menu, index) => (
                 <Link
                     key={index}
@@ -27,9 +30,8 @@ const DropDownMenu = ({ menuArray, closeMobileMenu }) => {
 const DropDownButton = ({ isOpen, isMobile, title }) => {
     return (
         <div
-            className={`flex items-center ${
-                isMobile ? "justify-between" : "gap-2"
-            } text-white cursor-pointer`}
+            className={`flex items-center ${isMobile ? "justify-between" : "gap-2"
+                } text-white cursor-pointer`}
         >
             <span className="text-white transition-colors">{title}</span>
             {isMobile ? (
@@ -57,6 +59,7 @@ const dropdownData = {
         { title: "update profile", to: "/profile" },
         { title: "get appointment slip", to: "/get-appointment-slip" },
         // { title: "verify license", to: "/verify-license" },
+
     ],
     contact: [
         { title: "support center", to: "/support" },
