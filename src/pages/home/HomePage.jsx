@@ -8,12 +8,12 @@ const HomePage = () => {
     return (
         <div>
             <Hero />
-            <Services />
             <LicenseProcess />
-            <Profile />
+            <Services />
         </div>
     )
 }
 
 export default HomePage
+
 

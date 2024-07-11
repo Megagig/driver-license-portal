@@ -1,4 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
+import { FiChevronDown, FiChevronUp, FiMinus, FiPlus } from "react-icons/fi";
+import { MdClose, MdMenu } from "react-icons/md";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { MdMenu, MdClose } from "react-icons/md";
@@ -56,7 +58,8 @@ const dropdownData = {
     services: [
         { title: "update profile", to: "/profile" },
         { title: "get appointment slip", to: "/get-appointment-slip" },
-        { title: "verify license", to: "/verify" },
+        // { title: "verify license", to: "/verify-license" },
+
     ],
     contact: [
         { title: "support center", to: "/support" },

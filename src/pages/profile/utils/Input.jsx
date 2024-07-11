@@ -3,15 +3,16 @@
 const Input = (props) => {
     return (
         <div className="mb-6">
-        <label htmlFor={props.htmlFor} className="block mb-2 text-[20px]/[22px] font-medium text-green-700 dark:text-green-500">{props.labelName}</label>
+        <label htmlFor={props.htmlFor} className="block mb-2 text-base md:text-[20px]/[22px] font-medium text-green-700 dark:text-green-500">{props.labelName}</label>
         <input 
             type={props.type} 
             id={props.htmlFor} 
-            className="px-5 py-4 
+            className="md:px-5 md:py-4 py-3 px-2
                     focus-visible:outline-none
-                     bg-slate-200
+                     bg-slate-50
                      border border-green-500 
-                     text-green-900 text-[17px]/[20px]
+                     text-green-900 text-sm md:text-[17px]/[20px]
+
                      dark:text-green-400 dark:placeholder-green-500 dark:bg-gray-700 dark:border-green-500
                      placeholder-green-700
                     rounded-lg 
@@ -24,6 +25,9 @@ const Input = (props) => {
             placeholder={props.placeholder}
             inputMode={props.inputMode}
             required={props.required}
+            value={props.value}
+            onChange={(event)=>{props.onChange(event.target.value)}}
+
         />
     </div>
     )

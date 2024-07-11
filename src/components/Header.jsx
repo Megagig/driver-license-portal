@@ -12,7 +12,6 @@ const Header = () => {
                 <img src={logo} alt="" />
             </div>
 
-
             {/* <div className="flex items-center">
                 <div className="relative">
                     <input
@@ -29,6 +28,7 @@ const Header = () => {
                 <button className="bg-green-500 h-10 w-14 grid rounded-tr-full items-center justify-center">
                     <img className=" w-4" src={arrowRight} alt="" />
                 </button>
+
             </div> */}
             <div className="flex gap-6">
                 <div className="flex gap-4 items-center">
@@ -52,6 +52,7 @@ const Header = () => {
             </div >
 
         </header >
+
     );
 };
 

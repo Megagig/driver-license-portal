@@ -1,23 +1,21 @@
 import {
-    Routes,
-    Route,
     createBrowserRouter,
-    RouterProvider,
+    RouterProvider
 } from "react-router-dom";
-import Root from "../components/Root";
-import HomePage from "../pages/home/HomePage";
-import Support from "../pages/support/Support";
-import Faq from "../pages/faq/Faq";
-import Contact from "../pages/contact/Contact";
-import ApplicationHome from "../pages/applications/ApplicationHome";
-import ApplicationForm from "../pages/applications/ApplicationForm";
-import Appointment from "../pages/appointment/Appointment";
-
 import AuthLayout from "../components/AuthLayout";
+import Root from "../components/Root";
+import ApplicationForm from "../pages/applications/ApplicationForm";
+import ApplicationHome from "../pages/applications/ApplicationHome";
+import Appointment from "../pages/appointment/Appointment";
 import LoginPage from "../pages/auth/login/LoginPage";
 import SignupPage from "../pages/auth/signup/SignupPage";
+import Contact from "../pages/contact/Contact";
+import Faq from "../pages/faq/Faq";
+import HomePage from "../pages/home/HomePage";
+import Profile from "../pages/profile/Profile";
+import Support from "../pages/support/Support";
+import AuthLayout from "../components/AuthLayout";
 import Verify from "../pages/verification/Verify";
-
 
 
 const router = createBrowserRouter([
@@ -42,7 +40,6 @@ const router = createBrowserRouter([
                 element: <Contact />,
             },
             {
-
                 path: "login",
                 element: <LoginPage />,
             },
@@ -75,7 +72,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "profile",
-                        element: <div>User Profile</div>,
+                        element: <Profile />,
                     },
                     {
                         path: "application",
@@ -91,11 +88,6 @@ const router = createBrowserRouter([
                     },
                 ]
             },
-            {
-                path: "verify",
-                element: <Verify />
-            },
-
         ],
     },
 ]);
