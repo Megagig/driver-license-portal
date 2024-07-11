@@ -5,12 +5,10 @@ const AuthLayout = () => {
     const { pathname } = useLocation();
     const { auth } = useAuth() || JSON.parse(sessionStorage.getItem('auth'));
 
-    console.log(auth);
-
     return auth?.user ? (
         <Outlet />
     ) : (
-        <Navigate to="/login" state={{ requestedUrl: pathname }} replace={true} />
+        <Navigate to="/login" state={{ requestedUrl: pathname, message: 'Please login to continue!' }} replace={true} />
     );
 };
 
