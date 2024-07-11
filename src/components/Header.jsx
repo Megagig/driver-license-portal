@@ -35,19 +35,26 @@ const Header = () => {
             </div> */}
             <div className="flex gap-6">
                 <div className="flex gap-4 items-center">
-                    <button className="bg-custom-green py-3 w-28 rounded-2xl text-white">
-                        Login
-                    </button>
 
-                    <button className="border-custom-green border py-3 w-28  rounded-2xl font-semibold text-custom-green">
-                        Sign up
-                    </button>
 
-                </div>
+                    <Link to="/login">
+                        <button className="bg-custom-green py-3 w-28 rounded-2xl text-white">
+                            Login
+                        </button>
+                    </Link>
+
+                    <Link to="/signup">
+                        <button className="border-custom-green border py-3 w-28  rounded-2xl font-semibold text-custom-green">
+                            Sign up
+                        </button>
+                    </Link>
+
+
+                </div >
                 <img className="h-20" src={coatofarm} alt="" />
-            </div>
+            </div >
 
-        </header>
+        </header >
     );
 };
 
