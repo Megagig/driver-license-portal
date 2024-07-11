@@ -1,4 +1,4 @@
-import Logo from "./utils/Logo"
+import logo from "../assets/images/dannon-logo2.png"
 import coatofarm from "../assets/coatOfArm.png"
 import arrowRight from "../assets/arrowRight.svg"
 import search from "../assets/search.svg"
@@ -11,11 +11,9 @@ const Header = () => {
     };
     return (
         <header className="px-4 py-3 hidden md:px-20 md:flex   md:flex-row justify-between Md:pt-6 md:pb-4 border-b">
-            <Logo
-                container={logoStyle.container}
-                h1Style={logoStyle.h1}
-                pStyle={logoStyle.p}
-            />
+            <div className="grid place-content-center">
+                <img src={logo} alt="" />
+            </div>
 
 
             {/* <div className="flex items-center">
