@@ -19,6 +19,11 @@ const Verify = () => {
                             <label className="mb-[2px] block text-base font-medium text-neutral-700">License ID <span className="text-red-500">*</span></label>
                             <input className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" type="text" placeholder="Enter License ID to be verified" />
                         </div>
+
+                        <div className="mt-5 grid place-content-end">
+                            <button className="bg-custom-green text-white py-2.5 px-8 rounded-md">Submit</button>
+
+                        </div>
                     </div>
 
                     <div className="w-full">
@@ -41,7 +46,7 @@ const Verify = () => {
                         />
                         <StepBox
                             head={<>Fill Verification  Form</>}
-                            message={"Kindly input your verification ID correctly for accurate verification"}
+                            message={"Kindly input your verification ID correctly for accurate verification and click the submit button to begin verification"}
                             count={"2"}
                         />
 
