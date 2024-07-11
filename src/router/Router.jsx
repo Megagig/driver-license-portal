@@ -12,9 +12,11 @@ import Contact from "../pages/contact/Contact";
 import ApplicationHome from "../pages/applications/ApplicationHome";
 import ApplicationForm from "../pages/applications/ApplicationForm";
 import Appointment from "../pages/appointment/Appointment";
+
 import AuthLayout from "../components/AuthLayout";
 import LoginPage from "../pages/auth/login/LoginPage";
 import SignupPage from "../pages/auth/signup/SignupPage";
+
 import Verify from "../pages/verification/Verify";
 
 const router = createBrowserRouter([
@@ -39,6 +41,7 @@ const router = createBrowserRouter([
                 element: <Contact />,
             },
             {
+
                 path: "login",
                 element: <LoginPage />,
             },
@@ -88,6 +91,7 @@ const router = createBrowserRouter([
                 ]
             },
             {
+
                 path: "verify",
                 element: <Verify />
             },

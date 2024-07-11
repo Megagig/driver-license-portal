@@ -1,8 +1,10 @@
 import Logo from "./utils/Logo"
 import coatofarm from "../assets/coatOfArm.png"
+
 import { Link } from "react-router-dom";
 // import arrowRight from "../assets/arrowRight.svg"
 // import search from "../assets/search.svg"
+
 
 const Header = () => {
     const logoStyle = {
@@ -38,6 +40,7 @@ const Header = () => {
             </div> */}
             <div className="flex gap-6">
                 <div className="flex gap-4 items-center">
+
 
                     <Link to="/login">
                         <button className="bg-custom-green py-3 w-28 rounded-2xl text-white">
