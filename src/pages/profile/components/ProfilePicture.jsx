@@ -1,6 +1,7 @@
 import React from 'react'
 
 const ProfilePicture = (props) => {
+  console.log(props.state.image)
     return (
         <div className='flex md:flex-row flex-col items-center md:items-end mt-8 md:mt-16 gap-6 md:gap-10'>
               <div className=" flex shrink-0">

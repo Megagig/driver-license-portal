@@ -29,7 +29,7 @@ const Profile = () => {
         joined : "21-12-3034",
         lastRenewal: "21-21-2021",
         nextRenewal: "21-21-2021",
-        image: "https://github.com/Megagig/driver-license-portal/blob/13ac1e81aa634480f412b95d9c5a4e17c5007917/src/assets/images/close-up-friends-traveling-by-car.jpg"
+        image: "src/assets/images/close-up-friends-traveling-by-car.jpg"
   })
 
 
