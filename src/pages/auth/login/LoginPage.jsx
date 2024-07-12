@@ -9,7 +9,7 @@ export default function LoginPage() {
         style={{ backgroundImage: "url('./src/assets/license.png')" }}
       ></div>
 
-      <div className="flex flex-col justify-center md:w-1/2 p-4">
+      <div className="flex flex-col justify-center md:w-1/2 p-4 ">
         <div className="max-w-md mx-auto"></div>
         <LoginHeader
           heading="Login to your account"

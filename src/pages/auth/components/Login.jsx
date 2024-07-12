@@ -51,7 +51,7 @@ export default function Login() {
     };
 
     return (
-        <form className="mt-20 space-y-6 p-9" onSubmit={handleSubmit}>
+        <form className="space-y-6 p-9" onSubmit={handleSubmit}>
             <div className="-space-y-px">
                 {fields.map((field) => (
                     <Input
