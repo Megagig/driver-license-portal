@@ -17,6 +17,7 @@ import AuthLayout from "../components/AuthLayout";
 import LoginPage from "../pages/auth/login/LoginPage";
 import SignupPage from "../pages/auth/signup/SignupPage";
 import Verify from "../pages/verification/Verify";
+import Dashboard from "../pages/dashboard/Dashboard"
 
 
 
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
                 index: true,
                 element: <HomePage />,
             },
+
             {
                 path: "faq",
                 element: <Faq />,
@@ -71,7 +73,7 @@ const router = createBrowserRouter([
                 children: [
                     {
                         path: "dashboard",
-                        element: <div>User Dashboard</div>,
+                        element: <Dashboard />,
                     },
                     {
                         path: "profile",
@@ -91,10 +93,7 @@ const router = createBrowserRouter([
                     },
                 ]
             },
-            {
-                path: "verify",
-                element: <Verify />
-            },
+
 
         ],
     },

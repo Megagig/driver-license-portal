@@ -1,11 +1,11 @@
-import React, { useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { MdMenu, MdClose } from "react-icons/md";
 import { FiChevronDown, FiChevronUp, FiPlus, FiMinus } from "react-icons/fi";
 import LinkButton from "./LinkButton";
 import logo2 from "../assets/images/dannon-logo2.png";
-import logo from "../assets/images/dannon-logo.png";
+// import logo from "../assets/images/dannon-logo.png";
 
 const DropDownMenu = ({ menuArray, closeMobileMenu }) => {
     return (
@@ -56,7 +56,7 @@ const dropdownData = {
     services: [
         { title: "update profile", to: "/profile" },
         { title: "get appointment slip", to: "/get-appointment-slip" },
-        { title: "verify license", to: "/verify" },
+        // { title: "verify license", to: "/verify" },
     ],
     contact: [
         { title: "support center", to: "/support" },
@@ -66,7 +66,16 @@ const dropdownData = {
 };
 
 const NavBar = () => {
+
+
+    const navigate = useNavigate()
+
     const { auth } = useAuth();
+
+
+
+
+
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const [isContactOpen, setIsContactOpen] = useState(false);
@@ -91,7 +100,9 @@ const NavBar = () => {
             <div className="container mx-auto flex justify-center items-center">
                 <div className="hidden md:flex items-center">
                     <Link
-                        to="/"
+                        to={
+                            !auth.user ? "/" : "/dashboard"
+                        }
                         className="text-white px-6 py-4 hover:bg-green-700 transition-colors"
                     >
                         Home
@@ -156,6 +167,22 @@ const NavBar = () => {
 
                         {isContactOpen && <DropDownMenu menuArray={contact} />}
                     </div>
+                    {
+                        auth.user && <div
+
+                            className="text-white px-6 py-4 hover:bg-green-700 transition-colors"
+                            onClick={() => {
+                                sessionStorage.clear()
+                                navigate("/")
+                                window.location.reload()
+
+
+                            }}
+                        >
+                            Logout
+                        </div>
+                    }
+
                 </div>
             </div>
 
