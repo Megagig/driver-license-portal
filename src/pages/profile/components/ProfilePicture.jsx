@@ -1,5 +1,5 @@
 import React from 'react'
-import camera from "../../../assets/images/photo-camera.png"
+import camera from "../../../assets/images/camera.png"
 const ProfilePicture = (props) => {
     return (
         <div className='flex md:flex-row flex-col items-center md:items-end mt-8 md:mt-16 gap-6 md:gap-10'>
