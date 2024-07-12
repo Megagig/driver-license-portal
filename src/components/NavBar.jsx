@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FiChevronDown, FiChevronUp, FiMinus, FiPlus } from "react-icons/fi";
 import { MdClose, MdMenu } from "react-icons/md";
-import { Link } from "react-router-dom";
 import logo2 from "../assets/images/dannon-logo2.png";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import LinkButton from "./LinkButton";
 import coatOfArm from "../assets/coatOfArm.png";
+
+// import logo from "../assets/images/dannon-logo.png";
 
 const DropDownMenu = ({ menuArray, closeMobileMenu }) => {
     return (
@@ -28,9 +30,8 @@ const DropDownMenu = ({ menuArray, closeMobileMenu }) => {
 const DropDownButton = ({ isOpen, isMobile, title }) => {
     return (
         <div
-            className={`flex items-center ${
-                isMobile ? "justify-between" : "gap-2"
-            } text-white cursor-pointer`}
+            className={`flex items-center ${isMobile ? "justify-between" : "gap-2"
+                } text-white cursor-pointer`}
         >
             <span className="text-white transition-colors">{title}</span>
             {isMobile ? (
@@ -59,6 +60,7 @@ const dropdownData = {
         { title: "get appointment slip", to: "/get-appointment-slip" },
         // { title: "verify license", to: "/verify-license" },
 
+        // { title: "verify license", to: "/verify" },
     ],
     contact: [
         { title: "support center", to: "/support" },
@@ -68,7 +70,16 @@ const dropdownData = {
 };
 
 const NavBar = () => {
+
+
+    const navigate = useNavigate()
+
     const { auth } = useAuth();
+
+
+
+
+
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const [isContactOpen, setIsContactOpen] = useState(false);
@@ -93,7 +104,9 @@ const NavBar = () => {
             <div className="container mx-auto flex justify-center items-center">
                 <div className="hidden md:flex items-center">
                     <Link
-                        to="/"
+                        to={
+                            !auth.user ? "/" : "/dashboard"
+                        }
                         className="text-white px-6 py-4 hover:bg-green-700 transition-colors"
                     >
                         Home
@@ -158,6 +171,22 @@ const NavBar = () => {
 
                         {isContactOpen && <DropDownMenu menuArray={contact} />}
                     </div>
+                    {
+                        auth.user && <div
+
+                            className="text-white px-6 py-4 hover:bg-green-700 transition-colors"
+                            onClick={() => {
+                                sessionStorage.clear()
+                                navigate("/")
+                                window.location.reload()
+
+
+                            }}
+                        >
+                            Logout
+                        </div>
+                    }
+
                 </div>
             </div>
 
