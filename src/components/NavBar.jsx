@@ -75,7 +75,7 @@ const dropdownData = {
 const NavBar = () => {
     const navigate = useNavigate();
 
-    const { auth } = useAuth();
+    const { auth, setAuth } = useAuth();
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isServicesOpen, setIsServicesOpen] = useState(false);
@@ -94,6 +94,13 @@ const NavBar = () => {
 
     const closeMobileMenu = () => {
         setIsMenuOpen(false);
+    };
+
+    const logOut = () => {
+        sessionStorage.removeItem('auth');
+        setAuth({});
+        navigate("/");
+        closeMobileMenu();
     };
 
     return (
@@ -172,11 +179,7 @@ const NavBar = () => {
                     {auth.user && (
                         <div
                             className="text-white px-6 py-4 hover:bg-green-700 transition-colors"
-                            onClick={() => {
-                                sessionStorage.clear();
-                                navigate("/");
-                                window.location.reload();
-                            }}
+                            onClick={logOut}
                         >
                             Logout
                         </div>
@@ -239,7 +242,7 @@ const NavBar = () => {
                         >
                             Home
                         </Link>
-                        
+
                         {auth?.user && (
                             <Link
                                 to="/profile"
@@ -337,7 +340,7 @@ const NavBar = () => {
                         </div>
                     </div>
 
-                    {!auth.user && (
+                    {!auth?.user && (
                         <div className="flex flex-col sm:flex-row sm:justify-end gap-4 w-full px-6 py-6 bg-grey sm:gap-6">
                             <LinkButton
                                 buttonText="Login"
@@ -352,6 +355,14 @@ const NavBar = () => {
                                 classAttr="bg-custom-green hover:bg-green-600 px-4 py-3 text-center text-white font-medium tracking-widest rounded-lg"
                                 onClick={closeMobileMenu}
                             />
+                        </div>
+                    )}
+
+                    {auth?.user && (
+                        <div className="bg-grey pt-6">
+                            <button onClick={logOut} className="bg-red-800 w-full text-lg text-white font-medium px-6 py-4">
+                                Logout
+                            </button>
                         </div>
                     )}
                 </div>
