@@ -10,12 +10,14 @@ import coatOfArm from "../assets/coatOfArm.png";
 // import logo from "../assets/images/dannon-logo.png";
 
 const DropDownMenu = ({ menuArray, closeMobileMenu }) => {
+    const { auth } = useAuth();
+
     return (
         <div className="flex flex-col absolute z-30 left-6 md:left-0 mt-4 min-w-60 bg-white md:bg-[#3d4249] text-[#3d4249] md:text-white shadow-lg divide-y divide-solid divide-neutral-200 md:divide-neutral-600">
             {menuArray.map((menu, index) => (
                 <Link
                     key={index}
-                    to={menu.to}
+                    to={auth?.user ? menu.to : '/login'}
                     state={menu.state && menu.state}
                     onClick={closeMobileMenu}
                     className="md:hover:bg-green-700 py-2 px-6 capitalize"
@@ -30,8 +32,9 @@ const DropDownMenu = ({ menuArray, closeMobileMenu }) => {
 const DropDownButton = ({ isOpen, isMobile, title }) => {
     return (
         <div
-            className={`flex items-center ${isMobile ? "justify-between" : "gap-2"
-                } text-white cursor-pointer`}
+            className={`flex items-center ${
+                isMobile ? "justify-between" : "gap-2"
+            } text-white cursor-pointer`}
         >
             <span className="text-white transition-colors">{title}</span>
             {isMobile ? (
@@ -70,18 +73,9 @@ const dropdownData = {
 };
 
 const NavBar = () => {
-
-
-
-
-
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const { auth } = useAuth();
-
-
-
-
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isServicesOpen, setIsServicesOpen] = useState(false);
@@ -107,9 +101,7 @@ const NavBar = () => {
             <div className="container mx-auto flex justify-center items-center">
                 <div className="hidden md:flex items-center">
                     <Link
-                        to={
-                            !auth.user ? "/" : "/dashboard"
-                        }
+                        to={!auth.user ? "/" : "/dashboard"}
                         className="text-white px-6 py-4 hover:bg-green-700 transition-colors"
                     >
                         Home
@@ -174,22 +166,18 @@ const NavBar = () => {
 
                         {isContactOpen && <DropDownMenu menuArray={contact} />}
                     </div>
-                    {
-                        auth.user && <div
-
+                    {auth.user && (
+                        <div
                             className="text-white px-6 py-4 hover:bg-green-700 transition-colors"
                             onClick={() => {
-                                sessionStorage.clear()
-                                navigate("/")
-                                window.location.reload()
-
-
+                                sessionStorage.clear();
+                                // navigate("/")
+                                window.location.reload();
                             }}
                         >
                             Logout
                         </div>
-                    }
-
+                    )}
                 </div>
             </div>
 

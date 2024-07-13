@@ -53,7 +53,7 @@ export default function Login({ paragraph, linkUrl, linkName }) {
 
     return (
         <>
-            <form className="space-y-6 p-6" onSubmit={handleSubmit}>
+            <form className="space-y-6 px-6 py-4" onSubmit={handleSubmit}>
                 <div className="-space-y-px">
                     {fields.map((field) => (
                         <Input
