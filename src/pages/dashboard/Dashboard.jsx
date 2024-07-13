@@ -8,7 +8,7 @@ const Dashboard = () => {
     const user = auth.user
 
     return (
-        <div className="md:px-10 lg:px-20 max-w-[100vw] overflow-hidden px-4  py-4">
+        <div className="md:px-10 lg:px-20 max-w-[100vw] overflow-hidden px-4  py-4 pb-20 ">
 
             <div >
                 <div className=" flex md:py-4 gap-3 items-center">
@@ -48,13 +48,13 @@ const Dashboard = () => {
 
             </div>
 
-            <div className=" md:grid mt-4 md:grid-cols-2 md:gap-10 gap-4 justify-between">
+            <div className=" md:grid mt-4 md:grid-cols-2 md:gap-10 gap-4 items-start ">
 
 
                 <div className="border h-fit rounded-lg  p-4">
                     <div className="flex items-center justify-between mb-4">
                         <h1 className="text-xl font-semibold">Drivers License Details</h1>
-                        <button className="border bg-custom-green rounded-md text-white text-sm py-1.5 px-2">Edit</button>
+
                     </div>
 
                     <div className="border grid  gap-2 p-4 rounded-xl">
@@ -67,7 +67,7 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                <div className="border mt-4 h-fit rounded-lg  p-4">
+                <div className="border mt-4 md:mt-0 h-fit rounded-lg  p-4">
                     <div className="flex items-center justify-between mb-4">
                         <h1 className="text-xl font-semibold"> Drivers Information</h1>
 

@@ -72,7 +72,6 @@ const dropdownData = {
 const NavBar = () => {
 
 
-    const navigate = useNavigate()
 
 
 
@@ -113,9 +112,6 @@ const NavBar = () => {
             <div className="container mx-auto flex justify-center items-center">
                 <div className="hidden md:flex items-center">
                     <Link
-                        to={
-                            !auth.user ? "/" : "/dashboard"
-                        }
                         to={
                             !auth.user ? "/" : "/dashboard"
                         }
@@ -183,22 +179,6 @@ const NavBar = () => {
 
                         {isContactOpen && <DropDownMenu menuArray={contact} />}
                     </div>
-                    {
-                        auth.user && <div
-
-                            className="text-white px-6 py-4 hover:bg-green-700 transition-colors"
-                            onClick={() => {
-                                sessionStorage.clear()
-                                navigate("/")
-                                window.location.reload()
-
-
-                            }}
-                        >
-                            Logout
-                        </div>
-                    }
-
                     {
                         auth.user && <div
 

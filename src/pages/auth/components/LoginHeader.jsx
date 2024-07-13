@@ -18,15 +18,7 @@ export default function LoginHeader({
       <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
         {heading}
       </h2>
-      <p className="mt-2 text-center text-sm text-gray-600">
-        {paragraph}{' '}
-        <Link
-          to={linkUrl}
-          className="font-medium text-custom-green hover:text-green-800"
-        >
-          {linkName}
-        </Link>
-      </p>
+
     </div>
   );
 }
