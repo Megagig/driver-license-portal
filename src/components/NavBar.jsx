@@ -17,7 +17,7 @@ const DropDownMenu = ({ menuArray, closeMobileMenu }) => {
             {menuArray.map((menu, index) => (
                 <Link
                     key={index}
-                    to={auth?.user ? menu.to : '/login'}
+                    to={auth?.user ? menu.to : "/login"}
                     state={menu.state && menu.state}
                     onClick={closeMobileMenu}
                     className="md:hover:bg-green-700 py-2 px-6 capitalize"
@@ -106,21 +106,24 @@ const NavBar = () => {
                     >
                         Home
                     </Link>
-                    <div
-                        className="relative px-6 py-4 hover:bg-green-700"
-                        onMouseEnter={() => setIsDropdownOpen(true)}
-                        onMouseLeave={() => setIsDropdownOpen(false)}
-                    >
-                        <DropDownButton
-                            isOpen={isDropdownOpen}
-                            isMobile={false}
-                            title="License Applications"
-                        />
 
-                        {isDropdownOpen && (
-                            <DropDownMenu menuArray={applications} />
-                        )}
-                    </div>
+                    {auth?.user && (
+                        <div
+                            className="relative px-6 py-4 hover:bg-green-700"
+                            onMouseEnter={() => setIsDropdownOpen(true)}
+                            onMouseLeave={() => setIsDropdownOpen(false)}
+                        >
+                            <DropDownButton
+                                isOpen={isDropdownOpen}
+                                isMobile={false}
+                                title="License Applications"
+                            />
+
+                            {isDropdownOpen && (
+                                <DropDownMenu menuArray={applications} />
+                            )}
+                        </div>
+                    )}
 
                     {auth.user && (
                         <div
@@ -171,7 +174,7 @@ const NavBar = () => {
                             className="text-white px-6 py-4 hover:bg-green-700 transition-colors"
                             onClick={() => {
                                 sessionStorage.clear();
-                                // navigate("/")
+                                navigate("/");
                                 window.location.reload();
                             }}
                         >
@@ -182,16 +185,16 @@ const NavBar = () => {
             </div>
 
             <div className="flex md:hidden justify-between bg-white border-b text-grey px-6 py-4 shadow-sm">
-                <div className="flex items-center">
-                    <img
-                        src={logo2}
-                        alt="Dannon Group Logo"
-                        className="w-40 h-auto"
-                    />
+                <div className="flex items-center divide-x divide-custom-green">
                     <img
                         src={coatOfArm}
                         alt="Coat of Arm"
-                        className="w-12 h-auto"
+                        className="w-12 h-auto pr-3"
+                    />
+                    <img
+                        src={logo2}
+                        alt="Dannon Group Logo"
+                        className="w-40 h-auto pl-3"
                     />
                 </div>
 
@@ -215,16 +218,16 @@ const NavBar = () => {
                         <MdClose />
                     </button>
 
-                    <div className="absolute flex items-center top-4 left-6">
-                        <img
-                            src={logo2}
-                            alt="Dannon Group Logo"
-                            className="w-40 h-auto"
-                        />
+                    <div className="absolute flex items-center top-6 left-6 divide-x divide-custom-green">
                         <img
                             src={coatOfArm}
                             alt="Coat of Arm"
-                            className="w-12 h-auto"
+                            className="w-12 h-auto pr-3"
+                        />
+                        <img
+                            src={logo2}
+                            alt="Dannon Group Logo"
+                            className="w-40 h-auto pl-3"
                         />
                     </div>
 
@@ -236,23 +239,48 @@ const NavBar = () => {
                         >
                             Home
                         </Link>
-                        <div
-                            className="relative px-6 py-4 "
-                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                        >
-                            <DropDownButton
-                                isOpen={isDropdownOpen}
-                                isMobile={true}
-                                title="License Applications"
-                            />
+                        
+                        {auth?.user && (
+                            <Link
+                                to="/profile"
+                                className="text-white px-6 py-4  transition-colors"
+                                onClick={closeMobileMenu}
+                            >
+                                Profile
+                            </Link>
+                        )}
 
-                            {isDropdownOpen && (
-                                <DropDownMenu
-                                    menuArray={applications}
-                                    closeMobileMenu={closeMobileMenu}
+                        {auth?.user && (
+                            <Link
+                                to="/get-appointment-slip"
+                                className="text-white px-6 py-4  transition-colors"
+                                onClick={closeMobileMenu}
+                            >
+                                Print Appointment Slip
+                            </Link>
+                        )}
+
+                        {auth?.user && (
+                            <div
+                                className="relative px-6 py-4 "
+                                onClick={() =>
+                                    setIsDropdownOpen(!isDropdownOpen)
+                                }
+                            >
+                                <DropDownButton
+                                    isOpen={isDropdownOpen}
+                                    isMobile={true}
+                                    title="License Applications"
                                 />
-                            )}
-                        </div>
+
+                                {isDropdownOpen && (
+                                    <DropDownMenu
+                                        menuArray={applications}
+                                        closeMobileMenu={closeMobileMenu}
+                                    />
+                                )}
+                            </div>
+                        )}
 
                         {auth.user && (
                             <div
