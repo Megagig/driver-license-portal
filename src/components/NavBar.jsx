@@ -73,6 +73,10 @@ const NavBar = () => {
 
 
 
+
+
+    const navigate = useNavigate()
+
     const { auth } = useAuth();
 
 
