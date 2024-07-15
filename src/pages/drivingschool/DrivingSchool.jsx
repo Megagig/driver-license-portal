@@ -1,7 +1,9 @@
+import HeroSection from './components/HeroSection';
+
 const DrivingSchool = () => {
   return (
     <div>
-      <h1>Driving School</h1>
+      <HeroSection />
     </div>
   );
 };
