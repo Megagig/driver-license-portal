@@ -114,7 +114,7 @@ const Profile = () => {
 }
 
   return (
-    <section className='w-screen py-7 md:py-12 xl:py-20 px-4 md:px-10 xl:px-16'>
+    <section className='w-screen py-7 md:py-12 xl:py-20 px-4 md:px-10 xl:px-16 bg-[#f2f2f2]'>
         <h3 className='text-[28px]/[36px] md:text-[44px]/[56px] font-bold'>Profile Details</h3>    
 
         <div className="w-full">

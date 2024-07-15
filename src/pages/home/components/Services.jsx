@@ -10,7 +10,7 @@ import renewal from "../../../assets/images/renewal.png";
 
 const Services = () => {
     return (
-        <section className='bg-white w-full px-6 md:px-8 lg:px-10 py-16  md:py-20 xl:px-16 flex flex-col'>
+        <section className='bg-[#f2f2f2] w-full px-6 md:px-8 lg:px-10 py-16  md:py-20 xl:px-16 flex flex-col'>
             <h3 className="text-[#22C55E] text-2xl md:text-4xl lg:text-7xl font-medium text-center">
             Our Services
             </h3>
