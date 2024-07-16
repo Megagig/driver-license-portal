@@ -1,15 +1,14 @@
-import { useState } from 'react';
 import axios from 'axios';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { loginFields } from '../constants/FormFields';
 import FormAction from './FormAction';
 import FormExtra from './FormExtra';
 import Input from './Input';
-import { Link } from 'react-router-dom';
 
 // new-snippet
-import { useNavigate } from 'react-router-dom';
-import useAuth from '../../../hooks/useAuth';
-
+import { useNavigate } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 // End of new-snippet
 
 const fields = loginFields;
@@ -33,35 +32,24 @@ export default function Login({ paragraph, linkUrl, linkName }) {
     authenticateUser();
   };
 
-  //Handle Login API Integration here
-  const authenticateUser = async () => {
-    // new-snippet
-    const res = await axios.post('https://dummyjson.com/auth/login', {
-      username: loginState['email-address'],
-      password: loginState['password'],
-      expiresInMins: 30,
-    });
-    
-    console.log(res.status);
-    if (res.status === 200) {
-      const token = res.data.token;
-      const fullUserRes = await axios.get('https://dummyjson.com/auth/me', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
+    //Handle Login API Integration here
+    const authenticateUser = async () => {
+        // new-snippet
+        const res = await axios.post("https://dummyjson.com/auth/login", {
+            username: loginState["email-address"],
+            password: loginState["password"],
+            expiresInMins: 30,
+        });
+
+        console.log(res.status);
+        if (res.status === 200) {
+            const user = res.data;
+            setAuth({ user });
+            sessionStorage.setItem('auth', JSON.stringify({ user }));
+            navigate('/dashboard');
         }
-      });
-  
-      if (fullUserRes.status === 200) {
-        sessionStorage.setItem('user', JSON.stringify(fullUserRes.data));
-      }
-      
-      const user = res.data;
-      setAuth({ user });
-      sessionStorage.setItem('auth', JSON.stringify({ user }));
-      navigate('/dashboard');
-    }
-    // End of new-snippet
-  };
+        // End of new-snippet
+    };
 
   return (
     <>
