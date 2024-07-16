@@ -12,7 +12,7 @@ let fieldsState = {};
 
 fields.forEach((field) => (fieldsState[field.id] = ''));
 
-export default function Signup({ paragraph, linkUrl, linkName }) {
+export default function Signup() {
   const [signupState, setSignupState] = useState(fieldsState);
   const navigate = useNavigate();
   const handleChange = (e) =>
@@ -20,7 +20,6 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(signupState);
     createAccount();
   };
 
@@ -48,7 +47,7 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
   };
 
   return (
-    <form className="space-y-6 p-6" onSubmit={handleSubmit}>
+    <form className="space-y-6 p-9" onSubmit={handleSubmit}>
       <div className="">
         {fields.map((field) => (
           <Input
@@ -65,6 +64,8 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
           />
         ))}
         <FormAction handleSubmit={handleSubmit} text="Signup" />
+        {errorMessage && <p className="text-red-500">{errorMessage}</p>}{' '}
+        {/* Display error message if any */}
       </div>
       <p className="mt-2 text-center text-sm text-gray-600">
         {paragraph}{' '}
