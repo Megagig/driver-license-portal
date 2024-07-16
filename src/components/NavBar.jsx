@@ -114,7 +114,7 @@ const NavBar = () => {
                         )}
                     </div>
 
-                    {auth.user && (
+                    {/* {auth.user && (
                         <div
                             className="relative px-6 py-4 hover:bg-green-700"
                             onMouseEnter={() => setIsServicesOpen(true)}
@@ -130,7 +130,7 @@ const NavBar = () => {
                                 <DropDownMenu menuArray={services} />
                             )}
                         </div>
-                    )}
+                    )} */}
 
                     <Link
                         to="/verify-license"
@@ -234,7 +234,7 @@ const NavBar = () => {
                             )}
                         </div>
 
-                        {auth.user && (
+                        {/* {auth.user && (
                             <div
                                 className="relative px-6 py-4"
                                 onClick={() =>
@@ -254,7 +254,7 @@ const NavBar = () => {
                                     />
                                 )}
                             </div>
-                        )}
+                        )} */}
 
                         <Link
                             to="/verify-license"
