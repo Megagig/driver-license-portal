@@ -32,9 +32,8 @@ const DropDownMenu = ({ menuArray, closeMobileMenu }) => {
 const DropDownButton = ({ isOpen, isMobile, title }) => {
     return (
         <div
-            className={`flex items-center ${
-                isMobile ? "justify-between" : "gap-2"
-            } text-white cursor-pointer`}
+            className={`flex items-center ${isMobile ? "justify-between" : "gap-2"
+                } text-white cursor-pointer`}
         >
             <span className="text-white transition-colors">{title}</span>
             {isMobile ? (
@@ -108,7 +107,7 @@ const NavBar = () => {
             <div className="container mx-auto flex justify-center items-center">
                 <div className="hidden md:flex items-center">
                     <Link
-                        to={!auth.user ? "/" : "/dashboard"}
+                        to={"/"}
                         className="text-white px-6 py-4 hover:bg-green-700 transition-colors"
                     >
                         Home
@@ -176,14 +175,7 @@ const NavBar = () => {
 
                         {isContactOpen && <DropDownMenu menuArray={contact} />}
                     </div>
-                    {auth.user && (
-                        <div
-                            className="text-white px-6 py-4 hover:bg-green-700 transition-colors"
-                            onClick={logOut}
-                        >
-                            Logout
-                        </div>
-                    )}
+
                 </div>
             </div>
 

@@ -1,7 +1,7 @@
 import { FaUserAlt } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
-import { Link } from "react-router-dom"
 
+import Button from "../../components/utils/Button";
 
 const Dashboard = () => {
     const { auth } = useAuth()
@@ -19,8 +19,8 @@ const Dashboard = () => {
 
                     </div>
                     <div>
-                        <h1 className="text-2xl md:text-4xl">Hello <span className="text-custom-green font-bold">{user.username}</span> </h1>
-                        <h1 className="text-xl md:text-3xl">Welcome Back!</h1>
+                        <h1 className="text-2xl md:text-3xl">Hello <span className="text-custom-green font-bold">{user.username}</span> </h1>
+                        <h1 className="text-xl">Welcome Back!</h1>
 
                     </div>
                 </div>
@@ -71,9 +71,7 @@ const Dashboard = () => {
                     <div className="flex items-center justify-between mb-4">
                         <h1 className="text-xl font-semibold"> Drivers Information</h1>
 
-                        <Link to="/profile">
-                            <button className="border bg-custom-green rounded-md text-white text-sm py-1.5 px-2">View Profile</button>
-                        </Link>
+
 
 
                     </div>
@@ -130,6 +128,14 @@ const Dashboard = () => {
 
                     </table>
                 </div>
+                <div className="mt-10 grid place-content-end">
+                    <Button
+                        btnLink={"/profile"}
+                    >
+                        View Transactions
+                    </Button>
+                </div>
+
 
             </div>
         </div>
