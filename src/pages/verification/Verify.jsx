@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 
 import VerificationFailed from "./components/VerificationFailed"
 import VerificationSuccess from "./components/VerificationSuccess"
+import Button from "../../components/utils/Button";
 
 
 
@@ -67,8 +68,13 @@ const Verify = () => {
                         </div>
 
                         <div className="mt-5 grid place-content-end">
-                            <button onClick={verifyID} className="bg-custom-green text-white py-2.5 px-8 rounded-md">Submit</button>
+                            <div className="m-4 grid place-content-end">
+                                <Button BtnFunction={verifyID}>
+                                    Submit
+                                </Button>
 
+
+                            </div>
                         </div>
                     </div>
 
