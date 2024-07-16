@@ -16,6 +16,7 @@ import Profile from "../pages/profile/Profile";
 import Support from "../pages/support/Support";
 import Verify from "../pages/verification/Verify";
 import Dashboard from "../pages/dashboard/Dashboard"
+import CaptureCenter from "../pages/capture_center/CaptureCenter";
 
 
 
@@ -55,7 +56,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "capture-centers",
-                element: <div>Capture Centers Page</div>,
+                element: <CaptureCenter />,
             },
             {
                 path: "driving-schools",
