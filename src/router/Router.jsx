@@ -9,17 +9,17 @@ import AuthLayout from "../components/AuthLayout";
 import Root from "../components/Root";
 import ApplicationForm from "../pages/applications/ApplicationForm";
 import ApplicationHome from "../pages/applications/ApplicationHome";
-import Appointment from "../pages/appointment/Appointment";
+import Appointment, { loader as appointmentLoader } from "../pages/appointment/Appointment";
+import { AppointmentDashboard } from "../pages/appointment/AppointmentDashboard";
 import LoginPage from "../pages/auth/login/LoginPage";
 import SignupPage from "../pages/auth/signup/SignupPage";
+import CaptureCenter from "../pages/capture_center/CaptureCenter";
+import Dashboard from "../pages/dashboard/Dashboard";
 import Faq from "../pages/faq/Faq";
 import HomePage from "../pages/home/HomePage";
 import Profile from "../pages/profile/Profile";
 import Support from "../pages/support/Support";
 import Verify from "../pages/verification/Verify";
-import { loader as appointmentLoader } from "../pages/appointment/Appointment";
-import Dashboard from "../pages/dashboard/Dashboard"
-import CaptureCenter from "../pages/capture_center/CaptureCenter";
 
 const router = createBrowserRouter([
   {
@@ -81,6 +81,10 @@ const router = createBrowserRouter([
                 path: "appointment",
                 element: <Appointment />,
                 loader: appointmentLoader
+            },
+            {
+                path: "get-appointment-slip",
+                element: <AppointmentDashboard />
             },
         ]
       },
