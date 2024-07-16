@@ -1,21 +1,20 @@
 import { useState } from 'react';
-import axios from 'axios';
 import { loginFields } from '../constants/FormFields';
 import FormAction from './FormAction';
 import FormExtra from './FormExtra';
 import Input from './Input';
-import { Link } from 'react-router-dom';
 
 // new-snippet
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import axios from 'axios';
 // End of new-snippet
 
 const fields = loginFields;
 let fieldsState = {};
 fields.forEach((field) => (fieldsState[field.id] = ''));
 
-export default function Login({ paragraph, linkUrl, linkName }) {
+export default function Login() {
   const [loginState, setLoginState] = useState(fieldsState);
 
   // new-snippet
@@ -55,37 +54,26 @@ export default function Login({ paragraph, linkUrl, linkName }) {
   };
 
   return (
-    <>
-      <form className="space-y-6 px-6 py-4" onSubmit={handleSubmit}>
-        <div className="-space-y-px">
-          {fields.map((field) => (
-            <Input
-              key={field.id}
-              handleChange={handleChange}
-              value={loginState[field.id]}
-              labelText={field.labelText}
-              labelFor={field.labelFor}
-              id={field.id}
-              name={field.name}
-              type={field.type}
-              isRequired={field.isRequired}
-              placeholder={field.placeholder}
-            />
-          ))}
-        </div>
+    <form className="space-y-6 p-9" onSubmit={handleSubmit}>
+      <div className="-space-y-px">
+        {fields.map((field) => (
+          <Input
+            key={field.id}
+            handleChange={handleChange}
+            value={loginState[field.id]}
+            labelText={field.labelText}
+            labelFor={field.labelFor}
+            id={field.id}
+            name={field.name}
+            type={field.type}
+            isRequired={field.isRequired}
+            placeholder={field.placeholder}
+          />
+        ))}
+      </div>
 
-        <FormExtra />
-        <FormAction handleSubmit={handleSubmit} text="Login" />
-        <p className="mt-2 text-center text-sm text-gray-600">
-          {paragraph}{' '}
-          <Link
-            to={linkUrl}
-            className="font-medium text-custom-green hover:text-green-800"
-          >
-            {linkName}
-          </Link>
-        </p>
-      </form>
-    </>
+      <FormExtra />
+      <FormAction handleSubmit={handleSubmit} text="Login" />
+    </form>
   );
 }

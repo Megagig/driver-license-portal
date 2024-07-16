@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 import { signupFields } from '../constants/FormFields';
-import { Link } from 'react-router-dom';
+
 import FormAction from './FormAction';
 import Input from './Input';
 
@@ -10,38 +11,36 @@ let fieldsState = {};
 
 fields.forEach((field) => (fieldsState[field.id] = ''));
 
-export default function Signup({ paragraph, linkUrl, linkName }) {
+export default function Signup() {
   const [signupState, setSignupState] = useState(fieldsState);
+  const [errorMessage, setErrorMessage] = useState(''); // State to hold error message
+  const navigate = useNavigate(); // Hook for navigation
 
   const handleChange = (e) =>
     setSignupState({ ...signupState, [e.target.id]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(signupState);
     createAccount();
   };
 
-  //handle Signup API Integration here
   const createAccount = async () => {
     try {
       const response = await axios.post(
         'https://saviorte.pythonanywhere.com/api/signup',
         signupState
       );
-      console.log(response.data);
-      // Handle success (e.g., notify user, redirect, etc.)
+      alert('Account created successfully!'); // Notify user
+      navigate('/login'); // Redirect to login page
     } catch (error) {
-      console.error(
-        'Signup error:',
-        error.response ? error.response.data : error.message
-      );
-      // Handle error (e.g., show error message)
+      const errorMsg = error.response ? error.response.data : error.message;
+      console.error('Signup error:', errorMsg);
+      setErrorMessage(errorMsg); // Set error message to display
     }
   };
 
   return (
-    <form className="space-y-6 p-6" onSubmit={handleSubmit}>
+    <form className="space-y-6 p-9" onSubmit={handleSubmit}>
       <div className="">
         {fields.map((field) => (
           <Input
@@ -58,16 +57,9 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
           />
         ))}
         <FormAction handleSubmit={handleSubmit} text="Signup" />
+        {errorMessage && <p className="text-red-500">{errorMessage}</p>}{' '}
+        {/* Display error message if any */}
       </div>
-      <p className="mt-2 text-center text-sm text-gray-600">
-        {paragraph}{' '}
-        <Link
-          to={linkUrl}
-          className="font-medium text-custom-green hover:text-green-800"
-        >
-          {linkName}
-        </Link>
-      </p>
     </form>
   );
 }
