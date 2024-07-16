@@ -50,16 +50,16 @@ const SideMenu = ({ closeFunc }) => {
                 <li>
                     <Link to="/profile" onClick={closeFunc} className="  px-4 py-2 cursor-pointer hover:bg-green-100  rounded-lg hover:text-custom-green transition-colors flex items-center gap-2"
                     ><FaUser className="font-bold text-lg" />
-                        <span>Account Settings</span>
+                        <span>Profile</span>
                     </Link>
                 </li>
 
-                <li>
+                {/* <li>
                     <Link to={"/profile"} onClick={closeFunc} className="  px-4 py-2 cursor-pointer hover:bg-green-100  rounded-lg hover:text-custom-green transition-colors flex items-center gap-2"
                     ><IoSettingsOutline className="font-bold text-lg" />
                         <span>Settings</span>
                     </Link>
-                </li>
+                </li> */}
 
                 <li>
                     <Link to={"/support"} onClick={closeFunc} className="  px-4 py-2 cursor-pointer hover:bg-green-100  rounded-lg hover:text-custom-green transition-colors flex items-center gap-2"

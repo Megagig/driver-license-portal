@@ -20,7 +20,7 @@ const CaptureCenter = () => {
                         </select>
                     </div>
                     <div className=" md:grid  max-w-[30rem] w-full">
-                        <label className="block mb-1" htmlFor="">State <span className="text-red-500">*</span></label>
+                        <label className="block mb-1" htmlFor="">LGA <span className="text-red-500">*</span></label>
                         <select className="p-2 border">
                             <option value="">Please Select</option>
                             <option value="">LGA1</option>
