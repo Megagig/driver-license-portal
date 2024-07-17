@@ -81,11 +81,12 @@ const NavBar = () => {
     const [isContactOpen, setIsContactOpen] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { applications, services, contact } = dropdownData;
-    const logoStyle = {
-        container: "logo grid content-start text-center justify-start",
-        h1: "text-green-500 text-3xl md:text-6xl font-extrabold tracking-widest",
-        p: "text-gray-300 text-sm md:text-sm",
-    };
+
+    // const logoStyle = {
+    //     container: "logo grid content-start text-center justify-start",
+    //     h1: "text-green-500 text-3xl md:text-6xl font-extrabold tracking-widest",
+    //     p: "text-gray-300 text-sm md:text-sm",
+    // };
 
     const toggleDrawer = () => {
         setIsMenuOpen(!isMenuOpen);
