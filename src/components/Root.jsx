@@ -10,13 +10,13 @@ const Root = () => {
 
   return (
     <div className='grid grid-rows-[auto_1fr_auto] min-h-screen'>
-      <header className=''>
+      <header >
         <Header />
         <NavBar />
       </header>
 
 
-      <main className=''>
+      <main>
         {
           state === 'loading' ? <Spinner /> : <Outlet />
         }
