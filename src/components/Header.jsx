@@ -1,12 +1,11 @@
-import logo from "../assets/Logo.svg"
-import coatofarm from "../assets/coatOfArm.png"
+import logo from "../assets/Logo.svg";
+import coatofarm from "../assets/coatOfArm.png";
 // import arrowRight from "../assets/arrowRight.svg"
 // import search from "../assets/search.svg"
-import { Link } from "react-router-dom"
-import useAuth from "../hooks/useAuth"
-import Button, { Button2 } from "./utils/Button";
-import SideMenu from "./SideMenu";
 import { useState } from "react";
+import useAuth from "../hooks/useAuth";
+import SideMenu from "./SideMenu";
+import Button, { Button2 } from "./utils/Button";
 
 import { FaUserAlt } from "react-icons/fa";
 

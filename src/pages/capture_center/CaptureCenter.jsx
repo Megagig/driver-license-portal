@@ -1,8 +1,8 @@
-import { useState } from "react";
-import Button, { Button2 } from "../../components/utils/Button"
 import NaijaStates from "naija-state-local-government";
+import { useState } from "react";
+import Button, { Button2 } from "../../components/utils/Button";
 
-
+let state
 
 const CaptureCenter = () => {
     const [selectState, setSelectState] = useState('')
@@ -19,6 +19,7 @@ const CaptureCenter = () => {
                     <div className="md:grid max-w-[30rem] w-full">
                         <label className="block mb-1" htmlFor="">State <span className="text-red-500">*</span></label>
                         <select name="states" onChange={(e) => { setSelectState(e.target.value) }} className="p-2 border">
+
                             <option value="">--Please Select--</option>
                             {NaijaStates.states().map((state, index) => (
                                 <option key={index} value={state}>
@@ -29,10 +30,12 @@ const CaptureCenter = () => {
                     </div>
                     <div className=" md:grid  max-w-[30rem] w-full">
                         <label className="block mb-1" htmlFor="">LGA <span className="text-red-500">*</span></label>
+
                         <select name="lga" onChange={(e) => { setSelectLga(e.target.value) }} className="p-2 border">
 
                             <option selected value="">--Please Select--</option>
                             {selectState && NaijaStates.lgas(selectState).lgas.map(
+
                                 (lga, index) => (
                                     <option key={index} value={lga}>
                                         {lga}
