@@ -14,6 +14,7 @@ import HomePage from "../pages/home/HomePage";
 import Profile from "../pages/profile/Profile";
 import Support from "../pages/support/Support";
 import Verify from "../pages/verification/Verify";
+import { loader as appointmentLoader } from "../pages/appointment/Appointment";
 
 
 const router = createBrowserRouter([
@@ -75,6 +76,7 @@ const router = createBrowserRouter([
                     {
                         path: "appointment",
                         element: <Appointment />,
+                        loader: appointmentLoader
                     },
                 ]
             },
