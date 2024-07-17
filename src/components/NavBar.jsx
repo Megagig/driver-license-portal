@@ -237,6 +237,16 @@ const NavBar = () => {
 
                         {auth?.user && (
                             <Link
+                                to="/dashboard"
+                                className="text-white px-6 py-4  transition-colors"
+                                onClick={closeMobileMenu}
+                            >
+                                Dashboard
+                            </Link>
+                        )}
+
+                        {auth?.user && (
+                            <Link
                                 to="/profile"
                                 className="text-white px-6 py-4  transition-colors"
                                 onClick={closeMobileMenu}
@@ -247,8 +257,8 @@ const NavBar = () => {
 
                         {auth?.user && (
                             <Link
-                                to="/get-appointment-slip"
-                                className="text-white px-6 py-4  transition-colors"
+                                to="/appointment"
+                                className="text-white px-6 py-4 transition-colors"
                                 onClick={closeMobileMenu}
                             >
                                 Print Appointment Slip
@@ -267,6 +277,14 @@ const NavBar = () => {
                                     isMobile={true}
                                     title="License Applications"
                                 />
+                                {isDropdownOpen && (
+                                    <DropDownMenu
+                                        menuArray={applications}
+                                        closeMobileMenu={closeMobileMenu}
+                                    />
+                                )}
+                            </div>
+                        )}
 
                                 {isDropdownOpen && (
                                     <DropDownMenu
@@ -277,7 +295,7 @@ const NavBar = () => {
                             </div>
                         )}
 
-                        {auth.user && (
+                        {/* {auth.user && (
                             <div
                                 className="relative px-6 py-4"
                                 onClick={() =>
@@ -297,7 +315,7 @@ const NavBar = () => {
                                     />
                                 )}
                             </div>
-                        )}
+                        )} */}
 
                         <Link
                             to="/verify-license"

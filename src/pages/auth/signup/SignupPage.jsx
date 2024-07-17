@@ -8,23 +8,20 @@ export default function SignupPage() {
       <div
         className=" hidden md:block w-3/4 h-full min-h-[45rem] bg-cover   bg-center bg-no-repeat"
         style={{ backgroundImage: `url('${background}')` }}
-      >
-
-      </div>
+      ></div>
 
       <div className="flex flex-col justify-center   w-full py-6 md:p-4 ">
         <div className=" w-full md:w-[30rem] mx-auto">
           <LoginHeader
             heading="Signup"
-
           />
 
           <Signup
-
             paragraph="Already have an account? "
             linkName="Login"
             linkUrl="/login"
-          /></div>
+          />
+        </div>
       </div>
     </div>
   );

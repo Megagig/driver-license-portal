@@ -50,3 +50,18 @@ export const reissueProcedure = [
         description: "After completing the application, you will get an appointment slip which you will take to a capturing center to complete the rest of the driver’s license application process."
     },
 ];
+
+export const paymentInfo = [
+    {
+        id: 1,
+        description: "Get your debit card ready to make this payment."
+    },
+    {
+        id: 2,
+        description: "Please do ensure you have a stable internet connection to avoid payment issues."
+    },
+    {
+        id: 3,
+        description: "All credit/debit card transactions include an additional payment processing fee."
+    },
+];
