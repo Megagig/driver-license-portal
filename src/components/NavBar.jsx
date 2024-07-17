@@ -216,6 +216,13 @@ const NavBar = () => {
                         >
                             Home
                         </Link>
+                        <Link
+                            to="/dashboard"
+                            className="text-white px-6 py-4  transition-colors"
+                            onClick={closeMobileMenu}
+                        >
+                            Dashboard
+                        </Link>
                         <div
                             className="relative px-6 py-4 "
                             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
