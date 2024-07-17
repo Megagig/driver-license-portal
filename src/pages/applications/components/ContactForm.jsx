@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import NaijaStates from "naija-state-local-government";
 import { hasEmptyValue } from "../utils";
 
