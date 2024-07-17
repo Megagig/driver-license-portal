@@ -48,7 +48,7 @@ const BasicDetailsForm = (props) => {
 
     return (
         <div className='z-10 fixed backdrop-blur w-screen h-full left-0 top-0 bg-[#00000080] flex items-center justify-center'>
-            <form className='relative w-10/12 md:w-3/4 lg:w-3/5 grid p-4 md:p-8 bg-white rounded-lg h-4/5 md:h-5/6 lg:h-3/4 overflow-scroll' onSubmit={updateBasicDetails}>
+            <form className='relative w-10/12 md:w-3/4 lg:w-3/5 grid p-4 md:p-8 bg-white rounded-lg h-4/5 md:h-5/6 lg:h-3/4 overflow-scroll overflow-x-hidden' onSubmit={updateBasicDetails}>
                 <h3 className='sticky md:relative w-fit text-xl md:text-2xl lg:text-4xl text-custom-green mb-8'>Edit Basic Details</h3> 
                 <div className='grid md:grid-cols-2 gap-1 md:gap-3'>
                 <Input 

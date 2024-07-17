@@ -1,3 +1,6 @@
+
+import DrivingSchool from '../pages/drivingschool/DrivingSchool';
+
 import {
     createBrowserRouter,
     RouterProvider
@@ -15,73 +18,74 @@ import Profile from "../pages/profile/Profile";
 import Support from "../pages/support/Support";
 import Verify from "../pages/verification/Verify";
 import { loader as appointmentLoader } from "../pages/appointment/Appointment";
-
+import Dashboard from "../pages/dashboard/Dashboard"
+import CaptureCenter from "../pages/capture_center/CaptureCenter";
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Root />,
+  {
+    path: '/',
+    element: <Root />,
+    children: [
+      {
+          index: true,
+          element: <HomePage />,
+      },
+      {
+          path: "faq",
+          element: <Faq />,
+      },
+      {
+          path: "support",
+          element: <Support />,
+      },
+      {
+          path: "login",
+          element: <LoginPage />,
+      },
+      {
+          path: "signup",
+          element: <SignupPage />,
+      },
+      {
+          path: "verify-license",
+          element: <Verify />
+      },
+      {
+          path: "capture-centers",
+          element: <CaptureCenter />,
+      },
+      {
+        path: 'driving-schools',
+        element: <DrivingSchool />,
+      },
+      {
+        element: <AuthLayout />,
         children: [
             {
-                index: true,
-                element: <HomePage />,
+                path: "dashboard",
+                element: <Dashboard />,
             },
             {
-                path: "faq",
-                element: <Faq />,
+                path: "profile",
+                element: <Profile />,
             },
             {
-                path: "support",
-                element: <Support />,
+                path: "application",
+                element: <ApplicationHome />,
             },
             {
-                path: "login",
-                element: <LoginPage />,
+                path: "application/form",
+                element: <ApplicationForm />,
             },
             {
-                path: "signup",
-                element: <SignupPage />,
+                path: "appointment",
+                element: <Appointment />,
+                loader: appointmentLoader
             },
-            {
-                path: "verify-license",
-                element: <Verify />
-            },
-            {
-                path: "capture-centers",
-                element: <div>Capture Centers Page</div>,
-            },
-            {
-                path: "driving-schools",
-                element: <div>Driving Schools Page</div>,
-            },
-            {
-                element: <AuthLayout />,
-                children: [
-                    {
-                        path: "dashboard",
-                        element: <div>User Dashboard</div>,
-                    },
-                    {
-                        path: "profile",
-                        element: <Profile />,
-                    },
-                    {
-                        path: "application",
-                        element: <ApplicationHome />,
-                    },
-                    {
-                        path: "application/form",
-                        element: <ApplicationForm />,
-                    },
-                    {
-                        path: "appointment",
-                        element: <Appointment />,
-                        loader: appointmentLoader
-                    },
-                ]
-            },
-        ],
-    },
+        ]
+      },
+    ],
+  },
 ]);
 
 const Router = () => {

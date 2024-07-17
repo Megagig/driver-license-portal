@@ -3,13 +3,30 @@ import coatofarm from "../assets/coatOfArm.png"
 // import arrowRight from "../assets/arrowRight.svg"
 // import search from "../assets/search.svg"
 import { Link } from "react-router-dom"
+import useAuth from "../hooks/useAuth"
+import Button, { Button2 } from "./utils/Button";
+import SideMenu from "./SideMenu";
+import { useState } from "react";
+
 
 const Header = () => {
+    const [popup, setPopup] = useState(false)
+
+    const { auth } = useAuth()
+
 
     return (
         <header className="px-4 py-3 hidden md:px-20 md:flex   md:flex-row justify-between Md:pt-6 md:pb-4 border-b">
-            <div className="grid place-content-center">
-                <img src={logo} alt="" />
+            <div className="flex items-center">
+                <div className="pr-3">
+                    <img className="h-20" src={coatofarm} alt="" />
+                </div>
+
+
+                <div className="border-l pl-3 grid place-content-center border-green-700">
+                    <img src={logo} alt="" />
+                </div>
+
             </div>
 
             {/* <div className="flex items-center">
@@ -31,27 +48,41 @@ const Header = () => {
 
             </div> */}
             <div className="flex gap-6">
-                <div className="flex gap-4 items-center">
+                <div className="flex gap-4 justify-center items-center">
+
+                    {
+                        !auth.user ? <>
+
+                            <Button btnLink={"/login"}>
+                                Login
+                            </Button>
 
 
-                    <Link to="/login">
-                        <button className="bg-custom-green py-3 w-28 rounded-2xl text-white">
-                            Login
-                        </button>
-                    </Link>
+                            <Button2
+                                btnLink={"/signup"}>
+                                Sign up
+                            </Button2>
 
-                    <Link to="/signup">
-                        <button className="border-custom-green border py-3 w-28  rounded-2xl font-semibold text-custom-green">
-                            Sign up
-                        </button>
-                    </Link>
+                        </> : <>
+                            <div onClick={() => { setPopup(!popup) }} className="border p-1 rounded-full h-16">
+                                <img className="h-full rounded-full cursor-pointer" src={auth.user.image} alt="" />
+                            </div>
 
-
+                        </>
+                    }
                 </div >
-                <img className="h-20" src={coatofarm} alt="" />
             </div >
 
+
+            {(auth.user && popup) && <SideMenu
+                closeFunc={() => {
+                    setPopup(false)
+                }}
+            />}
+
+
         </header >
+
 
     );
 };

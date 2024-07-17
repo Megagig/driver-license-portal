@@ -277,6 +277,14 @@ const NavBar = () => {
                                     isMobile={true}
                                     title="License Applications"
                                 />
+                                {isDropdownOpen && (
+                                    <DropDownMenu
+                                        menuArray={applications}
+                                        closeMobileMenu={closeMobileMenu}
+                                    />
+                                )}
+                            </div>
+                        )}
 
                                 {isDropdownOpen && (
                                     <DropDownMenu

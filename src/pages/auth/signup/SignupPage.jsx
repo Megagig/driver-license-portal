@@ -1,25 +1,27 @@
 import LoginHeader from '../components/LoginHeader';
 import Signup from '../components/Signup';
-import signUpImage from '../../../assets/license.png';
+import background from "../../../assets/license.png"
 
 export default function SignupPage() {
   return (
-    <div className="flex flex-col md:flex-row min-h-screen items-center gap-4 mx-8">
+    <div className="flex md:flex-row h-full  items-center gap-4">
       <div
-        className="md:w-1/2 h-auto md:h-screen bg-cover bg-center"
-        style={{ backgroundImage: `url(${signUpImage})` }}
+        className=" hidden md:block w-3/4 h-full min-h-[45rem] bg-cover   bg-center bg-no-repeat"
+        style={{ backgroundImage: `url('${background}')` }}
       ></div>
 
-      <div className="flex flex-col justify-center md:w-1/2 p-4">
-        <div className="max-w-md mx-auto"></div>
-        <LoginHeader
-          heading="Signup to create an account"
-          paragraph="Already have an account? "
-          linkName="Login"
-          linkUrl="/login"
-        />
+      <div className="flex flex-col justify-center   w-full py-6 md:p-4 ">
+        <div className=" w-full md:w-[30rem] mx-auto">
+          <LoginHeader
+            heading="Signup"
+          />
 
-        <Signup />
+          <Signup
+            paragraph="Already have an account? "
+            linkName="Login"
+            linkUrl="/login"
+          />
+        </div>
       </div>
     </div>
   );
