@@ -223,6 +223,27 @@ const NavBar = () => {
                         >
                             Dashboard
                         </Link>
+
+                        {auth?.user && (
+                            <Link
+                                to="/profile"
+                                className="text-white px-6 py-4  transition-colors"
+                                onClick={closeMobileMenu}
+                            >
+                                Profile
+                            </Link>
+                        )}
+
+                        {auth?.user && (
+                            <Link
+                                to="/get-appointment-slip"
+                                className="text-white px-6 py-4  transition-colors"
+                                onClick={closeMobileMenu}
+                            >
+                                Print Appointment Slip
+                            </Link>
+                        )}
+
                         <div
                             className="relative px-6 py-4 "
                             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
