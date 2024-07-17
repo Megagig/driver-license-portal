@@ -32,7 +32,8 @@ const Appointment = () => {
                         Full Name:
                     </label>
                     <p className="font-bold text-grey" id="fullName">
-                        {`${biodata.firstName} ${biodata.middleName} ${biodata.lastName}`}
+                        Yusuf Olawale
+                        {/* {`${biodata.firstName} ${biodata.middleName} ${biodata.lastName}`} */}
                     </p>
                 </div>
 
@@ -44,7 +45,8 @@ const Appointment = () => {
                         Email:
                     </label>
                     <p className="font-bold text-grey" id="email">
-                        {contactData.email}
+                        adex.badr18@gmail.com
+                        {/* {contactData.email} */}
                     </p>
                 </div>
 
@@ -56,7 +58,8 @@ const Appointment = () => {
                         Phone Number:
                     </label>
                     <p className="font-bold text-grey" id="phone">
-                        {contactData.phone}
+                        08012345678
+                        {/* {contactData.phone} */}
                     </p>
                 </div>
 
@@ -68,7 +71,8 @@ const Appointment = () => {
                         NIN:
                     </label>
                     <p className="font-bold text-grey" id="nin">
-                        {biodata.nin}
+                        1234567890
+                        {/* {biodata.nin} */}
                     </p>
                 </div>
 
@@ -80,7 +84,8 @@ const Appointment = () => {
                         State of Residence:
                     </label>
                     <p className="font-bold text-grey" id="state">
-                        {contactData.state}
+                        Lagos
+                        {/* {contactData.state} */}
                     </p>
                 </div>
 
@@ -92,7 +97,8 @@ const Appointment = () => {
                         LGA:
                     </label>
                     <p className="font-bold text-grey" id="lga">
-                        {contactData.lga}
+                        Mainland
+                        {/* {contactData.lga} */}
                     </p>
                 </div>
             </div>
