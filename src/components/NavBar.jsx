@@ -131,24 +131,6 @@ const NavBar = () => {
                         </div>
                     )}
 
-                    {auth.user && (
-                        <div
-                            className="relative px-6 py-4 hover:bg-green-700"
-                            onMouseEnter={() => setIsServicesOpen(true)}
-                            onMouseLeave={() => setIsServicesOpen(false)}
-                        >
-                            <DropDownButton
-                                isOpen={isServicesOpen}
-                                isMobile={false}
-                                title="Services"
-                            />
-
-                            {isServicesOpen && (
-                                <DropDownMenu menuArray={services} />
-                            )}
-                        </div>
-                    )}
-
                     <Link
                         to="/verify-license"
                         className="text-white px-6 py-4 hover:bg-green-700 transition-colors"
@@ -285,37 +267,6 @@ const NavBar = () => {
                                 )}
                             </div>
                         )}
-
-                                {isDropdownOpen && (
-                                    <DropDownMenu
-                                        menuArray={applications}
-                                        closeMobileMenu={closeMobileMenu}
-                                    />
-                                )}
-                            </div>
-                        )}
-
-                        {/* {auth.user && (
-                            <div
-                                className="relative px-6 py-4"
-                                onClick={() =>
-                                    setIsServicesOpen(!isServicesOpen)
-                                }
-                            >
-                                <DropDownButton
-                                    isOpen={isServicesOpen}
-                                    isMobile={true}
-                                    title="Services"
-                                />
-
-                                {isServicesOpen && (
-                                    <DropDownMenu
-                                        menuArray={services}
-                                        closeMobileMenu={closeMobileMenu}
-                                    />
-                                )}
-                            </div>
-                        )} */}
 
                         <Link
                             to="/verify-license"
