@@ -9,7 +9,6 @@ import ApplicationHome from "../pages/applications/ApplicationHome";
 import Appointment from "../pages/appointment/Appointment";
 import LoginPage from "../pages/auth/login/LoginPage";
 import SignupPage from "../pages/auth/signup/SignupPage";
-import Contact from "../pages/contact/Contact";
 import Faq from "../pages/faq/Faq";
 import HomePage from "../pages/home/HomePage";
 import Profile from "../pages/profile/Profile";
@@ -35,10 +34,6 @@ const router = createBrowserRouter([
                 element: <Support />,
             },
             {
-                path: "contact",
-                element: <Contact />,
-            },
-            {
                 path: "login",
                 element: <LoginPage />,
             },
@@ -57,10 +52,6 @@ const router = createBrowserRouter([
             {
                 path: "driving-schools",
                 element: <div>Driving Schools Page</div>,
-            },
-            {
-                path: "get-appointment-slip",
-                element: <div>Get Appointment Slip Page</div>,
             },
             {
                 element: <AuthLayout />,
@@ -94,14 +85,6 @@ const router = createBrowserRouter([
 const Router = () => {
     return (
         <RouterProvider router={router} />
-        // <div>
-        //     <Routes>
-        //         <Route path="/" element={<HomePage />} />
-        //         <Route path="/support" element={<Support />} />
-        //         <Route path="/faq" element={<Faq />} />
-        //         <Route path="/contact" element={<Contact />} />
-        //     </Routes>
-        // </div>
     );
 };
 
