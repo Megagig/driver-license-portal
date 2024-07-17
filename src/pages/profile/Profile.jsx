@@ -9,7 +9,6 @@ import ProfilePicture from "./components/ProfilePicture";
 const Profile = () => {
 
   let { state } = useLocation();
-  console.log('state:', state)
   const [profileDetails, setProfile] = useState({
       username: 'michaelw',
         password: 'michaelwpass',
@@ -17,7 +16,7 @@ const Profile = () => {
         surname: "Joe",
         middlename: "Doe",
         dob:"1992-12-27",
-        phone:"+2348111206206",
+        phone:"08111206206",
         email:"ayopelumi2014@gmail.com",
         StateofAddress: "Lagos",
         lga:"ifedayo",
@@ -72,10 +71,18 @@ const Profile = () => {
       })
   };
   const editPhone = (args) => { 
-      setProfile({
-          ...profileDetails,
-          phone:args
-      })
+    console.log({profileDetails})
+    if (args.length < 12) {
+      console.log({args})
+      if(Number(args)){
+        console.log(" i am in the true statement")
+        
+        setProfile({
+            ...profileDetails,
+            phone:args
+        })
+      }
+    }
   };
   const editDob = (args) => { 
       setProfile({
@@ -115,7 +122,7 @@ const Profile = () => {
 
   return (
     <section className='w-screen py-7 md:py-12 xl:py-20 px-4 md:px-10 xl:px-16 bg-[#f2f2f2]'>
-        <h3 className='text-[28px]/[36px] md:text-[44px]/[56px] font-bold'>Profile Details</h3>    
+        <h3 className='text-[28px]/[36px] md:text-[44px]/[56px] font-bold text-custom-green'>Profile Details</h3>    
 
         <div className="w-full">
             <ProfilePicture  

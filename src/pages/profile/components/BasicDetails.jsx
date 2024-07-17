@@ -1,12 +1,11 @@
 
 import { useState } from 'react';
-import { FaEdit } from "react-icons/fa";
+import Button from '../utils/Button';
 import SingleDetail from '../utils/SingleDetail';
 import BasicDetailsForm from './Modals/BasicDetailsForm';
 
 const BasicDetails = (props) => {
     const [showModal, setShowModal] = useState(false)
-    const[profileDetails, setProfile] = useState({})
    
     const handleEditBasicDetails = () => { 
         setShowModal(true)
@@ -21,7 +20,7 @@ const BasicDetails = (props) => {
         <>
         <div className='flex mt-7 md:mt-16 md:p-6 relative border-4 border-custom-grey w-full'>
         <h4 className="p-3 bg-white text-lg md:text-2xl font-medium absolute top-[-29px]">Basic Details</h4>
-        <FaEdit className="bg-white text-2xl md:text-4xl font-medium absolute top-[-16px] right-10 cursor-pointer" onClick={handleEditBasicDetails} />
+        <Button handleEditForm = {handleEditBasicDetails} />
         < div className='mt-5 grid md:grid-cols-2 lg:grid-cols-3 w-full'>
 
             <SingleDetail 
