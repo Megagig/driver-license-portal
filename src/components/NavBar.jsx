@@ -286,14 +286,7 @@ const NavBar = () => {
                             </div>
                         )}
 
-                                {isDropdownOpen && (
-                                    <DropDownMenu
-                                        menuArray={applications}
-                                        closeMobileMenu={closeMobileMenu}
-                                    />
-                                )}
-                            </div>
-                        )}
+
 
                         {/* {auth.user && (
                             <div
