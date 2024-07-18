@@ -1,9 +1,13 @@
+import { useState } from "react";
 import Button, { Button2 } from "../../components/utils/Button"
 import NaijaStates from "naija-state-local-government";
 
-let state
+
 
 const CaptureCenter = () => {
+    const [selectState, setSelectState] = useState('')
+    const [selectLga, setSelectLga] = useState("")
+
     return (
         <div className="h-full pb-8 p-4 md:p-10 lg:px-20 lg:py-16 ">
             <h1 className="text-2xl lg:text-4xl font-bold mb-1 text-custom-green">Capture Center</h1>
@@ -14,7 +18,7 @@ const CaptureCenter = () => {
                 <div className="flex flex-col md:flex-row mt-3 md:mt-8 gap-3 md:gap-6 items-center">
                     <div className="md:grid max-w-[30rem] w-full">
                         <label className="block mb-1" htmlFor="">State <span className="text-red-500">*</span></label>
-                        <select value={state} className="p-2 border">
+                        <select onChange={(e) => { setSelectState(e.target.value) }} className="p-2 border">
                             <option value="">--Please Select--</option>
                             {NaijaStates.states().map((state, index) => (
                                 <option key={index} value={state}>
@@ -25,9 +29,9 @@ const CaptureCenter = () => {
                     </div>
                     <div className=" md:grid  max-w-[30rem] w-full">
                         <label className="block mb-1" htmlFor="">LGA <span className="text-red-500">*</span></label>
-                        <select className="p-2 border">
-                            <option value="">--Please Select--</option>
-                            {state && NaijaStates.lgas(state).lgas.map(
+                        <select onChange={(e) => { setSelectLga(e.target.value) }} className="p-2 border">
+                            <option selected value="">--Please Select--</option>
+                            {selectState && NaijaStates.lgas(selectState).lgas.map(
                                 (lga, index) => (
                                     <option key={index} value={lga}>
                                         {lga}
