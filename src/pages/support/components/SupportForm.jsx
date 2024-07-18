@@ -15,12 +15,12 @@ const SupportForm = ({ BtnFunction }) => {
                     <input className={inputStyle} type="text" placeholder="Enter Application ID" required />
                 </div>
                 <div>
-                    <label className="mb-[2px] block text-base font-medium text-neutral-700">Driver's Licence Number (dd/mm/yyyy) <span className="text-red-500">*</span></label>
+                    <label className="mb-[2px] block text-base font-medium text-neutral-700">Driver's Licence Number <span className="text-red-500">*</span></label>
                     <input className={inputStyle} type="text" placeholder="e.g 01/01/2024" required />
                 </div>
                 <div>
                     <label className="mb-[2px] block text-base font-medium text-neutral-700">Date of Birth (dd/mm/yyyy) <span className="text-red-500">*</span></label>
-                    <input className={inputStyle} type="text" placeholder="e.g 01/01/2024" required />
+                    <input className={inputStyle} type="date" placeholder="e.g 01/01/2024" required />
                 </div>
                 <div>
                     <label className="mb-[2px] block text-base font-medium text-neutral-700">Full Name <span className="text-red-500">*</span></label>

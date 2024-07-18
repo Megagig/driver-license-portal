@@ -9,7 +9,7 @@ const Root = () => {
   const { state } = useNavigation();
 
   return (
-    <div className='grid grid-rows-[auto_1fr_auto] min-h-screen'>
+    <div className='grid grid-rows-[auto_1fr_auto] max-w-[100svw] overflow-hidden relative min-h-screen'>
       <header >
         <Header />
         <NavBar />
