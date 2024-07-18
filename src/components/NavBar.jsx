@@ -1,8 +1,8 @@
 import { useState } from "react";
+import useAuth from "../hooks/useAuth";
+import DesktopMenu from "./DesktopMenu";
 import MobileHeader from "./MobileHeader";
 import MobileMenu from "./MobileMenu";
-import DesktopMenu from "./DesktopMenu";
-import useAuth from "../hooks/useAuth";
 import { dropdownData } from "./utils/data";
 
 const NavBar = () => {
