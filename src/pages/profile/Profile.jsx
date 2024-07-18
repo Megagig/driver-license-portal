@@ -34,94 +34,32 @@ const Profile = () => {
 
   console.log({profileDetails})
 
-  const editFirstName = (args) => {
-    setProfile({
-        ...profileDetails,
-        firstname:args
-    })
-  };
-  const editMiddleName = (args) => { 
-      setProfile({
-          ...profileDetails,
-          middlename:args
-      })
-  };
-  const editSurname = (args) => { 
-      setProfile({
-          ...profileDetails,
-          surname:args
-      })
-  };
-  const editEmail = (args) => {
-      setProfile({
-          ...profileDetails,
-          email:args
-      })
-    };
-  const editGender = (args) => { 
-      setProfile({
-          ...profileDetails,
-          gender:args
-      })
-  };
-  const editAddress = (args) => { 
-      setProfile({
-          ...profileDetails,
-          address:args
-      })
-  };
-  const editPhone = (args) => { 
-    console.log({profileDetails})
-    if (args.length < 12) {
-      console.log({args})
-      if(Number(args)){
-        console.log(" i am in the true statement")
-        
-        setProfile({
-            ...profileDetails,
-            phone:args
-        })
-      }
-    }
-  };
-  const editDob = (args) => { 
-      setProfile({
-          ...profileDetails,
-          dob:args
-      })
-  }
-  const editState = (args) => { 
-    console.log(args)
-    setProfile({
-            ...profileDetails,
-            StateofAddress:args
-    })
-  };
-  const editLga = (args) => { 
-    setProfile({
-        ...profileDetails,
-        lga:args
-    })
-  };
   const editImage = (event) => {
-        
-    let reader = new FileReader();
-    let file = event.target.files[0];
-    console.log(event.target.files[0])
-    reader.onloadend = () => {
-
-      setProfile({
-        ...profileDetails,
-        image: reader.result,
-        file: file
-
-      })
-    };
-    reader.readAsDataURL(file);
-}
+          
+      let reader = new FileReader();
+      let file = event.target.files[0];
+      console.log(event.target.files[0])
+      reader.onloadend = () => {
+  
+        setProfile({
+          ...profileDetails,
+          image: reader.result,
+          file: file
+  
+        })
+      };
+      reader.readAsDataURL(file);
+  }
+ 
+const updateBasicDetails = (args) => {
+  setProfile({
+    ...profileDetails,
+    ...args
+  })
+};
 
   return (
-    <section className='w-screen py-7 md:py-12 xl:py-20 px-4 md:px-10 xl:px-16 bg-[#f2f2f2]'>
+    <section className='w-screen py-7 md:py-12 xl:py-20 px-4 md:px-10 xl:px-16 bg-white'>
         <h3 className='text-[28px]/[36px] md:text-[44px]/[56px] font-bold text-custom-green'>Profile Details</h3>    
 
         <div className="w-full">
@@ -131,16 +69,7 @@ const Profile = () => {
             />
             <BasicDetails  
               state={profileDetails}
-              editAddress={editAddress}
-              editDob={editDob}
-              editEmail={editEmail}
-              editFirstName={editFirstName}
-              editGender={editGender}
-              editMiddleName={editMiddleName}
-              editPhone={editPhone}
-              editSurname={editSurname}
-              editLga={editLga}
-              editState={editState}
+              updateBasicDetails={updateBasicDetails}
             />
             <LoginDetails  state={profileDetails}/>
             <InstantDriverDetails state={profileDetails} />

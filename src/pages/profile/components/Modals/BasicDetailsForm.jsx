@@ -11,39 +11,121 @@ const BasicDetailsForm = (props) => {
     const [stateDropdown, setDropdown] = useState(false)
     const [state, setState] = useState()
     const [lgaDropdown, setLgaDropdown] = useState(false)
-    const [lga, setLga] = useState()
+    const [profileDetails, setProfile] = useState(props.formData)
   
+  
+    console.log({profileDetails})
+  
+    const editFirstName = (args) => {
+      setProfile({
+          ...profileDetails,
+          firstname:args
+      })
+    };
+    const editMiddleName = (args) => { 
+        setProfile({
+            ...profileDetails,
+            middlename:args
+        })
+    };
+    const editSurname = (args) => { 
+        setProfile({
+            ...profileDetails,
+            surname:args
+        })
+    };
+    const editEmail = (args) => {
+        setProfile({
+            ...profileDetails,
+            email:args
+        })
+      };
+    const editGender = (args) => { 
+        setProfile({
+            ...profileDetails,
+            gender:args
+        })
+    };
+    const editAddress = (args) => { 
+        setProfile({
+            ...profileDetails,
+            address:args
+        })
+    };
+    const editPhone = (args) => { 
+      console.log({profileDetails})
+          const regExp = /^\d+$/;
+          let value = args
+      if (args.length<12){
+        if (value ==="" || regExp.test(value)) {
+          setProfile({
+              ...profileDetails,
+              phone:args
+          })
+        }
+      }
+    }
+  
+    const editDob = (args) => { 
+        setProfile({
+            ...profileDetails,
+            dob:args
+        })
+    }
+    const editState = (args) => { 
+      console.log(args)
+      setProfile({
+              ...profileDetails,
+              StateofAddress:args
+      })
+    };
+    const editLga = (args) => { 
+      setProfile({
+          ...profileDetails,
+          lga:args
+      })
+    };
+
+  
+  const updateBasicDetails = (event) => {
+    event.preventDefault()
+    console.log({profileDetails})
+    const isEmpty = Object.values(profileDetails).some(x =>  (x == null || x == '' || x== undefined));
+    console.log({isEmpty})
+    if(isEmpty ==  false){
+      //axios code to push
+      props.updateBasicDetails(profileDetails)
+      props.closeModal()
+    }
+  };
+  
+
     const handleChangeDropdown = (args) => {
         setDropdown(!stateDropdown)
         console.log('args:', args)
         if(typeof args =="string"){
             console.log('i am in the if statement')
             setState(args)
-            props.editState(args)
-            if (args != state) {
-                setLga()
-                props.editLga()
+            editState(args)
+            if (args != profileDetails.StateofAddress) {
+                editLga()
                 
             }
             console.log(NaijaStates.lgas(args))
         }
       };
       useEffect(()=>{
-        typeof state == "string" ? props.editState(state) : null
+        typeof state == "string" ? editState(state) : null
       },[state])
       const handleLgaChangeDropdown = (args) => {
         setLgaDropdown(!lgaDropdown)
         console.log('args:', args)
         if(typeof args =="string"){
-            setLga(args)
-            props.editLga(args)
+            editLga(args)
         }
       };
 
-    const updateBasicDetails = (event) => {
-        event.preventDefault()
-        props.closeModal()
-      };
+
       console.log(state)
 
     return (
@@ -56,32 +138,32 @@ const BasicDetailsForm = (props) => {
                     labelName="First Name"
                     htmlFor='firstName'
                     placeholder='First Name'
-                    value={props.formData.firstname}
-                    onChange={props.editFirstName}
+                    value={profileDetails.firstname}
+                    onChange={editFirstName}
                     required={true} />
                 <Input 
                     type="text"
                     labelName="Middle Name"
                     htmlFor='middleName'
                     placeholder='Middle Name' 
-                    value={props.formData.middlename}
-                    onChange={props.editMiddleName}
+                    value={profileDetails.middlename}
+                    onChange={editMiddleName}
                     required={true} />
                 <Input 
                     type="text"
                     labelName="Surname"
                     htmlFor='surname'
                     placeholder='Surname' 
-                    value={props.formData.surname}
-                    onChange={props.editSurname}
+                    value={profileDetails.surname}
+                    onChange={editSurname}
                     required={true} />
                 <Input 
                     type='email'
                     labelName="Email Address"
                     htmlFor='email'
                     placeholder='Email Address'
-                    value={props.formData.email}
-                    onChange={props.editEmail}
+                    value={profileDetails.email}
+                    onChange={editEmail}
                     required={true} />
                 <Input 
                     type='text'
@@ -89,42 +171,42 @@ const BasicDetailsForm = (props) => {
                     htmlFor='Phone Number'
                     placeholder='Phone Number'
                     inputMode="decimal"
-                    value={props.formData.phone}
-                    onChange={props.editPhone}
+                    value={profileDetails.phone}
+                    onChange={editPhone}
                     required={true} />
                 <Gender 
-                    value={props.formData.gender}
-                    onChange={props.editGender}
+                    value={profileDetails.gender}
+                    onChange={editGender}
                  />
                 <Input 
                     type='text'
                     labelName="Home Address"
                     htmlFor='address'
                     placeholder='Home Address'
-                    value={props.formData.address}
-                    onChange={props.editAddress}
+                    value={profileDetails.address}
+                    onChange={editAddress}
                     required={true} />
                 <Input 
                     type='date'
                     labelName="Date of Birth"
                     htmlFor='dob'
-                    value={props.formData.dob}
-                    onChange={props.editDob}
+                    value={profileDetails.dob}
+                    onChange={editDob}
                     required={true}
                      />
                      <label className='relative grid gap-2 w-full mb-6' onClick={handleChangeDropdown}>
                         <span className='text-base md:text-[20px]/[22px] font-medium text-green-700 dark:text-green-500'>State</span>
                         {stateDropdown ?
                         <Select closeModal={handleChangeDropdown} value="state"/>:
-                        <button type="button" className="w-full h-full py-2 px-5  border-2 border-custom-grey bg-slate-50 rounded-lg">{props.formData.StateofAddress ? props.formData.StateofAddress :"Select a state"}</button>
+                        <button type="button" className="w-full h-full py-2 px-5  border-2 border-custom-grey bg-slate-50 rounded-lg">{profileDetails.StateofAddress ? profileDetails.StateofAddress :"Select a state"}</button>
 
                         }
                      </label>
                      <label className='relative grid gap-2 w-full mb-6' onClick={handleLgaChangeDropdown}>
                         <span className='text-base md:text-[20px]/[22px] font-medium text-green-700 dark:text-green-500'>L.G.A</span>                       
-                        {lgaDropdown && props.formData.StateofAddress && stateDropdown == false?
-                        <Select closeModal={handleLgaChangeDropdown} value={props.formData.StateofAddress}/>:
-                        <button type="button" className="w-full h-full py-2 px-5  border-2 border-custom-grey bg-slate-50 rounded-lg">{props.formData.lga ? props.formData.lga : props.formData.State ? "Select your LGA" : "Select a state"}</button>
+                        {lgaDropdown && profileDetails.StateofAddress && stateDropdown == false?
+                        <Select closeModal={handleLgaChangeDropdown} value={profileDetails.StateofAddress}/>:
+                        <button type="button" className="w-full h-full py-2 px-5  border-2 border-custom-grey bg-slate-50 rounded-lg">{profileDetails.lga != undefined ? profileDetails.lga : profileDetails.StateofAddress ? "Select your LGA" : "Select a state"}</button>
 
                         }
 

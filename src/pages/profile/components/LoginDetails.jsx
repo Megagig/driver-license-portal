@@ -52,7 +52,7 @@ const LoginDetails = () => {
             <h4 className="p-3 bg-white text-lg md:text-2xl font-medium absolute top-[-29px]">Login Details</h4>
             <Button handleEditForm={handleEditLoginDetails} />
             <div className=' mt-5 md:mt-0 flex md:flex-row flex-col w-full items-end md:items-center'>
-                {showPassword ? <BsEye className='flex-auto text-xl md:text-4xl mr-3' onClick={handleShowPassword}/>: <BsEyeSlash className='flex-auto text-xl md:text-4xl mr-3' onClick={handleShowPassword} />}
+                {showPassword ? <BsEye className='flex-auto md:order-last text-xl md:text-4xl mr-3' onClick={handleShowPassword}/>: <BsEyeSlash className='flex-auto text-xl md:text-4xl mr-3 md:order-last' onClick={handleShowPassword} />}
                 <SingleDetail
                     label='Password'
                     details={showPassword ? password.password : queryString} />

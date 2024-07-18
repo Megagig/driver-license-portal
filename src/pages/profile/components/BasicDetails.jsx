@@ -59,16 +59,7 @@ const BasicDetails = (props) => {
         <BasicDetailsForm 
             formData={props.state} 
             closeModal={handleCloseModal}
-            editAddress={props.editAddress}
-            editDob={props.editDob}
-            editEmail={props.editEmail}
-            editFirstName={props.editFirstName}
-            editGender={props.editGender}
-            editMiddleName={props.editMiddleName}
-            editPhone={props.editPhone}
-            editSurname={props.editSurname}
-            editLga={props.editLga}
-            editState={props.editState}
+            updateBasicDetails={props.updateBasicDetails}
              /> : null   }
     </>   
     )
