@@ -84,9 +84,9 @@ const data =
       navigate('/appointment',  {state:{ ...data }} );
      };
     return (
-        <section className="w-screen grid place-content-center">
-
-             <label  className=" mt-7 flex bg-transparent border border-[#22C55E] rounded-full w-fit">
+        <section className="w-screen grid place-content-center p-6 md:p-10 xl:p-20">
+            <h3 className="text-[#22C55E] text-xl md:text-2xl lg:text-3xl font-medium text-center">Search using Reference Id</h3>
+             <label  className=" mt-3 flex bg-transparent border border-[#22C55E] rounded-full w-fit">
                 <input  placeholder="Search by application Id" className='bg-transparent text-black px-[32px] py-[20px] border-0 outline-0'/>
                 <button onClick={fetchAppointmentSlip} className="bg-[#22C55E] text-[20px]/[19.2px] font-bold text-white px-[20px] py-[8px]  rounded-full w-[190px]">Suscribe</button>
             </label>
