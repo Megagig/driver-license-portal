@@ -27,7 +27,7 @@
 }
 
 @keyframes counter {
-    from {
+  from {
     --num-verification: 0;
     --num-license: 0;
     --num-users: 0;
@@ -39,16 +39,16 @@
   }
 }
 
-*::-webkit-scrollbar{
+*::-webkit-scrollbar {
   width: 10px;
   height: 10px;
   margin: 30px;
-  padding: 10px; 
+  padding: 10px;
 }
-*::-webkit-scrollbar-track{
+*::-webkit-scrollbar-track {
   background-color: white;
 }
-*::-webkit-scrollbar-thumb{
+*::-webkit-scrollbar-thumb {
   background: #22c55e80;
   border-radius: 12px;
 }
@@ -80,8 +80,6 @@
 }
 
 
-
-
 /* main {
   min-height: 90vh;
   max-width: 1280px;
@@ -98,4 +96,8 @@
   100% {
     translate: 0 0;
   }
+}
+
+.PhoneInputInput {
+  outline: none;
 }

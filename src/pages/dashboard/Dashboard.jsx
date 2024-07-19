@@ -4,8 +4,9 @@ import useAuth from "../../hooks/useAuth";
 import Button from "../../components/utils/Button";
 
 const Dashboard = () => {
-    const { auth } = useAuth()
-    const user = auth.user
+    const { user } = useAuth()
+
+
 
     return (
         <div className="md:px-10 lg:px-20 max-w-[100vw] overflow-hidden px-4  py-4 pb-20 ">
@@ -58,11 +59,11 @@ const Dashboard = () => {
                     </div>
 
                     <div className="border grid  gap-2 p-4 rounded-xl">
-                        <p> <span className="font-bold text-custom-green">License No:</span> <span className=" md:text-xl">IDL123456</span></p>
-                        <p> <span className="font-bold text-custom-green" >License Class:</span> <span className=" md:text-xl">A</span></p>
-                        <p> <span className="font-bold text-custom-green">Country of Issue:</span> <span className=" md:text-xl">Nigeria</span></p>
-                        <p> <span className="font-bold text-custom-green">Date of Issue: </span><span className=" md:text-xl">22-06-2023</span></p>
-                        <p> <span className="font-bold text-custom-green">Date of Expiration:</span> <span className=" md:text-xl">22-06-2025</span></p>
+                        <p> <span className="font-bold text-custom-green">License No:</span> <span >{user.bank.iban}</span></p>
+                        <p> <span className="font-bold text-custom-green" >License Class:</span> <span >{user.bloodGroup}</span></p>
+                        <p> <span className="font-bold text-custom-green">Country of Issue:</span> <span >{user.address.country}</span></p>
+                        <p> <span className="font-bold text-custom-green">Date of Issue: </span><span >22-06-2023</span></p>
+                        <p> <span className="font-bold text-custom-green">Date of Expiration:</span> <span >22-06-2025</span></p>
 
                     </div>
                 </div>
@@ -76,11 +77,10 @@ const Dashboard = () => {
 
                     </div>
                     <div className="border grid truncate overflow-clip gap-2 p-4 text-wrap rounded-xl">
-                        <p> <span className="font-bold text-custom-green">First Name:</span> <span className=" md:text-xl">{user.firstName}</span></p>
-                        <p> <span className="font-bold text-custom-green" >Last Name:</span> <span className=" md:text-xl">{user.lastName}</span></p>
-                        <p> <span className="font-bold text-custom-green">Email:</span> <span className="  md:text-xl ">{user.email}</span></p>
-                        <p> <span className="font-bold text-custom-green">Sex: </span><span className=" md:text-xl">{user.gender}</span></p>
-                        <p> <span className="font-bold text-custom-green">Phone No:</span> <span className=" md:text-xl">+234900000000</span></p>
+                        <p> <span className="font-bold text-custom-green">First Name:</span> <span >{user.firstName}</span></p>
+                        <p> <span className="font-bold text-custom-green" >Last Name:</span> <span>{user.email}</span></p>
+                        <p> <span className="font-bold text-custom-green">Sex: </span><span >{user.gender}</span></p>
+                        <p> <span className="font-bold text-custom-green">Phone No:</span> <span >{user.phone}</span></p>
 
                     </div>
 
