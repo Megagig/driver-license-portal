@@ -18,7 +18,7 @@ const CaptureCenter = () => {
                 <div className="flex flex-col md:flex-row mt-3 md:mt-8 gap-3 md:gap-6 items-center">
                     <div className="md:grid max-w-[30rem] w-full">
                         <label className="block mb-1" htmlFor="">State <span className="text-red-500">*</span></label>
-                        <select onChange={(e) => { setSelectState(e.target.value) }} className="p-2 border">
+                        <select name="states" onChange={(e) => { setSelectState(e.target.value) }} className="p-2 border">
                             <option value="">--Please Select--</option>
                             {NaijaStates.states().map((state, index) => (
                                 <option key={index} value={state}>
@@ -29,7 +29,8 @@ const CaptureCenter = () => {
                     </div>
                     <div className=" md:grid  max-w-[30rem] w-full">
                         <label className="block mb-1" htmlFor="">LGA <span className="text-red-500">*</span></label>
-                        <select onChange={(e) => { setSelectLga(e.target.value) }} className="p-2 border">
+                        <select name="lga" onChange={(e) => { setSelectLga(e.target.value) }} className="p-2 border">
+
                             <option selected value="">--Please Select--</option>
                             {selectState && NaijaStates.lgas(selectState).lgas.map(
                                 (lga, index) => (
