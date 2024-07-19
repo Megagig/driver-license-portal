@@ -41,9 +41,20 @@ export default function Login({ paragraph, linkUrl, linkName }) {
       password: loginState['password'],
       expiresInMins: 30,
     });
-
+    
     console.log(res.status);
     if (res.status === 200) {
+      const token = res.data.token;
+      const fullUserRes = await axios.get('https://dummyjson.com/auth/me', {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        }
+      });
+  
+      if (fullUserRes.status === 200) {
+        sessionStorage.setItem('user', JSON.stringify(fullUserRes.data));
+      }
+      
       const user = res.data;
       setAuth({ user });
       sessionStorage.setItem('auth', JSON.stringify({ user }));
