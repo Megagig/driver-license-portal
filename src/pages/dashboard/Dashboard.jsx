@@ -1,18 +1,13 @@
-import { FaUserAlt } from "react-icons/fa";
-import useAuth from "../../hooks/useAuth";
-import { FaUser } from "react-icons/fa";
-import Button from "../../components/utils/Button";
-import { GrCertificate } from "react-icons/gr";
-import { MdEditDocument } from "react-icons/md";
-import { IoDocuments } from "react-icons/io5";
-import { GrDocumentVerified } from "react-icons/gr";
-import { TbCapture } from "react-icons/tb";
-import { MdOutlineDriveEta } from "react-icons/md";
-import { RiCustomerService2Line } from "react-icons/ri";
 import { BsClipboard2CheckFill } from "react-icons/bs";
+import { FaUser, FaUserAlt } from "react-icons/fa";
+import { GrCertificate, GrDocumentVerified } from "react-icons/gr";
 import { HiOutlineDocumentDuplicate } from "react-icons/hi2";
-import { FaPaypal } from "react-icons/fa";
-import { Link } from "react-router-dom"
+import { IoDocuments } from "react-icons/io5";
+import { MdEditDocument, MdOutlineDriveEta } from "react-icons/md";
+import { RiCustomerService2Line } from "react-icons/ri";
+import { TbCapture } from "react-icons/tb";
+import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Dashboard = () => {
     const { auth } = useAuth()
@@ -21,6 +16,7 @@ const Dashboard = () => {
 
 
     let style
+
 
     return (
         <div className="md:px-10 xl:px-20 max-w-[100vw] overflow-hidden px-4  py-4 pb-20 ">
