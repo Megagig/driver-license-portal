@@ -2,6 +2,7 @@
 
 import NaijaStates from "naija-state-local-government";
 import React, { useEffect, useState } from 'react';
+import toast, { Toaster } from "react-hot-toast";
 import Gender from "../../utils/Gender";
 import Input from "../../utils/Input";
 import Select from "../../utils/Select";
@@ -91,12 +92,23 @@ const BasicDetailsForm = (props) => {
     event.preventDefault()
     console.log({profileDetails})
     console.log(Object.values(profileDetails))
+    let checkNullValue = Object.keys(profileDetails).map((key) => {return profileDetails[key] == undefined ? [key, null] : [key, profileDetails[key]]})
+    console.log(checkNullValue)
     const isEmpty = Object.values(profileDetails).some(x =>  (x == null || x == '' || x== undefined));
     console.log({isEmpty})
     if(isEmpty ==  false){
       //axios code to push
       props.updateBasicDetails(profileDetails)
-      props.closeModal()
+      toast.success("saved successfully")
+      setTimeout(() => {
+          props.closeModal()
+        
+      }, 1500)
+    }
+    else{
+        let key = checkNullValue.findIndex(value => value[1] == undefined)
+        console.log({key})
+        toast.error(checkNullValue[key][0]+" is required")
     }
   };
   
@@ -132,6 +144,7 @@ const BasicDetailsForm = (props) => {
     return (
         <div className='z-10 fixed backdrop-blur w-screen h-full left-0 top-0 bg-[#00000080] flex items-center justify-center'>
             <form className='relative w-10/12 md:w-3/4 lg:w-3/5 grid p-4 md:p-8 bg-white rounded-lg h-4/5 md:h-5/6 lg:h-3/4 overflow-scroll overflow-x-hidden' onSubmit={updateBasicDetails}>
+            <Toaster />  
                 <h3 className='sticky md:relative w-fit text-xl md:text-2xl lg:text-4xl text-custom-green mb-8'>Edit Basic Details</h3> 
                 <div className='grid md:grid-cols-2 gap-1 md:gap-3'>
                 <Input 
