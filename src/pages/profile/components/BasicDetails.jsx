@@ -18,7 +18,7 @@ const BasicDetails = (props) => {
 
     return (
         <>
-        <div className='flex mt-7 md:mt-16 md:p-4 relative border-4 border-custom-grey w-full'>
+        <div className='flex mt-7 md:mt-16 md:p-4 relative border-2 border-custom-grey w-full'>
         <h4 className="p-3 bg-white text-lg md:text-2xl font-medium absolute top-[-29px]">Basic Details</h4>
         <Button handleEditForm = {handleEditBasicDetails} />
         < div className='mt-5 grid md:grid-cols-2 lg:grid-cols-3 w-full'>

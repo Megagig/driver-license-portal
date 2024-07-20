@@ -48,7 +48,7 @@ const LoginDetails = () => {
 
     return (
         <>
-        <div className='flex mt-10 md:p-6 relative border-4 border-custom-grey '>
+        <div className='flex mt-10 md:p-6 relative border-2 border-custom-grey '>
             <h4 className="p-3 bg-white text-lg md:text-2xl font-medium absolute top-[-29px]">Login Details</h4>
             <Button handleEditForm={handleEditLoginDetails} />
             <div className=' mt-5 md:mt-0 flex md:flex-row flex-col w-full items-end md:items-center'>

@@ -90,6 +90,7 @@ const BasicDetailsForm = (props) => {
   const updateBasicDetails = (event) => {
     event.preventDefault()
     console.log({profileDetails})
+    console.log(Object.values(profileDetails))
     const isEmpty = Object.values(profileDetails).some(x =>  (x == null || x == '' || x== undefined));
     console.log({isEmpty})
     if(isEmpty ==  false){

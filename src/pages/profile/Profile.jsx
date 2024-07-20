@@ -1,14 +1,29 @@
 
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { redirect, useLoaderData } from "react-router-dom";
 import BasicDetails from "./components/BasicDetails";
 import InstantDriverDetails from "./components/InstantDriverDetails";
 import LoginDetails from "./components/LoginDetails";
 import ProfilePicture from "./components/ProfilePicture";
 
+export const profileLoader = async ({request}) => {
+  const user = JSON.parse(sessionStorage.getItem("user")) || false;
+  console.log({request})
+  const pathname = new URL(request.url).pathname;
+  console.log({pathname})
+  if(user){
+      return user
+  } 
+  else{
+      throw redirect(`/login?message=Please login to continue&redirectTo= ${pathname}`);
+  }
+}
+
 const Profile = () => {
 
-  let { state } = useLocation();
+  let  state  = useLoaderData();
+
+  console.log({state})
   const [profileDetails, setProfile] = useState({
       username: 'michaelw',
         password: 'michaelwpass',

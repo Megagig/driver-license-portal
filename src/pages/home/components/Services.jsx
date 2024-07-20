@@ -25,7 +25,7 @@ const Services = () => {
                     ✓  Applicant must be 18 years and above <br/>
                         ✓   Apllicant must have completed driving school
                     </p>
-                    <a className='t-4 text-white p-4 bg-[#22C55E] rounded-lg font-bold text-sm md:text-lg flex gap-1 w-fit items-center self-center md:gap-4 cursor-pointer transition-all duration-500 hover:opacity-50'>
+                    <a className='t-4 text-white p-4 bg-custom-green rounded-lg font-bold text-sm md:text-lg flex gap-1 w-fit items-center self-center md:gap-4 cursor-pointer transition-all duration-500 hover:opacity-50'>
                         Apply Now
                         <FaArrowRightLong />
                     </a>
@@ -39,7 +39,7 @@ const Services = () => {
                     ✓  Applicant must be 18 years and above<br/>
                     ✓  Apllicant must have completed driving school
                     </p>
-                    <a className='t-4 text-white p-4 bg-[#22C55E] rounded-lg font-bold text-sm md:text-lg flex gap-1 border-b w-fit items-center self-center md:gap-4 cursor-pointer transition-all duration-500 hover:opacity-50'>
+                    <a className='t-4 text-white p-4 bg-custom-green rounded-lg font-bold text-sm md:text-lg flex gap-1 border-b w-fit items-center self-center md:gap-4 cursor-pointer transition-all duration-500 hover:opacity-50'>
                         Apply Now
                         <FaArrowRightLong />
                     </a>
@@ -53,7 +53,7 @@ const Services = () => {
                         ✓   Applicant must be 18 years and above <br/>
                             ✓   Apllicant must have completed driving school                     
                         </p>
-                        <a className='t-4 text-white p-4 bg-[#22C55E] rounded-lg font-bold text-sm md:text-lg flex gap-1 border-b w-fit items-center self-center md:gap-4 cursor-pointer transition-all duration-500 hover:opacity-50'>
+                        <a className='t-4 text-white p-4 bg-custom-green rounded-lg font-bold text-sm md:text-lg flex gap-1 border-b w-fit items-center self-center md:gap-4 cursor-pointer transition-all duration-500 hover:opacity-50'>
                             Apply now
                            <FaArrowRightLong />
                         </a>
@@ -67,7 +67,7 @@ const Services = () => {
                     ✓  Applicant must be 18 years and above <br/>
                     ✓     Apllicant must have completed driving school
                     </p>                   
-                     <a className='t-4 text-white p-4 bg-[#22C55E] rounded-lg font-bold text-sm md:text-lg flex gap-1 border-b w-fit items-center self-center md:gap-4 cursor-pointer transition-all duration-500 hover:opacity-50'>
+                     <a className='t-4 text-white p-4 bg-custom-green rounded-lg font-bold text-sm md:text-lg flex gap-1 border-b w-fit items-center self-center md:gap-4 cursor-pointer transition-all duration-500 hover:opacity-50'>
                        Apply Now
                         <FaArrowRightLong />
                     </a>
@@ -82,7 +82,7 @@ const Services = () => {
                     ✓  Applicant must be 18 years and above<br/>
                     ✓  Apllicant must have completed driving school
                     </p>
-                    <a className='t-4 text-white p-4 bg-[#22C55E] rounded-lg font-bold text-sm md:text-lg flex gap-1 border-b w-fit items-center self-center md:gap-4 cursor-pointer transition-all duration-500 hover:opacity-50'>
+                    <a className='t-4 text-white p-4 bg-custom-green rounded-lg font-bold text-sm md:text-lg flex gap-1 border-b w-fit items-center self-center md:gap-4 cursor-pointer transition-all duration-500 hover:opacity-50'>
                         Apply Now
                         <FaArrowRightLong />
                     </a>
@@ -96,7 +96,7 @@ const Services = () => {
                     ✓   Applicant must be 18 years and above <br/>
                     ✓    Apllicant must have completed driving school                     
                     </p>
-                    <a className='t-4 text-white p-4 bg-[#22C55E] rounded-lg font-bold text-sm md:text-lg flex gap-1 border-b w-fit items-center self-center md:gap-4 cursor-pointer transition-all duration-500 hover:opacity-50'>
+                    <a className='t-4 text-white p-4 bg-custom-green rounded-lg font-bold text-sm md:text-lg flex gap-1 border-b w-fit items-center self-center md:gap-4 cursor-pointer transition-all duration-500 hover:opacity-50'>
                         Apply now
                             <FaArrowRightLong />
                     </a>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
+import appointmentSlip from "../../assets/appointment-slip.svg";
 const data = 
     {
         username: 'michaelw',
@@ -74,24 +75,42 @@ const data =
         ],
     }
 
+    
+export const appointmentdashboardLoader = async ({request}) => {
+    const user = JSON.parse(sessionStorage.getItem("user")) || false;
+    const pathname = new URL(request.url).pathname;
+    if(user){
+        return user
+    } 
+    else{
+        throw redirect(`/login?message=Please login to continue&redirectTo= ${pathname}`);
+    }
+}
+
 
  export const AppointmentDashboard = () => {
     const navigate = useNavigate();
-
+    
     const fetchAppointmentSlip = () => { 
         // fetch code here
         console.log("i am running");
-      navigate('/appointment',  {state:{ ...data }} );
+      navigate('/appointment');
      };
     return (
-        <section className="w-screen grid place-content-center p-6 md:p-10 xl:p-20">
-            <h3 className="text-[#22C55E] text-xl md:text-2xl lg:text-3xl font-medium text-center">Search using Reference Id</h3>
-             <label  className=" mt-3 flex bg-transparent border border-[#22C55E] rounded-full w-fit">
-                <input  placeholder="Search by application Id" className='bg-transparent text-black px-[32px] py-[20px] border-0 outline-0'/>
-                <button onClick={fetchAppointmentSlip} className="bg-[#22C55E] text-[20px]/[19.2px] font-bold text-white px-[20px] py-[8px]  rounded-full w-[190px]">Suscribe</button>
+        <section className="w-screen grid md:grid-cols-2 gap-2 md:gap-6 p-6 md:p-10 xl:p-16 xl:p-20">
+            <div className='flex flex-col gap-6 pt-15 md:justify-center'>
+                <h3 className="text-custom-green text-2xl md:text-3xl lg:text-5xl font-medium text-left">Search your appointment slip</h3>
+                <p className="text-justify mb-6 ">Securely get your and reprint your slip through this service. This quick and easy process uses secure technology to protect your information. Get started by entering your <em>appointment Id</em>, search and print to get your appointment slip.</p>
+           <label>
+            <h4 className='mb-2 text-custom-green text-xl md:text-2xl lg:text-3xl font-medium text-left'>Appointment Id</h4>
+             <label  className=" mt-3 flex flex-col md:flex-row gap-3 md:gap-0 bg-transparent md:border md:border-[#22C55E] rounded-full w-fit">
+                <input  placeholder="Search by application Id" className='bg-transparent text-black py-3 px-7 md:px-12 rounded-xl md:rounded-none md:px-[32px] md:py-[20px] border-2 border-customr-grey md:border-0 outline-0'/>
+                <button onClick={fetchAppointmentSlip} className="bg-custom-green text-[20px]/[19.2px] font-bold text-white  h-[inherit] px-7 md:px-12 py-6  rounded-full">Search</button>
             </label>
+           </label>
+            </div>
             
-            
+            <img src={appointmentSlip}  className=" md:pl-10 runded-lg max-h-[600px] max-w-[600px]  object-fit bg-cover"/>
 
 
 
