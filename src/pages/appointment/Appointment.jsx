@@ -1,15 +1,15 @@
 import React from "react";
-import { useLocation, useLoaderData } from "react-router-dom";
-import { getTomorrowsDate } from "./utils";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
-import { requireAuth } from "../../utils/auth";
+import { useLoaderData, useLocation } from "react-router-dom";
 import { getAppointment } from "../../api";
+import { requireAuth } from "../../utils/auth";
 
 export const loader = async ({request}) => {
     await requireAuth(request);
 
     return getAppointment();
 }
+
 
 
 const Appointment = () => {
@@ -20,7 +20,7 @@ const Appointment = () => {
     const printSlip = () => {
         window.print();
     };
-
+    console.log({state})
     return (
         <div className="flex flex-col items-center gap-6 py-6 px-6">
             <div className="flex justify-center items-center self-center p-1 bg-neutral-100 rounded-full shadow-md h-20 w-20">

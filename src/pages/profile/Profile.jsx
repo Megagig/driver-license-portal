@@ -1,15 +1,29 @@
 
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { redirect, useLoaderData } from "react-router-dom";
 import BasicDetails from "./components/BasicDetails";
 import InstantDriverDetails from "./components/InstantDriverDetails";
 import LoginDetails from "./components/LoginDetails";
 import ProfilePicture from "./components/ProfilePicture";
 
+export const profileLoader = async ({request}) => {
+  const user = JSON.parse(sessionStorage.getItem("user")) || false;
+  console.log({request})
+  const pathname = new URL(request.url).pathname;
+  console.log({pathname})
+  if(user){
+      return user
+  } 
+  else{
+      throw redirect(`/login?message=Please login to continue&redirectTo= ${pathname}`);
+  }
+}
+
 const Profile = () => {
 
-  let { state } = useLocation();
-  console.log('state:', state)
+  let  state  = useLoaderData();
+
+  console.log({state})
   const [profileDetails, setProfile] = useState({
       username: 'michaelw',
         password: 'michaelwpass',
@@ -17,7 +31,7 @@ const Profile = () => {
         surname: "Joe",
         middlename: "Doe",
         dob:"1992-12-27",
-        phone:"+2348111206206",
+        phone:"08111206206",
         email:"ayopelumi2014@gmail.com",
         StateofAddress: "Lagos",
         lga:"ifedayo",
@@ -35,87 +49,33 @@ const Profile = () => {
 
   console.log({profileDetails})
 
-  const editFirstName = (args) => {
-    setProfile({
-        ...profileDetails,
-        firstname:args
-    })
-  };
-  const editMiddleName = (args) => { 
-      setProfile({
-          ...profileDetails,
-          middlename:args
-      })
-  };
-  const editSurname = (args) => { 
-      setProfile({
-          ...profileDetails,
-          surname:args
-      })
-  };
-  const editEmail = (args) => {
-      setProfile({
-          ...profileDetails,
-          email:args
-      })
-    };
-  const editGender = (args) => { 
-      setProfile({
-          ...profileDetails,
-          gender:args
-      })
-  };
-  const editAddress = (args) => { 
-      setProfile({
-          ...profileDetails,
-          address:args
-      })
-  };
-  const editPhone = (args) => { 
-      setProfile({
-          ...profileDetails,
-          phone:args
-      })
-  };
-  const editDob = (args) => { 
-      setProfile({
-          ...profileDetails,
-          dob:args
-      })
-  }
-  const editState = (args) => { 
-    console.log(args)
-    setProfile({
-            ...profileDetails,
-            StateofAddress:args
-    })
-  };
-  const editLga = (args) => { 
-    setProfile({
-        ...profileDetails,
-        lga:args
-    })
-  };
   const editImage = (event) => {
-        
-    let reader = new FileReader();
-    let file = event.target.files[0];
-    console.log(event.target.files[0])
-    reader.onloadend = () => {
-
-      setProfile({
-        ...profileDetails,
-        image: reader.result,
-        file: file
-
-      })
-    };
-    reader.readAsDataURL(file);
-}
+          
+      let reader = new FileReader();
+      let file = event.target.files[0];
+      console.log(event.target.files[0])
+      reader.onloadend = () => {
+  
+        setProfile({
+          ...profileDetails,
+          image: reader.result,
+          file: file
+  
+        })
+      };
+      reader.readAsDataURL(file);
+  }
+ 
+const updateBasicDetails = (args) => {
+  setProfile({
+    ...profileDetails,
+    ...args
+  })
+};
 
   return (
-    <section className='w-screen py-7 md:py-12 xl:py-20 px-4 md:px-10 xl:px-16 bg-[#f2f2f2]'>
-        <h3 className='text-[28px]/[36px] md:text-[44px]/[56px] font-bold'>Profile Details</h3>    
+    <section className='w-screen py-7 md:py-12 xl:py-20 px-4 md:px-10 xl:px-16 bg-white'>
+        <h3 className='text-[28px]/[36px] md:text-[44px]/[56px] font-bold text-custom-green'>Profile Details</h3>    
 
         <div className="w-full">
             <ProfilePicture  
@@ -124,16 +84,7 @@ const Profile = () => {
             />
             <BasicDetails  
               state={profileDetails}
-              editAddress={editAddress}
-              editDob={editDob}
-              editEmail={editEmail}
-              editFirstName={editFirstName}
-              editGender={editGender}
-              editMiddleName={editMiddleName}
-              editPhone={editPhone}
-              editSurname={editSurname}
-              editLga={editLga}
-              editState={editState}
+              updateBasicDetails={updateBasicDetails}
             />
             <LoginDetails  state={profileDetails}/>
             <InstantDriverDetails state={profileDetails} />

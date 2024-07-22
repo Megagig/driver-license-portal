@@ -2,7 +2,7 @@ import React from 'react';
 import SingleDetail from '../utils/SingleDetail';
 const InstantDriverDetails = (props) => {
     return (
-         <div className='flex mt-10 md:p-6 relative border-4 border-custom-grey w-full'>
+         <div className='flex mt-10 md:p-6 relative border-2 border-custom-grey w-full'>
             <h4 className="p-3 bg-white text-lg md:text-3xl font-medium absolute left-0  top-[-29px]">Instant Driver Details</h4>
             <div className=' mt-5 grid md:grid-cols-2 lg:grid-cols-3 w-full'>
                 <SingleDetail
