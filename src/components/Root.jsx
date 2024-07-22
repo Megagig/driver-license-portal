@@ -9,14 +9,14 @@ const Root = () => {
   const { state } = useNavigation();
 
   return (
-    <div className='grid grid-rows-[auto_1fr_auto] min-h-screen'>
-      <header className=''>
+    <div className='grid grid-rows-[auto_1fr_auto] max-w-[100svw] overflow-hidden relative min-h-screen'>
+      <header >
         <Header />
         <NavBar />
       </header>
 
 
-      <main className=''>
+      <main>
         {
           state === 'loading' ? <Spinner /> : <Outlet />
         }

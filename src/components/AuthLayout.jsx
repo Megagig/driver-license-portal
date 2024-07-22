@@ -5,6 +5,7 @@ const AuthLayout = () => {
     const { pathname } = useLocation();
     const { auth } = useAuth() || JSON.parse(sessionStorage.getItem('auth'));
 
+
     return auth?.user ? (
         <Outlet />
     ) : (
