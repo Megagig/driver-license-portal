@@ -1,7 +1,9 @@
-import { useState } from 'react';
 import axios from 'axios';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { signupFields } from '../constants/FormFields';
-import { Link } from 'react-router-dom';
+
 import FormAction from './FormAction';
 import Input from './Input';
 
@@ -12,7 +14,7 @@ fields.forEach((field) => (fieldsState[field.id] = ''));
 
 export default function Signup({ paragraph, linkUrl, linkName }) {
   const [signupState, setSignupState] = useState(fieldsState);
-
+  const navigate = useNavigate();
   const handleChange = (e) =>
     setSignupState({ ...signupState, [e.target.id]: e.target.value });
 
@@ -22,21 +24,26 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
     createAccount();
   };
 
+
   //handle Signup API Integration here
   const createAccount = async () => {
     try {
       const response = await axios.post(
-        'https://saviorte.pythonanywhere.com/api/signup',
+        'https://saviorte.pythonanywhere.com/api/signup/',
         signupState
       );
       console.log(response.data);
       // Handle success (e.g., notify user, redirect, etc.)
+      toast.success('Signup successful! Redirecting to login...');
+      setTimeout(() => navigate('/login'), 3000);
     } catch (error) {
-      console.error(
-        'Signup error:',
-        error.response ? error.response.data : error.message
-      );
-      // Handle error (e.g., show error message)
+      // Improved error handling
+      const errorMessage =
+        error.response && error.response.data
+          ? JSON.stringify(error.response.data)
+          : 'An unknown error occurred';
+      console.error('Signup error:', errorMessage);
+      toast.error(`Signup failed: ${errorMessage}`);
     }
   };
 
@@ -59,6 +66,15 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
         ))}
         <FormAction handleSubmit={handleSubmit} text="Signup" />
       </div>
+      <p className="mt-2 text-center text-sm text-gray-600">
+        {paragraph}{' '}
+        <Link
+          to={linkUrl}
+          className="font-medium text-custom-green hover:text-green-800"
+        >
+          {linkName}
+        </Link>
+      </p>
       <p className="mt-2 text-center text-sm text-gray-600">
         {paragraph}{' '}
         <Link
