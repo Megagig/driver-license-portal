@@ -4,6 +4,7 @@ import { Hero } from "./components/Hero"
 import LicenseProcess from './components/LicenseProcess'
 import Services from './components/Services'
 
+
 const HomePage = () => {
     return (
         <div className='relative'>
@@ -12,6 +13,7 @@ const HomePage = () => {
             <Services />
             <CounterDisplay />
             {/* <Testimonials /> */}
+
         </div>
     )
 }
