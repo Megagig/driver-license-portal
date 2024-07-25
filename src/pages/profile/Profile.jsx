@@ -1,21 +1,25 @@
 
 import { useState } from "react";
 import { redirect, useLoaderData } from "react-router-dom";
+import { fetchProfile } from "./api";
 import BasicDetails from "./components/BasicDetails";
 import InstantDriverDetails from "./components/InstantDriverDetails";
 import LoginDetails from "./components/LoginDetails";
 import ProfilePicture from "./components/ProfilePicture";
 
+
+
 export const profileLoader = async ({request}) => {
   const user = JSON.parse(sessionStorage.getItem("user")) || false;
-  console.log({request})
+  const auth = JSON.parse(sessionStorage.getItem("auth"));
+  console.log({auth})
   const pathname = new URL(request.url).pathname;
   console.log({pathname})
   if(user){
-      return user
+   return fetchProfile(auth.user.token)
   } 
   else{
-      throw redirect(`/login?message=Please login to continue&redirectTo= ${pathname}`);
+      throw redirect(`/login?message=Please-login-to-continue&redirectTo= ${pathname}`);
   }
 }
 

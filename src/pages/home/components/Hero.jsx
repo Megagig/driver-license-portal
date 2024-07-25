@@ -5,6 +5,7 @@ import img1 from "../../../assets/images/img6.jpg";
 import img7 from "../../../assets/images/img7.jpg";
 import img4 from "../../../assets/images/img8.jpg";
 import img5 from "../../../assets/images/img9.jpg";
+import Slider from './Slider';
 
 export const Hero = () => {
 
@@ -34,8 +35,8 @@ export const Hero = () => {
         </div>
 
       </aside>
-      <aside className=" hidden md:flex md:flex-1 md:h-full ">
-          <img src={imgArray[index]} className='object-cover w-full h-full' alt="image" />
+      <aside className=" hidden md:flex md:flex-1 md:h-full overflow-hidden">
+          <Slider data={imgArray} />
       </aside>
 
     </section>
