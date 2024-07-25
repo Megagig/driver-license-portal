@@ -25,34 +25,34 @@ const BasicDetails = (props) => {
 
             <SingleDetail 
                 label="Surname"
-                details ={props.state.surname} />
+                details ={props.state.last_name} />
             <SingleDetail 
                 label="First Name"
-                details ={props.state.firstname} />
+                details ={props.state.first_name} />
             <SingleDetail 
                 label="Middle Name"
-                details ={props.state.middlename} />
+                details ={props.state.middle_name} />
             <SingleDetail
                 label='Email'
                 details={props.state.email} />
             <SingleDetail
                 label="Phone Number"
-                details={props.state.phone}/>
+                details={props.state.phone_number}/>
             <SingleDetail 
                 label='Date of Birth'
-                details={props.state.dob} />
+                details={props.state.date_of_birth} />
             <SingleDetail 
                 label='Gender'
                 details={props.state.gender} />
             <SingleDetail 
                 label='Home Address'
-                details={props.state.address} />
+                details={props.state.street_address} />
            <SingleDetail 
                 label='L.G.A'
-                details={props.state.lga} />
+                details={props.state.local_govt_area} />
           <SingleDetail 
                 label='State'
-                details={props.state.StateofAddress} />
+                details={props.state.state_of_residence} />
         </div>
         </div>
         {showModal?

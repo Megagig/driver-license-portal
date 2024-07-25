@@ -1,7 +1,8 @@
 
+import { User } from "lucide-react";
 import { useState } from "react";
 import { redirect, useLoaderData } from "react-router-dom";
-import { fetchProfile } from "./api";
+import { fetchProfile, updateProfile } from "./api";
 import BasicDetails from "./components/BasicDetails";
 import InstantDriverDetails from "./components/InstantDriverDetails";
 import LoginDetails from "./components/LoginDetails";
@@ -9,14 +10,16 @@ import ProfilePicture from "./components/ProfilePicture";
 
 
 
-export const profileLoader = async ({request}) => {
+export const profileLoader = ({request}) => {
   const user = JSON.parse(sessionStorage.getItem("user")) || false;
   const auth = JSON.parse(sessionStorage.getItem("auth"));
   console.log({auth})
   const pathname = new URL(request.url).pathname;
-  console.log({pathname})
+  console.log({User})
   if(user){
-   return fetchProfile(auth.user.token)
+    let response= fetchProfile(auth.user.token,pathname)
+    console.log({response})
+    return response
   } 
   else{
       throw redirect(`/login?message=Please-login-to-continue&redirectTo= ${pathname}`);
@@ -28,27 +31,7 @@ const Profile = () => {
   let  state  = useLoaderData();
 
   console.log({state})
-  const [profileDetails, setProfile] = useState({
-      username: 'michaelw',
-        password: 'michaelwpass',
-        firstname: "Michael",
-        surname: "Joe",
-        middlename: "Doe",
-        dob:"1992-12-27",
-        phone:"08111206206",
-        email:"ayopelumi2014@gmail.com",
-        StateofAddress: "Lagos",
-        lga:"ifedayo",
-        address:"berger",
-        gender: "Male",
-        licenseId:"12344AD52DC",
-        certificateNumber:"Ikj384AD34",
-        nin :"557FFR2397F93983",
-        joined : "21-12-3034",
-        lastRenewal: "21-21-2021",
-        nextRenewal: "21-21-2021",
-        image: "src/assets/images/close-up-friends-traveling-by-car.jpg"
-  })
+  const [profileDetails, setProfile] = useState({...state})
 
 
   console.log({profileDetails})
@@ -75,6 +58,7 @@ const updateBasicDetails = (args) => {
     ...profileDetails,
     ...args
   })
+  updateProfile(args)
 };
 
   return (
