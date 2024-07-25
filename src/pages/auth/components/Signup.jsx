@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 import { signupFields } from '../constants/FormFields';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import FormAction from './FormAction';
 import Input from './Input';
 
@@ -11,7 +14,7 @@ fields.forEach((field) => (fieldsState[field.id] = ''));
 
 export default function Signup({ paragraph, linkUrl, linkName }) {
   const [signupState, setSignupState] = useState(fieldsState);
-
+  const navigate = useNavigate();
   const handleChange = (e) =>
     setSignupState({ ...signupState, [e.target.id]: e.target.value });
 
@@ -22,7 +25,26 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
   };
 
   //handle Signup API Integration here
-  const createAccount = () => { };
+  const createAccount = async () => {
+    try {
+      const response = await axios.post(
+        'https://saviorte.pythonanywhere.com/api/signup/',
+        signupState
+      );
+      console.log(response.data);
+      // Handle success (e.g., notify user, redirect, etc.)
+      toast.success('Signup successful! Redirecting to login...');
+      setTimeout(() => navigate('/login'), 3000);
+    } catch (error) {
+      // Improved error handling
+      const errorMessage =
+        error.response && error.response.data
+          ? JSON.stringify(error.response.data)
+          : 'An unknown error occurred';
+      console.error('Signup error:', errorMessage);
+      toast.error(`Signup failed: ${errorMessage}`);
+    }
+  };
 
   return (
     <form className="space-y-6 p-6" onSubmit={handleSubmit}>
@@ -42,7 +64,6 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
           />
         ))}
         <FormAction handleSubmit={handleSubmit} text="Signup" />
-
       </div>
       <p className="mt-2 text-center text-sm text-gray-600">
         {paragraph}{' '}
