@@ -45,6 +45,7 @@ export default function Login({ paragraph, linkUrl, linkName }) {
           expiresInMins: 30,
         }
       );
+<<<<<<< HEAD
 
       if (res.status === 200) {
         const token = res.data.token;
@@ -65,7 +66,34 @@ export default function Login({ paragraph, linkUrl, linkName }) {
       toast.error('Login failed. Please try again.');
     }
   };
+=======
+>>>>>>> 38dd5fa (Signup and login Auth)
 
+      console.log(res.status);
+      // if (res.status === 200) {
+      //   const token = res.data.token;
+      //   const fullUserRes = await axios.get(
+      //     'https://saviorte.pythonanywhere.com/api/user/',
+      //     {
+      //       headers: {
+      //         Authorization: `Bearer ${token}`,
+      //       },
+      //     }
+      //   );
+
+      //   if (fullUserRes.status === 200) {
+      //     sessionStorage.setItem('user', JSON.stringify(fullUserRes.data));
+      //   }
+
+      //   const user = res.data;
+      //   setAuth({ user });
+      //   sessionStorage.setItem('auth', JSON.stringify({ user }));
+      //   navigate('/dashboard');
+      // }
+    } catch (error) {
+      console.error('Error during authentication:', error);
+    }
+  };
   return (
     <>
       <form className="space-y-6 px-6 py-4" onSubmit={handleSubmit}>

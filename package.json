@@ -22,7 +22,13 @@
     "react-phone-number-input": "^3.4.3",
     "react-router-dom": "^6.24.1",
     "react-spinners": "^0.14.1",
+<<<<<<< HEAD
     "react-toastify": "^10.0.5"
+=======
+    "react-toastify": "^10.0.5",
+    "swiper": "^11.1.5",
+    "tw-elements-react": "^1.0.0-alpha-end"
+>>>>>>> 38dd5fa (Signup and login Auth)
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

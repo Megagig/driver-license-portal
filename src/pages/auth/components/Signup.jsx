@@ -1,9 +1,17 @@
 
 import axios from 'axios';
 import { useState } from 'react';
+<<<<<<< HEAD
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { signupFields } from '../constants/FormFields';
+=======
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { signupFields } from '../constants/FormFields';
+import { Link } from 'react-router-dom';
+>>>>>>> 38dd5fa (Signup and login Auth)
 import FormAction from './FormAction';
 import Input from './Input';
 
