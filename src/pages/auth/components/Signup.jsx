@@ -1,9 +1,9 @@
+
 import axios from 'axios';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { signupFields } from '../constants/FormFields';
-
 import FormAction from './FormAction';
 import Input from './Input';
 
@@ -12,7 +12,7 @@ let fieldsState = {};
 
 fields.forEach((field) => (fieldsState[field.id] = ''));
 
-export default function Signup() {
+export default function Signup({ paragraph, linkUrl, linkName }) {
   const [signupState, setSignupState] = useState(fieldsState);
   const navigate = useNavigate();
   const handleChange = (e) =>
@@ -20,6 +20,7 @@ export default function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(signupState);
     createAccount();
   };
 
@@ -47,7 +48,7 @@ export default function Signup() {
   };
 
   return (
-    <form className="space-y-6 p-9" onSubmit={handleSubmit}>
+    <form className="space-y-6 p-6" onSubmit={handleSubmit}>
       <div className="">
         {fields.map((field) => (
           <Input
@@ -64,8 +65,6 @@ export default function Signup() {
           />
         ))}
         <FormAction handleSubmit={handleSubmit} text="Signup" />
-        {errorMessage && <p className="text-red-500">{errorMessage}</p>}{' '}
-        {/* Display error message if any */}
       </div>
       <p className="mt-2 text-center text-sm text-gray-600">
         {paragraph}{' '}
@@ -76,6 +75,7 @@ export default function Signup() {
           {linkName}
         </Link>
       </p>
+
       <p className="mt-2 text-center text-sm text-gray-600">
         {paragraph}{' '}
         <Link
@@ -85,6 +85,7 @@ export default function Signup() {
           {linkName}
         </Link>
       </p>
+
     </form>
   );
 }
