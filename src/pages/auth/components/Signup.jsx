@@ -1,11 +1,9 @@
+import axios from 'axios';
+import { useState } from "react";
 
-import { useEffect, useState } from "react";
-
-import { useNavigate } from "react-router-dom";
 // import { toast } from 'react-toastify';
 import { Link } from "react-router-dom";
 import Modal from "../../../components/Modal";
-import { createAccount } from "../api";
 import { signupFields } from "../constants/FormFields";
 import Input from "./Input";
 import SignUpResponse from "./SignUpResponse";
@@ -21,34 +19,37 @@ const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 fields.forEach((field) => (fieldsState[field.id] = ""));
 
 export default function Signup({ paragraph, linkUrl, linkName }) {
-    const [signupState, setSignupState] = useState(fieldsState);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
-    const [error, setError] = useState("");
-    const [registeredEmail, setRegisteredEmail] = useState("");
-    const [isEmailValid, setIsEmailValid] = useState(false);
-    const [isPasswordValid, setIsPasswordValid] = useState(false);
-    const [isPasswordMatch, setIsPasswordMatch] = useState(false);
-    const navigate = useNavigate();
-    const { username, email, password, confirm_password } = signupState;
+  const [signupState, setSignupState] = useState(fieldsState);
 
-    useEffect(() => {
-        const emailTest = EMAIL_REGEX.test(email);
-        setIsEmailValid(emailTest);
-    }, [email]);
+  const handleChange = (e) =>
+    setSignupState({ ...signupState, [e.target.id]: e.target.value });
 
-    useEffect(() => {
-        const passwordTest = PWD_REGEX.test(password);
-        setIsPasswordValid(passwordTest);
-    }, [password, confirm_password]);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(signupState);
+    createAccount();
+  };
 
-    useEffect(() => {
-        const matchTest = password === confirm_password;
-        setIsPasswordMatch(matchTest);
-    }, [password, confirm_password]);
+  //handle Signup API Integration here
+  const createAccount = async () => {
+    try {
+      const response = await axios.post(
+        'https://saviorte.pythonanywhere.com/api/signup',
+        signupState
+      );
+      console.log(response.data);
+      // Handle success (e.g., notify user, redirect, etc.)
+    } catch (error) {
+      console.error(
+        'Signup error:',
+        error.response ? error.response.data : error.message
+      );
+      // Handle error (e.g., show error message)
+    }
+  };
 
     const handleChange = (e) =>
-        setSignupState({ ...signupState, [e.target.id]: e.target.value });
+      setSignupState({ ...signupState, [e.target.id]: e.target.value });
 
     const clearForm = () => {
         setSignupState({
@@ -170,5 +171,4 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
             </Modal>
         </form>
     );
-
 }

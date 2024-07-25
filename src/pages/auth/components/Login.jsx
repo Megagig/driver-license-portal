@@ -13,6 +13,7 @@ let fieldsState = {};
 fields.forEach((field) => (fieldsState[field.id] = ""));
 
 export default function Login({ paragraph, linkUrl, linkName }) {
+export default function Login({ paragraph, linkUrl, linkName }) {
     const [loginState, setLoginState] = useState(fieldsState);
     const [error, setError] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
