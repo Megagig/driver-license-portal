@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
+import { toast } from 'react-toastify';
 import { signupFields } from '../constants/FormFields';
-
+import { Link } from 'react-router-dom';
 import FormAction from './FormAction';
 import Input from './Input';
 
@@ -11,36 +12,42 @@ let fieldsState = {};
 
 fields.forEach((field) => (fieldsState[field.id] = ''));
 
-export default function Signup() {
+export default function Signup({ paragraph, linkUrl, linkName }) {
   const [signupState, setSignupState] = useState(fieldsState);
-  const [errorMessage, setErrorMessage] = useState(''); // State to hold error message
-  const navigate = useNavigate(); // Hook for navigation
-
+  const navigate = useNavigate();
   const handleChange = (e) =>
     setSignupState({ ...signupState, [e.target.id]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(signupState);
     createAccount();
   };
 
+  //handle Signup API Integration here
   const createAccount = async () => {
     try {
       const response = await axios.post(
-        'https://saviorte.pythonanywhere.com/api/signup',
+        'https://saviorte.pythonanywhere.com/api/signup/',
         signupState
       );
-      alert('Account created successfully!'); // Notify user
-      navigate('/login'); // Redirect to login page
+      console.log(response.data);
+      // Handle success (e.g., notify user, redirect, etc.)
+      toast.success('Signup successful! Redirecting to login...');
+      setTimeout(() => navigate('/login'), 3000);
     } catch (error) {
-      const errorMsg = error.response ? error.response.data : error.message;
-      console.error('Signup error:', errorMsg);
-      setErrorMessage(errorMsg); // Set error message to display
+      // Improved error handling
+      const errorMessage =
+        error.response && error.response.data
+          ? JSON.stringify(error.response.data)
+          : 'An unknown error occurred';
+      console.error('Signup error:', errorMessage);
+      toast.error(`Signup failed: ${errorMessage}`);
     }
   };
 
   return (
-    <form className="space-y-6 p-9" onSubmit={handleSubmit}>
+    <form className="space-y-6 p-6" onSubmit={handleSubmit}>
       <div className="">
         {fields.map((field) => (
           <Input
@@ -57,9 +64,16 @@ export default function Signup() {
           />
         ))}
         <FormAction handleSubmit={handleSubmit} text="Signup" />
-        {errorMessage && <p className="text-red-500">{errorMessage}</p>}{' '}
-        {/* Display error message if any */}
       </div>
+      <p className="mt-2 text-center text-sm text-gray-600">
+        {paragraph}{' '}
+        <Link
+          to={linkUrl}
+          className="font-medium text-custom-green hover:text-green-800"
+        >
+          {linkName}
+        </Link>
+      </p>
     </form>
   );
 }
