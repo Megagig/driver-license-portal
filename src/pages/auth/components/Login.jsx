@@ -1,7 +1,5 @@
-
 import axios from 'axios';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { loginFields } from '../constants/FormFields';
 import FormAction from './FormAction';
 import FormExtra from './FormExtra';
@@ -17,8 +15,16 @@ fields.forEach((field) => (fieldsState[field.id] = ''));
 
 export default function Login({ paragraph, linkUrl, linkName }) {
   const [loginState, setLoginState] = useState(fieldsState);
-  const { auth, setAuth } = useAuth();
+  const { setAuth } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const refreshToken = localStorage.getItem('refreshToken');
+    if (token && refreshToken) {
+      setAuth({ token, refreshToken });
+    }
+  }, [setAuth]);
 
   const handleChange = (e) => {
     setLoginState({ ...loginState, [e.target.id]: e.target.value });
@@ -44,9 +50,9 @@ export default function Login({ paragraph, linkUrl, linkName }) {
         const token = res.data.token;
         const refreshToken = res.data.refresh;
 
-        // Store tokens in session storage
-        sessionStorage.setItem('token', token);
-        sessionStorage.setItem('refreshToken', refreshToken);
+        // Store tokens in local storage
+        localStorage.setItem('token', token);
+        localStorage.setItem('refreshToken', refreshToken);
 
         // Set auth state
         setAuth({ token, refreshToken });
