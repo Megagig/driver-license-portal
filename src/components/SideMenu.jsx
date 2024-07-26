@@ -3,9 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth"
 import { MdLogout } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
-import { IoSettingsOutline } from "react-icons/io5";
 import { IoIosHelpCircleOutline } from "react-icons/io";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
+import { IoDocumentTextSharp } from "react-icons/io5";
 
 
 
@@ -27,7 +27,7 @@ const SideMenu = ({ closeFunc }) => {
     };
     return (
 
-        <div className="absolute animate-[slidein_0.25s_ease-in-out] w-[18rem] z-10 shadow-[0_0_20px_rgba(0,0,0,0.1)] rounded   top-[6.25rem] right-[4.5rem]  bg-white">
+        <div className="absolute animate-[slidein_0.25s_ease-in-out] z-10 w-[18rem] shadow-[0_0_20px_rgba(0,0,0,0.1)] rounded   top-[6.25rem] right-[4.5rem]  bg-white">
             <div className="inline-block -top-2 right-10 translate-x-1/2 absolute rotate-45 bg-white h-6 w-6"></div>
             <div className="flex gap-2 px-4 pt-4 pb-3 items-center">
                 <div className="border h-14  w-fit p-1 rounded-full">
@@ -50,16 +50,17 @@ const SideMenu = ({ closeFunc }) => {
                 <li>
                     <Link to="/profile" onClick={closeFunc} className="  px-4 py-2 cursor-pointer hover:bg-green-100  rounded-lg hover:text-custom-green transition-colors flex items-center gap-2"
                     ><FaUser className="font-bold text-lg" />
-                        <span>Account Settings</span>
+                        <span>Profile</span>
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/appointment" onClick={closeFunc} className="  px-4 py-2 cursor-pointer hover:bg-green-100  rounded-lg hover:text-custom-green transition-colors flex items-center gap-2"
+                    ><IoDocumentTextSharp className="font-bold text-lg" />
+                        <span>Get Appointment Slip</span>
                     </Link>
                 </li>
 
-                <li>
-                    <Link to={"/profile"} onClick={closeFunc} className="  px-4 py-2 cursor-pointer hover:bg-green-100  rounded-lg hover:text-custom-green transition-colors flex items-center gap-2"
-                    ><IoSettingsOutline className="font-bold text-lg" />
-                        <span>Settings</span>
-                    </Link>
-                </li>
+
 
                 <li>
                     <Link to={"/support"} onClick={closeFunc} className="  px-4 py-2 cursor-pointer hover:bg-green-100  rounded-lg hover:text-custom-green transition-colors flex items-center gap-2"

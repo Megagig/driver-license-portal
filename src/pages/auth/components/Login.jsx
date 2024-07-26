@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { loginFields } from '../constants/FormFields';
@@ -5,9 +6,11 @@ import FormAction from './FormAction';
 import FormExtra from './FormExtra';
 import Input from './Input';
 import { Link } from 'react-router-dom';
+
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import { toast } from 'react-hot-toast';
+
 
 const fields = loginFields;
 let fieldsState = {};
@@ -15,6 +18,7 @@ fields.forEach((field) => (fieldsState[field.id] = ''));
 
 export default function Login({ paragraph, linkUrl, linkName }) {
   const [loginState, setLoginState] = useState(fieldsState);
+
   const { setAuth } = useAuth();
   const navigate = useNavigate();
 
@@ -26,6 +30,7 @@ export default function Login({ paragraph, linkUrl, linkName }) {
     }
   }, [setAuth]);
 
+
   const handleChange = (e) => {
     setLoginState({ ...loginState, [e.target.id]: e.target.value });
   };
@@ -34,6 +39,8 @@ export default function Login({ paragraph, linkUrl, linkName }) {
     e.preventDefault();
     authenticateUser();
   };
+
+
 
   const authenticateUser = async () => {
     try {
@@ -45,6 +52,7 @@ export default function Login({ paragraph, linkUrl, linkName }) {
           expiresInMins: 30,
         }
       );
+
 
       if (res.status === 200) {
         const token = res.data.token;
@@ -65,6 +73,7 @@ export default function Login({ paragraph, linkUrl, linkName }) {
       toast.error('Login failed. Please try again.');
     }
   };
+
 
   return (
     <>

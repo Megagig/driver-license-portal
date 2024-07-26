@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { hasNoEmptyValue } from "../utils";
+import { hasEmptyValue } from "../utils";
 
 const BiodataForm = ({
     formData,
@@ -11,6 +11,24 @@ const BiodataForm = ({
     applicationType,
 }) => {
     const [errorMessage, setErrorMessage] = useState("");
+    const isInvalid = hasEmptyValue(formData);
+
+    console.log(formData)
+
+    const onImageChange = (e) => {
+        if (e.target.files && e.target.files[0]) {
+            let reader = new FileReader();
+            const file = e.target.files[0];
+            reader.onloadend = () => {
+                setBiodataForm(prev => ({
+                    ...prev,
+                    passport_photo: reader.result,
+                    file
+                }));
+            };
+            reader.readAsDataURL(file);
+        }
+    }
 
     const submit = (e) => {
         e.preventDefault();
@@ -19,10 +37,10 @@ const BiodataForm = ({
 
         // console.log(formData);
 
-        // if (!hasNoEmptyValue(formData)) {
-        //     setErrorMessage("All fields are required.");
-        //     return;
-        // }
+        if (hasEmptyValue(formData)) {
+            setErrorMessage("All fields are required.");
+            return;
+        }
 
         setIsSubmitted(true);
         setStep(step + 1);
@@ -42,7 +60,7 @@ const BiodataForm = ({
                         {/* First Name */}
                         <div className="">
                             <label
-                                htmlFor="firstName"
+                                htmlFor="first_name"
                                 className="mb-[2px] block text-base font-medium text-neutral-700"
                             >
                                 First Name{" "}
@@ -50,9 +68,9 @@ const BiodataForm = ({
                             </label>
                             <input
                                 type="text"
-                                name="firstName"
-                                id="firstName"
-                                value={formData.firstName}
+                                name="first_name"
+                                id="first_name"
+                                value={formData.first_name}
                                 onChange={(e) =>
                                     handleChange(e, setBiodataForm)
                                 }
@@ -65,7 +83,7 @@ const BiodataForm = ({
                         {/* Last Name */}
                         <div className="">
                             <label
-                                htmlFor="lastName"
+                                htmlFor="last_name"
                                 className="mb-[2px] block text-base font-medium text-neutral-700"
                             >
                                 Last Name{" "}
@@ -73,9 +91,9 @@ const BiodataForm = ({
                             </label>
                             <input
                                 type="text"
-                                name="lastName"
-                                id="lastName"
-                                value={formData.lastName}
+                                name="last_name"
+                                id="last_name"
+                                value={formData.last_name}
                                 onChange={(e) =>
                                     handleChange(e, setBiodataForm)
                                 }
@@ -90,16 +108,16 @@ const BiodataForm = ({
                         {/* Middle Name */}
                         <div className="">
                             <label
-                                htmlFor="middleName"
+                                htmlFor="middle_name"
                                 className="mb-[2px] block text-base font-medium text-neutral-700"
                             >
                                 Middle Name
                             </label>
                             <input
                                 type="text"
-                                name="middleName"
-                                id="middleName"
-                                value={formData.middleName}
+                                name="middle_name"
+                                id="middle_name"
+                                value={formData.middle_name}
                                 onChange={(e) =>
                                     handleChange(e, setBiodataForm)
                                 }
@@ -134,7 +152,7 @@ const BiodataForm = ({
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
                         <div className="">
                             <label
-                                htmlFor="dateOfBirth"
+                                htmlFor="date_of_birth"
                                 className="mb-[2px] block text-base font-medium text-neutral-700"
                             >
                                 Date of Birth{" "}
@@ -142,9 +160,9 @@ const BiodataForm = ({
                             </label>
                             <input
                                 type="date"
-                                name="dateOfBirth"
-                                id="dateOfBirth"
-                                value={formData.dateOfBirth}
+                                name="date_of_birth"
+                                id="date_of_birth"
+                                value={formData.date_of_birth}
                                 onChange={(e) =>
                                     handleChange(e, setBiodataForm)
                                 }
@@ -156,7 +174,7 @@ const BiodataForm = ({
 
                         <div className="">
                             <label
-                                htmlFor="motherMaidenName"
+                                htmlFor="mothers_maiden_name"
                                 className="mb-[2px] block text-base font-medium text-neutral-700"
                             >
                                 Mother's Maiden Name{" "}
@@ -164,9 +182,9 @@ const BiodataForm = ({
                             </label>
                             <input
                                 type="text"
-                                name="motherMaidenName"
-                                id="motherMaidenName"
-                                value={formData.motherMaidenName}
+                                name="mothers_maiden_name"
+                                id="mothers_maiden_name"
+                                value={formData.mothers_maiden_name}
                                 onChange={(e) =>
                                     handleChange(e, setBiodataForm)
                                 }
@@ -203,16 +221,16 @@ const BiodataForm = ({
                         {/* Driving School Certificate Number */}
                         <div className="">
                             <label
-                                htmlFor="drivingCertificateNumber"
+                                htmlFor="driving_school_certificate_number"
                                 className="mb-[2px] block text-base font-medium text-neutral-700"
                             >
                                 Driving School Certificate Number
                             </label>
                             <input
                                 type="text"
-                                name="drivingCertificateNumber"
-                                id="drivingCertificateNumber"
-                                value={formData.drivingCertificateNumber}
+                                name="driving_school_certificate_number"
+                                id="driving_school_certificate_number"
+                                value={formData.driving_school_certificate_number}
                                 onChange={(e) =>
                                     handleChange(e, setBiodataForm)
                                 }
@@ -226,7 +244,7 @@ const BiodataForm = ({
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
                         <div className="">
                             <label
-                                htmlFor="passportPhoto"
+                                htmlFor="passport_photo"
                                 className="mb-[2px] block text-base font-medium text-neutral-700"
                             >
                                 Passport Photo{" "}
@@ -234,19 +252,17 @@ const BiodataForm = ({
                             </label>
                             <input
                                 type="file"
-                                name="passportPhoto"
-                                id="passportPhoto"
+                                name="passport_photo"
+                                id="passport_photo"
                                 // value={formData.passportPhoto}
-                                onChange={(e) =>
-                                    handleChange(e, setBiodataForm)
-                                }
+                                onChange={onImageChange}
                                 placeholder="Passport Photo"
                                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                 required
                             />
                         </div>
 
-                        {applicationType === "re-issue" && (
+                        {/* {applicationType === "re-issue" && (
                             <div className="">
                                 <label
                                     htmlFor="legalReportFile"
@@ -268,14 +284,15 @@ const BiodataForm = ({
                                     required
                                 />
                             </div>
-                        )}
+                        )} */}
                     </div>
                 </div>
 
                 <div className="flex justify-end mt-4">
                     <button
-                        className="bg-custom-green hover:bg-green-600 px-4 py-2 text-white rounded-lg mt-4"
+                        className="bg-custom-green hover:bg-green-600 px-4 py-2 text-white rounded-lg mt-4 disabled:opacity-70 disabled:cursor-not-allowed"
                         onClick={submit}
+                        disabled={isInvalid}
                     >
                         Continue
                     </button>

@@ -1,28 +1,38 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
-import { getTomorrowsDate } from "./utils";
 import { IoCheckmarkDoneCircle } from "react-icons/io5";
+import { useLoaderData, useLocation } from "react-router-dom";
+import { getAppointment } from "../../api";
+import { requireAuth } from "../../utils/auth";
+
+export const loader = async ({request}) => {
+    await requireAuth(request);
+
+    return getAppointment();
+}
+
+
 
 const Appointment = () => {
     const { state } = useLocation();
-    const { biodata, contactData } = state?.responseData;
+    // const { biodata, contactData } = state?.responseData;
+    const appointmentData = useLoaderData();
 
     const printSlip = () => {
         window.print();
     };
-
+    console.log({state})
     return (
-        <div className="flex flex-col items-center gap-6 py-10">
+        <div className="flex flex-col items-center gap-6 py-6 px-6">
             <div className="flex justify-center items-center self-center p-1 bg-neutral-100 rounded-full shadow-md h-20 w-20">
                 <div className="flex justify-center items-center p-1 bg-neutral-200 rounded-full h-16 w-16">
                     <IoCheckmarkDoneCircle className="text-5xl text-green-700" />
                 </div>
             </div>
 
-            <h1 className="text-2xl font-bold">Appointment Scheduled</h1>
+            <h1 className="text-2xl font-bold text-center">Appointment Scheduled</h1>
 
-            <div className="flex flex-col gap-4 w-[500px] border p-6">
-                <h3 className="text-xl font-medium">Personal Information</h3>
+            <div className="flex flex-col gap-4 w-full md:w-[576px] border p-6">
+                <h3 className="text-xl font-semibold pb-2 border-b">Personal Information</h3>
 
                 <div className="flex justify-between gap-10">
                     <label
@@ -32,7 +42,7 @@ const Appointment = () => {
                         Full Name:
                     </label>
                     <p className="font-bold text-grey" id="fullName">
-                        {`${biodata.firstName} ${biodata.middleName} ${biodata.lastName}`}
+                        {`${appointmentData.first_name} ${appointmentData.middle_name} ${appointmentData.last_name}`}
                     </p>
                 </div>
 
@@ -44,7 +54,7 @@ const Appointment = () => {
                         Email:
                     </label>
                     <p className="font-bold text-grey" id="email">
-                        {contactData.email}
+                        {appointmentData.email}
                     </p>
                 </div>
 
@@ -56,7 +66,7 @@ const Appointment = () => {
                         Phone Number:
                     </label>
                     <p className="font-bold text-grey" id="phone">
-                        {contactData.phone}
+                        {appointmentData.phone_number}
                     </p>
                 </div>
 
@@ -68,7 +78,7 @@ const Appointment = () => {
                         NIN:
                     </label>
                     <p className="font-bold text-grey" id="nin">
-                        {biodata.nin}
+                        {appointmentData.nin}
                     </p>
                 </div>
 
@@ -80,7 +90,7 @@ const Appointment = () => {
                         State of Residence:
                     </label>
                     <p className="font-bold text-grey" id="state">
-                        {contactData.state}
+                        {appointmentData.state_of_residence}
                     </p>
                 </div>
 
@@ -92,13 +102,13 @@ const Appointment = () => {
                         LGA:
                     </label>
                     <p className="font-bold text-grey" id="lga">
-                        {contactData.lga}
+                        {appointmentData.local_govt_area}
                     </p>
                 </div>
             </div>
 
-            <div className="flex flex-col gap-4 w-[500px] border p-6">
-                <h3 className="text-xl font-medium">Appointment Information</h3>
+            <div className="flex flex-col gap-4 w-full md:w-[576px] border p-6">
+                <h3 className="text-xl font-semibold pb-2 border-b">Appointment Information</h3>
 
                 <div className="flex justify-between gap-10">
                     <label
@@ -108,7 +118,7 @@ const Appointment = () => {
                         Application ID:
                     </label>
                     <p className="font-bold text-grey" id="fullName">
-                        {`QWSERT-12345-12GH90`}
+                        {appointmentData.application_id}
                     </p>
                 </div>
 
@@ -120,7 +130,7 @@ const Appointment = () => {
                         Capture Center:
                     </label>
                     <p className="font-bold text-grey" id="capture-center">
-                        {`Beside FO filling station, Unilag Premise, Lagos Mainland, Lagos.`}
+                        {appointmentData.capture_center}
                     </p>
                 </div>
 
@@ -132,7 +142,7 @@ const Appointment = () => {
                         Date:
                     </label>
                     <p className="font-bold text-grey" id="appointment-date">
-                        {getTomorrowsDate()}
+                        {appointmentData.appointment_date}
                     </p>
                 </div>
 
@@ -144,7 +154,7 @@ const Appointment = () => {
                         Time:
                     </label>
                     <p className="font-bold text-grey" id="phone">
-                        {`9:00 AM - 12 NOON`}
+                        {appointmentData.appointment_time}
                     </p>
                 </div>
             </div>

@@ -16,7 +16,7 @@ const Header = () => {
 
 
     return (
-        <header className="px-4 py-3 hidden md:px-20 md:flex   md:flex-row justify-between Md:pt-6 md:pb-4 border-b">
+        <header className="px-4 py-3 hidden md:px-10 xl:px-20 md:flex  md:flex-row justify-between Md:pt-6 md:pb-4 border-b">
             <div className="flex items-center">
                 <div className="pr-3">
                     <img className="h-20" src={coatofarm} alt="" />

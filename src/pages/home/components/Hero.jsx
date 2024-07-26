@@ -12,7 +12,7 @@ export const Hero = () => {
   const [index, setIndex] = useState(0)
   useEffect(() => {
     let interval=  setInterval(() => {
-      index ==2 ? setIndex(0) : setIndex(index+1);
+      index ==4 ? setIndex(0) : setIndex(index+1);
     }, 10000)
     return () => {
       clearInterval(interval)
@@ -29,7 +29,7 @@ export const Hero = () => {
           Get your Driver license done anywhere in the world <em className="text-[#22C55E] ">in an instant</em>
         </span>
         <div className="flex mt-8 items-center gap-7">
-        <button className=" bg-[#22C55E] text-[18px]/[19.2px] text-white px-8 py-4 font-medium rounded-full min-w-36">Get Started</button>
+        <button className=" bg-custom-green text-[18px]/[19.2px] text-white px-8 py-4 font-medium rounded-full min-w-36 transition-all duration-500 hover:opacity-50">Get Started</button>
 
         </div>
 
