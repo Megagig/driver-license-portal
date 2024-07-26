@@ -1,6 +1,6 @@
 import React from "react";
 import { MdClose, MdMenu } from "react-icons/md";
-import logo from "../assets/images/dannon-logo2.png";
+import logo from "../assets/Logo.svg";
 import coatOfArm from "../assets/coatOfArm.png";
 
 const MobileHeader = ({ toggleDrawer, isMenuOpen }) => {
@@ -15,7 +15,7 @@ const MobileHeader = ({ toggleDrawer, isMenuOpen }) => {
                 <img
                     src={logo}
                     alt="Dannon Group Logo"
-                    className="w-40 h-auto pl-3"
+                    className="w-40 h-10 pl-3"
                 />
             </div>
 

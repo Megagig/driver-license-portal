@@ -1,55 +1,49 @@
 import { FaUserAlt } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
-
+import { FaUser } from "react-icons/fa";
 import Button from "../../components/utils/Button";
+import { GrCertificate } from "react-icons/gr";
+import { MdEditDocument } from "react-icons/md";
+import { IoDocuments } from "react-icons/io5";
+import { GrDocumentVerified } from "react-icons/gr";
+import { TbCapture } from "react-icons/tb";
+import { MdOutlineDriveEta } from "react-icons/md";
+import { RiCustomerService2Line } from "react-icons/ri";
+import { BsClipboard2CheckFill } from "react-icons/bs";
+import { HiOutlineDocumentDuplicate } from "react-icons/hi2";
+import { FaPaypal } from "react-icons/fa";
+import { Link } from "react-router-dom"
 
 const Dashboard = () => {
     const { user } = useAuth()
 
 
+    let style
 
     return (
-        <div className="md:px-10 lg:px-20 max-w-[100vw] overflow-hidden px-4  py-4 pb-20 ">
+        <div className="md:px-10 xl:px-20 max-w-[100vw] overflow-hidden px-4  py-4 pb-20 ">
 
             <div >
                 <div className=" flex md:py-4 gap-3 items-center">
                     <div className="w-fit border h-fit p-1 rounded-full ">
                         {
-                            !user.image ? <FaUserAlt className="text-4xl" /> : <img className="h-16 md:h-20 rounded-full" src={user.image} alt="" />
+                            !user.image ? <FaUserAlt className="text-3xl" /> : <img className="h-16 rounded-full" src={user.image} alt="" />
                         }
 
                     </div>
                     <div>
-                        <h1 className="text-2xl md:text-3xl">Hello <span className="text-custom-green font-bold">{user.username}</span> </h1>
-                        <h1 className="text-xl">Welcome Back!</h1>
+                        <h1 className="text-2xl md:text-2xl">Hello <span className="text-custom-green font-bold">{user.username}</span> </h1>
+                        <p>Welcome Back!</p>
 
                     </div>
                 </div>
 
-                {/* <div className="flex gap-3">
-                    <div className="grid">
-                        <div className="inline-block bg-custom-green h-10 w-40">
-                            
-                        </div>
-                        <div className="inline-block bg-green-100 h-20 w-40">
-
-                        </div>
-                    </div>
-                    <div className="grid">
-                        <div className="inline-block bg-custom-green h-10 w-40">
-
-                        </div>
-                        <div className="inline-block bg-green-100 h-20 w-40">
-
-                        </div>
-                    </div>
-                </div> */}
 
 
 
             </div>
 
-            <div className=" md:grid mt-4 md:grid-cols-2 md:gap-10 gap-4 items-start ">
+            {/* <div className=" md:grid mt-4 md:grid-cols-2 md:gap-10 gap-4 items-start ">
 
 
                 <div className="border h-fit rounded-lg  p-4">
@@ -86,8 +80,72 @@ const Dashboard = () => {
 
 
                 </div>
+            </div> */}
+
+
+            <div className="grid w-full my-10 gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3">
+                <Link to={"/profile"} className="bg-green-100  transition-colors duration-300  rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
+                    <FaUser className="text-6xl" />
+                    <h3 className=" font-bold">Profile</h3>
+                </Link>
+
+
+                <Link to={"/application"} className="bg-white rounded-lg grid gap-2  shadow-[0_0_10px_rgba(0,0,0,0.1)] place-items-center place-content-center p-4 h-[10rem] text-center">
+                    <GrCertificate className="text-6xl" />
+                    <h3 className=" font-bold">New Application</h3>
+                </Link>
+
+
+                <Link to={"/application"} className="  shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center md:bg-green-100 md:text-custom-green md:shadow-none">
+                    <MdEditDocument className="text-6xl" />
+                    <h3 className=" font-bold">Edit Application</h3>
+                </Link>
+
+
+                <Link to={"/renewal"} className="bg-green-100 text-custom-green md:shadow-[0_0_10px_rgba(0,0,0,0.1)] md:bg-white md:text-black rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
+                    <IoDocuments className="text-6xl" />
+                    <h3 className=" font-bold">Renewal</h3>
+                </Link>
+
+                <Link to={"/reissue"} className="lg:bg-white lg:text-black md:shadow-none lg:shadow-[0_0_10px_rgba(0,0,0,0.1)] bg-green-100 rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
+                    <HiOutlineDocumentDuplicate className="text-6xl" />
+                    <h3 className=" font-bold">Reissue</h3>
+                </Link>
+
+
+                <Link to={"/verify-license"} className=" lg:bg-green-100 lg:text-custom-green lg:shadow-none shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
+                    <GrDocumentVerified className="text-6xl" />
+                    <h3 className=" font-bold">License Verification</h3>
+                </Link>
+
+
+                <Link to={"/appointment"} className="md:bg-green-100  shadow-[0_0_10px_rgba(0,0,0,0.1)] md:shadow-none rounded-lg grid gap-2 place-items-center place-content-center md:text-custom-green lg:bg-white lg:text-black lg:shadow-[0_0_10px_rgba(0,0,0,0.1)] p-4 h-[10rem] text-center">
+                    <BsClipboard2CheckFill className="text-6xl" />
+                    <h3 className=" font-bold">Appointment Slip</h3>
+
+                </Link>
+                <Link to={"/capture-center"} className=" bg-green-100 text-custom-green md:shadow-[0_0_10px_rgba(0,0,0,0.1)] md:bg-white md:text-black rounded-lg grid gap-2 place-items-center place-content-center lg:shadow-none lg:bg-green-100 lg:text-custom-green p-4 h-[10rem] text-center">
+                    <TbCapture className="text-6xl" />
+                    <h3 className=" font-bold">Capture Centers</h3>
+
+                </Link>
+                <Link to={"/driving-schools"} className="bg-green-100 rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
+                    <MdOutlineDriveEta className="text-6xl" />
+                    <h3 className=" font-bold">Driving Schools</h3>
+
+                </Link>
+                <Link to={"/support"} className="shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
+                    <RiCustomerService2Line className="text-6xl" />
+                    <h3 className=" font-bold">Support</h3>
+
+                </Link>
+                <Link className="shadow-[0_0_10px_rgba(0,0,0,0.1)] md:bg-green-100 md:text-custom-green md:shadow-none rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
+                    <FaPaypal className="text-6xl" />
+                    <h3 className=" font-bold">Payments</h3>
+
+                </Link>
             </div>
-            <div className="mt-8">
+            {/* <div className="mt-8">
                 <h1 className="font-bold text-2xl mb-6">Transaction History</h1>
                 <div className="max-w-[100vw] overflow-x-hidden">
                     <table className="w-full ">
@@ -137,7 +195,7 @@ const Dashboard = () => {
                 </div>
 
 
-            </div>
+            </div> */}
         </div>
     )
 }
