@@ -1,6 +1,9 @@
 import { FaUserAlt } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
-import { FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";import { requireAuth } from "../../utils/auth";
+import { getProfile } from "../../api";
+import { useLoaderData } from "react-router-dom";
+
 import Button from "../../components/utils/Button";
 import { GrCertificate } from "react-icons/gr";
 import { MdEditDocument } from "react-icons/md";
@@ -13,6 +16,16 @@ import { BsClipboard2CheckFill } from "react-icons/bs";
 import { HiOutlineDocumentDuplicate } from "react-icons/hi2";
 import { FaPaypal } from "react-icons/fa";
 import { Link } from "react-router-dom"
+
+export const dashboardLoader = async ({ request }) => {
+    await requireAuth(request);
+
+    const profile = await getProfile();
+
+    console.log(profile);
+
+    return profile;
+};
 
 const Dashboard = () => {
     const { auth } = useAuth()
@@ -50,37 +63,96 @@ const Dashboard = () => {
 
                 <div className="border h-fit rounded-lg  p-4">
                     <div className="flex items-center justify-between mb-4">
-                        <h1 className="text-xl font-semibold">Drivers License Details</h1>
-
+                        <h1 className="text-xl font-semibold">
+                            Drivers License Details
+                        </h1>
                     </div>
 
                     <div className="border grid  gap-2 p-4 rounded-xl">
-                        <p> <span className="font-bold text-custom-green">License No:</span> <span >{user.bank.iban}</span></p>
-                        <p> <span className="font-bold text-custom-green" >License Class:</span> <span >{user.bloodGroup}</span></p>
-                        <p> <span className="font-bold text-custom-green">Country of Issue:</span> <span >{user.address.country}</span></p>
-                        <p> <span className="font-bold text-custom-green">Date of Issue: </span><span >22-06-2023</span></p>
-                        <p> <span className="font-bold text-custom-green">Date of Expiration:</span> <span >22-06-2025</span></p>
-
+                        <p>
+                            {" "}
+                            <span className="font-bold text-custom-green">
+                                License No:
+                            </span>{" "}
+                            <span className=" md:text-xl">IDL123456</span>
+                        </p>
+                        <p>
+                            {" "}
+                            <span className="font-bold text-custom-green">
+                                License Class:
+                            </span>{" "}
+                            <span className=" md:text-xl">A</span>
+                        </p>
+                        <p>
+                            {" "}
+                            <span className="font-bold text-custom-green">
+                                Country of Issue:
+                            </span>{" "}
+                            <span className=" md:text-xl">Nigeria</span>
+                        </p>
+                        <p>
+                            {" "}
+                            <span className="font-bold text-custom-green">
+                                Date of Issue:{" "}
+                            </span>
+                            <span className=" md:text-xl">22-06-2023</span>
+                        </p>
+                        <p>
+                            {" "}
+                            <span className="font-bold text-custom-green">
+                                Date of Expiration:
+                            </span>{" "}
+                            <span className=" md:text-xl">22-06-2025</span>
+                        </p>
                     </div>
                 </div>
 
                 <div className="border mt-4 md:mt-0 h-fit rounded-lg  p-4">
                     <div className="flex items-center justify-between mb-4">
-                        <h1 className="text-xl font-semibold"> Drivers Information</h1>
-
-
-
-
+                        <h1 className="text-xl font-semibold">
+                            {" "}
+                            Drivers Information
+                        </h1>
                     </div>
                     <div className="border grid truncate overflow-clip gap-2 p-4 text-wrap rounded-xl">
-                        <p> <span className="font-bold text-custom-green">First Name:</span> <span >{user.firstName}</span></p>
-                        <p> <span className="font-bold text-custom-green" >Last Name:</span> <span>{user.email}</span></p>
-                        <p> <span className="font-bold text-custom-green">Sex: </span><span >{user.gender}</span></p>
-                        <p> <span className="font-bold text-custom-green">Phone No:</span> <span >{user.phone}</span></p>
-
+                        <p>
+                            {" "}
+                            <span className="font-bold text-custom-green">
+                                First Name:
+                            </span>{" "}
+                            <span className=" md:text-xl">
+                                {user.firstName}
+                            </span>
+                        </p>
+                        <p>
+                            {" "}
+                            <span className="font-bold text-custom-green">
+                                Last Name:
+                            </span>{" "}
+                            <span className=" md:text-xl">{user.lastName}</span>
+                        </p>
+                        <p>
+                            {" "}
+                            <span className="font-bold text-custom-green">
+                                Email:
+                            </span>{" "}
+                            <span className="  md:text-xl ">{user.email}</span>
+                        </p>
+                        <p>
+                            {" "}
+                            <span className="font-bold text-custom-green">
+                                Sex:{" "}
+                            </span>
+                            <span className=" md:text-xl">{user.gender}</span>
+                        </p>
+                        <p>
+                            {" "}
+                            <span className="font-bold text-custom-green">
+                                Phone No:
+                            </span>{" "}
+                            <span className=" md:text-xl">+234900000000</span>
+                        </p>
                     </div>
-
-
                 </div>
             </div> */}
 
@@ -151,9 +223,11 @@ const Dashboard = () => {
                 <h1 className="font-bold text-2xl mb-6">Transaction History</h1>
                 <div className="max-w-[100vw] overflow-x-hidden">
                     <table className="w-full ">
-                        <tr className="bg-custom-green h-10 border-collapse text-white" >
-                            <th className="p-2 w-16" >S/N</th>
-                            <th className="p-2 border-x">Transaction Applied</th>
+                        <tr className="bg-custom-green h-10 border-collapse text-white">
+                            <th className="p-2 w-16">S/N</th>
+                            <th className="p-2 border-x">
+                                Transaction Applied
+                            </th>
                             <th className="p-2  border-x">Reference No</th>
                             <th className="p-2 ">Status</th>
                         </tr>
@@ -184,22 +258,16 @@ const Dashboard = () => {
                             <td className="p-2 border-x">12345</td>
                             <td className="p-2">Success</td>
                         </tr>
-
-
                     </table>
                 </div>
                 <div className="mt-10 grid place-content-end">
-                    <Button
-                        btnLink={"/profile"}
-                    >
-                        View Transactions
-                    </Button>
+                    <Button btnLink={"/profile"}>View Transactions</Button>
                 </div>
 
 
             </div> */}
         </div>
-    )
-}
+    );
+};
 
-export default Dashboard
+export default Dashboard;
