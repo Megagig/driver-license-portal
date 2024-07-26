@@ -1,4 +1,4 @@
-import logo from "../assets/images/dannon-logo2.png"
+import logo from "../assets/Logo.svg"
 import coatofarm from "../assets/coatOfArm.png"
 // import arrowRight from "../assets/arrowRight.svg"
 // import search from "../assets/search.svg"
@@ -24,7 +24,7 @@ const Header = () => {
 
 
                 <div className="border-l pl-3 grid place-content-center border-green-700">
-                    <img src={logo} alt="" />
+                    <img className="h-14" src={logo} alt="" />
                 </div>
 
             </div>

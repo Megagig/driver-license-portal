@@ -22,76 +22,70 @@ import Support from "../pages/support/Support";
 import Verify from "../pages/verification/Verify";
 
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Root />,
-    children: [
-      {
-          index: true,
-          element: <HomePage />,
-      },
-      {
-          path: "faq",
-          element: <Faq />,
-      },
-      {
-          path: "support",
-          element: <Support />,
-      },
-      {
-          path: "login",
-          element: <LoginPage />,
-      },
-      {
-          path: "signup",
-          element: <SignupPage />,
-      },
-      {
-          path: "verify-license",
-          element: <Verify />
-      },
-      {
-          path: "capture-centers",
-          element: <CaptureCenter />,
-      },
-      {
-        path: 'driving-schools',
-        element: <DrivingSchool />,
-      },
-      {
-        element: <AuthLayout />,
+    {
+        path: '/',
+        element: <Root />,
         children: [
             {
-                path: "dashboard",
-                element: <Dashboard />,
+                index: true,
+                element: <HomePage />,
             },
             {
-                path: "profile",
-                element: <Profile />,
-                loader: profileLoader
+                path: "faq",
+                element: <Faq />,
             },
             {
-                path: "application",
-                element: <ApplicationHome />,
+                path: "support",
+                element: <Support />,
             },
             {
-                path: "application/form",
-                element: <ApplicationForm />,
+                path: "login",
+                element: <LoginPage />,
             },
             {
-                path: "appointment",
-                element: <Appointment />,
-                loader: appointmentLoader
+                path: "signup",
+                element: <SignupPage />,
             },
             {
-                path: "get-appointment-slip",
-                element: <AppointmentDashboard />,
-                loader: appointmentdashboardLoader
+                path: "verify-license",
+                element: <Verify />
             },
-        ]
-      },
-    ],
-  },
+            {
+                path: "capture-centers",
+                element: <CaptureCenter />,
+            },
+            {
+                path: 'driving-schools',
+                element: <DrivingSchool />,
+            },
+            {
+                element: <AuthLayout />,
+                children: [
+                    {
+                        path: "dashboard",
+                        element: <Dashboard />,
+                    },
+                    {
+                        path: "profile",
+                        element: <Profile />,
+                    },
+                    {
+                        path: "application",
+                        element: <ApplicationHome />,
+                    },
+                    {
+                        path: "application/form",
+                        element: <ApplicationForm />,
+                    },
+                    {
+                        path: "appointment",
+                        element: <Appointment />,
+                        loader: appointmentLoader
+                    },
+                ]
+            },
+        ],
+    },
 ]);
 
 const Router = () => {

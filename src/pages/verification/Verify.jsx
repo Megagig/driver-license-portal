@@ -1,22 +1,22 @@
 import StepBox from "./components/StepBox"
 import handcard from "../../assets/hand-card.webp"
-import { useRef, useState } from "react";
-
+import { useEffect, useRef, useState } from "react";
 import VerificationFailed from "./components/VerificationFailed"
 import VerificationSuccess from "./components/VerificationSuccess"
 import Button from "../../components/utils/Button";
-
+import axios from 'axios';
 
 
 const Verify = () => {
     window.scrollTo(0, 0)
     const IDinput = useRef()
-
     const [Popup, SetPopup] = useState(false)
-    const [Message, SetMessage] = useState()
+    const [Message, SetMessage] = useState("")
+    const [value, setValue] = useState("")
+    const [errMsg, setErrMsg] = useState("")
 
 
-    let dummyId = "IDL1234567890"
+
 
     const closePopup = () => {
         SetPopup(false)
@@ -25,28 +25,66 @@ const Verify = () => {
         console.log(Popup)
     }
 
-    const verifyID = () => {
-        console.log(IDinput.current.value)
-        SetPopup(true)
+    useEffect(() => {
+        setErrMsg("")
+    }, [value])
 
-        if (!Popup) {
-            document.querySelector("body").classList.add("h-screen")
-            document.querySelector("body").classList.add("overflow-hidden")
 
-            if (IDinput.current.value === dummyId) {
-                SetMessage(
-                    <VerificationSuccess
-                        BtnFunction={closePopup}
-                    />
-                )
-            } else {
-                SetMessage(
-                    <VerificationFailed
-                        BtnFunction={closePopup}
-                    />
-                )
+    const VerifyLicense = async () => {
+
+
+        if (value) {
+            try {
+                const response = await axios.get(`https://saviorte.pythonanywhere.com/api/licenses/${value}`,)
+                const data = await response.data
+                console.log(data)
+
+                if (response.status === 200) {
+                    SetPopup(true)
+                    SetMessage(
+                        <VerificationSuccess
+                            BtnFunction={closePopup}
+                            details={data.details}
+                            licenseID={data.licenseId}
+                            expires={data.expiry_date}
+                            issued={data.issue_date}
+                            status={data.status}
+                        />
+                    )
+                }
             }
+            catch (err) {
+                console.log(err.response)
+                if (err.message === 'Network Error') {
+                    SetPopup(true)
+                    SetMessage(
+                        <VerificationFailed
+                            BtnFunction={closePopup}
+                            errMsg={"You currently are not connected to the internet, Please check internet connection and try again"}
+                        />
+                    )
+                }
+                else if (err.response.status === 404) {
+                    SetPopup(true)
+                    SetMessage(
+                        <VerificationSuccess
+                            BtnFunction={closePopup}
+                            details={err.response.data.details}
+                            licenseID={err.response.data.licenseId}
+                            status={err.response.data.status}
+                            issued={"N/A"}
+                            expires={"N/A"}
+
+                        />
+                    )
+                }
+            }
+
+        } else {
+
+            setErrMsg("This field is required")
         }
+
 
     }
 
@@ -62,20 +100,27 @@ const Verify = () => {
                         <p className="text-justify">Securely verify your identity or someone else's with our driver's license verification service. This quick and easy process uses secure technology to protect your information. Get started today and streamline your verification needs.</p>
                         <p>Sample ID: IDL1234567890 </p>
 
-                        <div className="mt-10">
-                            <label className="mb-[2px] block text-base font-medium text-neutral-700">License ID <span className="text-red-500">*</span></label>
-                            <input ref={IDinput} className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" type="text" placeholder="Enter License ID to be verified" />
-                        </div>
-
-                        <div className="mt-5 grid place-content-end">
-                            <div className="m-4 grid place-content-end">
-                                <Button BtnFunction={verifyID}>
-                                    Submit
-                                </Button>
-
-
+                        <form action="">
+                            <div className="mt-14">
+                                <label className="mb-[2px] block text-base font-medium text-neutral-700">License ID <span className="text-red-500">*</span></label>
+                                <input onChange={(e) => { setValue(e.target.value) }} ref={IDinput} className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" type="text" placeholder="Enter License ID to be verified" />
+                                <span className="text-red-500 block mt-1">{errMsg}</span>
                             </div>
-                        </div>
+
+                            <div className="mt-5 grid place-content-end">
+                                <div className="m-4 grid place-content-end">
+                                    <Button BtnFunction={VerifyLicense}>
+                                        Submit
+                                    </Button>
+
+
+                                </div>
+                            </div>
+
+                        </form>
+
+
+
                     </div>
 
                     <div className="w-full">
@@ -93,7 +138,7 @@ const Verify = () => {
                     <div className="grid  md:grid-cols-2 gap-8 mt-14 ">
                         <StepBox
                             head={<>Get Started</>}
-                            message={"Click on the get input field above to begin your verification process"}
+                            message={"Click on input field above to begin your verification process"}
                             count={"1"}
                         />
                         <StepBox
