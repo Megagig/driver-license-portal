@@ -5,12 +5,9 @@ import FormAction from './FormAction';
 import FormExtra from './FormExtra';
 import Input from './Input';
 import { Link } from 'react-router-dom';
-
-// new-snippet
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
-
-// End of new-snippet
+import { toast } from 'react-hot-toast';
 
 const fields = loginFields;
 let fieldsState = {};
@@ -18,11 +15,8 @@ fields.forEach((field) => (fieldsState[field.id] = ''));
 
 export default function Login({ paragraph, linkUrl, linkName }) {
   const [loginState, setLoginState] = useState(fieldsState);
-
-  // new-snippet
   const { auth, setAuth } = useAuth();
   const navigate = useNavigate();
-  // End of new-snippet
 
   const handleChange = (e) => {
     setLoginState({ ...loginState, [e.target.id]: e.target.value });
@@ -33,7 +27,6 @@ export default function Login({ paragraph, linkUrl, linkName }) {
     authenticateUser();
   };
 
-  //Handle Login API Integration here
   const authenticateUser = async () => {
     try {
       const res = await axios.post(
@@ -45,31 +38,26 @@ export default function Login({ paragraph, linkUrl, linkName }) {
         }
       );
 
-      console.log(res.status);
-      // if (res.status === 200) {
-      // const token = res.data.token;
-      // const fullUserRes = await axios.get(
-      // 'https://saviorte.pythonanywhere.com/api/user/',
-      // {
-      // headers: {
-      // Authorization: `Bearer ${token}`,
-      // },
-      // }
-      // );
+      if (res.status === 200) {
+        const token = res.data.token;
+        const refreshToken = res.data.refresh;
 
-      // if (fullUserRes.status === 200) {
-      // sessionStorage.setItem('user', JSON.stringify(fullUserRes.data));
-      // }
+        // Store tokens in session storage
+        sessionStorage.setItem('token', token);
+        sessionStorage.setItem('refreshToken', refreshToken);
 
-      // const user = res.data;
-      // setAuth({ user });
-      // sessionStorage.setItem('auth', JSON.stringify({ user }));
-      // navigate('/dashboard');
-      // }
+        // Set auth state
+        setAuth({ token, refreshToken });
+
+        toast.success('Login successful!');
+        navigate('/dashboard');
+      }
     } catch (error) {
       console.error('Error during authentication:', error);
+      toast.error('Login failed. Please try again.');
     }
   };
+
   return (
     <>
       <form className="space-y-6 px-6 py-4" onSubmit={handleSubmit}>
