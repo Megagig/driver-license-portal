@@ -12,11 +12,11 @@ const Footer = () => {
 
     return (
         <footer className="print:hidden">
-            <div className="flex lg:flex-row flex-col gap-10 justify-between px-4 py-8 md:px-10 md:pt-16 md:pb-10 bg-black">
+            <div className="flex flex-wrap lg:flex-row flex-col gap-10 md:gap-14 justify-between px-4 py-8 md:px-10 md:pt-16 md:pb-10 bg-black">
 
-                <div className="grid gap-4 content-start ">
-                    <img src={logo} alt="" />
-
+                <div className="grid gap-8 content-start ">
+                    <img className="h-12 md:h-14" src={logo} alt="" />
+                    <p className="text-white text-sm leading-[1.8] md:max-w-[20rem]">Fast, secure, and efficient licensing solutions at your fingertips.  <br /> For customer support, please reach out to <span className="text-green-500">support@example.com.</span> </p>
 
                 </div>
 

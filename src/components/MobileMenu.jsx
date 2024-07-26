@@ -1,10 +1,9 @@
-import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import LinkButton from "./LinkButton";
 import DropDownButton from "./DropDownButton";
 import DropDownMenu from "./DropdownMenu";
 import coatOfArm from "../assets/coatOfArm.png";
-import logo from "../assets/images/dannon-logo2.png";
+import logo from "../assets/Logo.svg";
 import { MdClose } from "react-icons/md";
 // import useAuth from "../hooks/useAuth";
 // import { dropdownData } from "./utils/data";
