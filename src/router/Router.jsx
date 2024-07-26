@@ -68,6 +68,7 @@ const router = createBrowserRouter([
                         path: "profile",
                         element: <Profile />,
                         loader: profileLoader
+
                     },
                     {
                         path: "application",
@@ -83,6 +84,7 @@ const router = createBrowserRouter([
                         loader: appointmentDashboardLoader
                     },
                     {
+
                         path: "appointment",
                         element: <Appointment />,
                         loader: appointmentLoader

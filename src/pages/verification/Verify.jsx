@@ -1,11 +1,11 @@
-import StepBox from "./components/StepBox"
-import verifiedLicense from "../../assets/verified-license.svg"
-import { useEffect, useRef, useState } from "react";
-import VerificationFailed from "./components/VerificationFailed"
-import VerificationSuccess from "./components/VerificationSuccess"
-import VerificationInvalid from "./components/VerificationInvalid";
 import axios from 'axios';
+import { useEffect, useRef, useState } from "react";
+import verifiedLicense from "../../assets/verified-license.svg";
 import Spinner from "./components/SpinningPopup";
+import StepBox from "./components/StepBox";
+import VerificationFailed from "./components/VerificationFailed";
+import VerificationInvalid from "./components/VerificationInvalid";
+import VerificationSuccess from "./components/VerificationSuccess";
 
 
 const Verify = () => {
