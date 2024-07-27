@@ -15,7 +15,9 @@ import { FaPaypal } from "react-icons/fa";
 import { Link } from "react-router-dom"
 
 const Dashboard = () => {
-    const { user } = useAuth()
+    const { auth } = useAuth()
+
+    console.log(auth.user)
 
 
     let style
@@ -25,14 +27,14 @@ const Dashboard = () => {
 
             <div >
                 <div className=" flex md:py-4 gap-3 items-center">
-                    <div className="w-fit border h-fit p-1 rounded-full ">
+                    <div className=" ">
                         {
-                            !user.image ? <FaUserAlt className="text-3xl" /> : <img className="h-16 rounded-full" src={user.image} alt="" />
+                            !auth.user?.image ? <FaUserAlt className="text-8xl p-1 border rounded-full" /> : <img className="h-16 rounded-full" src={auth.user?.image} alt="" />
                         }
 
                     </div>
                     <div>
-                        <h1 className="text-2xl md:text-2xl">Hello <span className="text-custom-green font-bold">{user.username}</span> </h1>
+                        <h1 className="text-2xl md:text-2xl">Hello <span className="text-custom-green font-bold">{auth.user?.username}</span> </h1>
                         <p>Welcome Back!</p>
 
                     </div>
