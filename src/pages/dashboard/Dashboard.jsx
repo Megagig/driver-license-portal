@@ -85,14 +85,14 @@ const Dashboard = () => {
             </div> */}
 
 
-            <div className="grid w-full my-10 gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3">
+            <div className="grid w-full my-10 gap-4 grid-cols-2  lg:grid-cols-4 md:grid-cols-3">
                 <Link to={"/profile"} className="bg-green-100  transition-colors duration-300  rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
                     <FaUser className="text-6xl" />
                     <h3 className=" font-bold">Profile</h3>
                 </Link>
 
 
-                <Link to={"/application"} className="bg-white rounded-lg grid gap-2  shadow-[0_0_10px_rgba(0,0,0,0.1)] place-items-center place-content-center p-4 h-[10rem] text-center">
+                <Link state="new" to="/application" className="bg-white rounded-lg grid gap-2  shadow-[0_0_10px_rgba(0,0,0,0.1)] place-items-center place-content-center p-4 h-[10rem] text-center">
                     <GrCertificate className="text-6xl" />
                     <h3 className=" font-bold">New Application</h3>
                 </Link>
@@ -104,12 +104,12 @@ const Dashboard = () => {
                 </Link>
 
 
-                <Link to={"/renewal"} className="bg-green-100 text-custom-green md:shadow-[0_0_10px_rgba(0,0,0,0.1)] md:bg-white md:text-black rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
+                <Link state="renewal" to={"/application"} className="bg-green-100 text-custom-green md:shadow-[0_0_10px_rgba(0,0,0,0.1)] md:bg-white md:text-black rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
                     <IoDocuments className="text-6xl" />
                     <h3 className=" font-bold">Renewal</h3>
                 </Link>
 
-                <Link to={"/reissue"} className="lg:bg-white lg:text-black md:shadow-none lg:shadow-[0_0_10px_rgba(0,0,0,0.1)] bg-green-100 rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
+                <Link state={"re-issue"} to={"/application"} className="lg:bg-white lg:text-black md:shadow-none lg:shadow-[0_0_10px_rgba(0,0,0,0.1)] bg-green-100 rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
                     <HiOutlineDocumentDuplicate className="text-6xl" />
                     <h3 className=" font-bold">Reissue</h3>
                 </Link>
@@ -126,7 +126,7 @@ const Dashboard = () => {
                     <h3 className=" font-bold">Appointment Slip</h3>
 
                 </Link>
-                <Link to={"/capture-center"} className=" bg-green-100 text-custom-green md:shadow-[0_0_10px_rgba(0,0,0,0.1)] md:bg-white md:text-black rounded-lg grid gap-2 place-items-center place-content-center lg:shadow-none lg:bg-green-100 lg:text-custom-green p-4 h-[10rem] text-center">
+                <Link to={"/capture-centers"} className=" bg-green-100 text-custom-green md:shadow-[0_0_10px_rgba(0,0,0,0.1)] md:bg-white md:text-black rounded-lg grid gap-2 place-items-center place-content-center lg:shadow-none lg:bg-green-100 lg:text-custom-green p-4 h-[10rem] text-center">
                     <TbCapture className="text-6xl" />
                     <h3 className=" font-bold">Capture Centers</h3>
 
@@ -141,11 +141,11 @@ const Dashboard = () => {
                     <h3 className=" font-bold">Support</h3>
 
                 </Link>
-                <Link className="shadow-[0_0_10px_rgba(0,0,0,0.1)] md:bg-green-100 md:text-custom-green md:shadow-none rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
+                {/* <Link className="shadow-[0_0_10px_rgba(0,0,0,0.1)] md:bg-green-100 md:text-custom-green md:shadow-none rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
                     <FaPaypal className="text-6xl" />
                     <h3 className=" font-bold">Payments</h3>
 
-                </Link>
+                </Link> */}
             </div>
             {/* <div className="mt-8">
                 <h1 className="font-bold text-2xl mb-6">Transaction History</h1>

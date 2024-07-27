@@ -79,8 +79,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "appointment",
-                        element: <Appointment />,
-                        loader: appointmentLoader
+                        element: <AppointmentDashboard />,
                     },
                 ]
             },
