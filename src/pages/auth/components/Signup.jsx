@@ -1,79 +1,121 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 // import { toast } from 'react-toastify';
-import { signupFields } from '../constants/FormFields';
-import { Link } from 'react-router-dom';
-import FormAction from './FormAction';
-import Input from './Input';
+import { signupFields } from "../constants/FormFields";
+import { Link } from "react-router-dom";
+import FormAction from "./FormAction";
+import Modal from "../../../components/Modal";
+import SignUpResponse from "./SignUpResponse";
+import Input from "./Input";
+import { createAccount } from "../api";
 
 const fields = signupFields;
 let fieldsState = {};
 
-fields.forEach((field) => (fieldsState[field.id] = ''));
+fields.forEach((field) => (fieldsState[field.id] = ""));
 
 export default function Signup({ paragraph, linkUrl, linkName }) {
-  const [signupState, setSignupState] = useState(fieldsState);
-  const navigate = useNavigate();
-  const handleChange = (e) =>
-    setSignupState({ ...signupState, [e.target.id]: e.target.value });
+    const [signupState, setSignupState] = useState(fieldsState);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const [error, setError] = useState("");
+    const [email, setEmail] = useState("");
+    const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(signupState);
-    createAccount();
-  };
+    const handleChange = (e) =>
+        setSignupState({ ...signupState, [e.target.id]: e.target.value });
 
-  //handle Signup API Integration here
-  const createAccount = async () => {
-    try {
-      const response = await axios.post(
-        'https://saviorte.pythonanywhere.com/api/signup/',
-        signupState
-      );
-      console.log(response.data);
-      // Handle success (e.g., notify user, redirect, etc.)
-      toast.success('Signup successful! Redirecting to login...');
-      setTimeout(() => navigate('/login'), 3000);
-    } catch (error) {
-      // Improved error handling
-      const errorMessage =
-        error.response && error.response.data
-          ? JSON.stringify(error.response.data)
-          : 'An unknown error occurred';
-      console.error('Signup error:', errorMessage);
-      toast.error(`Signup failed: ${errorMessage}`);
-    }
-  };
+    const clearForm = () => {
+        setSignupState({
+            email: "",
+            username: "",
+            password: "",
+            confirm_password: "",
+        });
+    };
 
-  return (
-    <form className="space-y-6 p-6" onSubmit={handleSubmit}>
-      <div className="">
-        {fields.map((field) => (
-          <Input
-            key={field.id}
-            handleChange={handleChange}
-            value={signupState[field.id]}
-            labelText={field.labelText}
-            labelFor={field.labelFor}
-            id={field.id}
-            name={field.name}
-            type={field.type}
-            isRequired={field.isRequired}
-            placeholder={field.placeholder}
-          />
-        ))}
-        <FormAction handleSubmit={handleSubmit} text="Signup" />
-      </div>
-      <p className="mt-2 text-center text-sm text-gray-600">
-        {paragraph}{' '}
-        <Link
-          to={linkUrl}
-          className="font-medium text-custom-green hover:text-green-800"
-        >
-          {linkName}
-        </Link>
-      </p>
-    </form>
-  );
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        setError("");
+        setIsSubmitting(true);
+
+        const data = {
+            username: signupState.username,
+            email: signupState.email,
+            password: signupState.password,
+            confirm_password: signupState.confirm_password,
+        };
+
+        const signupResponse = await createAccount(data);
+
+        if (signupResponse.id) {
+            setIsSubmitting(false);
+            setEmail(signupResponse.email);
+            setIsOpen(true);
+            clearForm();
+            console.log(signupResponse);
+            return;
+        }
+
+        setIsSubmitting(false);
+        setError("Something went wrong! Please try again.");
+    };
+
+    return (
+        <form className="space-y-6 p-6" onSubmit={handleSubmit}>
+            {error && (
+                <p className="bg-red-100 text-red-700 py-2 px-4 rounded-md">
+                    {error}
+                </p>
+            )}
+            <div className="">
+                {fields.map((field) => (
+                    <Input
+                        key={field.id}
+                        handleChange={handleChange}
+                        value={signupState[field.id]}
+                        labelText={field.labelText}
+                        labelFor={field.labelFor}
+                        id={field.id}
+                        name={field.name}
+                        type={field.type}
+                        isRequired={field.isRequired}
+                        placeholder={field.placeholder}
+                    />
+                ))}
+                <button
+                    className="bg-custom-green w-full hover:bg-green-600 px-4 py-2 text-white font-medium rounded-lg mt-4"
+                    onSubmit={handleSubmit}
+                    type="submit"
+                >
+                    {isSubmitting ? (
+                        <div className="flex justify-center gap-4">
+                            <div className="w-6 h-6 rounded-full animate-spin border-y-4 border-solid border-white border-t-transparent shadow-md"></div>
+                            <span>Creating account...</span>
+                        </div>
+                    ) : (
+                        "Create Account"
+                    )}
+                </button>
+            </div>
+            <p className="mt-2 text-center text-sm text-gray-600">
+                {paragraph}{" "}
+                <Link
+                    to={linkUrl}
+                    className="font-medium text-custom-green hover:text-green-800"
+                >
+                    {linkName}
+                </Link>
+            </p>
+
+            <Modal isOpen={isOpen}>
+                <SignUpResponse
+                    setIsModalOpen={setIsOpen}
+                    email={email}
+                />
+            </Modal>
+        </form>
+    );
 }
