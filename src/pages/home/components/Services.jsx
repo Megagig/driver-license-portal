@@ -28,7 +28,7 @@ let arrayService =[
     },
     {
         "image": print,
-        "title" : "Print Acknowledgement Slip"
+        "title" : "Print Appointment Slip"
     }
 ]
 

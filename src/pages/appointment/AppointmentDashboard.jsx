@@ -97,7 +97,7 @@ export const appointmentdashboardLoader = async ({request}) => {
       navigate('/appointment');
      };
     return (
-        <section className="w-screen grid md:grid-cols-2 gap-2 md:gap-6 p-6 md:p-10 xl:p-16 xl:p-20">
+        <section className="w-screen grid md:grid-cols-2 gap-2 md:gap-6 p-6 md:p-10 xl:p-16 xl:p-20 md:pr-0 xl:pr-0">
             <div className='flex flex-col gap-6 pt-15 md:justify-center'>
                 <h3 className="text-custom-green text-2xl md:text-3xl lg:text-5xl font-medium text-left">Search your appointment slip</h3>
                 <p className="text-justify mb-6 ">Securely get your and reprint your slip through this service. This quick and easy process uses secure technology to protect your information. Get started by entering your <em>appointment Id</em>, search and print to get your appointment slip.</p>
