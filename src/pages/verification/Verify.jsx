@@ -1,10 +1,11 @@
 import StepBox from "./components/StepBox"
-import handcard from "../../assets/hand-card.webp"
+import verifiedLicense from "../../assets/verified-license.svg"
 import { useEffect, useRef, useState } from "react";
 import VerificationFailed from "./components/VerificationFailed"
 import VerificationSuccess from "./components/VerificationSuccess"
-import Button from "../../components/utils/Button";
+import VerificationInvalid from "./components/VerificationInvalid";
 import axios from 'axios';
+import Spinner from "./components/SpinningPopup";
 
 
 const Verify = () => {
@@ -30,17 +31,20 @@ const Verify = () => {
     }, [value])
 
 
-    const VerifyLicense = async () => {
-
+    const VerifyLicense = async (e) => {
+        e.preventDefault()
 
         if (value) {
+
+            SetPopup(true)
+            SetMessage(<Spinner>hello</Spinner>)
+
             try {
                 const response = await axios.get(`https://saviorte.pythonanywhere.com/api/licenses/${value}`,)
                 const data = await response.data
                 console.log(data)
 
                 if (response.status === 200) {
-                    SetPopup(true)
                     SetMessage(
                         <VerificationSuccess
                             BtnFunction={closePopup}
@@ -67,15 +71,14 @@ const Verify = () => {
                 else if (err.response.status === 404) {
                     SetPopup(true)
                     SetMessage(
-                        <VerificationSuccess
+                        <VerificationInvalid
                             BtnFunction={closePopup}
                             details={err.response.data.details}
                             licenseID={err.response.data.licenseId}
                             status={err.response.data.status}
-                            issued={"N/A"}
-                            expires={"N/A"}
 
                         />
+
                     )
                 }
             }
@@ -90,32 +93,28 @@ const Verify = () => {
 
 
     return (
-        <div className="p-4 md:px-20 h-full md:py-16 ">
+        <div className="p-4 md:px-10 xl:p-20 h-full md:py-16 ">
+
+
             <div >
 
-                <div className="grid gap-10 items-center justify-center md:flex">
+                <div className="grid gap-10 items-center justify-center lg:flex">
                     <div className="w-full">
                         <h1 className=" text-3xl md:text-5xl text-custom-green font-bold mb-8 md:mb-16">Verify License</h1>
 
                         <p className="text-justify">Securely verify your identity or someone else's with our driver's license verification service. This quick and easy process uses secure technology to protect your information. Get started today and streamline your verification needs.</p>
                         <p>Sample ID: IDL1234567890 </p>
 
-                        <form action="">
-                            <div className="mt-14">
-                                <label className="mb-[2px] block text-base font-medium text-neutral-700">License ID <span className="text-red-500">*</span></label>
-                                <input onChange={(e) => { setValue(e.target.value) }} ref={IDinput} className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" type="text" placeholder="Enter License ID to be verified" />
-                                <span className="text-red-500 block mt-1">{errMsg}</span>
-                            </div>
+                        <form>
 
-                            <div className="mt-5 grid place-content-end">
-                                <div className="m-4 grid place-content-end">
-                                    <Button BtnFunction={VerifyLicense}>
-                                        Submit
-                                    </Button>
+                            <label className=" w-full mt-6 flex shadow-[2px_5px_10px_rgba(0,0,0,0.1)] border border-gray-50  rounded-full">
+                                <input onChange={(e) => { setValue(e.target.value) }} ref={IDinput} placeholder="Enter License ID" className='bg-transparent py-4 pl-6 pr-2 text-black w-full rounded-xl md:rounded-none  border-customr-grey outline-0' />
+                                <button onClick={VerifyLicense} className="bg-custom-green px-8 text-white    rounded-full">Submit</button>
+
+                            </label>
+                            <span className="text-red-500 px-4 h-4 text-sm block mt-1">{errMsg}</span>
 
 
-                                </div>
-                            </div>
 
                         </form>
 
@@ -123,8 +122,8 @@ const Verify = () => {
 
                     </div>
 
-                    <div className="w-full">
-                        <img className="w-full" src={handcard} alt="" />
+                    <div className="w-full md:grid place-content-center">
+                        <img className=" p-4 h-[25rem] w-[25rem] block object-contain aspect-square shadow-[5px_2px_10px_rgba(0,0,0,0.1)]  rounded-full " src={verifiedLicense} alt="" />
                     </div>
 
 
@@ -154,7 +153,7 @@ const Verify = () => {
                         />
                         <StepBox
                             head={"Instant Results"}
-                            message={"You should recieve a clear and concise response with seconds stating the validity of your license"}
+                            message={"You should recieve a clear and concise response within seconds stating the validity of your license"}
                             count={"4"}
                         />
 

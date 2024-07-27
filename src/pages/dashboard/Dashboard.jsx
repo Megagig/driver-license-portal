@@ -85,67 +85,67 @@ const Dashboard = () => {
             </div> */}
 
 
-            <div className="grid w-full my-10 gap-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3">
-                <Link to={"/profile"} className="bg-green-100  transition-colors duration-300  rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
+            <div className="grid w-full my-10 gap-4 grid-cols-2  lg:grid-cols-4 md:grid-cols-3">
+                <Link to={"/profile"} className="hover:scale-105 transition-all hover:-translate-y-2 bg-green-100   duration-300  rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
                     <FaUser className="text-6xl" />
                     <h3 className=" font-bold">Profile</h3>
                 </Link>
 
 
-                <Link to={"/application"} className="bg-white rounded-lg grid gap-2  shadow-[0_0_10px_rgba(0,0,0,0.1)] place-items-center place-content-center p-4 h-[10rem] text-center">
+                <Link state="new" to="/application" className="hover:scale-105 transition-all hover:-translate-y-2 bg-white rounded-lg grid gap-2  shadow-[0_0_10px_rgba(0,0,0,0.1)] place-items-center place-content-center p-4 h-[10rem] text-center">
                     <GrCertificate className="text-6xl" />
                     <h3 className=" font-bold">New Application</h3>
                 </Link>
 
 
-                <Link to={"/application"} className="  shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center md:bg-green-100 md:text-custom-green md:shadow-none">
+                <Link to={"/application"} className=" hover:scale-105 transition-all hover:-translate-y-2  shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center md:bg-green-100 md:text-custom-green md:shadow-none">
                     <MdEditDocument className="text-6xl" />
                     <h3 className=" font-bold">Edit Application</h3>
                 </Link>
 
 
-                <Link to={"/renewal"} className="bg-green-100 text-custom-green md:shadow-[0_0_10px_rgba(0,0,0,0.1)] md:bg-white md:text-black rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
+                <Link state="renewal" to={"/application"} className="hover:scale-105 transition-all hover:-translate-y-2 bg-green-100 text-custom-green md:shadow-[0_0_10px_rgba(0,0,0,0.1)] md:bg-white md:text-black rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
                     <IoDocuments className="text-6xl" />
                     <h3 className=" font-bold">Renewal</h3>
                 </Link>
 
-                <Link to={"/reissue"} className="lg:bg-white lg:text-black md:shadow-none lg:shadow-[0_0_10px_rgba(0,0,0,0.1)] bg-green-100 rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
+                <Link state={"re-issue"} to={"/application"} className="hover:scale-105 transition-all hover:-translate-y-2 lg:bg-white lg:text-black md:shadow-none lg:shadow-[0_0_10px_rgba(0,0,0,0.1)] bg-green-100 rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
                     <HiOutlineDocumentDuplicate className="text-6xl" />
                     <h3 className=" font-bold">Reissue</h3>
                 </Link>
 
 
-                <Link to={"/verify-license"} className=" lg:bg-green-100 lg:text-custom-green lg:shadow-none shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
+                <Link to={"/verify-license"} className="hover:scale-105 transition-all hover:-translate-y-2 lg:bg-green-100 lg:text-custom-green lg:shadow-none shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
                     <GrDocumentVerified className="text-6xl" />
                     <h3 className=" font-bold">License Verification</h3>
                 </Link>
 
 
-                <Link to={"/appointment"} className="md:bg-green-100  shadow-[0_0_10px_rgba(0,0,0,0.1)] md:shadow-none rounded-lg grid gap-2 place-items-center place-content-center md:text-custom-green lg:bg-white lg:text-black lg:shadow-[0_0_10px_rgba(0,0,0,0.1)] p-4 h-[10rem] text-center">
+                <Link to={"/appointment"} className="hover:scale-105 transition-all hover:-translate-y-2 md:bg-green-100  shadow-[0_0_10px_rgba(0,0,0,0.1)] md:shadow-none rounded-lg grid gap-2 place-items-center place-content-center md:text-custom-green lg:bg-white lg:text-black lg:shadow-[0_0_10px_rgba(0,0,0,0.1)] p-4 h-[10rem] text-center">
                     <BsClipboard2CheckFill className="text-6xl" />
                     <h3 className=" font-bold">Appointment Slip</h3>
 
                 </Link>
-                <Link to={"/capture-center"} className=" bg-green-100 text-custom-green md:shadow-[0_0_10px_rgba(0,0,0,0.1)] md:bg-white md:text-black rounded-lg grid gap-2 place-items-center place-content-center lg:shadow-none lg:bg-green-100 lg:text-custom-green p-4 h-[10rem] text-center">
+                <Link to={"/capture-centers"} className="hover:scale-105 transition-all hover:-translate-y-2 bg-green-100 text-custom-green md:shadow-[0_0_10px_rgba(0,0,0,0.1)] md:bg-white md:text-black rounded-lg grid gap-2 place-items-center place-content-center lg:shadow-none lg:bg-green-100 lg:text-custom-green p-4 h-[10rem] text-center">
                     <TbCapture className="text-6xl" />
                     <h3 className=" font-bold">Capture Centers</h3>
 
                 </Link>
-                <Link to={"/driving-schools"} className="bg-green-100 rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
+                <Link to={"/driving-schools"} className="hover:scale-105 transition-all hover:-translate-y-2 bg-green-100 rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
                     <MdOutlineDriveEta className="text-6xl" />
                     <h3 className=" font-bold">Driving Schools</h3>
 
                 </Link>
-                <Link to={"/support"} className="shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
+                <Link to={"/support"} className="hover:scale-105 transition-all hover:-translate-y-2 shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
                     <RiCustomerService2Line className="text-6xl" />
                     <h3 className=" font-bold">Support</h3>
 
                 </Link>
-                <Link className="shadow-[0_0_10px_rgba(0,0,0,0.1)] md:bg-green-100 md:text-custom-green md:shadow-none rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
+                {/* <Link className="shadow-[0_0_10px_rgba(0,0,0,0.1)] md:bg-green-100 md:text-custom-green md:shadow-none rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
                     <FaPaypal className="text-6xl" />
                     <h3 className=" font-bold">Payments</h3>
 
-                </Link>
+                </Link> */}
             </div>
             {/* <div className="mt-8">
                 <h1 className="font-bold text-2xl mb-6">Transaction History</h1>

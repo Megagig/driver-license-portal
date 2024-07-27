@@ -26,32 +26,31 @@ const Footer = () => {
                     <p className="font-bold mb-4 text-green-600">Quick Links</p>
                     <ul className="grid gap-2">
                         <li>
-                            <Link className="flex hover:text-green-600 text-gray-50 gap-2">
-                                <img className="w-2 " src={angleright} alt="" />{" "}
+                            <Link to={"/application"} state={"new"} className="flex font-semibold hover:text-green-600 hover:translate-x-2 transition-all duration-200 text-gray-50 gap-2">
+
                                 New Drivers License
                             </Link>
                         </li>
 
                         <li>
-                            <Link className="flex hover:text-green-600 text-gray-50 gap-2">
-                                <img className="w-2" src={angleright} /> Drivers
+                            <Link to={"/application"} state="renewal" className="flex font-semibold hover:translate-x-2 transition-all duration-200 hover:text-green-600 text-gray-50 gap-2">
+                                Drivers
                                 License Renewal
                             </Link>
                         </li>
                         <li>
-                            <Link className="flex hover:text-green-600 text-gray-100 gap-2">
-                                <img className="w-2" src={angleright} /> FAQ
+                            <Link to="/faq" className="flex font-semibold hover:text-green-600 hover:translate-x-2 transition-all duration-200 text-gray-100 gap-2">
+                                FAQ
                             </Link>
                         </li>
                         <li>
-                            <Link className="flex hover:text-green-600 text-gray-200 gap-2">
-                                <img className="w-2" src={angleright} /> Contact
+                            <Link to={"/support"} className="flex font-semibold hover:text-green-600 hover:translate-x-2 transition-all duration-200 text-gray-200 gap-2">
+                                Contact
                             </Link>
                         </li>
                         <li>
-                            <Link className="flex hover:text-green-600 text-gray-100 gap-2">
-                                <img className="w-2" src={angleright} />{" "}
-                                Aknowledgement Slip
+                            <Link to={"appointment"} className="flex font-semibold hover:text-green-600 hover:translate-x-2 transition-all duration-200 text-gray-100 gap-2">
+                                Appointment Slip
                             </Link>
                         </li>
                     </ul>
@@ -62,26 +61,23 @@ const Footer = () => {
 
 
                         <li>
-                            <Link className="flex hover:text-green-600 text-gray-200 gap-2">
-                                <img className="w-2" src={angleright} /> Forms
+                            <Link className="flex font-semibold hover:text-green-600 hover:translate-x-2 transition-all duration-200 text-gray-200 gap-2">
+                                Forms
                             </Link>
                         </li>
                         <li>
-                            <Link className="flex hover:text-green-600 text-gray-50 gap-2">
-                                <img className="w-2" src={angleright} />{" "}
+                            <Link className="flex font-semibold hover:text-green-600 hover:translate-x-2 transition-all duration-200 text-gray-50 gap-2">
                                 Condition of use
                             </Link>
                         </li>
                         <li>
-                            <Link className="flex hover:text-green-600 text-gray-100 gap-2">
-                                <img className="w-2" src={angleright} /> News &
+                            <Link className="flex font-semibold hover:text-green-600 hover:translate-x-2 transition-all duration-200 text-gray-100 gap-2">
                                 Media
                             </Link>
                         </li>
                         <li>
-                            <Link className="flex  hover:text-green-600 text-gray-100 gap-2">
-                                <img className="w-2" src={angleright} /> Privacy
-                                and Security Statement
+                            <Link className="flex font-semibold hover:text-green-600 hover:translate-x-2 transition-all duration-200 text-gray-100 gap-2">
+                                Privacy and Security Statement
                             </Link>
                         </li>
                     </ul>
@@ -91,16 +87,16 @@ const Footer = () => {
                     <p className="font-bold mb-4 text-green-600">Socials</p>
 
                     <ul className="flex items-center text-3xl text-white gap-4">
-                        <li className="hover:text-green-600 cursor-pointer">
+                        <li className="font-semibold hover:text-green-600 hover:-translate-y-2 transition-all duration-200 cursor-pointer">
                             <FaFacebook />
                         </li>
-                        <li className="hover:text-green-600 cursor-pointer">
+                        <li className="font-semibold hover:text-green-600 hover:-translate-y-2 transition-all duration-200 cursor-pointer">
                             <FaInstagramSquare />
                         </li>
-                        <li className="hover:text-green-600 cursor-pointer">
+                        <li className="font-semibold hover:text-green-600 hover:-translate-y-2 transition-all duration-200 cursor-pointer">
                             <FaTwitter />
                         </li>
-                        <li className="hover:text-green-600 cursor-pointer">
+                        <li className="font-semibold hover:text-green-600 hover:-translate-y-2 transition-all duration-200 cursor-pointer">
                             <IoLogoYoutube />
                         </li>
                     </ul>
