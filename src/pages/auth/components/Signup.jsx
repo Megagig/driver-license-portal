@@ -1,5 +1,6 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 // import { toast } from 'react-toastify';
 import { Link } from "react-router-dom";
@@ -13,6 +14,9 @@ import SignUpResponse from "./SignUpResponse";
 const fields = signupFields;
 let fieldsState = {};
 
+const PWD_REGEX =
+    /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%*&_-])[A-Za-z\d!@#$%*&_-]{8,24}$/;
+
 fields.forEach((field) => (fieldsState[field.id] = ""));
 
 export default function Signup({ paragraph, linkUrl, linkName }) {
@@ -21,7 +25,20 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
     const [isOpen, setIsOpen] = useState(false);
     const [error, setError] = useState("");
     const [email, setEmail] = useState("");
+    const [isPasswordValid, setIsPasswordValid] = useState(false);
+    const [isPasswordMatch, setIsPasswordMatch] = useState(false);
     const navigate = useNavigate();
+    const { password, confirm_password } = signupState;
+
+    useEffect(() => {
+        const passwordTest = PWD_REGEX.test(password);
+        setIsPasswordValid(passwordTest);
+    }, [password, confirm_password]);
+
+    useEffect(() => {
+        const matchTest = password === confirm_password;
+        setIsPasswordMatch(matchTest);
+    }, [confirm_password]);
 
     const handleChange = (e) =>
         setSignupState({ ...signupState, [e.target.id]: e.target.value });
@@ -41,6 +58,22 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
         setError("");
         setIsSubmitting(true);
 
+        const validPassword = PWD_REGEX.test(password);
+
+        if (!isPasswordMatch) {
+            setError("Passwords do not match!");
+            setIsSubmitting(false);
+            return;
+        }
+
+        if (!isPasswordValid) {
+            setError(
+                "Invalid password! Password must contain the following: 8-24 characters; at least 1 capital letter; at least 1 digit; at least 1 special character; Allowed characters are !@#$%*&_-"
+            );
+            setIsSubmitting(false);
+            return;
+        }
+
         const data = {
             username: signupState.username,
             email: signupState.email,
@@ -56,6 +89,10 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
             setIsOpen(true);
             clearForm();
             console.log(signupResponse);
+
+            setTimeout(() => {
+                navigate("/login");
+            }, 5000);
             return;
         }
 
@@ -83,12 +120,15 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
                         type={field.type}
                         isRequired={field.isRequired}
                         placeholder={field.placeholder}
+                        isPasswordValid={isPasswordValid}
+                        isPasswordMatch={isPasswordMatch}
                     />
                 ))}
                 <button
-                    className="bg-custom-green w-full hover:bg-green-600 px-4 py-2 text-white font-medium rounded-lg mt-4"
+                    className="bg-custom-green w-full hover:bg-green-800 px-4 py-2 text-white font-medium rounded-lg mt-4 disabled:opacity-60 disabled:cursor-not-allowed"
                     onSubmit={handleSubmit}
                     type="submit"
+                    disabled={!isPasswordValid || !isPasswordMatch}
                 >
                     {isSubmitting ? (
                         <div className="flex justify-center gap-4">
@@ -111,10 +151,7 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
             </p>
 
             <Modal isOpen={isOpen}>
-                <SignUpResponse
-                    setIsModalOpen={setIsOpen}
-                    email={email}
-                />
+                <SignUpResponse setIsModalOpen={setIsOpen} email={email} />
             </Modal>
         </form>
     );
