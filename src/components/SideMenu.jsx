@@ -6,6 +6,7 @@ import { FaUser } from "react-icons/fa";
 import { IoIosHelpCircleOutline } from "react-icons/io";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { IoDocumentTextSharp } from "react-icons/io5";
+import { FaUserAlt } from "react-icons/fa";
 
 
 
@@ -30,8 +31,9 @@ const SideMenu = ({ closeFunc }) => {
         <div className="absolute animate-[slidein_0.25s_ease-in-out] z-10 w-[18rem] shadow-[0_0_20px_rgba(0,0,0,0.1)] rounded   top-[6.25rem] right-[4.5rem]  bg-white">
             <div className="inline-block -top-2 right-10 translate-x-1/2 absolute rotate-45 bg-white h-6 w-6"></div>
             <div className="flex gap-2 px-4 pt-4 pb-3 items-center">
-                <div className="border h-14  w-fit p-1 rounded-full">
-                    <img className="h-full rounded-full" src={user.image} alt="" />
+                <div className="">
+                    {!auth.user?.image ? <FaUserAlt className="text-6xl p-1 border rounded-full" /> : <img className="h-14 rounded-full" src={auth.user?.image} alt="" />}
+
                 </div>
                 <div >
                     <p className="font-semibold">{user.firstName} {user.lastName}</p>
