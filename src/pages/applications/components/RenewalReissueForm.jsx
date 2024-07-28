@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { hasEmptyValue } from "../utils";
+
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 const RenewalReissueForm = ({
     formData,
@@ -11,21 +13,31 @@ const RenewalReissueForm = ({
     applicationType,
 }) => {
     const [errorMessage, setErrorMessage] = useState("");
+    const [isEmailValid, setIsEmailValid] = useState(false);
+    const [isEmailInputFocus, setIsEmailInputFocus] = useState(false);
     const isInvalid = hasEmptyValue(formData);
+    const { email } = formData;
+
+    useEffect(() => {
+        const emailTest = EMAIL_REGEX.test(email);
+        setIsEmailValid(emailTest);
+    }, [email]);
+
+    const handleEmailInputFocus = () => setIsEmailInputFocus(true);
 
     const onImageChange = (e) => {
         if (e.target.files && e.target.files[0]) {
             let reader = new FileReader();
             const file = e.target.files[0];
             reader.onloadend = () => {
-                setRenewalReissueForm(prev => ({
+                setRenewalReissueForm((prev) => ({
                     ...prev,
                     affidavit_police_report: reader.result,
                 }));
             };
             reader.readAsDataURL(file);
         }
-    }
+    };
 
     const submit = (e) => {
         e.preventDefault();
@@ -53,7 +65,7 @@ const RenewalReissueForm = ({
                 <div className="flex flex-col gap-4 md:gap-8">
                     <div className="grid grid-cols-1 gap-4 md:gap-6">
                         {/* Email */}
-                        <div className="">
+                        <div className="flex flex-col">
                             <label
                                 htmlFor="email"
                                 className="mb-[2px] block text-base font-medium text-neutral-700"
@@ -68,10 +80,16 @@ const RenewalReissueForm = ({
                                 onChange={(e) =>
                                     handleChange(e, setRenewalReissueForm)
                                 }
+                                onFocus={handleEmailInputFocus}
                                 placeholder="Email"
                                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                 required
                             />
+                            {isEmailInputFocus && !isEmailValid && (
+                                <small className="text-sm text-red-600 font-medium">
+                                    Invalid email address!
+                                </small>
+                            )}
                         </div>
                         {/* License ID */}
                         <div className="">
@@ -79,7 +97,8 @@ const RenewalReissueForm = ({
                                 htmlFor="license_id"
                                 className="mb-[2px] block text-base font-medium text-neutral-700"
                             >
-                                License ID <small className="text-red-800">*</small>
+                                License ID{" "}
+                                <small className="text-red-800">*</small>
                             </label>
                             <input
                                 type="text"
@@ -122,7 +141,7 @@ const RenewalReissueForm = ({
                     <button
                         className="bg-custom-green hover:bg-green-600 px-4 py-2 text-white rounded-lg mt-4 disabled:opacity-70 disabled:cursor-not-allowed"
                         onClick={submit}
-                        disabled={isInvalid}
+                        disabled={isInvalid || !isEmailValid}
                     >
                         Continue
                     </button>

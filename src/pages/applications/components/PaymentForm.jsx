@@ -5,6 +5,7 @@ import CustomModal from "./CustomModal";
 import PaymentSuccess from "./PaymentSuccess";
 import ProcedureListItem from "../../../components/ProcedureListItem";
 import { paymentInfo } from "../data";
+import PaystackPop from '@paystack/inline-js'
 
 const PaymentForm = ({
     formData,
