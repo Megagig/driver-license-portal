@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { hasEmptyValue } from "../utils";
+import { hasEmptyValue, biodataFormValid } from "../utils";
 
 const BiodataForm = ({
     formData,
@@ -11,9 +11,7 @@ const BiodataForm = ({
     applicationType,
 }) => {
     const [errorMessage, setErrorMessage] = useState("");
-    const isInvalid = hasEmptyValue(formData);
-
-    console.log(formData)
+    const isValid = biodataFormValid(formData);
 
     const onImageChange = (e) => {
         if (e.target.files && e.target.files[0]) {
@@ -35,10 +33,8 @@ const BiodataForm = ({
 
         setErrorMessage("");
 
-        // console.log(formData);
-
-        if (hasEmptyValue(formData)) {
-            setErrorMessage("All fields are required.");
+        if (biodataFormValid(formData)) {
+            setErrorMessage("Fields marked with * are required.");
             return;
         }
 
@@ -140,6 +136,7 @@ const BiodataForm = ({
                                 onChange={(e) =>
                                     handleChange(e, setBiodataForm)
                                 }
+                                required
                                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-[10px] px-4 text-base font-medium text-[#6B7280] outline-none focus:shadow-md"
                             >
                                 <option value="">--Select gender--</option>
@@ -236,7 +233,6 @@ const BiodataForm = ({
                                 }
                                 placeholder="Driving School Certificate Number"
                                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                required
                             />
                         </div>
                     </div>
@@ -254,37 +250,12 @@ const BiodataForm = ({
                                 type="file"
                                 name="passport_photo"
                                 id="passport_photo"
-                                // value={formData.passportPhoto}
                                 onChange={onImageChange}
                                 placeholder="Passport Photo"
                                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                 required
                             />
                         </div>
-
-                        {/* {applicationType === "re-issue" && (
-                            <div className="">
-                                <label
-                                    htmlFor="legalReportFile"
-                                    className="mb-[2px] block text-base font-medium text-neutral-700"
-                                >
-                                    Affidavit/Police Report{" "}
-                                    <small className="text-red-800">*</small>
-                                </label>
-                                <input
-                                    type="file"
-                                    name="legalReportFile"
-                                    id="legalReportFile"
-                                    // value={formData.legalReportFile}
-                                    onChange={(e) =>
-                                        handleChange(e, setBiodataForm)
-                                    }
-                                    placeholder="Affidavit/Police Report"
-                                    className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                                    required
-                                />
-                            </div>
-                        )} */}
                     </div>
                 </div>
 
@@ -292,7 +263,7 @@ const BiodataForm = ({
                     <button
                         className="bg-custom-green hover:bg-green-600 px-4 py-2 text-white rounded-lg mt-4 disabled:opacity-70 disabled:cursor-not-allowed"
                         onClick={submit}
-                        disabled={isInvalid}
+                        disabled={!isValid}
                     >
                         Continue
                     </button>
