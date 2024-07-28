@@ -34,7 +34,7 @@ export default function Input({
             </label>
             <input
                 onChange={handleChange}
-                onFocus={isFocusableInput && handleFocus}
+                onFocus={isFocusableInput ? handleFocus : undefined}
                 value={value}
                 id={id}
                 name={name}
