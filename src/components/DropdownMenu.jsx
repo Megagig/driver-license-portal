@@ -11,7 +11,6 @@ const DropDownMenu = ({ menuArray, closeMobileMenu }) => {
                 <Link
                     key={index}
                     to={menu.to}
-                    state={menu.state && menu.state}
                     onClick={closeMobileMenu}
                     className="md:hover:bg-green-700 py-2 px-6 capitalize"
                 >
