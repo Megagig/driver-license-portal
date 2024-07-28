@@ -6,12 +6,11 @@ const AuthContext = createContext({});
 export const AuthProvider = ({ children }) => {
     const sessionStorageAuth = JSON.parse(sessionStorage.getItem('auth'));
     const [auth, setAuth] = useState(sessionStorageAuth || {});
-    const user = JSON.parse(sessionStorage.getItem('user'))
 
 
 
     return (
-        <AuthContext.Provider value={{ auth, setAuth, user }}>
+        <AuthContext.Provider value={{ auth, setAuth }}>
             {children}
         </AuthContext.Provider>
     );

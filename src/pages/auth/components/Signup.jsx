@@ -15,6 +15,7 @@ let fieldsState = {};
 
 const PWD_REGEX =
     /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%*&_-])[A-Za-z\d!@#$%*&_-]{8,24}$/;
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 fields.forEach((field) => (fieldsState[field.id] = ""));
 
@@ -23,11 +24,11 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [error, setError] = useState("");
-    const [email, setEmail] = useState("");
+    const [registeredEmail, setRegisteredEmail] = useState("");
     const [isPasswordValid, setIsPasswordValid] = useState(false);
     const [isPasswordMatch, setIsPasswordMatch] = useState(false);
     const navigate = useNavigate();
-    const { password, confirm_password } = signupState;
+    const { username, email, password, confirm_password } = signupState;
 
     useEffect(() => {
         const passwordTest = PWD_REGEX.test(password);
@@ -37,7 +38,7 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
     useEffect(() => {
         const matchTest = password === confirm_password;
         setIsPasswordMatch(matchTest);
-    }, [confirm_password]);
+    }, [password, confirm_password]);
 
     const handleChange = (e) =>
         setSignupState({ ...signupState, [e.target.id]: e.target.value });
@@ -57,8 +58,6 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
         setError("");
         setIsSubmitting(true);
 
-        const validPassword = PWD_REGEX.test(password);
-
         if (!isPasswordMatch) {
             setError("Passwords do not match!");
             setIsSubmitting(false);
@@ -74,17 +73,17 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
         }
 
         const data = {
-            username: signupState.username,
-            email: signupState.email,
-            password: signupState.password,
-            confirm_password: signupState.confirm_password,
+            username,
+            email,
+            password,
+            confirm_password,
         };
 
         const signupResponse = await createAccount(data);
 
         if (signupResponse.id) {
             setIsSubmitting(false);
-            setEmail(signupResponse.email);
+            setRegisteredEmail(signupResponse.email);
             setIsOpen(true);
             clearForm();
             console.log(signupResponse);
@@ -127,7 +126,7 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
                     className="bg-custom-green w-full hover:bg-green-800 px-4 py-2 text-white font-medium rounded-lg mt-4 disabled:opacity-60 disabled:cursor-not-allowed"
                     onSubmit={handleSubmit}
                     type="submit"
-                    disabled={!isPasswordValid || !isPasswordMatch}
+                    disabled={!isPasswordValid || !isPasswordMatch || !username || !email}
                 >
                     {isSubmitting ? (
                         <div className="flex justify-center gap-4">
@@ -150,7 +149,10 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
             </p>
 
             <Modal isOpen={isOpen}>
-                <SignUpResponse setIsModalOpen={setIsOpen} email={email} />
+                <SignUpResponse
+                    setIsModalOpen={setIsOpen}
+                    email={registeredEmail}
+                />
             </Modal>
         </form>
     );

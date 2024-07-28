@@ -1,5 +1,6 @@
 import { FaInfoCircle } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
+import { useRef, useState, useEffect } from "react";
 
 const fixedInputClass =
     "rounded-md appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none sm:text-sm";
@@ -18,7 +19,12 @@ export default function Input({
     isPasswordValid,
     isPasswordMatch,
 }) {
+    const inputRef = useRef();
     const { pathname } = useLocation();
+    const [isPasswordInfoVisible, setIsPasswordInfoVisible] = useState(false)
+
+    const isFocusableInput = (name === "password" || name === "confirm_password") && pathname === "/signup";
+    const handleFocus = () => setIsPasswordInfoVisible(true);
 
     return (
         <div className="my-5">
@@ -27,10 +33,12 @@ export default function Input({
             </label>
             <input
                 onChange={handleChange}
+                onFocus={isFocusableInput && handleFocus}
                 value={value}
                 id={id}
                 name={name}
                 type={type}
+                ref={inputRef}
                 required={isRequired}
                 className={fixedInputClass + customClass}
                 placeholder={placeholder}
@@ -39,7 +47,7 @@ export default function Input({
                 }
                 aria-describedby={name === "password" ? "password-note" : ""}
             />
-            {pathname === "/signup" && name === "password" && !isPasswordValid && (
+            {isPasswordInfoVisible && (pathname === "/signup" && name === "password" && !isPasswordValid && (
                 <div
                     id="password-note"
                     className={
@@ -71,13 +79,13 @@ export default function Input({
                         </ul>
                     </div>
                 </div>
-            )}
+            ))}
 
-            {name === "confirm_password" && !isPasswordMatch && (
+            {isPasswordInfoVisible && (name === "confirm_password" && !isPasswordMatch && (
                 <span className="text-sm text-red-600 font-medium">
                     Passwords do not match!
                 </span>
-            )}
+            ))}
         </div>
     );
 }
