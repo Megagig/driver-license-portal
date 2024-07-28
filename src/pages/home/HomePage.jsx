@@ -3,7 +3,6 @@ import CounterDisplay from './components/CounterDisplay'
 import { Hero } from "./components/Hero"
 import LicenseProcess from './components/LicenseProcess'
 import Services from './components/Services'
-import Testimonials from './components/Testimonials'
 
 const HomePage = () => {
     return (
@@ -12,7 +11,7 @@ const HomePage = () => {
             <LicenseProcess />
             <Services />
             <CounterDisplay />
-            <Testimonials />
+            {/* <Testimonials /> */}
         </div>
     )
 }
