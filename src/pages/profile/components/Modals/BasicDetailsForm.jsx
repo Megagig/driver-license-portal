@@ -1,5 +1,4 @@
-
-
+import axios from 'axios';
 import NaijaStates from "naija-state-local-government";
 import React, { useEffect, useState } from 'react';
 import toast, { Toaster } from "react-hot-toast";
@@ -13,6 +12,7 @@ const BasicDetailsForm = (props) => {
     const [state, setState] = useState()
     const [lgaDropdown, setLgaDropdown] = useState(false)
     const [profileDetails, setProfile] = useState(props.formData)
+const auth = JSON.parse(sessionStorage.getItem("auth"));
   
   
     console.log({profileDetails})
@@ -92,31 +92,52 @@ const BasicDetailsForm = (props) => {
     event.preventDefault()
     console.log({profileDetails})
     console.log(Object.values(profileDetails))
-    let checkNullValue = Object.keys(profileDetails).map((key) => {return profileDetails[key] == undefined ? [key, null] : [key, profileDetails[key]]})
+    let checkNullValue 
+    for (let value in profileDetails){
+        console.log(profileDetails[value])
+        if (profileDetails[value] == null  && profileDetails[value] == undefined ){
+            checkNullValue = [value, profileDetails[value]]
+            break;
+        }
+    }
     console.log(checkNullValue)
     const isEmpty = Object.values(profileDetails).some(x =>  (x == null || x == '' || x== undefined));
     console.log({isEmpty})
     if(isEmpty ==  false){
       //axios code to push
-      props.updateBasicDetails(profileDetails)
-      toast.success("saved successfully")
-      setTimeout(() => {
-          props.closeModal()
-        
-      }, 1500)
+      axios.patch('https://saviorte.pythonanywhere.com/api/profile/',{
+        ...profileDetails
+       } ,{
+          headers: {
+            'Authorization':`Bearer  ${auth.access}`,
+          }}).then(response => {console.log(response.data)
+         console.log(response.status)
+         if (response.status == 200){
+             toast.success("saved successfully")
+             props.updateBasicDetails(profileDetails)
+             setTimeout(() => {
+                props.closeModal()
+              
+            }, 1500)
+        }
+    })
+        .catch(error => {
+        console.log(error)
+
+        });
+
     }
     else{
-        let key = checkNullValue.findIndex(value => value[1] == undefined)
-        console.log({key})
-        console.log(checkNullValue[key][0]+" is required")
-        if(checkNullValue[key][0] == "licence_id"){
+       
+        console.log(checkNullValue[0]+" is required")
+        if(checkNullValue[0] == "licence_id"){
             console.log("i am here")
             setProfile({
                 ...profileDetails,
                 "licence_id" : "398feih389"
             })
         }
-        toast.error(checkNullValue[key][0]+" is required")
+        toast.error(checkNullValue[0]+" is required")
     }
   };
   

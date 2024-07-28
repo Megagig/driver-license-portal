@@ -76,8 +76,8 @@ const data =
     }
 
     
-export const appointmentdashboardLoader = async ({request}) => {
-    const user = JSON.parse(sessionStorage.getItem("user")) || false;
+export const appointmentDashboardLoader = async ({request}) => {
+    const user = JSON.parse(sessionStorage.getItem("auth")) || false;
     const pathname = new URL(request.url).pathname;
     if(user){
         return user

@@ -1,8 +1,6 @@
-
-import { User } from "lucide-react";
 import { useState } from "react";
 import { redirect, useLoaderData } from "react-router-dom";
-import { fetchProfile, updateProfile } from "./api";
+import { fetchProfile } from "./api";
 import BasicDetails from "./components/BasicDetails";
 import InstantDriverDetails from "./components/InstantDriverDetails";
 import LoginDetails from "./components/LoginDetails";
@@ -11,13 +9,13 @@ import ProfilePicture from "./components/ProfilePicture";
 
 
 export const profileLoader = ({request}) => {
-  const user = JSON.parse(sessionStorage.getItem("user")) || false;
   const auth = JSON.parse(sessionStorage.getItem("auth"));
   console.log({auth})
   const pathname = new URL(request.url).pathname;
-  console.log({User})
-  if(user){
-    let response= fetchProfile(auth.user.token,pathname)
+
+  if(auth){
+    let response= fetchProfile(auth.access,pathname)
+
     console.log({response})
     return response
   } 
@@ -54,11 +52,13 @@ const Profile = () => {
   }
  
 const updateBasicDetails = (args) => {
+
   setProfile({
     ...profileDetails,
     ...args
   })
-  updateProfile(args)
+    
+  
 };
 
   return (
