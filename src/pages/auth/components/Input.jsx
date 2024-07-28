@@ -18,13 +18,14 @@ export default function Input({
     customClass,
     isPasswordValid,
     isPasswordMatch,
+    isEmailValid
 }) {
     const inputRef = useRef();
     const { pathname } = useLocation();
-    const [isPasswordInfoVisible, setIsPasswordInfoVisible] = useState(false)
+    const [isInputErrorVisible, setIsInputErrorVisible] = useState(false)
 
-    const isFocusableInput = (name === "password" || name === "confirm_password") && pathname === "/signup";
-    const handleFocus = () => setIsPasswordInfoVisible(true);
+    const isFocusableInput = (name === "password" || name === "confirm_password" || name === "email") && pathname === "/signup";
+    const handleFocus = () => setIsInputErrorVisible(true);
 
     return (
         <div className="my-5">
@@ -47,7 +48,7 @@ export default function Input({
                 }
                 aria-describedby={name === "password" ? "password-note" : ""}
             />
-            {isPasswordInfoVisible && (pathname === "/signup" && name === "password" && !isPasswordValid && (
+            {isInputErrorVisible && (pathname === "/signup" && name === "password" && !isPasswordValid && (
                 <div
                     id="password-note"
                     className={
@@ -81,9 +82,15 @@ export default function Input({
                 </div>
             ))}
 
-            {isPasswordInfoVisible && (name === "confirm_password" && !isPasswordMatch && (
+            {isInputErrorVisible && (name === "confirm_password" && !isPasswordMatch && (
                 <span className="text-sm text-red-600 font-medium">
                     Passwords do not match!
+                </span>
+            ))}
+
+            {isInputErrorVisible && (name === "email" && !isEmailValid && (
+                <span className="text-sm text-red-600 font-medium">
+                    Invalid email address!
                 </span>
             ))}
         </div>

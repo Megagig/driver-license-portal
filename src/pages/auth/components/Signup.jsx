@@ -25,10 +25,16 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
     const [isOpen, setIsOpen] = useState(false);
     const [error, setError] = useState("");
     const [registeredEmail, setRegisteredEmail] = useState("");
+    const [isEmailValid, setIsEmailValid] = useState(false);
     const [isPasswordValid, setIsPasswordValid] = useState(false);
     const [isPasswordMatch, setIsPasswordMatch] = useState(false);
     const navigate = useNavigate();
     const { username, email, password, confirm_password } = signupState;
+
+    useEffect(() => {
+        const emailTest = EMAIL_REGEX.test(email);
+        setIsEmailValid(emailTest);
+    }, [email]);
 
     useEffect(() => {
         const passwordTest = PWD_REGEX.test(password);
@@ -57,6 +63,12 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
 
         setError("");
         setIsSubmitting(true);
+
+        if (!isEmailValid) {
+            setError("Invalid email address!");
+            setIsSubmitting(false);
+            return;
+        }
 
         if (!isPasswordMatch) {
             setError("Passwords do not match!");
@@ -120,13 +132,14 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
                         placeholder={field.placeholder}
                         isPasswordValid={isPasswordValid}
                         isPasswordMatch={isPasswordMatch}
+                        isEmailValid={isEmailValid}
                     />
                 ))}
                 <button
                     className="bg-custom-green w-full hover:bg-green-800 px-4 py-2 text-white font-medium rounded-lg mt-4 disabled:opacity-60 disabled:cursor-not-allowed"
                     onSubmit={handleSubmit}
                     type="submit"
-                    disabled={!isPasswordValid || !isPasswordMatch || !username || !email}
+                    disabled={!isPasswordValid || !isPasswordMatch || !username || !isEmailValid}
                 >
                     {isSubmitting ? (
                         <div className="flex justify-center gap-4">
