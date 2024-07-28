@@ -33,7 +33,7 @@ const BiodataForm = ({
 
         setErrorMessage("");
 
-        if (biodataFormValid(formData)) {
+        if (!biodataFormValid(formData)) {
             setErrorMessage("Fields marked with * are required.");
             return;
         }
