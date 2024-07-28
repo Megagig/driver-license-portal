@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import heroImg from "../../assets/hand-card.webp";
 import LinkButton from "../../components/LinkButton";
 import {
@@ -10,15 +10,14 @@ import {
 import ProcedureListItem from "../../components/ProcedureListItem";
 
 const ApplicationHome = () => {
-    const { state } = useLocation();
-    const { type } = state;
+    const params = useParams();
+    const { type } = params;
     const procedure =
         type === "new"
             ? newApplicationProcedure
             : type === "renewal"
                 ? renewalProcedure
                 : reissueProcedure;
-    console.log(state);
 
     return (
         <div className="flex pb-20 flex-col gap-4 md:gap-6">
@@ -51,7 +50,7 @@ const ApplicationHome = () => {
 
                     <LinkButton
                         buttonText="Start Application"
-                        linkTo="/application/form"
+                        linkTo={`/applications/${type}/form`}
                         state={{ type }}
                         classAttr="self-start py-3 px-8 rounded-full bg-custom-green text-white text-center hover:bg-green-600"
                     />

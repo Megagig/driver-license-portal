@@ -13,8 +13,6 @@ const RenewalReissueForm = ({
     const [errorMessage, setErrorMessage] = useState("");
     const isInvalid = hasEmptyValue(formData);
 
-    // console.log(formData);
-
     const onImageChange = (e) => {
         if (e.target.files && e.target.files[0]) {
             let reader = new FileReader();
@@ -23,7 +21,6 @@ const RenewalReissueForm = ({
                 setRenewalReissueForm(prev => ({
                     ...prev,
                     affidavit_police_report: reader.result,
-                    file
                 }));
             };
             reader.readAsDataURL(file);
@@ -98,7 +95,7 @@ const RenewalReissueForm = ({
                             />
                         </div>
 
-                        {applicationType === "re-issue" && (
+                        {applicationType === "reissue" && (
                             <div className="">
                                 <label
                                     htmlFor="affidavit_police_report"
@@ -111,7 +108,6 @@ const RenewalReissueForm = ({
                                     type="file"
                                     name="affidavit_police_report"
                                     id="affidavit_police_report"
-                                    // value={formData.legalReportFile}
                                     onChange={onImageChange}
                                     placeholder="Affidavit/Police Report"
                                     className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
