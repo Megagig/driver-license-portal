@@ -16,7 +16,7 @@ const ContactForm = ({
     const [isEmailValid, setIsEmailValid] = useState(false);
     const [isEmailInputFocus, setIsEmailInputFocus] = useState(false);
     const isInvalid = hasEmptyValue(formData);
-    const {email} = formData;
+    const { email } = formData;
 
     useEffect(() => {
         const emailTest = EMAIL_REGEX.test(email);
@@ -30,9 +30,7 @@ const ContactForm = ({
 
         setErrorMessage("");
 
-        // console.log(formData);
-
-        if (hasEmptyValue(formData)) {
+        if (isInvalid) {
             setErrorMessage("All fields are required.");
             return;
         }
@@ -117,7 +115,8 @@ const ContactForm = ({
                                 htmlFor="streetAddress"
                                 className="mb-[2px] block text-base font-medium text-neutral-700"
                             >
-                                Street Address
+                                Street Address{" "}
+                                <small className="text-red-800">*</small>
                             </label>
                             <textarea
                                 name="streetAddress"
@@ -196,7 +195,7 @@ const ContactForm = ({
                     <button
                         className="bg-custom-green hover:bg-green-600 px-4 py-2 text-white rounded-lg mt-4"
                         onClick={goBack}
-                        >
+                    >
                         Previous
                     </button>
 
