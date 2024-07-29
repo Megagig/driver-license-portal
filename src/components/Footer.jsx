@@ -45,7 +45,7 @@ const Footer = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to={"appointment"} className="flex font-semibold hover:text-green-600 hover:translate-x-2 transition-all duration-200 text-gray-100 gap-2">
+                            <Link to={"/get-appointment-slip"} className="flex font-semibold hover:text-green-600 hover:translate-x-2 transition-all duration-200 text-gray-100 gap-2">
                                 Appointment Slip
                             </Link>
                         </li>

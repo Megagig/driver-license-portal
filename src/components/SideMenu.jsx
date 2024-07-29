@@ -56,7 +56,7 @@ const SideMenu = ({ closeFunc }) => {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/appointment" onClick={closeFunc} className="  px-4 py-2 cursor-pointer hover:bg-green-100  rounded-lg hover:text-custom-green transition-colors flex items-center gap-2"
+                    <Link to="/get-appointment-slip" onClick={closeFunc} className="  px-4 py-2 cursor-pointer hover:bg-green-100  rounded-lg hover:text-custom-green transition-colors flex items-center gap-2"
                     ><IoDocumentTextSharp className="font-bold text-lg" />
                         <span>Get Appointment Slip</span>
                     </Link>

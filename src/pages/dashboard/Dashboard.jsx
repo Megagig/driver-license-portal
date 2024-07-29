@@ -117,7 +117,7 @@ const Dashboard = () => {
                 </Link>
 
 
-                <Link to={"/appointment"} className="hover:scale-105 transition-all hover:-translate-y-2 md:bg-green-100  shadow-[0_0_10px_rgba(0,0,0,0.1)] md:shadow-none rounded-lg grid gap-2 place-items-center place-content-center md:text-custom-green lg:bg-white lg:text-black lg:shadow-[0_0_10px_rgba(0,0,0,0.1)] p-4 h-[10rem] text-center">
+                <Link to={"/get-appointment-slip"} className="hover:scale-105 transition-all hover:-translate-y-2 md:bg-green-100  shadow-[0_0_10px_rgba(0,0,0,0.1)] md:shadow-none rounded-lg grid gap-2 place-items-center place-content-center md:text-custom-green lg:bg-white lg:text-black lg:shadow-[0_0_10px_rgba(0,0,0,0.1)] p-4 h-[10rem] text-center">
                     <BsClipboard2CheckFill className="text-6xl" />
                     <h3 className=" font-bold">Appointment Slip</h3>
 
