@@ -1,7 +1,7 @@
-import axios from 'axios';
 import NaijaStates from "naija-state-local-government";
 import React, { useEffect, useState } from 'react';
 import toast, { Toaster } from "react-hot-toast";
+import { updateProfile } from '../../api';
 import Gender from "../../utils/Gender";
 import Input from "../../utils/Input";
 import Select from "../../utils/Select";
@@ -12,7 +12,7 @@ const BasicDetailsForm = (props) => {
     const [state, setState] = useState()
     const [lgaDropdown, setLgaDropdown] = useState(false)
     const [profileDetails, setProfile] = useState(props.formData)
-const auth = JSON.parse(sessionStorage.getItem("auth"));
+const user = JSON.parse(sessionStorage.getItem("auth"));
   
   
     console.log({profileDetails})
@@ -88,7 +88,8 @@ const auth = JSON.parse(sessionStorage.getItem("auth"));
     };
 
   
-  const updateBasicDetails = (event) => {
+  const updateBasicDetails = async (event) => {
+
     event.preventDefault()
     console.log({profileDetails})
     console.log(Object.values(profileDetails))
@@ -105,14 +106,9 @@ const auth = JSON.parse(sessionStorage.getItem("auth"));
     console.log({isEmpty})
     if(isEmpty ==  false){
       //axios code to push
-      axios.patch('https://saviorte.pythonanywhere.com/api/profile/',{
-        ...profileDetails
-       } ,{
-          headers: {
-            'Authorization':`Bearer  ${auth.access}`,
-          }}).then(response => {console.log(response.data)
-         console.log(response.status)
-         if (response.status == 200){
+        const response = await updateProfile(user.access,profileDetails)
+        console.log({response})
+        if (response.status == 200){
              toast.success("saved successfully")
              props.updateBasicDetails(profileDetails)
              setTimeout(() => {
@@ -120,23 +116,11 @@ const auth = JSON.parse(sessionStorage.getItem("auth"));
               
             }, 1500)
         }
-    })
-        .catch(error => {
-        console.log(error)
-
-        });
 
     }
     else{
        
         console.log(checkNullValue[0]+" is required")
-        if(checkNullValue[0] == "licence_id"){
-            console.log("i am here")
-            setProfile({
-                ...profileDetails,
-                "licence_id" : "398feih389"
-            })
-        }
         toast.error(checkNullValue[0]+" is required")
     }
   };

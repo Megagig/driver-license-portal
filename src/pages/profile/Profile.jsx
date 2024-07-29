@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { redirect, useLoaderData } from "react-router-dom";
-import { fetchProfile } from "./api";
+import { fetchProfile, updateProfile } from "./api";
 import BasicDetails from "./components/BasicDetails";
 import InstantDriverDetails from "./components/InstantDriverDetails";
 import LoginDetails from "./components/LoginDetails";
@@ -25,20 +25,34 @@ export const profileLoader = ({request}) => {
 }
 
 const Profile = () => {
-
+  const user = JSON.parse(sessionStorage.getItem("auth"));
   let  state  = useLoaderData();
 
   console.log({state})
   const [profileDetails, setProfile] = useState({...state})
+  const [basicDetails, setBasicDetails] = useState({})
 
+  useEffect(()=>{
+    let profileClone = new Object()
+    for(let item in state){
+      if(item !== "passport_photo"){
+      profileClone[item] = state[item]
+    }}
+    console.log(profileClone)
+    setBasicDetails(profileClone)
+  },[])
 
   console.log({profileDetails})
 
-  const editImage = (event) => {
+  const editImage = async (event) => {
           
       let reader = new FileReader();
       let file = event.target.files[0];
       console.log(event.target.files[0])
+      let formData = new FormData()
+      formData.append("passport_photo",file )
+      let response = await updateProfile(user.access,formData)
+      console.log({response})
       reader.onloadend = () => {
   
         setProfile({
@@ -67,11 +81,11 @@ const updateBasicDetails = (args) => {
 
         <div className="w-full">
             <ProfilePicture  
-              state={profileDetails}
+              state={profileDetails.passport_photo}
               editImage={editImage}
             />
             <BasicDetails  
-              state={profileDetails}
+              state={basicDetails}
               updateBasicDetails={updateBasicDetails}
             />
             <LoginDetails  state={profileDetails}/>

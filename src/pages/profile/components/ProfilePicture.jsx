@@ -6,7 +6,7 @@ const ProfilePicture = (props) => {
               <div className=" flex shrink-0">
             </div>
             <label className="block overflow-hidden relative ">
-              <img className="h-60 w-60 object-cover border-2 border-custom-grey rounded-full hover:opacity-50" src={props.state.image} alt="Current profile photo" />
+              <img className="h-60 w-60 object-cover border-2 border-custom-grey rounded-full hover:opacity-50" src={props.state} alt="Current profile photo" />
               <div className=" rounded-full cursor-pointer bg-[#00000040] absolute top-0 right-0 left-0 bottom-0 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition-all">
               <BsCameraFill className="w-12 h-12 fill-white" />
                 <span className="text-base w-6/12 text-center text-white">CHANGE PIC</span>

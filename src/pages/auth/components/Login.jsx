@@ -40,6 +40,9 @@ export default function Login({ paragraph, linkUrl, linkName }) {
             setAuth(loginResponse);
             sessionStorage.setItem("auth", JSON.stringify(loginResponse));
             navigate("/dashboard");
+            setTimeout(()=>{
+                console.log("from the login component")
+            },2900)
             return;
         }
 

@@ -22,19 +22,13 @@ console.log({token})
     return data
 }
 
-export const updateProfile = (token,profile) => {
-let data = axios.patch('https://saviorte.pythonanywhere.com/api/profile/',{
+export const updateProfile = async (token,profile) => {
+const response = await axios.patch('https://saviorte.pythonanywhere.com/api/profile/',{
   ...profile
  } ,{
     headers: {
       'Authorization':`Bearer  ${token}`,
-    }}).then(response => {console.log(response.data)
-   const data = response;
-   console.log(data)
-   return
-  })
-  .catch(error => {console.log(error)
-  });
+    }})
 
-  return data
+  return response
 }

@@ -8,7 +8,7 @@ const Card = (props) => {
                     <span className="group-hover:h-16 group-hover:w-16 flex h-36 w-36 md:h-52 md:w-52 md:group-hover:h-28 md:group-hover:w-28 items-center justify-center rounded-full bg-green-600 transition-all duration-300 group-hover:bg-green-700">
                         <img src={props.image} alt="image" className="w-3/4 group-hover:w-full object-fit invert p-4 md:p-6"/>
                     </span>
-                    <p className='mt-12 mb-12 md:mt-16 md:mb-24 group-hover:mb-0 group-hover:mt-4 group-hover:translate-z-28   font-semibold  text-base md:text-[23px]/[26.4px] text-wrap self-center transition-all duration-300 group-hover:text-custom-grey'>
+                    <p className='mt-8 mb-20 md:mt-10 md:mb-32 group-hover:mb-0 group-hover:mt-4 group-hover:translate-z-28   font-semibold  text-base md:text-[23px]/[26.4px] text-wrap self-center transition-all duration-300 group-hover:text-custom-grey'>
                         {props.title}
                     </p>
                     <div className="space-y-6 pt-5 text-sm md:text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-custom-grey">
