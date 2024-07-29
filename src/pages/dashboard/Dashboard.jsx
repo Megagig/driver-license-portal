@@ -204,7 +204,7 @@ const Dashboard = () => {
                     <h3 className=" font-bold">Capture Centers</h3>
 
                 </Link>
-                <Link className="hover:scale-105 transition-all hover:-translate-y-2 bg-green-100 rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
+                <Link to={"/faq"} className="hover:scale-105 transition-all hover:-translate-y-2 bg-green-100 rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
 
                     <FcFaq className="text-6xl" />
                     <h3 className=" font-bold">Frequently Asked Questions</h3>
