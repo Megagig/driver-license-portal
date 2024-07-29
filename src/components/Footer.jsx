@@ -103,7 +103,7 @@ const Footer = () => {
                 </div>
 
             </div>
-            <div className="text-center text-sm h-10 border-t grid content-center bg-black text-white">
+            <div className="text-center text-sm h-10 border-t-[rgba(255,255,255,0.1)] border-t grid content-center bg-black text-white">
                 All rights reserved &copy; DANNON GROUP
             </div>
         </footer>

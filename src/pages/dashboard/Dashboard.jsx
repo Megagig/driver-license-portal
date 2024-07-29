@@ -1,6 +1,9 @@
 import { FaUserAlt } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
-import { FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa"; import { requireAuth } from "../../utils/auth";
+import { getProfile } from "../../api";
+import { useLoaderData } from "react-router-dom";
+import { FcFaq } from "react-icons/fc";
 import Button from "../../components/utils/Button";
 import { GrCertificate } from "react-icons/gr";
 import { MdEditDocument } from "react-icons/md";
@@ -13,6 +16,17 @@ import { BsClipboard2CheckFill } from "react-icons/bs";
 import { HiOutlineDocumentDuplicate } from "react-icons/hi2";
 import { FaPaypal } from "react-icons/fa";
 import { Link } from "react-router-dom"
+import { newApplicationProcedure } from "../applications/data";
+
+export const dashboardLoader = async ({ request }) => {
+    await requireAuth(request);
+
+    const profile = await getProfile();
+
+    console.log(profile);
+
+    return profile;
+};
 
 const Dashboard = () => {
     const { auth } = useAuth()
@@ -20,7 +34,7 @@ const Dashboard = () => {
     console.log(auth.user)
 
 
-    let style
+
 
     return (
         <div className="md:px-10 xl:px-20 max-w-[100vw] overflow-hidden px-4  py-4 pb-20 ">
@@ -45,44 +59,6 @@ const Dashboard = () => {
 
             </div>
 
-            {/* <div className=" md:grid mt-4 md:grid-cols-2 md:gap-10 gap-4 items-start ">
-
-
-                <div className="border h-fit rounded-lg  p-4">
-                    <div className="flex items-center justify-between mb-4">
-                        <h1 className="text-xl font-semibold">Drivers License Details</h1>
-
-                    </div>
-
-                    <div className="border grid  gap-2 p-4 rounded-xl">
-                        <p> <span className="font-bold text-custom-green">License No:</span> <span >{user.bank.iban}</span></p>
-                        <p> <span className="font-bold text-custom-green" >License Class:</span> <span >{user.bloodGroup}</span></p>
-                        <p> <span className="font-bold text-custom-green">Country of Issue:</span> <span >{user.address.country}</span></p>
-                        <p> <span className="font-bold text-custom-green">Date of Issue: </span><span >22-06-2023</span></p>
-                        <p> <span className="font-bold text-custom-green">Date of Expiration:</span> <span >22-06-2025</span></p>
-
-                    </div>
-                </div>
-
-                <div className="border mt-4 md:mt-0 h-fit rounded-lg  p-4">
-                    <div className="flex items-center justify-between mb-4">
-                        <h1 className="text-xl font-semibold"> Drivers Information</h1>
-
-
-
-
-                    </div>
-                    <div className="border grid truncate overflow-clip gap-2 p-4 text-wrap rounded-xl">
-                        <p> <span className="font-bold text-custom-green">First Name:</span> <span >{user.firstName}</span></p>
-                        <p> <span className="font-bold text-custom-green" >Last Name:</span> <span>{user.email}</span></p>
-                        <p> <span className="font-bold text-custom-green">Sex: </span><span >{user.gender}</span></p>
-                        <p> <span className="font-bold text-custom-green">Phone No:</span> <span >{user.phone}</span></p>
-
-                    </div>
-
-
-                </div>
-            </div> */}
 
 
             <div className="grid w-full my-10 gap-4 grid-cols-2  lg:grid-cols-4 md:grid-cols-3">
@@ -92,26 +68,26 @@ const Dashboard = () => {
                 </Link>
 
 
-                <Link state="new" to="/application" className="hover:scale-105 transition-all hover:-translate-y-2 bg-white rounded-lg grid gap-2  shadow-[0_0_10px_rgba(0,0,0,0.1)] place-items-center place-content-center p-4 h-[10rem] text-center">
+                <Link to={'/applications/new'} className="hover:scale-105 transition-all hover:-translate-y-2 bg-white rounded-lg grid gap-2  shadow-[0_0_10px_rgba(0,0,0,0.1)] place-items-center place-content-center p-4 h-[10rem] text-center">
                     <GrCertificate className="text-6xl" />
                     <h3 className=" font-bold">New Application</h3>
                 </Link>
 
 
-                <Link to={"/application"} className=" hover:scale-105 transition-all hover:-translate-y-2  shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center md:bg-green-100 md:text-custom-green md:shadow-none">
-                    <MdEditDocument className="text-6xl" />
-                    <h3 className=" font-bold">Edit Application</h3>
-                </Link>
-
-
-                <Link state="renewal" to={"/application"} className="hover:scale-105 transition-all hover:-translate-y-2 bg-green-100 text-custom-green md:shadow-[0_0_10px_rgba(0,0,0,0.1)] md:bg-white md:text-black rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
+                <Link to={"/applications/renewal"} className=" hover:scale-105 transition-all hover:-translate-y-2  shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center md:bg-green-100 md:text-custom-green md:shadow-none">
                     <IoDocuments className="text-6xl" />
                     <h3 className=" font-bold">Renewal</h3>
                 </Link>
 
-                <Link state={"re-issue"} to={"/application"} className="hover:scale-105 transition-all hover:-translate-y-2 lg:bg-white lg:text-black md:shadow-none lg:shadow-[0_0_10px_rgba(0,0,0,0.1)] bg-green-100 rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
+
+                <Link state="renewal" to={"/applications/re-issue"} className="hover:scale-105 transition-all hover:-translate-y-2 bg-green-100 text-custom-green md:shadow-[0_0_10px_rgba(0,0,0,0.1)] md:bg-white md:text-black rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
                     <HiOutlineDocumentDuplicate className="text-6xl" />
                     <h3 className=" font-bold">Reissue</h3>
+                </Link>
+
+                <Link to={"/driving-schools"} className="hover:scale-105 transition-all hover:-translate-y-2 lg:bg-white lg:text-black md:shadow-none lg:shadow-[0_0_10px_rgba(0,0,0,0.1)] bg-green-100 rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
+                    <MdOutlineDriveEta className="text-6xl" />
+                    <h3 className=" font-bold">Driving Schools</h3>
                 </Link>
 
 
@@ -131,29 +107,29 @@ const Dashboard = () => {
                     <h3 className=" font-bold">Capture Centers</h3>
 
                 </Link>
-                <Link to={"/driving-schools"} className="hover:scale-105 transition-all hover:-translate-y-2 bg-green-100 rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
-                    <MdOutlineDriveEta className="text-6xl" />
-                    <h3 className=" font-bold">Driving Schools</h3>
 
+                <Link to={"/faq"} className="hover:scale-105 transition-all hover:-translate-y-2 bg-green-100 rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
+
+
+                    <FcFaq className="text-6xl" />
+                    <h3 className=" font-bold">Frequently Asked Questions</h3>
                 </Link>
                 <Link to={"/support"} className="hover:scale-105 transition-all hover:-translate-y-2 shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
                     <RiCustomerService2Line className="text-6xl" />
                     <h3 className=" font-bold">Support</h3>
 
                 </Link>
-                {/* <Link className="shadow-[0_0_10px_rgba(0,0,0,0.1)] md:bg-green-100 md:text-custom-green md:shadow-none rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
-                    <FaPaypal className="text-6xl" />
-                    <h3 className=" font-bold">Payments</h3>
 
-                </Link> */}
             </div>
             {/* <div className="mt-8">
                 <h1 className="font-bold text-2xl mb-6">Transaction History</h1>
                 <div className="max-w-[100vw] overflow-x-hidden">
                     <table className="w-full ">
-                        <tr className="bg-custom-green h-10 border-collapse text-white" >
-                            <th className="p-2 w-16" >S/N</th>
-                            <th className="p-2 border-x">Transaction Applied</th>
+                        <tr className="bg-custom-green h-10 border-collapse text-white">
+                            <th className="p-2 w-16">S/N</th>
+                            <th className="p-2 border-x">
+                                Transaction Applied
+                            </th>
                             <th className="p-2  border-x">Reference No</th>
                             <th className="p-2 ">Status</th>
                         </tr>
@@ -184,22 +160,16 @@ const Dashboard = () => {
                             <td className="p-2 border-x">12345</td>
                             <td className="p-2">Success</td>
                         </tr>
-
-
                     </table>
                 </div>
                 <div className="mt-10 grid place-content-end">
-                    <Button
-                        btnLink={"/profile"}
-                    >
-                        View Transactions
-                    </Button>
+                    <Button btnLink={"/profile"}>View Transactions</Button>
                 </div>
 
 
             </div> */}
         </div>
-    )
-}
+    );
+};
 
-export default Dashboard
+export default Dashboard;

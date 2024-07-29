@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NaijaStates from "naija-state-local-government";
 import { hasEmptyValue } from "../utils";
+
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 const ContactForm = ({
     formData,
@@ -11,17 +13,24 @@ const ContactForm = ({
     setIsSubmitted,
 }) => {
     const [errorMessage, setErrorMessage] = useState("");
-    const [state, setState] = useState("");
+    const [isEmailValid, setIsEmailValid] = useState(false);
+    const [isEmailInputFocus, setIsEmailInputFocus] = useState(false);
     const isInvalid = hasEmptyValue(formData);
+    const { email } = formData;
+
+    useEffect(() => {
+        const emailTest = EMAIL_REGEX.test(email);
+        setIsEmailValid(emailTest);
+    }, [email]);
+
+    const handleEmailInputFocus = () => setIsEmailInputFocus(true);
 
     const submit = (e) => {
         e.preventDefault();
 
         setErrorMessage("");
 
-        // console.log(formData);
-
-        if (hasEmptyValue(formData)) {
+        if (isInvalid) {
             setErrorMessage("All fields are required.");
             return;
         }
@@ -63,10 +72,16 @@ const ContactForm = ({
                                 onChange={(e) =>
                                     handleChange(e, setContactForm)
                                 }
+                                onFocus={handleEmailInputFocus}
                                 placeholder="Email"
                                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                 required
                             />
+                            {isEmailInputFocus && !isEmailValid && (
+                                <small className="text-sm text-red-600 font-medium">
+                                    Invalid email address!
+                                </small>
+                            )}
                         </div>
 
                         {/* Phone Number */}
@@ -100,7 +115,8 @@ const ContactForm = ({
                                 htmlFor="streetAddress"
                                 className="mb-[2px] block text-base font-medium text-neutral-700"
                             >
-                                Street Address
+                                Street Address{" "}
+                                <small className="text-red-800">*</small>
                             </label>
                             <textarea
                                 name="streetAddress"
@@ -179,14 +195,14 @@ const ContactForm = ({
                     <button
                         className="bg-custom-green hover:bg-green-600 px-4 py-2 text-white rounded-lg mt-4"
                         onClick={goBack}
-                        >
+                    >
                         Previous
                     </button>
 
                     <button
                         className="bg-custom-green hover:bg-green-600 px-4 py-2 text-white rounded-lg mt-4 disabled:opacity-70 disabled:cursor-not-allowed"
                         onClick={submit}
-                        disabled={isInvalid}
+                        disabled={isInvalid || !isEmailValid}
                     >
                         Continue
                     </button>

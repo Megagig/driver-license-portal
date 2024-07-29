@@ -93,19 +93,23 @@ const Verify = () => {
 
 
     return (
-        <div className="p-4 md:px-10 xl:p-20 h-full md:py-16 ">
+        <div className="p-4 md:px-10 xl:px-20 py-8 h-full">
+            <h1 className=" text-3xl md:text-5xl mb-4 text-custom-green text-center md:text-start font-bold  ">Verify License</h1>
 
 
             <div >
 
-                <div className="grid gap-10 items-center justify-center lg:flex">
+                <div className="grid gap-10 items-center justify-center lg:flex lg:flex-row-reverse">
+
+                    <div className="w-full md:grid place-content-center">
+                        <img className=" p-4 md:h-[25rem] md:w-[25rem] block object-contain aspect-square shadow-[5px_2px_10px_rgba(0,0,0,0.1)]  rounded-full " src={verifiedLicense} alt="" />
+                    </div>
                     <div className="w-full">
-                        <h1 className=" text-3xl md:text-5xl text-custom-green font-bold mb-8 md:mb-16">Verify License</h1>
 
                         <p className="text-justify">Securely verify your identity or someone else's with our driver's license verification service. This quick and easy process uses secure technology to protect your information. Get started today and streamline your verification needs.</p>
-                        <p>Sample ID: IDL1234567890 </p>
+                        <p>Sample ID: NTH66786AA56 </p>
 
-                        <form>
+                        <form className="max-w-[30rem]">
 
                             <label className=" w-full mt-6 flex shadow-[2px_5px_10px_rgba(0,0,0,0.1)] border border-gray-50  rounded-full">
                                 <input onChange={(e) => { setValue(e.target.value) }} ref={IDinput} placeholder="Enter License ID" className='bg-transparent py-4 pl-6 pr-2 text-black w-full rounded-xl md:rounded-none  border-customr-grey outline-0' />
@@ -114,17 +118,13 @@ const Verify = () => {
                             </label>
                             <span className="text-red-500 px-4 h-4 text-sm block mt-1">{errMsg}</span>
 
-
-
                         </form>
 
 
 
                     </div>
 
-                    <div className="w-full md:grid place-content-center">
-                        <img className=" p-4 h-[25rem] w-[25rem] block object-contain aspect-square shadow-[5px_2px_10px_rgba(0,0,0,0.1)]  rounded-full " src={verifiedLicense} alt="" />
-                    </div>
+
 
 
                 </div>
