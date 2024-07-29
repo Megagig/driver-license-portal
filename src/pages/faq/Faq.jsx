@@ -17,7 +17,14 @@ const Faq = () => {
             id: 3,
             question:
                 "I am a fresh Applicant. What do i need to do to obtain the new Driver License?",
-            answer: "1. Visit an accredited driving school and complete the mandatory drivers training.2. Obtain a driving school certificate number from the accredited driving school to be used to initiate a fresh application.3. Access the nigeriadriverslicence.frsc.gov.ng, click on DL Application tab and select New Driver’s Licence Application.4. Provide your Certificate Number (Which is the number on the certificate provided from the driving school attended) and click on submit.5. Fill in your application details and submit and make payment.",
+            // answer: "1. Visit an accredited driving school and complete the mandatory drivers training.2. Obtain a driving school certificate number from the accredited driving school to be used to initiate a fresh application.3. Access the nigeriadriverslicence.frsc.gov.ng, click on DL Application tab and select New Driver’s Licence Application.4. Provide your Certificate Number (Which is the number on the certificate provided from the driving school attended) and click on submit.5. Fill in your application details and submit and make payment.",
+            answer: <><ol className="grid gap-3 pl-2 list-decimal">
+                <li>Visit an accredited driving school and complete the mandatory drivers training.</li>
+                <li> Obtain a driving school certificate number from the accredited driving school to be used to initiate a fresh application.</li>
+                <li>Access the nigeriadriverslicence.frsc.gov.ng, click on DL Application tab and select New Driver’s Licence Application.</li>
+                <li>Provide your Certificate Number (Which is the number on the certificate provided from the driving school attended) and click on submit.</li>
+                <li>Fill in your application details and submit and make payment.</li>
+            </ol></>
         },
         {
             id: 4,
@@ -45,7 +52,7 @@ const Faq = () => {
                     <img className="w-full max-w-[35rem] mx-auto" src={faq} alt="" />
                 </div>
                 <div
-                    className="w-full md:px-8 pt-8 md:pb-4 "
+                    className="w-full"
                     id="accordion-flush"
                     data-accordion="collapse"
                     data-active-classes="bg-white dark:bg-gray-900 text-gray-900 "

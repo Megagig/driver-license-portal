@@ -10,7 +10,7 @@ export const Accordion = ({ faq }) => {
 
 
   return (
-    <div className=" mb-4 shadow-[0_0_10px_rgba(0,0,0,0.1)]">
+    <div className=" mb-4 shadow-[0_5px_20px_rgba(0,0,0,0.1)]">
       <h2 id="accordion-flush-heading-1">
         <button
           ref={questionBtn}
@@ -58,10 +58,10 @@ export const Accordion = ({ faq }) => {
       {show && (
         <div
           id="accordion-flush-body-1"
-          className="px-4 py-2 bg-green-100 text-green-700"
+          className="p-6 bg-green-50"
           aria-labelledby="accordion-flush-heading-1"
         >
-          <div className="py-5 bg-green-100 ">
+          <div>
             <p className="mb-2">
               {answer}
             </p>
