@@ -16,6 +16,7 @@ import { BsClipboard2CheckFill } from "react-icons/bs";
 import { HiOutlineDocumentDuplicate } from "react-icons/hi2";
 import { FaPaypal } from "react-icons/fa";
 import { Link } from "react-router-dom"
+import { newApplicationProcedure } from "../applications/data";
 
 export const dashboardLoader = async ({ request }) => {
     await requireAuth(request);
@@ -164,7 +165,7 @@ const Dashboard = () => {
                 </Link>
 
 
-                <Link state="new" to="/application" className="hover:scale-105 transition-all hover:-translate-y-2 bg-white rounded-lg grid gap-2  shadow-[0_0_10px_rgba(0,0,0,0.1)] place-items-center place-content-center p-4 h-[10rem] text-center">
+                <Link to={'/application'} state={"new"} className="hover:scale-105 transition-all hover:-translate-y-2 bg-white rounded-lg grid gap-2  shadow-[0_0_10px_rgba(0,0,0,0.1)] place-items-center place-content-center p-4 h-[10rem] text-center">
                     <GrCertificate className="text-6xl" />
                     <h3 className=" font-bold">New Application</h3>
                 </Link>
