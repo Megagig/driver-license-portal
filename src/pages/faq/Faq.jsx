@@ -1,4 +1,5 @@
 import { Accordion } from "./Accordion";
+import faq from "../../assets/faq.svg"
 
 const Faq = () => {
     const faqs = [
@@ -32,20 +33,28 @@ const Faq = () => {
     ];
 
     return (
-        <section className="my-10 p-7 border rounded dark:border-slate-700 shadow-sm w-full md:w-[700px] md:mx-auto">
-            <h1 className="text-2xl text-center font-semibold dark:text-slate-100 mb-3 underline underline-offset-8 ">
+        <section className="py-10 px-4 md:px-10 xl:px-20">
+            <h1 className="text-4xl mb-16 text-custom-green font-bold ">
                 Frequently Asked Questions
             </h1>
-            <div
-                className="mt-10"
-                id="accordion-flush"
-                data-accordion="collapse"
-                data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white "
-                data-inactive-classes="text-gray-500 dark:text-gray-400 "
-            >
-                {faqs.map((faq) => (
-                    <Accordion key={faq.id} faq={faq} />
-                ))}
+
+
+            <div className="flex items-start  gap-10 ">
+                <div className="w-4/5">
+
+                    <img src={faq} alt="" />
+                </div>
+                <div
+                    className="w-full px-8 pt-8 pb-4 rounded-xl"
+                    id="accordion-flush"
+                    data-accordion="collapse"
+                    data-active-classes="bg-white dark:bg-gray-900 text-gray-900 "
+                    data-inactive-classes="text-gray-500 dark:text-gray-400 "
+                >
+                    {faqs.map((faq) => (
+                        <Accordion key={faq.id} faq={faq} />
+                    ))}
+                </div>
             </div>
         </section>
     );

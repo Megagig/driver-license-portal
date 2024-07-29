@@ -1,20 +1,28 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 export const Accordion = ({ faq }) => {
+  const questionBtn = useRef()
   const [show, setShow] = useState(false);
   const { question, answer } = faq;
+
+
+
+
+
   return (
-    <div className="p-2">
+    <div className=" mb-4 shadow-[0_0_10px_rgba(0,0,0,0.1)]">
       <h2 id="accordion-flush-heading-1">
         <button
-          onClick={() => setShow((prevShow) => !prevShow)}
+          ref={questionBtn}
+          onClick={() => { setShow(!show) }}
           type="button"
-          className="text-lg flex items-center justify-between w-full p-4 font-medium text-left text-green-800 border-b border-gray-200 dark:border-gray-700 dark:text-green-800 bg-green-50"
+          className="flex items-center justify-between w-full p-4 font-medium text-left text-white  bg-custom-green"
           data-accordion-target="#accordion-flush-body-1"
           aria-expanded="true"
           aria-controls="accordion-flush-body-1"
+
         >
-          <span className="text-xl text-green-800 dark:text-green-800">{question}</span>
+          <span className="pointer-events-none text-white">{question}</span>
           {!show && (
             <svg
               data-accordion-icon
@@ -50,11 +58,11 @@ export const Accordion = ({ faq }) => {
       {show && (
         <div
           id="accordion-flush-body-1"
-          className="px-4 py-2"
+          className="px-4 py-2 bg-green-100 text-green-700"
           aria-labelledby="accordion-flush-heading-1"
         >
-          <div className="py-5 border-b border-gray-200 dark:border-gray-700">
-            <p className="text-lg mb-2 text-gray-500 dark:text-gray-400">
+          <div className="py-5 bg-green-100 ">
+            <p className="mb-2">
               {answer}
             </p>
           </div>
