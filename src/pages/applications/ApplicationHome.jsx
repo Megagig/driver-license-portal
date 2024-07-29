@@ -10,13 +10,9 @@ import {
 import ProcedureListItem from "../../components/ProcedureListItem";
 
 const ApplicationHome = () => {
-<<<<<<< HEAD
     const params = useParams();
     const { type } = params;
-=======
-    const { state } = useLocation();
-    const type = state;
->>>>>>> d4106b7 (sync dashboard with navbar)
+
     const procedure =
         type === "new"
             ? newApplicationProcedure
@@ -55,13 +51,10 @@ const ApplicationHome = () => {
 
                     <LinkButton
                         buttonText="Start Application"
-<<<<<<< HEAD
+
                         linkTo={`/applications/${type}/form`}
                         state={{ type }}
-=======
-                        linkTo="/application/form"
-                        state={type}
->>>>>>> d4106b7 (sync dashboard with navbar)
+
                         classAttr="self-start py-3 px-8 rounded-full bg-custom-green text-white text-center hover:bg-green-600"
                     />
                 </div>
