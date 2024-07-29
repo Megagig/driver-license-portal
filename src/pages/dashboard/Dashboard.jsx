@@ -1,9 +1,9 @@
 import { FaUserAlt } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
-import { FaUser } from "react-icons/fa";import { requireAuth } from "../../utils/auth";
+import { FaUser } from "react-icons/fa"; import { requireAuth } from "../../utils/auth";
 import { getProfile } from "../../api";
 import { useLoaderData } from "react-router-dom";
-
+import { FcFaq } from "react-icons/fc";
 import Button from "../../components/utils/Button";
 import { GrCertificate } from "react-icons/gr";
 import { MdEditDocument } from "react-icons/md";
@@ -165,26 +165,26 @@ const Dashboard = () => {
                 </Link>
 
 
-                <Link to={'/application'} state={"new"} className="hover:scale-105 transition-all hover:-translate-y-2 bg-white rounded-lg grid gap-2  shadow-[0_0_10px_rgba(0,0,0,0.1)] place-items-center place-content-center p-4 h-[10rem] text-center">
+                <Link to={'/applications/new'} className="hover:scale-105 transition-all hover:-translate-y-2 bg-white rounded-lg grid gap-2  shadow-[0_0_10px_rgba(0,0,0,0.1)] place-items-center place-content-center p-4 h-[10rem] text-center">
                     <GrCertificate className="text-6xl" />
                     <h3 className=" font-bold">New Application</h3>
                 </Link>
 
 
-                <Link to={"/application"} className=" hover:scale-105 transition-all hover:-translate-y-2  shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center md:bg-green-100 md:text-custom-green md:shadow-none">
-                    <MdEditDocument className="text-6xl" />
-                    <h3 className=" font-bold">Edit Application</h3>
-                </Link>
-
-
-                <Link state="renewal" to={"/application"} className="hover:scale-105 transition-all hover:-translate-y-2 bg-green-100 text-custom-green md:shadow-[0_0_10px_rgba(0,0,0,0.1)] md:bg-white md:text-black rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
+                <Link to={"/applications/renewal"} className=" hover:scale-105 transition-all hover:-translate-y-2  shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center md:bg-green-100 md:text-custom-green md:shadow-none">
                     <IoDocuments className="text-6xl" />
                     <h3 className=" font-bold">Renewal</h3>
                 </Link>
 
-                <Link state={"re-issue"} to={"/application"} className="hover:scale-105 transition-all hover:-translate-y-2 lg:bg-white lg:text-black md:shadow-none lg:shadow-[0_0_10px_rgba(0,0,0,0.1)] bg-green-100 rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
+
+                <Link state="renewal" to={"/applications/re-issue"} className="hover:scale-105 transition-all hover:-translate-y-2 bg-green-100 text-custom-green md:shadow-[0_0_10px_rgba(0,0,0,0.1)] md:bg-white md:text-black rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
                     <HiOutlineDocumentDuplicate className="text-6xl" />
                     <h3 className=" font-bold">Reissue</h3>
+                </Link>
+
+                <Link to={"/driving-schools"} className="hover:scale-105 transition-all hover:-translate-y-2 lg:bg-white lg:text-black md:shadow-none lg:shadow-[0_0_10px_rgba(0,0,0,0.1)] bg-green-100 rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
+                    <MdOutlineDriveEta className="text-6xl" />
+                    <h3 className=" font-bold">Driving Schools</h3>
                 </Link>
 
 
@@ -204,10 +204,10 @@ const Dashboard = () => {
                     <h3 className=" font-bold">Capture Centers</h3>
 
                 </Link>
-                <Link to={"/driving-schools"} className="hover:scale-105 transition-all hover:-translate-y-2 bg-green-100 rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
-                    <MdOutlineDriveEta className="text-6xl" />
-                    <h3 className=" font-bold">Driving Schools</h3>
+                <Link className="hover:scale-105 transition-all hover:-translate-y-2 bg-green-100 rounded-lg grid gap-2 place-items-center place-content-center text-custom-green  p-4 h-[10rem] text-center">
 
+                    <FcFaq className="text-6xl" />
+                    <h3 className=" font-bold">Frequently Asked Questions</h3>
                 </Link>
                 <Link to={"/support"} className="hover:scale-105 transition-all hover:-translate-y-2 shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
                     <RiCustomerService2Line className="text-6xl" />
