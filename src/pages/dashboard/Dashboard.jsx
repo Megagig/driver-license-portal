@@ -34,7 +34,7 @@ const Dashboard = () => {
     console.log(auth.user)
 
 
-    let style
+
 
     return (
         <div className="md:px-10 xl:px-20 max-w-[100vw] overflow-hidden px-4  py-4 pb-20 ">
@@ -59,103 +59,6 @@ const Dashboard = () => {
 
             </div>
 
-            {/* <div className=" md:grid mt-4 md:grid-cols-2 md:gap-10 gap-4 items-start ">
-
-
-                <div className="border h-fit rounded-lg  p-4">
-                    <div className="flex items-center justify-between mb-4">
-                        <h1 className="text-xl font-semibold">
-                            Drivers License Details
-                        </h1>
-                    </div>
-
-                    <div className="border grid  gap-2 p-4 rounded-xl">
-                        <p>
-                            {" "}
-                            <span className="font-bold text-custom-green">
-                                License No:
-                            </span>{" "}
-                            <span className=" md:text-xl">IDL123456</span>
-                        </p>
-                        <p>
-                            {" "}
-                            <span className="font-bold text-custom-green">
-                                License Class:
-                            </span>{" "}
-                            <span className=" md:text-xl">A</span>
-                        </p>
-                        <p>
-                            {" "}
-                            <span className="font-bold text-custom-green">
-                                Country of Issue:
-                            </span>{" "}
-                            <span className=" md:text-xl">Nigeria</span>
-                        </p>
-                        <p>
-                            {" "}
-                            <span className="font-bold text-custom-green">
-                                Date of Issue:{" "}
-                            </span>
-                            <span className=" md:text-xl">22-06-2023</span>
-                        </p>
-                        <p>
-                            {" "}
-                            <span className="font-bold text-custom-green">
-                                Date of Expiration:
-                            </span>{" "}
-                            <span className=" md:text-xl">22-06-2025</span>
-                        </p>
-                    </div>
-                </div>
-
-                <div className="border mt-4 md:mt-0 h-fit rounded-lg  p-4">
-                    <div className="flex items-center justify-between mb-4">
-                        <h1 className="text-xl font-semibold">
-                            {" "}
-                            Drivers Information
-                        </h1>
-                    </div>
-                    <div className="border grid truncate overflow-clip gap-2 p-4 text-wrap rounded-xl">
-                        <p>
-                            {" "}
-                            <span className="font-bold text-custom-green">
-                                First Name:
-                            </span>{" "}
-                            <span className=" md:text-xl">
-                                {user.firstName}
-                            </span>
-                        </p>
-                        <p>
-                            {" "}
-                            <span className="font-bold text-custom-green">
-                                Last Name:
-                            </span>{" "}
-                            <span className=" md:text-xl">{user.lastName}</span>
-                        </p>
-                        <p>
-                            {" "}
-                            <span className="font-bold text-custom-green">
-                                Email:
-                            </span>{" "}
-                            <span className="  md:text-xl ">{user.email}</span>
-                        </p>
-                        <p>
-                            {" "}
-                            <span className="font-bold text-custom-green">
-                                Sex:{" "}
-                            </span>
-                            <span className=" md:text-xl">{user.gender}</span>
-                        </p>
-                        <p>
-                            {" "}
-                            <span className="font-bold text-custom-green">
-                                Phone No:
-                            </span>{" "}
-                            <span className=" md:text-xl">+234900000000</span>
-                        </p>
-                    </div>
-                </div>
-            </div> */}
 
 
             <div className="grid w-full my-10 gap-4 grid-cols-2  lg:grid-cols-4 md:grid-cols-3">
@@ -216,11 +119,7 @@ const Dashboard = () => {
                     <h3 className=" font-bold">Support</h3>
 
                 </Link>
-                {/* <Link className="shadow-[0_0_10px_rgba(0,0,0,0.1)] md:bg-green-100 md:text-custom-green md:shadow-none rounded-lg grid gap-2 place-items-center place-content-center  p-4 h-[10rem] text-center">
-                    <FaPaypal className="text-6xl" />
-                    <h3 className=" font-bold">Payments</h3>
 
-                </Link> */}
             </div>
             {/* <div className="mt-8">
                 <h1 className="font-bold text-2xl mb-6">Transaction History</h1>
