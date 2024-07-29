@@ -16,7 +16,7 @@ export const Accordion = ({ faq }) => {
           ref={questionBtn}
           onClick={() => { setShow(!show) }}
           type="button"
-          className="flex items-center justify-between w-full p-4 font-medium text-left text-white  bg-custom-green"
+          className="flex gap-3 items-center justify-between w-full p-4 font-medium text-left text-white  bg-custom-green"
           data-accordion-target="#accordion-flush-body-1"
           aria-expanded="true"
           aria-controls="accordion-flush-body-1"

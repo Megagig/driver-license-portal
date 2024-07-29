@@ -33,19 +33,19 @@ const Faq = () => {
     ];
 
     return (
-        <section className="py-10 px-4 md:px-10 xl:px-20">
-            <h1 className="text-4xl mb-16 text-custom-green font-bold ">
+        <section className="py-10 px-4 md:py-16 md:px-10 xl:px-20">
+            <h1 className="text-3xl md:text-5xl  lg:mb-16 text-custom-green font-bold ">
                 Frequently Asked Questions
             </h1>
 
 
-            <div className="flex items-start  gap-10 ">
-                <div className="w-4/5">
+            <div className="lg:flex items-start  gap-10 ">
+                <div>
 
-                    <img src={faq} alt="" />
+                    <img className="w-full max-w-[35rem] mx-auto" src={faq} alt="" />
                 </div>
                 <div
-                    className="w-full px-8 pt-8 pb-4 rounded-xl"
+                    className="w-full md:px-8 pt-8 md:pb-4 "
                     id="accordion-flush"
                     data-accordion="collapse"
                     data-active-classes="bg-white dark:bg-gray-900 text-gray-900 "
