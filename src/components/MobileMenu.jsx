@@ -1,10 +1,10 @@
+import { MdClose } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
-import LinkButton from "./LinkButton";
-import DropDownButton from "./DropDownButton";
-import DropDownMenu from "./DropdownMenu";
 import coatOfArm from "../assets/coatOfArm.png";
 import logo from "../assets/Logo.svg";
-import { MdClose } from "react-icons/md";
+import DropDownButton from "./DropDownButton";
+import DropDownMenu from "./DropdownMenu";
+import LinkButton from "./LinkButton";
 // import useAuth from "../hooks/useAuth";
 // import { dropdownData } from "./utils/data";
 
@@ -81,7 +81,7 @@ const MobileMenu = ({ menuState, dropdownState, contactState, dropdownData, setA
 
                 {auth?.user && (
                     <Link
-                        to="/appointment"
+                        to="/get-appointment-slip"
                         className="text-white px-6 py-4 transition-colors"
                         onClick={closeMobileMenu}
                     >

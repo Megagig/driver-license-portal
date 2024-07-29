@@ -13,7 +13,7 @@ export const ResponseInvalid = ({ BtnFunction}) => {
                 <div className="bg-white p-6 mt-4 rounded-xl shadow-[0_0_20px_2px_rgba(0,0,0,0.1)]">
                     <h2 className="font-bold">Details</h2>
                     <ul className="grid gap-3 mt-3">
-                        <li>No application found with the provided reference ID</li>
+                        <li>No application found with the provided appointment ID</li>
 
                     </ul>
 
