@@ -115,7 +115,7 @@ const ApplicationForm = () => {
 
     return (
         <div className="container p-10 max-w-[1280px] m-auto">
-            <h1 className="text-3xl font-bold text-custom-green mb-8">
+            <h1 className="text-3xl text-center md:text-left font-bold text-custom-green mb-8">
                 {type === "new"
                     ? "New Driver's License Application"
                     : type === "renewal"
