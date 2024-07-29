@@ -93,8 +93,8 @@ const Verify = () => {
 
 
     return (
-        <div className="p-4 md:px-10 xl:p-20 h-full md:py-16 ">
-            <h1 className=" text-3xl md:text-5xl mb-4 text-custom-green font-bold  ">Verify License</h1>
+        <div className="p-4 md:px-10 xl:px-20 py-8 h-full">
+            <h1 className=" text-3xl md:text-5xl mb-4 text-custom-green text-center md:text-start font-bold  ">Verify License</h1>
 
 
             <div >
@@ -107,7 +107,7 @@ const Verify = () => {
                     <div className="w-full">
 
                         <p className="text-justify">Securely verify your identity or someone else's with our driver's license verification service. This quick and easy process uses secure technology to protect your information. Get started today and streamline your verification needs.</p>
-                        <p>Sample ID: IDL1234567890 </p>
+                        <p>Sample ID: NTH66786AA56 </p>
 
                         <form className="max-w-[30rem]">
 
@@ -117,8 +117,6 @@ const Verify = () => {
 
                             </label>
                             <span className="text-red-500 px-4 h-4 text-sm block mt-1">{errMsg}</span>
-
-
 
                         </form>
 

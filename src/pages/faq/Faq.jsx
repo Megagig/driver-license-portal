@@ -40,9 +40,9 @@ const Faq = () => {
     ];
 
     return (
-        <section className="py-10 px-4 md:py-16 md:px-10 xl:px-20">
-            <h1 className="text-3xl md:text-5xl  lg:mb-16 text-custom-green font-bold ">
-                Frequently Asked Questions
+        <section className="py-8 px-4  md:px-10 xl:px-20">
+            <h1 className="text-3xl md:leading-[1.5]  h-fit md:text-5xl text-center md:text-start  lg:mb-16 text-custom-green font-bold ">
+                Frequently Asked <br /> Questions
             </h1>
 
 

@@ -9,7 +9,7 @@ const CaptureCenter = () => {
     const [selectLga, setSelectLga] = useState("")
 
     return (
-        <div className="h-full pb-8 p-4 md:p-10 xl:px-20 lg:py-16 ">
+        <div className="h-full pb-8 p-4 md:p-10 xl:px-20 py-8 ">
             <h1 className="text-2xl lg:text-5xl font-bold mb-1 text-custom-green">Capture Center</h1>
             <p className="text-sm text-gray-700">Available Capture Center Details</p>
 

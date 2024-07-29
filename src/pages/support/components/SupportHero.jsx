@@ -6,7 +6,7 @@ const SupportHero = () => {
     return (
         <div className="  grid ">
 
-            <h1 className="text-custom-green mb-4 text-3xl md:text-5xl font-bold ">Support Center</h1>
+            <h1 className="text-custom-green text-center md:text-start mb-8 text-3xl md:text-5xl font-bold ">Support Center</h1>
 
             <div className=" mb-8 grid gap-8 md:flex md:flex-row-reverse md:my-4 items-center ">
                 <div className="w-full grid place-content-center">

@@ -10,19 +10,19 @@ export const Accordion = ({ faq }) => {
 
 
   return (
-    <div className=" mb-4 shadow-[0_5px_20px_rgba(0,0,0,0.1)]">
+    <div className=" mb-4 ">
       <h2 id="accordion-flush-heading-1">
         <button
           ref={questionBtn}
           onClick={() => { setShow(!show) }}
           type="button"
-          className="flex gap-3 items-center justify-between w-full p-4 font-medium text-left text-white  bg-custom-green"
+          className="flex gap-3 items-center justify-between w-full p-4 font-medium text-left  bg-green-100"
           data-accordion-target="#accordion-flush-body-1"
           aria-expanded="true"
           aria-controls="accordion-flush-body-1"
 
         >
-          <span className="pointer-events-none text-white">{question}</span>
+          <span className="pointer-events-none text-green-800 ">{question}</span>
           {!show && (
             <svg
               data-accordion-icon
@@ -58,11 +58,11 @@ export const Accordion = ({ faq }) => {
       {show && (
         <div
           id="accordion-flush-body-1"
-          className="p-6 bg-green-50"
+          className="p-6 border-b border-l border-r border-b-gray-200"
           aria-labelledby="accordion-flush-heading-1"
         >
           <div>
-            <p className="mb-2">
+            <p className="mb-2 text-gray-600">
               {answer}
             </p>
           </div>
