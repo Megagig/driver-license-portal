@@ -81,7 +81,7 @@ const MobileMenu = ({ menuState, dropdownState, contactState, dropdownData, setA
 
                 {auth?.user && (
                     <Link
-                        to="/appointment"
+                        to="/get-appointment-slip"
                         className="text-white px-6 py-4 transition-colors"
                         onClick={closeMobileMenu}
                     >

@@ -1,8 +1,7 @@
-
-
 import NaijaStates from "naija-state-local-government";
 import React, { useEffect, useState } from 'react';
 import toast, { Toaster } from "react-hot-toast";
+import { updateProfile } from '../../api';
 import Gender from "../../utils/Gender";
 import Input from "../../utils/Input";
 import Select from "../../utils/Select";
@@ -13,6 +12,7 @@ const BasicDetailsForm = (props) => {
     const [state, setState] = useState()
     const [lgaDropdown, setLgaDropdown] = useState(false)
     const [profileDetails, setProfile] = useState(props.formData)
+const user = JSON.parse(sessionStorage.getItem("auth"));
   
   
     console.log({profileDetails})
@@ -20,19 +20,19 @@ const BasicDetailsForm = (props) => {
     const editFirstName = (args) => {
       setProfile({
           ...profileDetails,
-          firstname:args
+          first_name:args
       })
     };
     const editMiddleName = (args) => { 
         setProfile({
             ...profileDetails,
-            middlename:args
+            middle_name:args
         })
     };
     const editSurname = (args) => { 
         setProfile({
             ...profileDetails,
-            surname:args
+            last_name:args
         })
     };
     const editEmail = (args) => {
@@ -50,7 +50,7 @@ const BasicDetailsForm = (props) => {
     const editAddress = (args) => { 
         setProfile({
             ...profileDetails,
-            address:args
+            street_address:args
         })
     };
     const editPhone = (args) => { 
@@ -61,7 +61,7 @@ const BasicDetailsForm = (props) => {
         if (value ==="" || regExp.test(value)) {
           setProfile({
               ...profileDetails,
-              phone:args
+              phone_number:args
           })
         }
       }
@@ -70,45 +70,58 @@ const BasicDetailsForm = (props) => {
     const editDob = (args) => { 
         setProfile({
             ...profileDetails,
-            dob:args
+            date_of_birth:args
         })
     }
     const editState = (args) => { 
       console.log(args)
       setProfile({
               ...profileDetails,
-              StateofAddress:args
+              state_of_residence:args
       })
     };
     const editLga = (args) => { 
       setProfile({
           ...profileDetails,
-          lga:args
+          local_govt_area:args
       })
     };
 
   
-  const updateBasicDetails = (event) => {
+  const updateBasicDetails = async (event) => {
+
     event.preventDefault()
     console.log({profileDetails})
     console.log(Object.values(profileDetails))
-    let checkNullValue = Object.keys(profileDetails).map((key) => {return profileDetails[key] == undefined ? [key, null] : [key, profileDetails[key]]})
+    let checkNullValue 
+    for (let value in profileDetails){
+        console.log(profileDetails[value])
+        if (profileDetails[value] == null  && profileDetails[value] == undefined ){
+            checkNullValue = [value, profileDetails[value]]
+            break;
+        }
+    }
     console.log(checkNullValue)
     const isEmpty = Object.values(profileDetails).some(x =>  (x == null || x == '' || x== undefined));
     console.log({isEmpty})
     if(isEmpty ==  false){
       //axios code to push
-      props.updateBasicDetails(profileDetails)
-      toast.success("saved successfully")
-      setTimeout(() => {
-          props.closeModal()
-        
-      }, 1500)
+        const response = await updateProfile(user.access,profileDetails)
+        console.log({response})
+        if (response.status == 200){
+             toast.success("saved successfully")
+             props.updateBasicDetails(profileDetails)
+             setTimeout(() => {
+                props.closeModal()
+              
+            }, 1500)
+        }
+
     }
     else{
-        let key = checkNullValue.findIndex(value => value[1] == undefined)
-        console.log({key})
-        toast.error(checkNullValue[key][0]+" is required")
+       
+        console.log(checkNullValue[0]+" is required")
+        toast.error(checkNullValue[0]+" is required")
     }
   };
   
@@ -152,7 +165,7 @@ const BasicDetailsForm = (props) => {
                     labelName="First Name"
                     htmlFor='firstName'
                     placeholder='First Name'
-                    value={profileDetails.firstname}
+                    value={profileDetails.first_name}
                     onChange={editFirstName}
                     required={true} />
                 <Input 
@@ -160,7 +173,7 @@ const BasicDetailsForm = (props) => {
                     labelName="Middle Name"
                     htmlFor='middleName'
                     placeholder='Middle Name' 
-                    value={profileDetails.middlename}
+                    value={profileDetails.middle_name}
                     onChange={editMiddleName}
                     required={true} />
                 <Input 
@@ -168,7 +181,7 @@ const BasicDetailsForm = (props) => {
                     labelName="Surname"
                     htmlFor='surname'
                     placeholder='Surname' 
-                    value={profileDetails.surname}
+                    value={profileDetails.last_name}
                     onChange={editSurname}
                     required={true} />
                 <Input 
@@ -185,7 +198,7 @@ const BasicDetailsForm = (props) => {
                     htmlFor='Phone Number'
                     placeholder='Phone Number'
                     inputMode="decimal"
-                    value={profileDetails.phone}
+                    value={profileDetails.phone_number}
                     onChange={editPhone}
                     required={true} />
                 <Gender 
@@ -197,14 +210,14 @@ const BasicDetailsForm = (props) => {
                     labelName="Home Address"
                     htmlFor='address'
                     placeholder='Home Address'
-                    value={profileDetails.address}
+                    value={profileDetails.street_address}
                     onChange={editAddress}
                     required={true} />
                 <Input 
                     type='date'
                     labelName="Date of Birth"
                     htmlFor='dob'
-                    value={profileDetails.dob}
+                    value={profileDetails.date_of_birth}
                     onChange={editDob}
                     required={true}
                      />
@@ -212,15 +225,15 @@ const BasicDetailsForm = (props) => {
                         <span className='text-base md:text-[20px]/[22px] font-medium text-green-700 dark:text-green-500'>State</span>
                         {stateDropdown ?
                         <Select closeModal={handleChangeDropdown} value="state"/>:
-                        <button type="button" className="w-full h-full py-2 px-5  border-2 border-custom-grey bg-slate-50 rounded-lg">{profileDetails.StateofAddress ? profileDetails.StateofAddress :"Select a state"}</button>
+                        <button type="button" className="w-full h-full py-2 px-5  border-2 border-custom-grey bg-slate-50 rounded-lg">{profileDetails.state_of_residence ? profileDetails.state_of_residence :"Select a state"}</button>
 
                         }
                      </label>
                      <label className='relative grid gap-2 w-full mb-6' onClick={handleLgaChangeDropdown}>
                         <span className='text-base md:text-[20px]/[22px] font-medium text-green-700 dark:text-green-500'>L.G.A</span>                       
-                        {lgaDropdown && profileDetails.StateofAddress && stateDropdown == false?
-                        <Select closeModal={handleLgaChangeDropdown} value={profileDetails.StateofAddress}/>:
-                        <button type="button" className="w-full h-full py-2 px-5  border-2 border-custom-grey bg-slate-50 rounded-lg">{profileDetails.lga != undefined ? profileDetails.lga : profileDetails.StateofAddress ? "Select your LGA" : "Select a state"}</button>
+                        {lgaDropdown && profileDetails.state_of_residence && stateDropdown == false?
+                        <Select closeModal={handleLgaChangeDropdown} value={profileDetails.state_of_residence}/>:
+                        <button type="button" className="w-full h-full py-2 px-5  border-2 border-custom-grey bg-slate-50 rounded-lg">{profileDetails.local_govt_area != undefined ? profileDetails.local_govt_area : profileDetails.state_of_residence ? "Select your LGA" : "Select a state"}</button>
 
                         }
 

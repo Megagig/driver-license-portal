@@ -1,11 +1,13 @@
+import { FaTwitter } from "react-icons/fa";
+import { IoLogoYoutube } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { FaTwitter } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io";
-
 import logo from "../assets/Logo2.svg"
 import angleright from "../assets/angle-right.svg";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
+
 
 const Footer = () => {
 
@@ -18,7 +20,6 @@ const Footer = () => {
                 <div className="grid gap-8 content-start ">
                     <img className="h-12 md:h-14" src={logo} alt="" />
                     <p className="text-white text-sm leading-[1.8] md:max-w-[20rem]">Fast, secure, and efficient licensing solutions at your fingertips.  <br /> For customer support, please reach out to <span className="text-green-500">support@example.com.</span> </p>
-
 
                 </div>
 
@@ -49,7 +50,7 @@ const Footer = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to={"appointment"} className="flex font-semibold hover:text-green-600 hover:translate-x-2 transition-all duration-200 text-gray-100 gap-2">
+                            <Link to={"/get-appointment-slip"} className="flex font-semibold hover:text-green-600 hover:translate-x-2 transition-all duration-200 text-gray-100 gap-2">
                                 Appointment Slip
                             </Link>
                         </li>
@@ -103,6 +104,7 @@ const Footer = () => {
                 </div>
 
             </div>
+
             <div className="text-center text-sm h-10 border-t-[rgba(255,255,255,0.1)] border-t grid content-center bg-black text-white">
                 All rights reserved &copy; DANNON GROUP
             </div>

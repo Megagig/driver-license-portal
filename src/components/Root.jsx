@@ -15,7 +15,6 @@ const Root = () => {
                 <Header />
                 <NavBar />
             </header>
-
             <main>
                 <Outlet />
                 <ReusableModal isOpen={isLoading}>

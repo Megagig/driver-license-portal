@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react"
+import PhoneInput from 'react-phone-number-input'
+import 'react-phone-number-input/style.css'
 import Button from "../../../components/utils/Button"
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
@@ -7,11 +10,12 @@ import { useState, useEffect } from "react"
 
 
 
+
+
 const SupportForm = ({ BtnFunction }) => {
     const [value, setValue] = useState(null)
-
-
     const [formData, setFormData] = useState({})
+
 
 
 
@@ -92,7 +96,6 @@ const SupportForm = ({ BtnFunction }) => {
                     <label className="mb-[2px] block text-base font-medium text-neutral-700">Comments <span className="text-red-500">*</span></label>
                     <textarea name="comments" onChange={handleChange} className="w-full rounded-md  bg-gray-50 py-4 px-4 text-base shadow-[0_3px_5px_rgba(0,0,0,0.2)] text-[#6B7280] outline-none focus:border-[#6A64F1] mt-1 focus:shadow-md resize-none h-[10rem]" id="" required></textarea>
                 </div>
-
             </form>
             <div className="mt-10 grid place-content-end">
                 <Button BtnFunction={BtnFunction}>

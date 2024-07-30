@@ -3,6 +3,7 @@ import Button, { Button2 } from "../../components/utils/Button"
 import NaijaStates from "naija-state-local-government";
 
 
+let state
 
 const CaptureCenter = () => {
     const [selectState, setSelectState] = useState('')

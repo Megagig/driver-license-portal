@@ -34,8 +34,10 @@ export const Hero = () => {
         </div>
 
       </aside>
-      <aside className=" hidden md:flex md:flex-1 md:h-full ">
+      <aside className=" hidden md:flex md:flex-1 md:h-full overflow-hidden">
+          {/* <Slider data={imgArray} /> */}
           <img src={imgArray[index]} className='object-cover w-full h-full' alt="image" />
+
       </aside>
 
     </section>

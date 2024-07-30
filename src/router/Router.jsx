@@ -10,7 +10,7 @@ import Root from "../components/Root";
 import ApplicationForm from "../pages/applications/ApplicationForm";
 import ApplicationHome from "../pages/applications/ApplicationHome";
 import Appointment, { loader as appointmentLoader } from "../pages/appointment/Appointment";
-import { AppointmentDashboard, appointmentdashboardLoader } from "../pages/appointment/AppointmentDashboard";
+import { AppointmentDashboard, appointmentDashboardLoader } from "../pages/appointment/AppointmentDashboard";
 import LoginPage from "../pages/auth/login/LoginPage";
 import SignupPage from "../pages/auth/signup/SignupPage";
 import CaptureCenter from "../pages/capture_center/CaptureCenter";
@@ -20,7 +20,6 @@ import HomePage from "../pages/home/HomePage";
 import Profile, { profileLoader } from "../pages/profile/Profile";
 import Support from "../pages/support/Support";
 import Verify from "../pages/verification/Verify";
-
 const router = createBrowserRouter([
     {
         path: '/',
@@ -68,18 +67,26 @@ const router = createBrowserRouter([
                     {
                         path: "profile",
                         element: <Profile />,
+                        loader: profileLoader
+
                     },
                     {
-                        path: "applications/:type",
+                        path: "application",
                         element: <ApplicationHome />,
                     },
                     {
-                        path: "applications/:type/form",
+                        path: "application/form",
                         element: <ApplicationForm />,
                     },
                     {
-                        path: "appointment",
+                        path: "get-appointment-slip",
                         element: <AppointmentDashboard />,
+                        loader: appointmentDashboardLoader
+                    },
+                    {
+                        path: "appointment",
+                        element: <Appointment />,
+                        loader: appointmentLoader
                     },
                 ]
             },

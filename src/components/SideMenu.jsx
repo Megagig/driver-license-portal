@@ -1,4 +1,3 @@
-
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth"
 import { MdLogout } from "react-icons/md";
@@ -7,8 +6,6 @@ import { IoIosHelpCircleOutline } from "react-icons/io";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { IoDocumentTextSharp } from "react-icons/io5";
 import { FaUserAlt } from "react-icons/fa";
-
-
 
 
 
@@ -56,7 +53,7 @@ const SideMenu = ({ closeFunc }) => {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/appointment" onClick={closeFunc} className="  px-4 py-2 cursor-pointer hover:bg-green-100  rounded-lg hover:text-custom-green transition-colors flex items-center gap-2"
+                    <Link to="/get-appointment-slip" onClick={closeFunc} className="  px-4 py-2 cursor-pointer hover:bg-green-100  rounded-lg hover:text-custom-green transition-colors flex items-center gap-2"
                     ><IoDocumentTextSharp className="font-bold text-lg" />
                         <span>Get Appointment Slip</span>
                     </Link>

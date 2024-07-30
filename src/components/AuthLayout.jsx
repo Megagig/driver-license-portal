@@ -1,10 +1,9 @@
-import { useLocation, Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 const AuthLayout = () => {
     const { pathname } = useLocation();
     const { auth } = useAuth() || JSON.parse(sessionStorage.getItem('auth'));
-
 
     return auth?.user ? (
         <Outlet />

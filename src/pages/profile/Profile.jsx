@@ -1,59 +1,58 @@
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { redirect, useLoaderData } from "react-router-dom";
+import { fetchProfile, updateProfile } from "./api";
 import BasicDetails from "./components/BasicDetails";
 import InstantDriverDetails from "./components/InstantDriverDetails";
 import LoginDetails from "./components/LoginDetails";
 import ProfilePicture from "./components/ProfilePicture";
 
-export const profileLoader = async ({request}) => {
-  const user = JSON.parse(sessionStorage.getItem("user")) || false;
-  console.log({request})
+
+
+export const profileLoader = ({request}) => {
+  const auth = JSON.parse(sessionStorage.getItem("auth"));
+  console.log({auth})
   const pathname = new URL(request.url).pathname;
-  console.log({pathname})
-  if(user){
-      return user
+
+  if(auth){
+    let response= fetchProfile(auth.access,pathname)
+
+    console.log({response})
+    return response
   } 
   else{
-      throw redirect(`/login?message=Please login to continue&redirectTo= ${pathname}`);
+      throw redirect(`/login?message=Please-login-to-continue&redirectTo= ${pathname}`);
   }
 }
 
 const Profile = () => {
-
+  const user = JSON.parse(sessionStorage.getItem("auth"));
   let  state  = useLoaderData();
 
   console.log({state})
-  const [profileDetails, setProfile] = useState({
-      username: 'michaelw',
-        password: 'michaelwpass',
-        firstname: "Michael",
-        surname: "Joe",
-        middlename: "Doe",
-        dob:"1992-12-27",
-        phone:"08111206206",
-        email:"ayopelumi2014@gmail.com",
-        StateofAddress: "Lagos",
-        lga:"ifedayo",
-        address:"berger",
-        gender: "Male",
-        licenseId:"12344AD52DC",
-        certificateNumber:"Ikj384AD34",
-        nin :"557FFR2397F93983",
-        joined : "21-12-3034",
-        lastRenewal: "21-21-2021",
-        nextRenewal: "21-21-2021",
-        image: "src/assets/images/close-up-friends-traveling-by-car.jpg"
-  })
+  const [profileDetails, setProfile] = useState({...state})
+  const [basicDetails, setBasicDetails] = useState({})
 
+  useEffect(()=>{
+    let profileClone = new Object()
+    for(let item in state){
+      if(item !== "passport_photo"){
+      profileClone[item] = state[item]
+    }}
+    console.log(profileClone)
+    setBasicDetails(profileClone)
+  },[])
 
   console.log({profileDetails})
 
-  const editImage = (event) => {
+  const editImage = async (event) => {
           
       let reader = new FileReader();
       let file = event.target.files[0];
       console.log(event.target.files[0])
+      let formData = new FormData()
+      formData.append("passport_photo",file )
+      let response = await updateProfile(user.access,formData)
+      console.log({response})
       reader.onloadend = () => {
   
         setProfile({
@@ -67,10 +66,13 @@ const Profile = () => {
   }
  
 const updateBasicDetails = (args) => {
+
   setProfile({
     ...profileDetails,
     ...args
   })
+    
+  
 };
 
   return (
@@ -79,11 +81,11 @@ const updateBasicDetails = (args) => {
 
         <div className="w-full">
             <ProfilePicture  
-              state={profileDetails}
+              state={profileDetails.passport_photo}
               editImage={editImage}
             />
             <BasicDetails  
-              state={profileDetails}
+              state={basicDetails}
               updateBasicDetails={updateBasicDetails}
             />
             <LoginDetails  state={profileDetails}/>
