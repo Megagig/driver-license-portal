@@ -1,5 +1,4 @@
 import axios from "axios";
-import useAuth from "../../hooks/useAuth";
 
 export const login = async (data) => {
     try {
@@ -12,7 +11,7 @@ export const login = async (data) => {
             setTimeout(()=>{
                 console.log("from the api js")
                 updateAccessToken(response.data.refresh)
-            },2900)
+            },10000)
             return response.data;
 
         }
@@ -43,7 +42,7 @@ export const updateAccessToken = (refresh) =>{
         axios.post("https://saviorte.pythonanywhere.com/api/token/refresh",{
             "refresh": refresh
         }).then(response => {
-            updateUserCredentials(reponse.data)
+            updateUserCredentials(response.data)
             console.log({response})})
     }
     catch(err){
@@ -52,7 +51,14 @@ export const updateAccessToken = (refresh) =>{
 }
 
 const updateUserCredentials = (data)=>{
-    const { auth, setAuth } = useAuth();
+    let auth = JSON.parse(sessionStorage.getItem("auth"))
+    console.log({auth});                                                    
+    auth.access = data
+    sessionStorage.setItem("auth",JSON.stringify(auth))
     console.log({auth});
     console.log({data})
+    setTimeout(()=>{
+        console.log("from the api js")
+        updateAccessToken(user.refresh)
+    },10000)
 }

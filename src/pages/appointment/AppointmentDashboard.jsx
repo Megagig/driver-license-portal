@@ -34,47 +34,47 @@ export const appointmentDashboardLoader = async ({request}) => {
     }
     const fetchAppointmentSlip =async () => { 
         // fetch code here
-        let  refresh = user.refresh
-        console.log(user.refresh)
-          const response = await axios.post(
-              "https://saviorte.pythonanywhere.com/api/token/refresh",
-             {
-              "refresh":refresh
-              },
-          );
+        // let  refresh = user.refresh
+        // console.log(user.refresh)
+        //   const response = await axios.post(
+        //       "https://saviorte.pythonanywhere.com/api/token/refresh",
+        //      {
+        //       "refresh":refresh
+        //       },
+        //   );
 
-          console.log({response})
-        // if(searchKeyword.length !=0){
-        //     console.log({user});
-        //     try {
-        //         setPopUp(true)
-        //         const response = await axios.get(`https://saviorte.pythonanywhere.com/api/applications/reference/${searchKeyword}/`,{
-        //             headers:{
-        //                 'Authorization':`Bearer  ${user.access}`,
-        //             },
-        //         })
-        //         const data = await response.data
-        //         console.log(data)
+        //   console.log({response})
+        if(searchKeyword.length !=0){
+            console.log({user});
+            try {
+                setPopUp(true)
+                const response = await axios.get(`https://saviorte.pythonanywhere.com/api/applications/reference/${searchKeyword}/`,{
+                    headers:{
+                        'Authorization':`Bearer  ${user.access}`,
+                    },
+                })
+                const data = await response.data
+                console.log(data)
                 
-        //         if (response.status === 200) {
-        //             setTimeout(() =>{
+                if (response.status === 200) {
+                    setTimeout(() =>{
                         
-        //                 navigate('/appointment');
-        //             },2000)
-        //     }
-        // }
-        // catch (err){
-        //     console.log({err})
-        //     setPopUp(false)
-        //     if(err.response.data.message == "No application found with the provided reference ID"){
-        //         setShowResponse(true)
-        //     }
-        //     if (err.response.data.detail == 'Given token not valid for any token type'){
-        //         console.log("i am in the details")
+                        navigate('/appointment');
+                    },2000)
+            }
+        }
+        catch (err){
+            console.log({err})
+            setPopUp(false)
+            if(err.response.data.message == "No application found with the provided reference ID"){
+                setShowResponse(true)
+            }
+            if (err.response.data.detail == 'Given token not valid for any token type'){
+                console.log("i am in the details")
 
-        //     }
-        // }
-        // }
+            }
+        }
+        }
 };
 
 
