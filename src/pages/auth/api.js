@@ -59,6 +59,6 @@ const updateUserCredentials = (data)=>{
     console.log({data})
     setTimeout(()=>{
         console.log("from the api js")
-        updateAccessToken(user.refresh)
+        updateAccessToken(auth.refresh)
     },10000)
 }
