@@ -2,9 +2,6 @@ import { useEffect, useState } from "react"
 import PhoneInput from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
 import Button from "../../../components/utils/Button"
-import 'react-phone-number-input/style.css'
-import PhoneInput from 'react-phone-number-input'
-import { useState, useEffect } from "react"
 
 
 

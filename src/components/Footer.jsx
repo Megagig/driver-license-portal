@@ -1,12 +1,7 @@
-import { FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaInstagramSquare, FaTwitter } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { FaTwitter } from "react-icons/fa";
-import { IoLogoYoutube } from "react-icons/io";
-import logo from "../assets/Logo2.svg"
-import angleright from "../assets/angle-right.svg";
-import { FaFacebook } from "react-icons/fa";
-import { FaInstagramSquare } from "react-icons/fa";
+import logo from "../assets/Logo2.svg";
 
 
 const Footer = () => {
