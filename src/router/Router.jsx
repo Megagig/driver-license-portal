@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import AuthLayout from "../components/AuthLayout";
 import Root from "../components/Root";
-import ApplicationForm from "../pages/applications/ApplicationForm";
+import ApplicationForm, { applicationFormLoader } from "../pages/applications/ApplicationForm";
 import ApplicationHome from "../pages/applications/ApplicationHome";
 import Appointment, { loader as appointmentLoader } from "../pages/appointment/Appointment";
 import { AppointmentDashboard, appointmentDashboardLoader } from "../pages/appointment/AppointmentDashboard";
@@ -77,6 +77,7 @@ const router = createBrowserRouter([
                     {
                         path: "application/form",
                         element: <ApplicationForm />,
+                        loader: applicationFormLoader
                     },
                     {
                         path: "get-appointment-slip",

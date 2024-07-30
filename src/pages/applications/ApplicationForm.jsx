@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLoaderData } from "react-router-dom";
 import BiodataForm from "./components/BiodataForm";
 import PaymentForm from "./components/PaymentForm";
 import ContactForm from "./components/ContactForm";
@@ -16,8 +16,38 @@ import {
 } from "react-icons/fa6";
 import SubmissionResponse from "./components/SubmissionResponse";
 import RenewalReissueForm from "./components/RenewalReissueForm";
+import { requireAuth } from "../../utils/auth";
+import { getProfile } from "./api";
+
+export const applicationFormLoader = async ({ request }) => {
+    await requireAuth(request);
+
+    const profileResponse = await getProfile();
+    console.log(profileResponse.data);
+
+    if (profileResponse.error) {
+        return {
+            first_name: "",
+            last_name: "",
+            middle_name: "",
+            gender: "",
+            date_of_birth: "",
+            passport_photo: "",
+            email: "",
+            phone_number: "",
+            street_address: "",
+            state_of_residence: "",
+            local_govt_area: "",
+        };
+    }
+
+    return {
+        profile: profileResponse.data,
+    };
+};
 
 const ApplicationForm = () => {
+    const profile = useLoaderData();
     const params = useParams();
     const { type } = params;
     const [step, setStep] = useState(1);
@@ -35,22 +65,23 @@ const ApplicationForm = () => {
     const closeModal = () => setIsModalOpen(false);
 
     const [biodataForm, setBiodataForm] = useState({
-        first_name: "",
-        last_name: "",
-        middle_name: "",
-        gender: "",
+        first_name: profile.first_name,
+        last_name: profile.last_name,
+        middle_name: profile.middle_name,
+        gender: profile.gender,
         mothers_maiden_name: "",
-        date_of_birth: "",
-        passport_photo: "",
+        date_of_birth: profile.date_of_birth,
+        passport_photo: profile.passport_photo,
         nin: "",
         driving_school_certificate_number: "",
+        vehicle_type: "",
     });
     const [contactForm, setContactForm] = useState({
-        email: "",
-        phone: "",
-        streetAddress: "",
-        state: "",
-        lga: "",
+        email: profile.email,
+        phone_number: profile.phone_number,
+        street_address: profile.street_address,
+        state_of_residence: profile.state_of_residence,
+        local_govt_area: profile.local_govt_area,
     });
     const [paymentForm, setPaymentForm] = useState({
         cardName: "",
@@ -114,7 +145,7 @@ const ApplicationForm = () => {
     };
 
     return (
-        <div className="container p-10 max-w-[1280px] m-auto">
+        <div className="container p-10 w-full max-w-[1280px] m-auto">
             <h1 className="text-3xl text-center md:text-left font-bold text-custom-green mb-8">
                 {type === "new"
                     ? "New Driver's License Application"
@@ -272,6 +303,7 @@ const ApplicationForm = () => {
                                         setStep={setStep}
                                         setIsSubmitted={setIsPaymentSubmitted}
                                         applicationType={type}
+                                        vehicleType={biodataForm.vehicle_type}
                                         paymentResponse={paymentResponse}
                                         setPaymentResponse={setPaymentResponse}
                                         applicantEmail={contactForm.email}
@@ -406,6 +438,7 @@ const ApplicationForm = () => {
                                         setStep={setStep}
                                         setIsSubmitted={setIsPaymentSubmitted}
                                         applicationType={type}
+                                        vehicleType={biodataForm.vehicle_type}
                                         paymentResponse={paymentResponse}
                                         setPaymentResponse={setPaymentResponse}
                                         applicantEmail={
