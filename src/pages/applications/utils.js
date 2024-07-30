@@ -11,6 +11,7 @@ export const biodataFormValid = (formData) => {
         "mothers_maiden_name",
         "nin",
         "passport_photo",
+        "vehicle_type"
     ];
 
     for (let prop of requiredProps) {
