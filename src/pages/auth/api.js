@@ -13,7 +13,6 @@ export const login = async (data) => {
                 updateAccessToken(response.data.refresh)
             },1740000)
             return response.data;
-
         }
     } catch (error) {
         return error;
@@ -61,4 +60,5 @@ const updateUserCredentials = (data)=>{
         console.log("from the api js")
         updateAccessToken(auth.refresh)
     },1740000)
+
 }

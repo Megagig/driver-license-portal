@@ -1,4 +1,5 @@
 import { Accordion } from "./Accordion";
+import faq from "../../assets/faq.svg"
 
 const Faq = () => {
     const faqs = [
@@ -16,7 +17,14 @@ const Faq = () => {
             id: 3,
             question:
                 "I am a fresh Applicant. What do i need to do to obtain the new Driver License?",
-            answer: "1. Visit an accredited driving school and complete the mandatory drivers training.2. Obtain a driving school certificate number from the accredited driving school to be used to initiate a fresh application.3. Access the nigeriadriverslicence.frsc.gov.ng, click on DL Application tab and select New Driver’s Licence Application.4. Provide your Certificate Number (Which is the number on the certificate provided from the driving school attended) and click on submit.5. Fill in your application details and submit and make payment.",
+            // answer: "1. Visit an accredited driving school and complete the mandatory drivers training.2. Obtain a driving school certificate number from the accredited driving school to be used to initiate a fresh application.3. Access the nigeriadriverslicence.frsc.gov.ng, click on DL Application tab and select New Driver’s Licence Application.4. Provide your Certificate Number (Which is the number on the certificate provided from the driving school attended) and click on submit.5. Fill in your application details and submit and make payment.",
+            answer: <><ol className="grid gap-3 pl-2 list-decimal">
+                <li>Visit an accredited driving school and complete the mandatory drivers training.</li>
+                <li> Obtain a driving school certificate number from the accredited driving school to be used to initiate a fresh application.</li>
+                <li>Access the nigeriadriverslicence.frsc.gov.ng, click on DL Application tab and select New Driver’s Licence Application.</li>
+                <li>Provide your Certificate Number (Which is the number on the certificate provided from the driving school attended) and click on submit.</li>
+                <li>Fill in your application details and submit and make payment.</li>
+            </ol></>
         },
         {
             id: 4,
@@ -32,20 +40,28 @@ const Faq = () => {
     ];
 
     return (
-        <section className="my-10 p-7 border rounded dark:border-slate-700 shadow-sm w-full md:w-[700px] md:mx-auto">
-            <h1 className="text-2xl text-center font-semibold dark:text-slate-100 mb-3 underline underline-offset-8 ">
-                Frequently Asked Questions
+        <section className="py-8 px-4  md:px-10 xl:px-20">
+            <h1 className="text-3xl md:leading-[1.5]  h-fit md:text-5xl text-center md:text-start  lg:mb-16 text-custom-green font-bold ">
+                Frequently Asked <br /> Questions
             </h1>
-            <div
-                className="mt-10"
-                id="accordion-flush"
-                data-accordion="collapse"
-                data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white "
-                data-inactive-classes="text-gray-500 dark:text-gray-400 "
-            >
-                {faqs.map((faq) => (
-                    <Accordion key={faq.id} faq={faq} />
-                ))}
+
+
+            <div className="lg:flex items-start  gap-10 ">
+                <div>
+
+                    <img className="w-full max-w-[35rem] mx-auto" src={faq} alt="" />
+                </div>
+                <div
+                    className="w-full"
+                    id="accordion-flush"
+                    data-accordion="collapse"
+                    data-active-classes="bg-white dark:bg-gray-900 text-gray-900 "
+                    data-inactive-classes="text-gray-500 dark:text-gray-400 "
+                >
+                    {faqs.map((faq) => (
+                        <Accordion key={faq.id} faq={faq} />
+                    ))}
+                </div>
             </div>
         </section>
     );

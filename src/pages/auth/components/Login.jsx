@@ -1,11 +1,14 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { loginFields } from "../constants/FormFields";
+import FormAction from "./FormAction";
 import FormExtra from "./FormExtra";
 import Input from "./Input";
+import { Link } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
+import { toast } from "react-hot-toast";
 import { login } from "../api";
 
 const fields = loginFields;
@@ -40,9 +43,6 @@ export default function Login({ paragraph, linkUrl, linkName }) {
             setAuth(loginResponse);
             sessionStorage.setItem("auth", JSON.stringify(loginResponse));
             navigate("/dashboard");
-            setTimeout(()=>{
-                console.log("from the login component")
-            },2900)
             return;
         }
 

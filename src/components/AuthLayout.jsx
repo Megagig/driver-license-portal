@@ -5,9 +5,6 @@ const AuthLayout = () => {
     const { pathname } = useLocation();
     const { auth } = useAuth() || JSON.parse(sessionStorage.getItem('auth'));
 
-    setTimeout(()=>{
-        console.log("from the authLayout component")
-    },10000)
     return auth?.user ? (
         <Outlet />
     ) : (

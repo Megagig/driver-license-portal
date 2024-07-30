@@ -84,7 +84,6 @@ const router = createBrowserRouter([
                         loader: appointmentDashboardLoader
                     },
                     {
-
                         path: "appointment",
                         element: <Appointment />,
                         loader: appointmentLoader

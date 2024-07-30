@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 // import { toast } from 'react-toastify';
-import { Link } from "react-router-dom";
-import Modal from "../../../components/Modal";
-import { createAccount } from "../api";
 import { signupFields } from "../constants/FormFields";
-import Input from "./Input";
+import { Link } from "react-router-dom";
+import FormAction from "./FormAction";
+import Modal from "../../../components/Modal";
 import SignUpResponse from "./SignUpResponse";
+import Input from "./Input";
+import { createAccount } from "../api";
 
 const fields = signupFields;
 let fieldsState = {};
@@ -168,3 +170,4 @@ export default function Signup({ paragraph, linkUrl, linkName }) {
         </form>
     );
 }
+

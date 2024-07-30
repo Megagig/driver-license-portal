@@ -1,15 +1,20 @@
 import { FaTwitter } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { FaTwitter } from "react-icons/fa";
+import { IoLogoYoutube } from "react-icons/io";
+import logo from "../assets/Logo2.svg"
+import angleright from "../assets/angle-right.svg";
+import { FaFacebook } from "react-icons/fa";
+import { FaInstagramSquare } from "react-icons/fa";
 
-import { FaFacebook, FaInstagramSquare } from "react-icons/fa";
-import logo from "../assets/Logo2.svg";
 
 const Footer = () => {
 
 
     return (
         <footer className="print:hidden">
+
             <div className="flex flex-wrap lg:flex-row flex-col gap-10 md:gap-14 justify-between px-4 py-8 md:px-10 md:pt-16 md:pb-10 bg-black">
 
                 <div className="grid gap-8 content-start ">
@@ -99,7 +104,8 @@ const Footer = () => {
                 </div>
 
             </div>
-            <div className="text-center text-sm h-10 border-t grid content-center bg-black text-white">
+
+            <div className="text-center text-sm h-10 border-t-[rgba(255,255,255,0.1)] border-t grid content-center bg-black text-white">
                 All rights reserved &copy; DANNON GROUP
             </div>
         </footer>
