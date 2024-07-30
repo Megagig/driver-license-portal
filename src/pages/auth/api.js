@@ -11,7 +11,7 @@ export const login = async (data) => {
             setTimeout(()=>{
                 console.log("from the api js")
                 updateAccessToken(response.data.refresh)
-            },10000)
+            },1740000)
             return response.data;
 
         }
@@ -60,5 +60,5 @@ const updateUserCredentials = (data)=>{
     setTimeout(()=>{
         console.log("from the api js")
         updateAccessToken(auth.refresh)
-    },10000)
+    },1740000)
 }
