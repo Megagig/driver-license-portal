@@ -5,7 +5,7 @@ import CustomModal from "./CustomModal";
 import PaymentSuccess from "./PaymentSuccess";
 import ProcedureListItem from "../../../components/ProcedureListItem";
 import { paymentInfo } from "../data";
-import PaystackPop from '@paystack/inline-js'
+import PaystackPop from "@paystack/inline-js";
 
 const PaymentForm = ({
     formData,
@@ -18,6 +18,7 @@ const PaymentForm = ({
     setStep,
     setIsSubmitted,
     applicationType,
+    vehicleType,
     paymentResponse,
     setPaymentResponse,
 }) => {
@@ -67,7 +68,7 @@ const PaymentForm = ({
                     message: response.message,
                     reference: response.reference,
                 });
-                
+
                 openModal();
 
                 // let message =
@@ -108,7 +109,7 @@ const PaymentForm = ({
             </button>
         </div>
     ) : (
-        <div className="flex flex-col-reverse md:flex-row gap-6 md:gap-10">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-8">
             <div className="flex flex-col gap-4 md:gap-6 shadow-lg p-8">
                 <h2 className="text-xl md:text-2xl font-medium text-custom-green">
                     Before you proceed...
@@ -119,17 +120,35 @@ const PaymentForm = ({
             </div>
 
             {/* Payment Summary */}
-            <div className="payment-summary flex flex-col w-full md:w-96 gap-2 border border-gray-200 rounded-md">
-                <div className="flex justify-center p-4 bg-green-100">
-                    <h1 className="font-bold text-custom-green">Payment Summary</h1>
+            <div className="payment-summary flex flex-col w-full max-w-[30rem] gap-2 pb-2 border border-gray-200 rounded-md shadow-lg">
+                <div className="flex justify-center p-4 mb-2 bg-green-100 rounded-t-md">
+                    <h1 className="font-bold text-custom-green">
+                        Payment Summary
+                    </h1>
                 </div>
 
-                <div className="flex flex-col justify-center items-center gap-2 px-4 h-full">
-                    <h1 className="text-lg font-bold text-grey">License Fee:</h1>
-                    <h1 className="text-4xl font-bold text-grey">{`₦${licenseAmount}.00`}</h1>
+                <div className="flex justify-between gap-2 px-4">
+                    <h3 className="md:text-lg text-grey flex-1">Application Type:</h3>
+                    <h3 className="md:text-lg font-semibold text-grey capitalize">
+                        {applicationType}
+                    </h3>
                 </div>
 
-                <div className="px-4 pt-2 pb-4">
+                <div className="flex justify-between gap-2 px-4 pb-4">
+                    <h3 className="md:text-lg text-grey flex-1">Vehicle Type:</h3>
+                    <h3 className="md:text-lg font-semibold text-grey capitalize">
+                        {vehicleType || "Light Vehicles"}
+                    </h3>
+                </div>
+
+                <div className="flex justify-between gap-2 px-4 pt-4 border-t">
+                    <h3 className="md:text-lg text-grey">
+                        License Fee:
+                    </h3>
+                    <h3 className="md:text-lg font-semibold text-grey">{`₦${licenseAmount}.00`}</h3>
+                </div>
+
+                <div className="px-4 pt-2 pb-4 mt-auto">
                     <button
                         className="w-full bg-custom-green hover:bg-green-600 px-4 py-3 text-white font-medium tracking-widest rounded-lg"
                         onClick={payWithPaystack}
