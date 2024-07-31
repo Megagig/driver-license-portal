@@ -43,12 +43,12 @@ const Review = ({
                 mothers_maiden_name: biodata.mothers_maiden_name,
                 nin: biodata.nin,
                 email: contactData.email,
-                phone_number: contactData.phone,
-                street_address: contactData.streetAddress,
-                state_of_residence: contactData.state,
-                local_govt_area: contactData.lga,
+                phone_number: contactData.phone_number,
+                street_address: contactData.street_address,
+                state_of_residence: contactData.state_of_residence,
+                local_govt_area: contactData.local_govt_area,
                 application_type: applicationType,
-                vehicle_type: biodata.vehicleType,
+                vehicle_type: biodata.vehicle_type,
                 driving_school_certificate_number:
                     biodata.driving_school_certificate_number,
                 passport_photo: biodata.passport_photo,
@@ -77,7 +77,11 @@ const Review = ({
             formData = getFormData(reissueData);
         }
 
-        const response = await submitApplication(formData, applicationType, access);
+        const response = await submitApplication(
+            formData,
+            applicationType,
+            access
+        );
 
         if (response.error) {
             console.log(response);
@@ -116,10 +120,10 @@ const Review = ({
                             </button>
                         </div>
                         <div className="flex flex-col gap-6 p-4">
-                            <div className="w-20 h-20 rounded-full justify-center">
+                            <div className="self-center">
                                 <img
                                     src={biodata.passport_photo}
-                                    className="object-cover w-full rounded-full"
+                                    className="rounded-full w-28 h-auto"
                                     alt="Passport Photo"
                                 />
                             </div>
@@ -285,16 +289,16 @@ const Review = ({
 
                                 <div className="">
                                     <label
-                                        htmlFor="phone"
+                                        htmlFor="phone_number"
                                         className="mb-[2px] block text-base font-medium text-neutral-700"
                                     >
                                         Phone Number
                                     </label>
                                     <p
                                         className="font-bold text-grey"
-                                        id="phone"
+                                        id="phone_number"
                                     >
-                                        {contactData.phone}
+                                        {contactData.phone_number}
                                     </p>
                                 </div>
                             </div>
@@ -302,28 +306,60 @@ const Review = ({
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
                                 <div className="">
                                     <label
-                                        htmlFor="state"
+                                        htmlFor="state_of_residence"
                                         className="mb-[2px] block text-base font-medium text-neutral-700"
                                     >
                                         State
                                     </label>
                                     <p
                                         className="font-bold text-grey"
-                                        id="state"
+                                        id="state_of_residence"
                                     >
-                                        {contactData.state}
+                                        {contactData.state_of_residence}
                                     </p>
                                 </div>
 
                                 <div className="">
                                     <label
-                                        htmlFor="lga"
+                                        htmlFor="local_govt_area"
                                         className="mb-[2px] block text-base font-medium text-neutral-700"
                                     >
                                         Local Govt. Area
                                     </label>
-                                    <p className="font-bold text-grey" id="lga">
-                                        {contactData.lga}
+                                    <p className="font-bold text-grey" id="local_govt_area">
+                                        {contactData.local_govt_area}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10">
+                                <div className="">
+                                    <label
+                                        htmlFor="vehicle_type"
+                                        className="mb-[2px] block text-base font-medium text-neutral-700"
+                                    >
+                                        Vehicle Type
+                                    </label>
+                                    <p
+                                        className="font-bold text-grey capitalize"
+                                        id="vehicle_type"
+                                    >
+                                        {biodata.vehicle_type}
+                                    </p>
+                                </div>
+
+                                <div className="">
+                                    <label
+                                        htmlFor="application_type"
+                                        className="mb-[2px] block text-base font-medium text-neutral-700"
+                                    >
+                                        Application Type
+                                    </label>
+                                    <p
+                                        className="font-bold text-grey capitalize"
+                                        id="application_type"
+                                    >
+                                        {applicationType}
                                     </p>
                                 </div>
                             </div>
@@ -331,16 +367,16 @@ const Review = ({
                             <div className="grid grid-cols-1 gap-4 md:gap-10">
                                 <div className="">
                                     <label
-                                        htmlFor="streetAddress"
+                                        htmlFor="street_address"
                                         className="mb-[2px] block text-base font-medium text-neutral-700"
                                     >
                                         Street Address
                                     </label>
                                     <p
-                                        className="font-bold text-grey"
-                                        id="streetAddress"
+                                        className="font-bold text-grey capitalize"
+                                        id="street_address"
                                     >
-                                        {contactData.streetAddress}
+                                        {contactData.street_address}
                                     </p>
                                 </div>
                             </div>
