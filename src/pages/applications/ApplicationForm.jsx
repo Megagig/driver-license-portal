@@ -18,6 +18,7 @@ import SubmissionResponse from "./components/SubmissionResponse";
 import RenewalReissueForm from "./components/RenewalReissueForm";
 import { requireAuth } from "../../utils/auth";
 import { getProfile } from "./api";
+import ScrollToTop from "../../components/ScrollToTop";
 
 export const applicationFormLoader = async ({ request }) => {
     await requireAuth(request);
@@ -146,6 +147,7 @@ const ApplicationForm = () => {
 
     return (
         <div className="container p-10 w-full max-w-[1280px] m-auto">
+            <ScrollToTop dependency={step} />
             <h1 className="text-3xl text-center md:text-left font-bold text-custom-green mb-8">
                 {type === "new"
                     ? "New Driver's License Application"
