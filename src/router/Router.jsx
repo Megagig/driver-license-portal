@@ -71,11 +71,11 @@ const router = createBrowserRouter([
 
                     },
                     {
-                        path: "application",
+                        path: "applications/:type",
                         element: <ApplicationHome />,
                     },
                     {
-                        path: "application/form",
+                        path: "applications/:type/form",
                         element: <ApplicationForm />,
                         loader: applicationFormLoader
                     },
