@@ -1,7 +1,7 @@
 import { Outlet, useNavigation, useLocation } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
-import NavBar from "./NavBar";
+import NavBar from "./nav/NavBar";
 import Spinner from "./Spinner";
 import ReusableModal from "./ReusableModal";
 import ScrollToTop from "./ScrollToTop";
@@ -15,7 +15,7 @@ const Root = () => {
         <div className="grid grid-rows-[auto_1fr_auto] max-w-[100svw] overflow-hidden relative min-h-screen">
             <ScrollToTop dependency={pathname} />
             <header>
-                <Header />
+                {/* <Header /> */}
                 <NavBar />
             </header>
             <main>
