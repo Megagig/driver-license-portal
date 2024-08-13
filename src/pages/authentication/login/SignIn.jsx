@@ -25,6 +25,7 @@ const SignIn = () => {
         const authData = {
           access: response.access,
           refresh: response.refresh,
+          user: response.user, // Assume the API returns user data
         };
         // Update auth context
         setAuth(authData);
