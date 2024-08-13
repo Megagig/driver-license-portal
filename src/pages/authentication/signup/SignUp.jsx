@@ -117,9 +117,9 @@ const SignUp = () => {
                 name="name"
                 type="text"
                 required
-                className={`w-full px-3 py-2 border ${
-                  errors.name ? 'border-red-500' : 'border-gray-300'
-                } rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500`}
+                className={`w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 ${
+                  username ? 'border-blue-500' : 'border-red-500'
+                }`}
                 placeholder="Enter your Name"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -140,9 +140,9 @@ const SignUp = () => {
                 name="email"
                 type="email"
                 required
-                className={`w-full px-3 py-2 border ${
-                  errors.email ? 'border-red-500' : 'border-gray-300'
-                } rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500`}
+                className={`w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 ${
+                  email ? 'border-blue-500' : 'border-red-500'
+                }`}
                 placeholder="Enter your License ID"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -165,9 +165,9 @@ const SignUp = () => {
                     name="password"
                     type={showPassword ? 'text' : 'password'}
                     required
-                    className={`w-full px-3 py-2 pr-10 border ${
-                      errors.password ? 'border-red-500' : 'border-gray-300'
-                    } rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500`}
+                    className={`w-full px-3 py-2 pr-10 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 ${
+                      password ? 'border-blue-500' : 'border-red-500'
+                    }`}
                     placeholder="Enter your password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -249,11 +249,9 @@ const SignUp = () => {
                     name="confirm-password"
                     type={showConfirmPassword ? 'text' : 'password'}
                     required
-                    className={`w-full px-3 py-2 pr-10 border ${
-                      errors.confirmPassword
-                        ? 'border-red-500'
-                        : 'border-gray-300'
-                    } rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500`}
+                    className={`w-full px-3 py-2 pr-10 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 ${
+                      confirmPassword ? 'border-blue-500' : 'border-red-500'
+                    }`}
                     placeholder="Confirm your password"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}

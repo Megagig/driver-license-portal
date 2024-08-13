@@ -8,6 +8,8 @@ const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [isEmailValid, setIsEmailValid] = useState(false);
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
 
   const navigate = useNavigate();
   const { setAuth } = useAuth();
@@ -65,10 +67,19 @@ const SignIn = () => {
               name="email"
               type="text"
               required
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition duration-200 bg-gray-50"
+              className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition duration-200 bg-gray-50 ${
+                email
+                  ? isEmailValid
+                    ? 'border-blue-500'
+                    : 'border-red-500'
+                  : 'border-gray-300'
+              }`}
               placeholder="Enter your License ID"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setIsEmailValid(e.target.value.trim() !== '');
+              }}
             />
           </div>
 
@@ -85,10 +96,19 @@ const SignIn = () => {
                 name="password"
                 type={showPassword ? 'text' : 'password'}
                 required
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition duration-200 bg-gray-50"
+                className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition duration-200 bg-gray-50 ${
+                  password
+                    ? isPasswordValid
+                      ? 'border-blue-500'
+                      : 'border-red-500'
+                    : 'border-gray-300'
+                }`}
                 placeholder="Enter your password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setIsPasswordValid(e.target.value.trim().length >= 6);
+                }}
               />
               <button
                 type="button"
@@ -152,7 +172,6 @@ const SignIn = () => {
             </Link>
           </div>
         </form>
-
         <div className="mt-8 text-center">
           <p className="text-gray-600">
             Don't have an account?{' '}
