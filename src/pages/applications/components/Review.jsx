@@ -401,15 +401,16 @@ const Review = ({
                         <div className="grid grid-cols-1 gap-4 md:gap-6">
                             <div className="">
                                 <label
-                                    htmlFor="email"
+                                    htmlFor="nin"
                                     className="mb-[2px] block text-base font-medium text-neutral-700"
                                 >
-                                    Email
+                                    NIN
                                 </label>
-                                <p className="font-bold text-grey" id="email">
-                                    {renewalReissueData?.email}
+                                <p className="font-bold text-grey" id="nin">
+                                    {renewalReissueData?.nin}
                                 </p>
                             </div>
+                            
                             <div className="">
                                 <label
                                     htmlFor="license_id"

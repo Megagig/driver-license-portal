@@ -157,7 +157,7 @@ const MobileMenu = ({
                                     <LinkButton
                                         buttonText="Login"
                                         linkTo="/login"
-                                        classAttr="text-white hover:bg-green-600 hover:border-green-600 px-4 py-3 text-center bg-transparent border border-white font-medium tracking-widest rounded-lg"
+                                        classAttr="text-custom-green border-custom-green hover:bg-custom-green hover:text-white px-4 py-3 text-center bg-transparent border font-medium tracking-widest rounded-lg"
                                         onClick={closeMobileMenu}
                                     />
 

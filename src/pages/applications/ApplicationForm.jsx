@@ -97,11 +97,11 @@ const ApplicationForm = () => {
     const [renewalReissueForm, setRenewalReissueForm] = useState(
         type === "renewal"
             ? {
-                  email: "",
+                  nin: "",
                   license_id: "",
               }
             : {
-                  email: "",
+                  nin: "",
                   license_id: "",
                   affidavit_police_report: "",
               }
@@ -143,7 +143,11 @@ const ApplicationForm = () => {
 
     const showPaymentForm = () => {
         if (isPaid) {
-            setStep(3);
+            if ( type === "new") {
+                setStep(3);
+            } else {
+                setStep(2);
+            }
         }
     };
 
@@ -336,9 +340,7 @@ const ApplicationForm = () => {
                                         vehicleType={biodataForm.vehicle_type}
                                         paymentResponse={paymentResponse}
                                         setPaymentResponse={setPaymentResponse}
-                                        applicantEmail={
-                                            renewalReissueForm.email
-                                        }
+                                        applicantEmail={"test-amil@gmail.com"}
                                     />
                                 ) : (
                                     <Review

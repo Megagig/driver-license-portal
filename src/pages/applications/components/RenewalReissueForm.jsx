@@ -13,17 +13,17 @@ const RenewalReissueForm = ({
     applicationType,
 }) => {
     const [errorMessage, setErrorMessage] = useState("");
-    const [isEmailValid, setIsEmailValid] = useState(false);
-    const [isEmailInputFocus, setIsEmailInputFocus] = useState(false);
+    // const [isEmailValid, setIsEmailValid] = useState(false);
+    // const [isEmailInputFocus, setIsEmailInputFocus] = useState(false);
     const isInvalid = hasEmptyValue(formData);
-    const { email } = formData;
+    // const { email } = formData;
 
-    useEffect(() => {
-        const emailTest = EMAIL_REGEX.test(email);
-        setIsEmailValid(emailTest);
-    }, [email]);
+    // useEffect(() => {
+    //     const emailTest = EMAIL_REGEX.test(email);
+    //     setIsEmailValid(emailTest);
+    // }, [email]);
 
-    const handleEmailInputFocus = () => setIsEmailInputFocus(true);
+    // const handleEmailInputFocus = () => setIsEmailInputFocus(true);
 
     const onImageChange = (e) => {
         if (e.target.files && e.target.files[0]) {
@@ -67,29 +67,29 @@ const RenewalReissueForm = ({
                         {/* Email */}
                         <div className="flex flex-col">
                             <label
-                                htmlFor="email"
+                                htmlFor="nin"
                                 className="mb-[2px] block text-base font-medium text-neutral-700"
                             >
-                                Email <small className="text-red-800">*</small>
+                                National Identification Number (NIN) <small className="text-red-800">*</small>
                             </label>
                             <input
-                                type="email"
-                                name="email"
-                                id="email"
-                                value={formData.email}
+                                type="nin"
+                                name="nin"
+                                id="nin"
+                                value={formData.nin}
                                 onChange={(e) =>
                                     handleChange(e, setRenewalReissueForm)
                                 }
-                                onFocus={handleEmailInputFocus}
-                                placeholder="Email"
+                                // onFocus={handleEmailInputFocus}
+                                placeholder="National Identification Number (NIN)"
                                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                                 required
                             />
-                            {isEmailInputFocus && !isEmailValid && (
+                            {/* {isEmailInputFocus && !isEmailValid && (
                                 <small className="text-sm text-red-600 font-medium">
                                     Invalid email address!
                                 </small>
-                            )}
+                            )} */}
                         </div>
                         {/* License ID */}
                         <div className="">
@@ -141,7 +141,7 @@ const RenewalReissueForm = ({
                     <button
                         className="bg-custom-green hover:bg-green-600 px-4 py-2 text-white rounded-lg mt-4 disabled:opacity-70 disabled:cursor-not-allowed"
                         onClick={submit}
-                        disabled={isInvalid || !isEmailValid}
+                        disabled={isInvalid}
                     >
                         Continue
                     </button>
