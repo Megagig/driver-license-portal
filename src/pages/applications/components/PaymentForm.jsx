@@ -35,6 +35,11 @@ const PaymentForm = ({
     // console.log(isPaid);
 
     const openModal = () => setIsModalOpen(true);
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setIsPaid(true);
+        setStep(step + 1);
+    };
 
     const goBack = (e) => {
         e.preventDefault();
@@ -171,6 +176,7 @@ const PaymentForm = ({
                     step={step}
                     setStep={setStep}
                     setIsPaid={setIsPaid}
+                    closeModal={closeModal}
                     paymentResponse={paymentResponse}
                 />
             </CustomModal>

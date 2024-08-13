@@ -90,9 +90,21 @@ const Review = ({
         }
 
         setTimeout(() => {
+            setIsSubmitting(true);
+
             setIsReviewed(true);
             openModal();
             setIsSubmitting(false);
+        }, 3000);
+    };
+
+    const apply = (e) => {
+        e.preventDefault();
+
+        setTimeout(() => {
+            openModal();
+            setIsSubmitting(false);
+            setIsSubmitting(true);
         }, 3000);
     };
 
@@ -326,7 +338,10 @@ const Review = ({
                                     >
                                         Local Govt. Area
                                     </label>
-                                    <p className="font-bold text-grey" id="local_govt_area">
+                                    <p
+                                        className="font-bold text-grey"
+                                        id="local_govt_area"
+                                    >
                                         {contactData.local_govt_area}
                                     </p>
                                 </div>
@@ -410,7 +425,7 @@ const Review = ({
                                     {renewalReissueData?.nin}
                                 </p>
                             </div>
-                            
+
                             <div className="">
                                 <label
                                     htmlFor="license_id"
@@ -471,7 +486,7 @@ const Review = ({
 
                 <button
                     className="bg-custom-green hover:bg-green-600 px-4 py-2 text-white rounded-lg mt-4"
-                    onClick={submit}
+                    onClick={apply}
                 >
                     {isSubmitting ? (
                         <div className="flex justify-center gap-4">

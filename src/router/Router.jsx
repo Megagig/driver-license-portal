@@ -20,6 +20,8 @@ import HomePage from "../pages/home/HomePage";
 import Profile, { profileLoader } from "../pages/profile/Profile";
 import Support from "../pages/support/Support";
 import Verify from "../pages/verification/Verify";
+import PageNotFound from '../components/PageNotFound';
+
 const router = createBrowserRouter([
     {
         path: '/',
@@ -56,6 +58,10 @@ const router = createBrowserRouter([
             {
                 path: 'driving-schools',
                 element: <DrivingSchool />,
+            },
+            {
+                path: "*",
+                element: <PageNotFound />,
             },
             {
                 element: <AuthLayout />,
