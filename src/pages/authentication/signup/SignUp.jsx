@@ -58,6 +58,42 @@ const SignUp = () => {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      setIsLoading(true);
+      try {
+        const response = await createAccount({
+          username,
+          email,
+          password,
+          confirm_password: confirmPassword,
+        });
+        console.log('Signup successful:', response);
+        setIsLoading(false);
+        setShowWelcomeModal(true);
+        // automatically log the user in here
+        // or navigate them to a login page
+      } catch (error) {
+        setIsLoading(false);
+        console.error('Signup failed:', error);
+        if (error.response) {
+          console.error('Response data:', error.response.data);
+        }
+      }
+      setTimeout(() => {
+        // Handle successful sign up here
+        setShowWelcomeModal(true); // Show the welcome modal
+      }, 2000);
+    }
+  };
+
+  //function to close the modal:
+  const handleCloseModal = () => {
+    setShowWelcomeModal(false);
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
       <div className="max-w-md w-full bg-white rounded-lg shadow-md p-8">
