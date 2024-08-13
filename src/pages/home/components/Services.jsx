@@ -46,10 +46,10 @@ const Services = () => {
             <h3 className=" text-[#002334] text-2xl md:text-4xl font-semibold text-center">
             Our Services
             </h3>
-            <p className=" mt-4 text-[#22D665] font-medium text-lg text-center">Here's what i offer</p>
+            <p className=" mt-4 mb-16 text-[#22D665] font-medium text-lg text-center">Here's what we offer</p>
             <div className='grid even:bg-[#F3FFF8]'>
                 {arrayService.map((item, index) => {
-                   return <Card image={item.image} paragraph={item.paragraph} title={item.title} key={`service-${index}`} />
+                   return <Card image={item.image} paragraph={item.paragraph} index={index} title={item.title} key={`service-${index}`} />
                 })}
             </div>
         </section>

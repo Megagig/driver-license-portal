@@ -1,12 +1,12 @@
 
 const Card = (props) => {
     return (
-        <div className=" relative flex flex-col justify-center py-4 md:py-8 xl:px-52">
-            <div className="grid grid-cols-2 bg-white py-16 gap-48">
-                    <span className=" rounded-[50px] max-w-[325px] max-h-[325px]">
+        <div className="odd:bg-[#F3FFF8] relative flex flex-col justify-center py-4 md:py-8 xl:px-52">
+            <div className="grid grid-cols-2 py-16 gap-48 ">
+                    <span className={` rounded-[50px] w-[325px] min-h-[325px] ${props.index % 2 == 0 ?"order-1" : ""}`}>
                         <img src={props.image} alt="image" className=" object-fit w-full h-full rounded-[50px]"/>
                     </span>
-                    <div className="flex flex-col justify-start gap-10 leading-7 text-[#002334]">
+                    <div className="flex flex-col justify-start gap-10  text-[#002334]">
                         <p className='font-medium text-base md:text-[30px]/[38px] text-wrap '>
                             {props.title}
                         </p>
