@@ -30,11 +30,17 @@ const DesktopMenu = ({
         setIsMenuOpen(!isMenuOpen);
     };
 
+    const closeMobileMenu = () => {
+        setIsSolutionsOpen(false);
+        setIsRealTimeOpen(false);
+        setIsServicesOpen(false);
+    };
+
     return (
         <div className="flex justify-between gap-4 items-center px-4 w-full max-w-[1280px] mx-auto">
             <Logo />
 
-            <div className="hidden lg:flex items-center gap-10">
+            <div className="hidden lg:flex items-center gap-6">
                 <Link
                     to={!auth ? "/" : "/dashboard"}
                     className="text-white py-[2px] hover:border-b-2 border-white transition-colors"
@@ -55,7 +61,7 @@ const DesktopMenu = ({
                         />
 
                         {isSolutionsOpen && (
-                            <DropDownMenu menuArray={solutions} />
+                            <DropDownMenu menuArray={solutions} closeMobileMenu={closeMobileMenu} />
                         )}
                     </div>
                 )}
@@ -134,11 +140,11 @@ const DesktopMenu = ({
 
             <div className="lg:hidden">
                 <button
-                    className="text-3xl text-white"
+                    className="text-white"
                     onClick={toggleDrawer}
                     aria-label="Toggle menu"
                 >
-                    {<MdMenu />}
+                    {<MdMenu className="text-3xl" />}
                 </button>
             </div>
 
