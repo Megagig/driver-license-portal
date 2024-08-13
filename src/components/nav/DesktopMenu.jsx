@@ -112,14 +112,14 @@ const DesktopMenu = ({
                     }}
                     className="ml-auto lg:ml-0"
                 >
-                    {!auth.user ? (
-                        <FaUserAlt className="text-3xl p-1 text-white cursor-pointer border border-white hover:border-2 rounded-full" />
-                    ) : (
+                    {auth.user.Passport ? (
                         <img
                             className="h-14 rounded-full"
-                            src={auth.user?.image}
+                            src={auth.user?.Passport}
                             alt=""
                         />
+                    ) : (
+                        <FaUserAlt className="text-3xl p-1 text-white cursor-pointer border border-white hover:border-2 rounded-full" />
                     )}
                 </div>
             )}
