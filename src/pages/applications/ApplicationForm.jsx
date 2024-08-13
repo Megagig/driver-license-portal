@@ -5,6 +5,8 @@ import PaymentForm from "./components/PaymentForm";
 import ContactForm from "./components/ContactForm";
 import Review from "./components/Review";
 import CustomModal from "./components/CustomModal";
+import StepIndicator from "./components/StepIndicator";
+import StepLine from "./components/StepLine";
 // import CheckoutModal from "./components/CheckoutModal";
 // import CheckoutSuccess from "./components/CheckoutSuccess";
 // import CheckoutFailure from "./components/CheckoutFailure";
@@ -159,108 +161,45 @@ const ApplicationForm = () => {
                 <div className="multistep-form-container flex-1">
                     {type === "new" && (
                         <div className="multistep-form">
-                            <div className="step-indicator">
-                                <div className="flex items-center">
-                                    <div className="flex flex-col items-center gap-1">
-                                        <div
-                                            className={`icon p-2 ${
-                                                isBiodataSubmitted
-                                                    ? "bg-custom-green"
-                                                    : "bg-gray-200"
-                                            } rounded-md hover:cursor-pointer`}
-                                            onClick={showBiodataForm}
-                                        >
-                                            <MdOutlinePersonOutline
-                                                className={
-                                                    isBiodataSubmitted &&
-                                                    `text-neutral-200`
-                                                }
-                                            />
-                                        </div>
-                                        <span className="">Biodata</span>
-                                    </div>
+                            <div className="step-indicator w-full">
+                                <div className="flex items-center w-full">
+                                    <StepIndicator
+                                        isSubmitted={isBiodataSubmitted}
+                                        showStep={showBiodataForm}
+                                        isCurrentStep={step === 1}
+                                        title="Biodata"
+                                    />
+                                    <StepLine
+                                        isSubmitted={isBiodataSubmitted}
+                                    />
 
-                                    <div
-                                        className={`separator flex-1 h-[2px] ${
-                                            isBiodataSubmitted
-                                                ? "bg-custom-green"
-                                                : "bg-neutral-200"
-                                        } -mt-6`}
-                                    ></div>
+                                    <StepIndicator
+                                        isSubmitted={isContactSubmitted}
+                                        showStep={showContactForm}
+                                        isCurrentStep={step === 2}
+                                        title="Contact"
+                                    />
+                                    <StepLine
+                                        isSubmitted={isContactSubmitted}
+                                    />
 
-                                    <div className="flex flex-col items-center gap-1">
-                                        <div
-                                            className={`icon p-2 ${
-                                                isContactSubmitted
-                                                    ? "bg-custom-green"
-                                                    : "bg-gray-200"
-                                            } rounded-md hover:cursor-pointer`}
-                                            onClick={showContactForm}
-                                        >
-                                            <MdOutlineContactPage
-                                                className={
-                                                    isContactSubmitted &&
-                                                    `text-neutral-200`
-                                                }
-                                            />
-                                        </div>
-                                        <span className="">Contact</span>
-                                    </div>
+                                    <StepIndicator
+                                        isSubmitted={isPaymentSubmitted}
+                                        showStep={showPaymentForm}
+                                        isCurrentStep={step === 3}
+                                        title="Payment"
+                                    />
+                                    <StepLine
+                                        isSubmitted={isPaymentSubmitted}
+                                        isPaid={isPaid}
+                                    />
 
-                                    <div
-                                        className={`separator flex-1 h-[2px] ${
-                                            isContactSubmitted
-                                                ? "bg-custom-green"
-                                                : "bg-neutral-200"
-                                        } -mt-6`}
-                                    ></div>
-
-                                    <div className="flex flex-col items-center gap-1">
-                                        <div
-                                            className={`icon p-2 ${
-                                                isPaymentSubmitted
-                                                    ? "bg-custom-green"
-                                                    : "bg-gray-200"
-                                            } rounded-md hover:cursor-pointer`}
-                                            onClick={showPaymentForm}
-                                        >
-                                            <FaRegCreditCard
-                                                className={
-                                                    isPaymentSubmitted &&
-                                                    isPaid &&
-                                                    `text-neutral-200`
-                                                }
-                                            />
-                                        </div>
-                                        <span className="">Payment</span>
-                                    </div>
-
-                                    <div
-                                        className={`separator flex-1 h-[2px] ${
-                                            isPaid
-                                                ? "bg-custom-green"
-                                                : "bg-neutral-200"
-                                        } -mt-6`}
-                                    ></div>
-
-                                    <div className="flex flex-col items-center gap-1">
-                                        <div
-                                            className={`icon p-2 ${
-                                                isInfoReviewed
-                                                    ? "bg-custom-green"
-                                                    : "bg-gray-200"
-                                            } rounded-md hover:cursor-pointer`}
-                                            onClick={showReview}
-                                        >
-                                            <FaRegRectangleList
-                                                className={
-                                                    isInfoReviewed &&
-                                                    `text-neutral-200`
-                                                }
-                                            />
-                                        </div>
-                                        <span className="">Review</span>
-                                    </div>
+                                    <StepIndicator
+                                        isSubmitted={isInfoReviewed}
+                                        showStep={showReview}
+                                        isCurrentStep={step === 4}
+                                        title="Review"
+                                    />
                                 </div>
                             </div>
 
@@ -330,79 +269,33 @@ const ApplicationForm = () => {
                         <div className="multistep-form">
                             <div className="step-indicator">
                                 <div className="flex items-center">
-                                    <div className="flex flex-col items-center gap-1">
-                                        <div
-                                            className={`icon p-2 ${
-                                                isRenewalReissueSubmitted
-                                                    ? "bg-custom-green"
-                                                    : "bg-gray-200"
-                                            } rounded-md hover:cursor-pointer`}
-                                            onClick={showRenewalReissueForm}
-                                        >
-                                            <MdOutlineContactPage
-                                                className={
-                                                    isRenewalReissueSubmitted &&
-                                                    `text-neutral-200`
-                                                }
-                                            />
-                                        </div>
-                                        <span className="">Form</span>
-                                    </div>
+                                    <StepIndicator
+                                        isSubmitted={isRenewalReissueSubmitted}
+                                        showStep={showRenewalReissueForm}
+                                        isCurrentStep={step === 1}
+                                        title="Form"
+                                    />
+                                    <StepLine
+                                        isSubmitted={isRenewalReissueSubmitted}
+                                    />
 
-                                    <div
-                                        className={`separator flex-1 h-[2px] ${
-                                            isRenewalReissueSubmitted
-                                                ? "bg-custom-green"
-                                                : "bg-neutral-200"
-                                        } -mt-6`}
-                                    ></div>
+                                    <StepIndicator
+                                        isSubmitted={isPaymentSubmitted}
+                                        showStep={showPaymentForm}
+                                        isCurrentStep={step === 2}
+                                        title="Payment"
+                                    />
+                                    <StepLine
+                                        isSubmitted={isPaymentSubmitted}
+                                        isPaid={isPaid}
+                                    />
 
-                                    <div className="flex flex-col items-center gap-1">
-                                        <div
-                                            className={`icon p-2 ${
-                                                isPaymentSubmitted
-                                                    ? "bg-custom-green"
-                                                    : "bg-gray-200"
-                                            } rounded-md hover:cursor-pointer`}
-                                            onClick={showPaymentForm}
-                                        >
-                                            <FaRegCreditCard
-                                                className={
-                                                    isPaymentSubmitted &&
-                                                    isPaid &&
-                                                    `text-neutral-200`
-                                                }
-                                            />
-                                        </div>
-                                        <span className="">Payment</span>
-                                    </div>
-
-                                    <div
-                                        className={`separator flex-1 h-[2px] ${
-                                            isPaid
-                                                ? "bg-custom-green"
-                                                : "bg-neutral-200"
-                                        } -mt-6`}
-                                    ></div>
-
-                                    <div className="flex flex-col items-center gap-1">
-                                        <div
-                                            className={`icon p-2 ${
-                                                isInfoReviewed
-                                                    ? "bg-custom-green"
-                                                    : "bg-gray-200"
-                                            } rounded-md hover:cursor-pointer`}
-                                            onClick={showReview}
-                                        >
-                                            <FaRegRectangleList
-                                                className={
-                                                    isInfoReviewed &&
-                                                    `text-neutral-200`
-                                                }
-                                            />
-                                        </div>
-                                        <span className="">Review</span>
-                                    </div>
+                                    <StepIndicator
+                                        isSubmitted={isInfoReviewed}
+                                        showStep={showReview}
+                                        isCurrentStep={step === 3}
+                                        title="Review"
+                                    />
                                 </div>
                             </div>
 
