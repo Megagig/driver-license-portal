@@ -12,8 +12,8 @@ import {
   AppointmentDashboard,
   appointmentDashboardLoader,
 } from '../pages/appointment/AppointmentDashboard';
-import LoginPage from '../pages/auth/login/LoginPage';
-import SignupPage from '../pages/auth/signup/SignupPage';
+// import LoginPage from '../pages/auth/login/LoginPage';
+// import SignupPage from '../pages/auth/signup/SignupPage';
 import CaptureCenter from '../pages/capture_center/CaptureCenter';
 import Dashboard from '../pages/dashboard/Dashboard';
 import Faq from '../pages/faq/Faq';
@@ -42,14 +42,14 @@ const router = createBrowserRouter([
         path: 'support',
         element: <Support />,
       },
-      {
-        path: 'login',
-        element: <LoginPage />,
-      },
-      {
-        path: 'signup',
-        element: <SignupPage />,
-      },
+      // {
+      //   path: 'login',
+      //   element: <LoginPage />,
+      // },
+      // {
+      //   path: 'signup',
+      //   element: <SignupPage />,
+      // },
       {
         path: 'verify-license',
         element: <Verify />,
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
         element: <DrivingSchool />,
       },
       {
-        path: 'signupp',
+        path: 'signup',
         element: <SignUp />,
       },
       {

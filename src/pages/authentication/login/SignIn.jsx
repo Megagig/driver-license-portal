@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../auth/api';
+import useAuth from '../../../hooks/useAuth';
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -9,6 +10,7 @@ const SignIn = () => {
   const [error, setError] = useState('');
 
   const navigate = useNavigate();
+  const { setAuth } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,14 +22,15 @@ const SignIn = () => {
 
       if (response.access && response.refresh) {
         // Store auth data in sessionStorage
-        sessionStorage.setItem(
-          'auth',
-          JSON.stringify({
-            access: response.access,
-            refresh: response.refresh,
-          })
-        );
+        const authData = {
+          access: response.access,
+          refresh: response.refresh,
+        };
+        // Update auth context
+        setAuth(authData);
 
+        // Store in sessionStorage
+        sessionStorage.setItem('auth', JSON.stringify(authData));
         // Redirect to dashboard
         navigate('/dashboard');
       } else {
@@ -153,7 +156,7 @@ const SignIn = () => {
           <p className="text-gray-600">
             Don't have an account?{' '}
             <Link
-              to="/signupp"
+              to="/signup"
               className="text-green-600 font-semibold hover:underline"
             >
               Sign up
