@@ -26,6 +26,38 @@ const SignUp = () => {
       text: 'Allowed special characters: ! # @ $ _ - * & %',
     },
   ];
+
+  useEffect(() => {
+    validatePassword(password);
+  }, [password]);
+
+  const validatePassword = (value) => {
+    const newErrors = {};
+    passwordRules.forEach(({ rule, text }) => {
+      if (!rule.test(value)) {
+        newErrors.password = newErrors.password || [];
+        newErrors.password.push(text);
+      }
+    });
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      password: newErrors.password,
+    }));
+    setShowPasswordRules(
+      value.length > 0 && newErrors.password && newErrors.password.length > 0
+    );
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!username.trim()) newErrors.username = 'Username is required';
+    if (!email.trim()) newErrors.email = 'Email or License ID is required';
+    if (!password.trim()) newErrors.password = 'Password is required';
+    if (password !== confirmPassword)
+      newErrors.confirmPassword = 'Passwords do not match';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
   return (
     <div>
       <h1>Sign in</h1>
