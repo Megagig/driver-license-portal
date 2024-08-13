@@ -1,20 +1,18 @@
 
 const Card = (props) => {
     return (
-        <div className="relative flex flex-col justify-center overflow-hidden bg-gray-50 py-4 md:py-8">
-            <div className="h-[300px] md:h-[350px] group relative cursor-pointer overflow-hidden bg-white px-6 pt-7 pb-5 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg md:px-10">
-                <span className="absolute top-10 z-0 h-20 w-20 rounded-full bg-green-100 transition-all duration-300 group-hover:scale-[10]"></span>
-                <div className="relative z-10 mx-auto max-w-md px-3">
-                    <span className="group-hover:h-16 group-hover:w-16 flex h-36 w-36 md:h-52 md:w-52 md:group-hover:h-28 md:group-hover:w-28 items-center justify-center rounded-full bg-green-600 transition-all duration-300 group-hover:bg-green-700">
-                        <img src={props.image} alt="image" className="w-3/4 group-hover:w-full object-fit invert p-4 md:p-6"/>
+        <div className=" relative flex flex-col justify-center py-4 md:py-8 xl:px-52">
+            <div className="grid grid-cols-2 bg-white py-16 gap-48">
+                    <span className=" rounded-[50px] max-w-[325px] max-h-[325px]">
+                        <img src={props.image} alt="image" className=" object-fit w-full h-full rounded-[50px]"/>
                     </span>
-                    <p className='mt-8 mb-20 md:mt-10 md:mb-32 group-hover:mb-0 group-hover:mt-4 group-hover:translate-z-28   font-semibold  text-base md:text-[23px]/[26.4px] text-wrap self-center transition-all duration-300 group-hover:text-custom-grey'>
-                        {props.title}
-                    </p>
-                    <div className="space-y-6 pt-5 text-sm md:text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-custom-grey">
-                        <p>Perfect for learning how the framework works, prototyping a new idea, or creating a demo to share
-                            online.</p>
-                    </div>
+                    <div className="flex flex-col justify-start gap-10 leading-7 text-[#002334]">
+                        <p className='font-medium text-base md:text-[30px]/[38px] text-wrap '>
+                            {props.title}
+                        </p>
+                        <p className="text-lg font-normal text-wrap">{props.paragraph}</p>
+
+                         <a href="#services" className=" w-fit bg-custom-green text-[18px]/[19.2px] text-white px-8 py-4 font-medium rounded-full min-w-36 transition-all duration-500 hover:opacity-50">Get Started</a>
                 </div>
             </div>
         </div>

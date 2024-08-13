@@ -27,7 +27,6 @@ const response = await axios.patch('https://saviorte.pythonanywhere.com/api/prof
   profile ,{
     headers: {
       'Authorization':`Bearer  ${token}`,
-      'Content-Type': 'application/json'
     }})
 
   return response

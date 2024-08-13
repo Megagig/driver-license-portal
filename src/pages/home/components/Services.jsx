@@ -1,56 +1,57 @@
-import business from "../../../assets/images/business.png";
-import certificate from "../../../assets/images/certificate-of-origin.png";
+import application from "../../../assets/images/application.png";
 import edit from "../../../assets/images/edit.png";
 import print from "../../../assets/images/print.png";
-import renewal from "../../../assets/images/renewal.png";
+import reissue from "../../../assets/images/reissue.png";
+import renew from "../../../assets/images/renew.png";
+import verify from "../../../assets/images/verify.png";
 import Card from "../utils/Card";
 
 let arrayService =[
     {
-        "image": certificate,
-        "title" : "New Application"
+        "image": application,
+        "title" : "New Application",
+        "paragraph": "Perfect for learning how the framework works, prototyping a new idea, or creating a demo to share online."
     },
     {
-        "image": renewal,
-        "title" : "Renew Application"
+        "image": renew,
+        "title" : "Renew Application",
+        "paragraph": "Perfect for learning how the framework works, prototyping a new idea, or creating a demo to share online."
     },
     {
-        "image": business,
-        "title" : "Reissue Application"
+        "image": reissue,
+        "title" : "Reissue Application",
+        "paragraph" : "Perfect for learning how the framework works, prototyping a new idea, or creating a demo to share online."
     },
     {
         "image": edit,
-        "title" : "Edit Application"
+        "title" : "Edit Application",
+        "paragraph": "Perfect for learning how the framework works, prototyping a new idea, or creating a demo to share online."
+    },
+    {
+        "image": verify,
+        "title" : "Licence Verification",
+        "paragraph": "Perfect for learning how the framework works, prototyping a new idea, or creating a demo to share online."
     },
     {
         "image": print,
-        "title" : "Licence Verification"
-    },
-    {
-        "image": print,
-        "title" : "Print Appointment Slip"
+        "title" : "Print Appointment Slip",
+        "paragraph": "Perfect for learning how the framework works, prototyping a new idea, or creating a demo to share online."
     }
 ]
-
+// px-6 md:px-8 lg:px-10 py-16  md:py-20 xl:px-16 
 
 const Services = () => {
     return (
-        <section className='bg-[#f2f2f2] w-full px-6 md:px-8 lg:px-10 py-16  md:py-20 xl:px-16 flex flex-col'>
-            <h3 className="text-[#22C55E] text-2xl md:text-4xl lg:text-7xl font-medium text-center">
+        <section idname="services" className='bg-[#f2f2f2] w-full flex flex-col py-12'>
+            <h3 className=" text-[#002334] text-2xl md:text-4xl font-semibold text-center">
             Our Services
             </h3>
-
-            <div className='xl:px-20 grid md:grid-cols-2 lg:grid-cols-3 mt-12 lg:mt-20 gap-10 lg:gap-8'>
-
+            <p className=" mt-4 text-[#22D665] font-medium text-lg text-center">Here's what i offer</p>
+            <div className='grid even:bg-[#F3FFF8]'>
                 {arrayService.map((item, index) => {
-                   return <Card image={item.image} title={item.title} key={`service-${index}`} />
-                    
+                   return <Card image={item.image} paragraph={item.paragraph} title={item.title} key={`service-${index}`} />
                 })}
-   
-
             </div>
-
-
         </section>
     )
 }

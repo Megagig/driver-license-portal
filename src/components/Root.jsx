@@ -1,9 +1,9 @@
 import { Outlet, useNavigation } from "react-router-dom";
-import Header from "./Header";
 import Footer from "./Footer";
+import Header from "./Header";
 import NavBar from "./NavBar";
-import Spinner from "./Spinner";
 import ReusableModal from "./ReusableModal";
+import Spinner from "./Spinner";
 
 const Root = () => {
     const { state } = useNavigation();
