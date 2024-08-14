@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-import Input from './Input'
+import Input from './components/Input'
 
 const BookAppointment = () => {
     const [state, setValue] = useState({
         name:"",
         email:"",
         phone_number:"",
-        schedule_date: ""
+        schedule_date: "",
+        message:""
     })
     const [error, setError] = useState({})
     const editName = (args) => { 
