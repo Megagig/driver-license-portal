@@ -7,6 +7,7 @@ import Logo from "./Logo";
 import { MdMenu } from "react-icons/md";
 import { FaUserAlt } from "react-icons/fa";
 import SideMenu from "../SideMenu";
+import LinkButton from "../LinkButton";
 
 // import useAuth from "../hooks/useAuth";
 // import { dropdownData } from "./utils/data";
@@ -61,7 +62,10 @@ const DesktopMenu = ({
                         />
 
                         {isSolutionsOpen && (
-                            <DropDownMenu menuArray={solutions} closeMobileMenu={closeMobileMenu} />
+                            <DropDownMenu
+                                menuArray={solutions}
+                                closeMobileMenu={closeMobileMenu}
+                            />
                         )}
                     </div>
                 )}
@@ -110,6 +114,24 @@ const DesktopMenu = ({
                     FAQ
                 </Link>
             </div>
+
+            {!auth?.user && (
+                <div className="hidden lg:flex items-center flex-row gap-4">
+                    <LinkButton
+                        buttonText="Login"
+                        linkTo="/login"
+                        classAttr="text-white border-white hover:bg-white hover:text-custom-green px-4 py-2 text-center bg-transparent border font-medium whitespace-nowrap rounded-lg"
+                        onClick={closeMobileMenu}
+                    />
+
+                    <LinkButton
+                        buttonText="Sign Up"
+                        linkTo="/signup"
+                        classAttr="bg-white hover:bg-custom-green hover:border-white border border-custom-green hover:text-white border-white px-4 py-2 text-center text-custom-green font-medium whitespace-nowrap rounded-lg"
+                        onClick={closeMobileMenu}
+                    />
+                </div>
+            )}
 
             {auth.user && (
                 <div
