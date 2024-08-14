@@ -15,10 +15,9 @@ const Root = () => {
         <div className="grid grid-rows-[auto_1fr_auto] max-w-[100svw] overflow-hidden relative min-h-screen">
             <ScrollToTop dependency={pathname} />
             <header>
-                {/* <Header /> */}
                 <NavBar />
             </header>
-            <main>
+            <main className="pt-20">
                 <Outlet />
                 <ReusableModal isOpen={isLoading}>
                     <Spinner />

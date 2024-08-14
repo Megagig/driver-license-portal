@@ -10,7 +10,7 @@ const NavBar = () => {
     const [isRealTimeOpen, setIsRealTimeOpen] = useState(false);
 
     return (
-        <nav className="bg-custom-green py-4 print:hidden">
+        <nav className="fixed w-screen z-50 bg-custom-green py-4 print:hidden">
             <DesktopMenu
                 solutionsState={{ isSolutionsOpen, setIsSolutionsOpen }}
                 servicesState={{ isServicesOpen, setIsServicesOpen }}

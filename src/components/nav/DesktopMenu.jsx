@@ -43,7 +43,7 @@ const DesktopMenu = ({
 
             <div className="hidden lg:flex items-center gap-6">
                 <Link
-                    to={!auth ? "/" : "/dashboard"}
+                    to={!auth.user ? "/" : "/dashboard"}
                     className="text-white py-[2px] hover:border-b-2 border-white transition-colors"
                 >
                     {auth.user ? "Dashboard" : "Home"}
