@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../auth/api';
 import useAuth from '../../../hooks/useAuth';
+
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -9,13 +10,29 @@ const SignIn = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [isEmailValid, setIsEmailValid] = useState(false);
-  const [isPasswordValid, setIsPasswordValid] = useState(false);
 
   const navigate = useNavigate();
   const { setAuth } = useAuth();
 
+  const validateEmail = (value) => {
+    // This regex allows for either an email or a license ID format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const licenseIdRegex = /^[A-Z0-9]{8,}$/; // Assuming license ID is at least 8 alphanumeric characters
+    return emailRegex.test(value) || licenseIdRegex.test(value);
+  };
+
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+    setIsEmailValid(validateEmail(value));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!isEmailValid) {
+      setError('Please enter a valid email or license ID.');
+      return;
+    }
     setIsLoading(true);
     setError('');
 
@@ -23,18 +40,13 @@ const SignIn = () => {
       const response = await login({ email, password });
 
       if (response.access && response.refresh) {
-        // Store auth data in sessionStorage
         const authData = {
           access: response.access,
           refresh: response.refresh,
-          user: response.user, // Assume the API returns user data
+          user: response.user,
         };
-        // Update auth context
         setAuth(authData);
-
-        // Store in sessionStorage
         sessionStorage.setItem('auth', JSON.stringify(authData));
-        // Redirect to dashboard
         navigate('/dashboard');
       } else {
         setError('Invalid response from server');
@@ -46,12 +58,13 @@ const SignIn = () => {
       setIsLoading(false);
     }
   };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
       <div className="bg-white rounded-3xl shadow-lg p-8 w-full max-w-md">
         <h2 className="text-3xl font-bold text-center mb-2">Sign In</h2>
         <p className="text-gray-500 text-center mb-8">
-          Let's build something greate
+          Let's build something great
         </p>
 
         <form onSubmit={handleSubmit}>
@@ -70,17 +83,19 @@ const SignIn = () => {
               className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition duration-200 bg-gray-50 ${
                 email
                   ? isEmailValid
-                    ? 'border-blue-500'
+                    ? 'border-green-500'
                     : 'border-red-500'
                   : 'border-gray-300'
               }`}
-              placeholder="Enter your License ID"
+              placeholder="Enter your email or License ID"
               value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                setIsEmailValid(e.target.value.trim() !== '');
-              }}
+              onChange={handleEmailChange}
             />
+            {email && !isEmailValid && (
+              <p className="mt-1 text-xs text-red-500">
+                Please enter a valid email or license ID
+              </p>
+            )}
           </div>
 
           <div className="mb-6">
@@ -97,18 +112,11 @@ const SignIn = () => {
                 type={showPassword ? 'text' : 'password'}
                 required
                 className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition duration-200 bg-gray-50 ${
-                  password
-                    ? isPasswordValid
-                      ? 'border-blue-500'
-                      : 'border-red-500'
-                    : 'border-gray-300'
+                  password ? 'border-green-500' : 'border-gray-300'
                 }`}
                 placeholder="Enter your password"
                 value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                  setIsPasswordValid(e.target.value.trim().length >= 6);
-                }}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button
                 type="button"
@@ -155,10 +163,12 @@ const SignIn = () => {
             </div>
           </div>
 
+          {error && <p className="text-red-500 mb-4">{error}</p>}
+
           <button
             type="submit"
             className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition duration-200"
-            disabled={isLoading}
+            disabled={isLoading || !isEmailValid || !password}
           >
             {isLoading ? 'Logging in...' : 'Login'}
           </button>
