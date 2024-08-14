@@ -1,44 +1,23 @@
-// import { useState, createContext } from "react";
+import { useState, createContext } from "react";
 
-// const AuthContext = createContext({});
-
-// export const AuthProvider = ({ children }) => {
-//     const sessionStorageAuth = JSON.parse(sessionStorage.getItem('auth'));
-//     const [auth, setAuth] = useState(sessionStorageAuth || {});
-//     const user = JSON.parse(sessionStorage.getItem('user'))
-
-//     return (
-//         <AuthContext.Provider value={{ auth, setAuth, user }}>
-//             {children}
-//         </AuthContext.Provider>
-//     );
-// };
-
-// export default AuthContext;
-
-import { useState, createContext, useEffect } from 'react';
 
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-  const [auth, setAuth] = useState(() => {
-    const storedAuth = sessionStorage.getItem('auth');
-    return storedAuth ? JSON.parse(storedAuth) : null;
-  });
+    // User Context Init
+    const sessionStorageAuth = JSON.parse(sessionStorage.getItem('auth'));
+    const [auth, setAuth] = useState(sessionStorageAuth || {});
+    const user = JSON.parse(sessionStorage.getItem('user'))
 
-  useEffect(() => {
-    if (auth) {
-      sessionStorage.setItem('auth', JSON.stringify(auth));
-    } else {
-      sessionStorage.removeItem('auth');
-    }
-  }, [auth]);
+    // Admin Context Init
+    const sessionStorageAdminAuth = JSON.parse(sessionStorage.getItem('adminAuth'));
+    const [adminAuth, setAdminAuth] = useState(sessionStorageAdminAuth || {});
 
-  return (
-    <AuthContext.Provider value={{ auth, setAuth }}>
-      {children}
-    </AuthContext.Provider>
-  );
+    return (
+        <AuthContext.Provider value={{ auth, setAuth, adminAuth, setAdminAuth, user }}>
+            {children}
+        </AuthContext.Provider>
+    );
 };
 
 export default AuthContext;

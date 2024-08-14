@@ -1,3 +1,51 @@
+export const vehicleTypes = [
+    {
+        id: 1,
+        class: 'A',
+        description: "Motorcycle"
+    },
+    {
+        id: 2,
+        class: 'B',
+        description: "Light Vehicle"
+    },
+    {
+        id: 3,
+        class: 'C',
+        description: "Light Commercial Vehicle"
+    },
+    {
+        id: 4,
+        class: 'D',
+        description: "Medium Vehicle"
+    },
+    {
+        id: 5,
+        class: 'E',
+        description: "Heavy Vehicle"
+    },
+    {
+        id: 6,
+        class: 'F',
+        description: "Agricultural Vehicles"
+    },
+    {
+        id: 7,
+        class: 'G',
+        description: "Articulated Vehicles"
+    },
+    {
+        id: 8,
+        class: 'H',
+        description: "Construction Vehicles"
+    },
+    {
+        id: 9,
+        class: 'I',
+        description: "Special Vehicles for Physically Handicapped Persons"
+    },
+];
+
 export const newApplicationProcedure = [
     {
         id: 1,
