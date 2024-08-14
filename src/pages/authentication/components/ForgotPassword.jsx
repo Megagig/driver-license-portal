@@ -16,28 +16,22 @@ const ForgotPassword = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-      <div className="bg-white rounded-3xl shadow-lg p-12 w-full max-w-2xl">
-        {' '}
-        {/* Increased padding */}
+      <div className="bg-white rounded-3xl shadow-lg p-12 w-full max-w-xl">
         <h2 className="text-4xl font-bold text-gray-800 mb-6">
           Forgot Password
-        </h2>{' '}
-        {/* Increased margin-bottom */}
+        </h2>
         <p className="text-xl text-gray-500 mb-12">
           Enter your email and we will Send you a reset link
-        </p>{' '}
-        {/* Increased margin-bottom */}
+        </p>
         <form onSubmit={handleSubmit} className="space-y-10">
-          {' '}
-          {/* Added space between form elements */}
           <div>
             <label
               htmlFor="email"
               className="block text-lg font-medium text-gray-600 mb-4"
             >
               E-mail or phone number
-            </label>{' '}
-            {/* Increased margin-bottom */}
+            </label>
+
             <input
               id="email"
               type="text"

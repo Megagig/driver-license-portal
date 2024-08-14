@@ -1,8 +1,8 @@
 import logo from '../assets/Logo.svg';
 import coatofarm from '../assets/coatOfArm.png';
-// import arrowRight from "../assets/arrowRight.svg"
-// import search from "../assets/search.svg"
-import { Link } from 'react-router-dom';
+// import arrowRight from '../assets/arrowRight.svg';
+// import search from '../assets/search.svg';
+// import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import Button, { Button2 } from './utils/Button';
 import SideMenu from './SideMenu';
@@ -29,7 +29,7 @@ const Header = () => {
 
       <div className="flex gap-6">
         <div className="flex gap-4 justify-center items-center">
-          {!auth.user ? (
+          {!auth?.user ? (
             <>
               <Button btnLink={'/signin'}>Login</Button>
 
@@ -58,7 +58,7 @@ const Header = () => {
         </div>
       </div>
 
-      {auth.user && popup && (
+      {auth?.user && popup && (
         <SideMenu
           closeFunc={() => {
             setPopup(false);
