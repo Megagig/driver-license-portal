@@ -3,7 +3,7 @@ import DrivingSchool from "../pages/drivingschool/DrivingSchool";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AuthLayout from "../components/AuthLayout";
 import Root from "../components/Root";
-import ApplicationForm from "../pages/applications/ApplicationForm";
+import ApplicationForm, { applicationFormLoader } from "../pages/applications/ApplicationForm";
 import ApplicationHome from "../pages/applications/ApplicationHome";
 import Appointment, {
     loader as appointmentLoader,
@@ -21,6 +21,7 @@ import HomePage from "../pages/home/HomePage";
 import Profile, { profileLoader } from "../pages/profile/Profile";
 import Support from "../pages/support/Support";
 import Verify from "../pages/verification/Verify";
+import PageNotFound from '../components/PageNotFound';
 import AdminLayout from "../components/layouts/admin/AdminLayout";
 import AdminAuthLayout from "../components/layouts/admin/AdminAuthLayout";
 
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
                 element: <DrivingSchool />,
             },
             {
+                path: "*",
+                element: <PageNotFound />,
+            },
+            {
                 element: <AuthLayout />,
                 children: [
                     {
@@ -89,12 +94,13 @@ const router = createBrowserRouter([
                         loader: profileLoader,
                     },
                     {
-                        path: "application",
+                        path: "applications/:type",
                         element: <ApplicationHome />,
                     },
                     {
-                        path: "application/form",
+                        path: "applications/:type/form",
                         element: <ApplicationForm />,
+                        loader: applicationFormLoader
                     },
                     {
                         path: "get-appointment-slip",

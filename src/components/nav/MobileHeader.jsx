@@ -1,11 +1,11 @@
 import React from "react";
 import { MdClose, MdMenu } from "react-icons/md";
-import logo from "../assets/Logo.svg";
-import coatOfArm from "../assets/coatOfArm.png";
+import logo from "../../assets/Logo.svg";
+import coatOfArm from "../../assets/coatOfArm.png";
 
 const MobileHeader = ({ toggleDrawer, isMenuOpen }) => {
     return (
-        <div className="flex md:hidden justify-between bg-white border-b text-grey p-6 shadow-sm">
+        <div className="w-full flex justify-between bg-white border-b text-grey p-6 shadow-sm">
             <div className="flex items-center divide-x divide-custom-green">
                 <img
                     src={coatOfArm}
@@ -19,13 +19,15 @@ const MobileHeader = ({ toggleDrawer, isMenuOpen }) => {
                 />
             </div>
 
-            <button
-                className="text-3xl"
-                onClick={toggleDrawer}
-                aria-label="Toggle menu"
-            >
-                {isMenuOpen ? <MdClose /> : <MdMenu />}
-            </button>
+            <div className="md:hidden">
+                <button
+                    className="text-3xl"
+                    onClick={toggleDrawer}
+                    aria-label="Toggle menu"
+                >
+                    {<MdMenu />}
+                </button>
+            </div>
         </div>
     );
 };
