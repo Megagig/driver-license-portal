@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import bgImage from "../../../assets/admin/auth-bg.svg";
 
 const Login = () => {
   const login = () => {
