@@ -24,7 +24,7 @@ export const Hero = () => {
       <aside className='flex bg-bottom justify-center items-center md:items-start flex-1 flex-col'>
         <span className="text-[#002334] w-full md:text-xl lg:text-[25px]/[40px] font-light text-wrap text-lg text-center md:text-left">
           <h3 className="md:text-3xl lg:text-[60px]/[70px] text-2xl font-extrabold text-pretty mb-16">
-             Driver's license Application
+            Premium Driver's License Application
           </h3>
           Get your Driver license done anywhere in the world <em className="text-[#15803D] ">in an instant</em>
         </span>
