@@ -18,7 +18,7 @@ const Captcha = (props) => {
             <label className="p-4 pr-9 md:pr-32 flex gap-4 items-center">
                
                {isLoading ? <div className="w-[45px] h-[45px] rounded-full animate-spin border-y-4 border-solid border-white border-t-[#15803D] shadow-md"></div>
-               : <input type="checkbox" onClick={handleClick} value={props.auth} className="w-[45px] h-[45px]"/> }
+               : <input type="checkbox" onClick={handleClick}  className="w-[45px] h-[45px]"/> }
                 <span className="text-[#15803D] text-base font-normal">Click to Verify</span>
             </label>
                 <button className="bg-[#15803D] p-4 max-h-[90px] max-w-[90px]">
