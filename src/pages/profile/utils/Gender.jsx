@@ -26,8 +26,7 @@ const Gender = (props) => {
                   </li>)) }
            </ul>
            :
-        <button type="button" className="w-full h-full py-2 px-5  border-2 border-custom-grey bg-slate-50 rounded-lg">{value ? value :"Select Gender"}</button>
-
+        <button type="button" className="w-full h-full py-2 px-5  border-2 border-custom-grey bg-slate-50 rounded-lg">{value ? value.toUpperCase() :"Select Gender"}</button>
         }
 
      </label>

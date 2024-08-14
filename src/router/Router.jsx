@@ -2,7 +2,10 @@ import DrivingSchool from "../pages/drivingschool/DrivingSchool";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AuthLayout from "../components/AuthLayout";
+import PageNotFound from '../components/PageNotFound';
 import Root from "../components/Root";
+import AdminAuthLayout from "../components/layouts/admin/AdminAuthLayout";
+import AdminLayout from "../components/layouts/admin/AdminLayout";
 import ApplicationForm, { applicationFormLoader } from "../pages/applications/ApplicationForm";
 import ApplicationHome from "../pages/applications/ApplicationHome";
 import Appointment, {
@@ -19,25 +22,23 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import Faq from "../pages/faq/Faq";
 import HomePage from "../pages/home/HomePage";
 import Profile, { profileLoader } from "../pages/profile/Profile";
+import BookAppointment from "../pages/schedule_appointment/BookAppointment";
 import Support from "../pages/support/Support";
 import Verify from "../pages/verification/Verify";
-import PageNotFound from '../components/PageNotFound';
-import AdminLayout from "../components/layouts/admin/AdminLayout";
-import AdminAuthLayout from "../components/layouts/admin/AdminAuthLayout";
 
 import {
     AdminDashboard,
     Dlc,
     Dssp,
     Frsc,
-    Vio,
+    Login,
     NewApplicants,
     Payments,
     Reissue,
     Renewal,
     Settings,
-    Login,
     SignUp,
+    Vio,
 } from "../pages/admin";
 
 const router = createBrowserRouter([
@@ -114,7 +115,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "schedule-appointment",
-                        element: <div>Schedule Appointment Component</div>,
+                        element: <BookAppointment />,
                     },
                 ],
             },
