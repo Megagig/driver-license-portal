@@ -25,7 +25,7 @@ const SideMenu = ({ closeFunc }) => {
     };
     return (
 
-        <div className="absolute animate-[slidein_0.25s_ease-in-out] z-10 w-[18rem] shadow-[0_0_20px_rgba(0,0,0,0.1)] rounded xl:top-[4.8rem] xl:right-[1.8rem]  bg-white">
+        <div className="absolute animate-[slidein_0.25s_ease-in-out] z-10 w-[18rem] shadow-[0_0_20px_rgba(0,0,0,0.1)] rounded top-[4.1rem] md:top-[4.8rem] right-[2.4rem] lg:right-[-0.5rem] xl:right-[2.2rem]  bg-white">
             <div className="inline-block -top-2 right-10 translate-x-1/2 absolute rotate-45 bg-white h-6 w-6"></div>
             <div className="flex gap-2 px-4 pt-4 pb-3 items-center">
                 <div className="">
