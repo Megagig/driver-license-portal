@@ -4,6 +4,7 @@ import DropDownButton from "../DropDownButton";
 import DropDownMenu from "../DropdownMenu";
 import Logo from "./Logo";
 import { MdClose } from "react-icons/md";
+import CustomNavLink from "./CustomNavLink";
 
 const MobileMenu = ({
     menuState,
@@ -20,6 +21,8 @@ const MobileMenu = ({
     const { isSolutionsOpen, setIsSolutionsOpen } = solutionsState;
     const { isServicesOpen, setIsServicesOpen } = servicesState;
     const { isRealTimeOpen, setIsRealTimeOpen } = realTimeState;
+    const homeLinkText = auth.user ? "Dashboard" : "Home";
+    const homeLinkTo = !auth.user ? "/" : "/dashboard";
 
     const closeMobileMenu = () => {
         setIsMenuOpen(false);
@@ -42,32 +45,17 @@ const MobileMenu = ({
                         <div className="flex justify-between items-center gap-2 p-4 bg-custom-green relative">
                             <Logo />
 
-                            <button
-                                className=""
-                                onClick={closeMobileMenu}
-                            >
+                            <button className="" onClick={closeMobileMenu}>
                                 <MdClose className="text-2xl text-white" />
                             </button>
                         </div>
 
                         <div className="w-full lg:hidden flex flex-col px-6 py-4 divide-y divide-solid bg-white divide-neutral-300">
-                            <Link
-                                to="/"
-                                className="text-grey px-6 py-4  transition-colors"
+                            <CustomNavLink
+                                name={homeLinkText}
+                                to={homeLinkTo}
                                 onClick={closeMobileMenu}
-                            >
-                                Home
-                            </Link>
-
-                            {auth?.user && (
-                                <Link
-                                    to="/dashboard"
-                                    className="text-grey px-6 py-4  transition-colors"
-                                    onClick={closeMobileMenu}
-                                >
-                                    Dashboard
-                                </Link>
-                            )}
+                            />
 
                             {/* {auth?.user && (
                                 <Link
@@ -100,17 +88,17 @@ const MobileMenu = ({
                                 </div>
                             )}
 
-                            <Link
+                            <CustomNavLink
+                                name="Verify License"
                                 to="/verify-license"
-                                className="text-grey px-6 py-4 transition-colors"
                                 onClick={closeMobileMenu}
-                            >
-                                Verify License
-                            </Link>
-                            
+                            />
+
                             <div
                                 className="relative px-6 py-4"
-                                onClick={() => setIsRealTimeOpen(!isRealTimeOpen)}
+                                onClick={() =>
+                                    setIsRealTimeOpen(!isRealTimeOpen)
+                                }
                             >
                                 <DropDownButton
                                     isOpen={isRealTimeOpen}
@@ -125,10 +113,12 @@ const MobileMenu = ({
                                     />
                                 )}
                             </div>
-                            
+
                             <div
                                 className="relative px-6 py-4"
-                                onClick={() => setIsServicesOpen(!isServicesOpen)}
+                                onClick={() =>
+                                    setIsServicesOpen(!isServicesOpen)
+                                }
                             >
                                 <DropDownButton
                                     isOpen={isServicesOpen}
@@ -144,13 +134,11 @@ const MobileMenu = ({
                                 )}
                             </div>
 
-                            <Link
+                            <CustomNavLink
+                                name="FAQ"
                                 to="/faq"
-                                className="text-grey px-6 py-4 transition-colors"
                                 onClick={closeMobileMenu}
-                            >
-                                FAQ
-                            </Link>
+                            />
 
                             {!auth?.user && (
                                 <div className="flex flex-col sm:flex-row sm:justify-end gap-4 w-full px-6 py-6  sm:gap-6">

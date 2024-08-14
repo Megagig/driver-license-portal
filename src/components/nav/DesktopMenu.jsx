@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import DropDownButton from "../DropDownButton";
 import DropDownMenu from "../DropdownMenu";
 import MobileMenu from "./MobileMenu";
@@ -8,6 +8,7 @@ import { MdMenu } from "react-icons/md";
 import { FaUserAlt } from "react-icons/fa";
 import SideMenu from "../SideMenu";
 import LinkButton from "../LinkButton";
+import CustomNavLink from "./CustomNavLink";
 
 // import useAuth from "../hooks/useAuth";
 // import { dropdownData } from "./utils/data";
@@ -26,6 +27,8 @@ const DesktopMenu = ({
     const { isSolutionsOpen, setIsSolutionsOpen } = solutionsState;
     const { isServicesOpen, setIsServicesOpen } = servicesState;
     const { isRealTimeOpen, setIsRealTimeOpen } = realTimeState;
+    const homeLinkText = auth.user ? "Dashboard" : "Home";
+    const homeLinkTo = !auth.user ? "/" : "/dashboard";
 
     const toggleDrawer = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -42,12 +45,7 @@ const DesktopMenu = ({
             <Logo />
 
             <div className="hidden lg:flex items-center gap-6">
-                <Link
-                    to={!auth.user ? "/" : "/dashboard"}
-                    className="text-white py-[2px] hover:border-b-2 border-white transition-colors"
-                >
-                    {auth.user ? "Dashboard" : "Home"}
-                </Link>
+                <CustomNavLink name={homeLinkText} to={homeLinkTo} />
 
                 {auth?.user && (
                     <div
@@ -70,12 +68,7 @@ const DesktopMenu = ({
                     </div>
                 )}
 
-                <Link
-                    to="/verify-license"
-                    className="text-white py-[2px] hover:border-b-2 border-white transition-colors whitespace-nowrap"
-                >
-                    Verify License
-                </Link>
+                <CustomNavLink name="Verify License" to="/verify-license" />
 
                 <div
                     className="relative py-4"
@@ -107,12 +100,7 @@ const DesktopMenu = ({
                     {isServicesOpen && <DropDownMenu menuArray={services} />}
                 </div>
 
-                <Link
-                    to="/faq"
-                    className="text-white py-[2px] hover:border-b-2 border-white transition-colors"
-                >
-                    FAQ
-                </Link>
+                <CustomNavLink name="FAQ" to="/faq" />                
             </div>
 
             {!auth?.user && (
