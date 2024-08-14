@@ -106,6 +106,10 @@ const router = createBrowserRouter([
                         element: <Appointment />,
                         loader: appointmentLoader,
                     },
+                    {
+                        path: "schedule-appointment",
+                        element: <div>Schedule Appointment Component</div>,
+                    },
                 ],
             },
         ],
