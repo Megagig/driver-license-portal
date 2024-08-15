@@ -5,6 +5,8 @@ export default {
     extend: {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
+        nunito: ["Nunito Sans", "sans-serif"]
       },
       colors: {
         'custom-green': '#15803D',
