@@ -2,7 +2,9 @@ import React from 'react'
 import CounterDisplay from './components/CounterDisplay'
 import { Hero } from "./components/Hero"
 import LicenseProcess from './components/LicenseProcess'
+import NewsLetter from './components/NewsLetter'
 import Services from './components/Services'
+
 
 
 const HomePage = () => {
@@ -12,6 +14,7 @@ const HomePage = () => {
             <LicenseProcess />
             <Services />
             <CounterDisplay />
+            <NewsLetter />
             {/* <Testimonials /> */}
 
         </div>

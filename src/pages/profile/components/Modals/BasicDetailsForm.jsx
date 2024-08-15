@@ -106,7 +106,13 @@ const user = JSON.parse(sessionStorage.getItem("auth"));
     console.log({isEmpty})
     if(isEmpty ==  false){
       //axios code to push
-        const response = await updateProfile(user.access,profileDetails)
+      const formData = new FormData()
+
+      for(let item in profileDetails){
+        formData.append(item,profileDetails[item])
+      }
+      
+        const response = await updateProfile(user.access,formData)
         console.log({response})
         if (response.status == 200){
              toast.success("saved successfully")
@@ -132,7 +138,7 @@ const user = JSON.parse(sessionStorage.getItem("auth"));
         if(typeof args =="string"){
             console.log('i am in the if statement')
             setState(args)
-            editState(args)
+            editState(args.toLowerCase())
             if (args != profileDetails.StateofAddress) {
                 editLga()
                 
@@ -141,13 +147,13 @@ const user = JSON.parse(sessionStorage.getItem("auth"));
         }
       };
       useEffect(()=>{
-        typeof state == "string" ? editState(state) : null
+        typeof state == "string" ? editState(state.toLowerCase()) : null
       },[state])
       const handleLgaChangeDropdown = (args) => {
         setLgaDropdown(!lgaDropdown)
         console.log('args:', args)
         if(typeof args =="string"){
-            editLga(args)
+            editLga(args.toLowerCase())
         }
       };
 
@@ -233,7 +239,7 @@ const user = JSON.parse(sessionStorage.getItem("auth"));
                         <span className='text-base md:text-[20px]/[22px] font-medium text-green-700 dark:text-green-500'>L.G.A</span>                       
                         {lgaDropdown && profileDetails.state_of_residence && stateDropdown == false?
                         <Select closeModal={handleLgaChangeDropdown} value={profileDetails.state_of_residence}/>:
-                        <button type="button" className="w-full h-full py-2 px-5  border-2 border-custom-grey bg-slate-50 rounded-lg">{profileDetails.local_govt_area != undefined ? profileDetails.local_govt_area : profileDetails.state_of_residence ? "Select your LGA" : "Select a state"}</button>
+                        <button type="button" className="w-full h-full py-2 px-5  border-2 border-custom-grey bg-slate-50 rounded-lg">{profileDetails.local_govt_area != undefined && profileDetails.local_govt_area.length > 0 && profileDetails.local_govt_area !=""? profileDetails.local_govt_area : profileDetails.state_of_residence !=null && profileDetails.state_of_residence !="" ? "Select your LGA" : "Select a state"}</button>
 
                         }
 
