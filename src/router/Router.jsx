@@ -1,6 +1,6 @@
 import DrivingSchool from '../pages/drivingschool/DrivingSchool';
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import AuthLayout from "../components/AuthLayout";
 import PageNotFound from '../components/PageNotFound';
 import Root from "../components/Root";
@@ -12,8 +12,8 @@ import Appointment, {
   loader as appointmentLoader,
 } from '../pages/appointment/Appointment';
 import {
-    AppointmentDashboard,
-    appointmentDashboardLoader,
+  AppointmentDashboard,
+  appointmentDashboardLoader,
 } from "../pages/appointment/AppointmentDashboard";
 import LoginPage from "../pages/auth/login/LoginPage";
 import SignupPage from "../pages/auth/signup/SignupPage";
@@ -27,200 +27,165 @@ import Support from "../pages/support/Support";
 import Verify from "../pages/verification/Verify";
 
 import {
-    AdminDashboard,
-    Dlc,
-    Dssp,
-    Frsc,
-    Login,
-    NewApplicants,
-    Payments,
-    Reissue,
-    Renewal,
-    Settings,
-    SignUp,
-    Vio,
+  AdminDashboard,
+  Dlc,
+  Dssp,
+  Frsc,
+  Vio,
+  NewApplicants,
+  Payments,
+  Reissue,
+  Renewal,
+  Settings,
+  Login,
+  SignUp,
 } from "../pages/admin";
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <Root />,
+    path: "/",
+    element: <div className="min-h-screen w-screen overflow-x-hidden relative"><Outlet /></div>,
     children: [
       {
-        index: true,
-        element: <HomePage />,
-      },
-      {
-        path: 'faq',
-        element: <Faq />,
-      },
-      {
-        path: 'support',
-        element: <Support />,
-      },
-      {
-        path: 'login',
-        element: <LoginPage />,
-      },
-      {
-        path: 'signup',
-        element: <SignupPage />,
-      },
-      {
-        path: 'verify-license',
-        element: <Verify />,
-      },
-      {
-        path: 'capture-centers',
-        element: <CaptureCenter />,
-      },
-      {
-        path: 'driving-schools',
-        element: <DrivingSchool />,
-      },
-      {
-        path: '*',
-        element: <PageNotFound />,
-      },
-      {
-        element: <AuthLayout />,
-        children: [
-            {
-                index: true,
-                element: <HomePage />,
-            },
-            {
-                path: "faq",
-                element: <Faq />,
-            },
-            {
-                path: "support",
-                element: <Support />,
-            },
-            {
-                path: "login",
-                element: <LoginPage />,
-            },
-            {
-                path: "signup",
-                element: <SignupPage />,
-            },
-            {
-                path: "verify-license",
-                element: <Verify />,
-            },
-            {
-                path: "capture-centers",
-                element: <CaptureCenter />,
-            },
-            {
-                path: "driving-schools",
-                element: <DrivingSchool />,
-            },
-            {
-                path: "*",
-                element: <PageNotFound />,
-            },
-            {
-                element: <AuthLayout />,
-                children: [
-                    {
-                        path: "dashboard",
-                        element: <Dashboard />,
-                    },
-                    {
-                        path: "profile",
-                        element: <Profile />,
-                        loader: profileLoader,
-                    },
-                    {
-                        path: "applications/:type",
-                        element: <ApplicationHome />,
-                    },
-                    {
-                        path: "applications/:type/form",
-                        element: <ApplicationForm />,
-                        loader: applicationFormLoader
-                    },
-                    {
-                        path: "get-appointment-slip",
-                        element: <AppointmentDashboard />,
-                        loader: appointmentDashboardLoader,
-                    },
-                    {
-                        path: "appointment",
-                        element: <Appointment />,
-                        loader: appointmentLoader,
-                    },
-                    {
-                        path: "schedule-appointment",
-                        element: <BookAppointment />,
-                    },
-                ],
-            },
-        ],
-      },
-    ],
-  },
-  {
-    path: '/admin',
-    element: <AdminLayout />,
-    children: [
-      {
-        index: true,
-        element: <Login />,
-      },
-      {
-        path: 'signup',
-        element: <SignUp />,
-      },
-      {
-        element: <AdminAuthLayout />,
+        path: "/",
+        element: <Root />,
         children: [
           {
-            path: 'dashboard',
-            element: <AdminDashboard />,
+            index: true,
+            element: <HomePage />,
           },
           {
-            path: 'payments',
-            element: <Payments />,
+            path: "faq",
+            element: <Faq />,
           },
           {
-            path: 'new-applicants',
-            element: <NewApplicants />,
+            path: "support",
+            element: <Support />,
           },
           {
-            path: 'renewal',
-            element: <Renewal />,
+            path: "login",
+            element: <LoginPage />,
           },
           {
-            path: 'reissue',
-            element: <Reissue />,
+            path: "signup",
+            element: <SignupPage />,
           },
           {
-            path: 'dssp',
-            element: <Dssp />,
+            path: "verify-license",
+            element: <Verify />,
           },
           {
-            path: 'vio',
-            element: <Vio />,
+            path: "capture-centers",
+            element: <CaptureCenter />,
           },
           {
-            path: 'dlc',
-            element: <Dlc />,
+            path: "driving-schools",
+            element: <DrivingSchool />,
           },
           {
-            path: 'frsc',
-            element: <Frsc />,
+            path: "*",
+            element: <PageNotFound />,
           },
           {
-            path: 'settings',
-            element: <Settings />,
+            element: <AuthLayout />,
+            children: [
+              {
+                path: "dashboard",
+                element: <Dashboard />,
+              },
+              {
+                path: "profile",
+                element: <Profile />,
+                loader: profileLoader,
+              },
+              {
+                path: "applications/:type",
+                element: <ApplicationHome />,
+              },
+              {
+                path: "applications/:type/form",
+                element: <ApplicationForm />,
+                loader: applicationFormLoader
+              },
+              {
+                path: "get-appointment-slip",
+                element: <AppointmentDashboard />,
+                loader: appointmentDashboardLoader,
+              },
+              {
+                path: "appointment",
+                element: <Appointment />,
+                loader: appointmentLoader,
+              },
+              {
+                path: "schedule-appointment",
+                element: <div>Schedule Appointment Component</div>,
+              },
+            ],
           },
         ],
       },
-    ],
-  },
+      {
+        path: "/admin",
+        element: <AdminLayout />,
+        children: [
+          {
+            index: true,
+            element: <Login />,
+          },
+          {
+            path: "signup",
+            element: <SignUp />,
+          },
+          {
+            element: <AdminAuthLayout />,
+            children: [
+              {
+                path: "dashboard",
+                element: <AdminDashboard />,
+              },
+              {
+                path: "payments",
+                element: <Payments />,
+              },
+              {
+                path: "new-applicants",
+                element: <NewApplicants />,
+              },
+              {
+                path: "renewal",
+                element: <Renewal />,
+              },
+              {
+                path: "reissue",
+                element: <Reissue />,
+              },
+              {
+                path: "dssp",
+                element: <Dssp />,
+              },
+              {
+                path: "vio",
+                element: <Vio />,
+              },
+              {
+                path: "dlc",
+                element: <Dlc />,
+              },
+              {
+                path: "frsc",
+                element: <Frsc />,
+              },
+              {
+                path: "settings",
+                element: <Settings />,
+              },
+            ],
+          },
+        ],
+      },
+    ]
+  }
 ]);
 
 const Router = () => {
