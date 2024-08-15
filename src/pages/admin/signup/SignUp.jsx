@@ -110,8 +110,8 @@ const SignUp = () => {
               {errors.password && <p className="text-xs text-orange-700">{errors.password}</p>}
             </div>
             <div className="flex items-center flex-wrap">
-              <input checked={formData.acceptedTerms} onChange={handleChange} type="checkbox" name="acceptedTerms" id="remember" aria-label="accept terms and conditions" className="mr-1 rounded-sm bg-gray checked:border border-[#A3A3A3] accent-white" />
-              <label htmlFor="acceptedTerms" className="text-sm dark:text-gray-400">I accept terms and conditions</label>
+              <input checked={formData.acceptedTerms} onChange={handleChange} type="checkbox" name="acceptedTerms" id="remember" aria-label="accept terms and conditions" className="mr-1 rounded-sm bg-gray cursor-pointer checked:border border-[#A3A3A3] accent-white" />
+              <label htmlFor="acceptedTerms" className="text-sm dark:text-gray-400 cursor-pointer">I accept terms and conditions</label>
               {errors.acceptedTerms && <p className="text-xs text-orange-700 mt-1 basis-3/4">{errors.acceptedTerms}</p>}
             </div>
           </div>
