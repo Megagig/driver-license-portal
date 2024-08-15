@@ -31,10 +31,6 @@ const Login = () => {
     const login = async (e) => {
         e.preventDefault();
 
-        if (!isEmailEntered || !isPasswordEntered) {
-            return;
-        }
-
         setIsSubmitting(true);
         const adminAuth = {
             admin: { id: 1, nin: "22345600676", email: loginData.email },
@@ -91,15 +87,7 @@ const Login = () => {
                                 id="email"
                                 name="email"
                                 placeholder="Email address"
-                                className={`px-4 py-2 rounded-lg font-nunito bg-[#F1F4F9] text-[#202224] focus:outline-none border ${
-                                    isEmailEntered
-                                        ? "border-[#D8D8D8]"
-                                        : "border-red-600"
-                                } ${
-                                    isEmailEntered
-                                        ? "focus:border-custom-green"
-                                        : "focus:border-red-600"
-                                }`}
+                                className={`px-4 py-2 rounded-lg font-nunito bg-[#F1F4F9] text-[#202224] focus:outline-none border`}
                                 value={loginData.email}
                                 onChange={handleChange}
                             />
