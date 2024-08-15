@@ -24,7 +24,7 @@ import Dashboard from '../pages/dashboard/Dashboard';
 import Faq from '../pages/faq/Faq';
 import HomePage from '../pages/home/HomePage';
 import Profile, { profileLoader } from '../pages/profile/Profile';
-import BookAppointment from '../pages/schedule_appointment/BookAppointment';
+// import BookAppointment from '../pages/schedule_appointment/BookAppointment';
 import Support from '../pages/support/Support';
 import Verify from '../pages/verification/Verify';
 
@@ -115,10 +115,10 @@ const router = createBrowserRouter([
             element: <Appointment />,
             loader: appointmentLoader,
           },
-          {
-            path: 'schedule-appointment',
-            element: <BookAppointment />,
-          },
+          // {
+          //   path: 'schedule-appointment',
+          //   element: <BookAppointment />,
+          // },
         ],
       },
     ],
