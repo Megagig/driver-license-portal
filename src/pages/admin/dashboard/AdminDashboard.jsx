@@ -11,7 +11,7 @@ const AdminDashboard = () => {
 
   return (
     <>
-      <h1 className='md:hidden font-semibold text-2xl pb-4'>OverView</h1>
+      <h1 className='lg:hidden font-semibold text-2xl pb-4'>Overview</h1>
       <div>AdminDashboard</div>
     </>
 
