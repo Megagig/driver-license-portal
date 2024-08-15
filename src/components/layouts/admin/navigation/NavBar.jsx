@@ -8,14 +8,14 @@ import logo from "../../../../assets/Logo1.svg"
 import { useState } from "react";
 
 
-const NavBar = ({ pageName }) => {
+const NavBar = ({ setIsSideNavOpen, pageName }) => {
 
 
 
     return (
         <div className="flex p-4 md:px-8  items-center justify-between">
             <div className="text-3xl  gap-3  flex items-center md:hidden">
-                <HiMenuAlt1 className="text-green-700" />
+                <HiMenuAlt1 onClick={setIsSideNavOpen(true)} className="text-green-700" />
                 <div className="flex items-center gap-2 lg:p-[32px]" >
                     <img className="h-6 lg:h-[42px]" src={coatofarm} alt="coatOfArm.png" />
                     <img className="h-6 landscape::h-[30px]" src={logo} alt="" />

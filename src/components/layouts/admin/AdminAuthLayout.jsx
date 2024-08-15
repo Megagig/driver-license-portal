@@ -39,7 +39,7 @@ const AdminAuthLayout = () => {
 
             <div className="grid  h-screen grid-rows-[70px_1fr] md:grid-rows-[100px_1fr]">
                 <header className=" border-l border-b h-[100px] border-[#E6EFF5]">
-                    <NavBar openSideNav={isSideNavOpen} pageName={pageName} />
+                    <NavBar setIsSideNavOpen={setIsSideNavOpen} pageName={pageName} />
                 </header>
                 <main className="bg-[#F5F7FA] h-[full]  overflow-y-auto flex-1 p-4 md:px-10 md:py-8">
 
