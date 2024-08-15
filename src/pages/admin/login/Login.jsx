@@ -1,8 +1,12 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import bgImage from "../../../assets/admin/auth-bg.svg";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import bgImage from "../../../assets/admin/admin-auth-bg.svg";
 
 const Login = () => {
+    const navigate = useNavigate();
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [emailBorderColor, setEmailBorderColor] = useState("");
+    const [passwordBorderColor, setPasswordBorderColor] = useState(false);
     const [loginData, setLoginData] = useState({
         email: "",
         password: "",
@@ -18,25 +22,60 @@ const Login = () => {
         }));
     };
 
-    const login = () => {
+    // const handleFocus = (e) => {
+    //     const { value } = e.target;
+
+    //     if (!value)
+    // };
+
+    const login = async (e) => {
+        e.preventDefault();
+
+        if (!isEmailEntered || !isPasswordEntered) {
+            return;
+        }
+
+        setIsSubmitting(true);
         const adminAuth = {
-            admin: { id: 1, username: "acme", email: "acme@gmail.com" },
+            admin: { id: 1, nin: "22345600676", email: loginData.email },
         };
 
-        sessionStorage.setItem("adminAuth", JSON.stringify(adminAuth));
+        // const response = await fetch("{{baseUrl}}/api/v1/users", {
+        //     method: "POST",
+        //     body: JSON.stringify({
+        //         nin: "22345600676",
+        //         email: loginData.email,
+        //         password: loginData.password,
+        //     }),
+        // });
+
+        // if (response.statusCode === 200) {
+        //     setIsSubmitting(false)
+        //     sessionStorage.setItem("adminAuth", JSON.stringify(adminAuth));
+        //     navigate("/admin/dashboard");
+        // }
+
+        setTimeout(() => {
+            sessionStorage.setItem("adminAuth", JSON.stringify(adminAuth));
+            setIsSubmitting(false);
+            navigate("/admin/dashboard");
+        }, 3000);
     };
 
     return (
         <div
             className={`h-screen w-screen flex px-4 justify-center items-center gap-6 bg-[#4880FF]`}
-            style={{ backgroundImage: `url(${bgImage})` }}
+            style={{
+                backgroundImage: `url(${bgImage})`,
+                backgroundRepeat: "no-repeat",
+            }}
         >
-            <div className="w-full text-lg max-w-[600px] px-10 py-10 text-[#202224] bg-white rounded-lg space-y-8">
+            <div className="w-full text-base max-w-md p-10 text-[#202224] bg-white rounded-lg space-y-8">
                 <div className="text-center space-y-3">
                     <h1 className="text-3xl font-bold font-nunito">
                         Login to Account
                     </h1>
-                    <p className=" font-nunito">
+                    <p className="font-nunito">
                         Please enter your email and password to continue
                     </p>
                 </div>
@@ -52,7 +91,15 @@ const Login = () => {
                                 id="email"
                                 name="email"
                                 placeholder="Email address"
-                                className="px-6 py-3 rounded-lg font-nunito bg-[#F1F4F9] text-[#A6A6A6] focus:outline-none"
+                                className={`px-4 py-2 rounded-lg font-nunito bg-[#F1F4F9] text-[#202224] focus:outline-none border ${
+                                    isEmailEntered
+                                        ? "border-[#D8D8D8]"
+                                        : "border-red-600"
+                                } ${
+                                    isEmailEntered
+                                        ? "focus:border-custom-green"
+                                        : "focus:border-red-600"
+                                }`}
                                 value={loginData.email}
                                 onChange={handleChange}
                             />
@@ -78,7 +125,7 @@ const Login = () => {
                                 id="password"
                                 name="password"
                                 placeholder="Password"
-                                className="tracking-widest font-nunito text-[#A6A6A6] px-6 py-3 rounded-lg focus:outline-none bg-[#F1F4F9]"
+                                className="tracking-widest font-nunito text-[#202224] px-4 py-2 rounded-lg focus:outline-none bg-[#F1F4F9] border border-[#D8D8D8]"
                                 value={loginData.password}
                                 onChange={handleChange}
                             />
@@ -88,7 +135,7 @@ const Login = () => {
                                     type="checkbox"
                                     name="remember-password"
                                     id="remember-password"
-                                    className="mr-2"
+                                    className="mr-2 accent-white border"
                                 />
                                 <label
                                     htmlFor="remember-password"
@@ -101,8 +148,11 @@ const Login = () => {
                     </div>
 
                     <div className="flex flex-col gap-4">
-                        <button className="bg-[#4880FF] hover:bg-[#5A8CFF] font-medium font-nunito text-white text-center px-2 py-3 rounded-lg">
-                            Sign In
+                        <button
+                            onClick={login}
+                            className="bg-[#4880FF] hover:bg-[#5A8CFF] font-medium font-nunito text-white text-center px-2 py-3 rounded-lg"
+                        >
+                            {isSubmitting ? "Signing in..." : "Sign In"}
                         </button>
                         <p className="text-center font-nunito">
                             Don't have an account?{" "}
