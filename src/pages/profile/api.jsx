@@ -23,9 +23,8 @@ console.log({token})
 }
 
 export const updateProfile = async (token,profile) => {
-const response = await axios.patch('https://saviorte.pythonanywhere.com/api/profile/',{
-  ...profile
- } ,{
+const response = await axios.patch('https://saviorte.pythonanywhere.com/api/profile/',
+  profile ,{
     headers: {
       'Authorization':`Bearer  ${token}`,
     }})
