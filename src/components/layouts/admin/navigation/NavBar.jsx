@@ -14,18 +14,20 @@ const NavBar = ({ setIsSideNavOpen, pageName }) => {
 
     return (
         <div className="flex p-4 md:px-8  items-center justify-between">
+
             <div className="text-3xl  gap-3  flex items-center md:hidden">
                 <HiMenuAlt1 onClick={setIsSideNavOpen(true)} className="text-green-700" />
+
                 <div className="flex items-center gap-2 lg:p-[32px]" >
-                    <img className="h-6 lg:h-[42px]" src={coatofarm} alt="coatOfArm.png" />
-                    <img className="h-6 landscape::h-[30px]" src={logo} alt="" />
+                    <img className="h-6 md:h-[42px]" src={coatofarm} alt="coatOfArm.png" />
+                    <img className="h-6 md:h-[30px]" src={logo} alt="" />
 
                 </div>
             </div>
 
             <div className="flex gap-2">
 
-                <h1 className="text-[#343C6A] text-2xl hidden md:block whitespace-nowrap font-semibold">{pageName || "Page Name"}</h1>
+                <h1 className="text-[#343C6A] text-2xl hidden lg:block whitespace-nowrap font-semibold">{pageName || "Page Name"}</h1>
 
             </div>
 

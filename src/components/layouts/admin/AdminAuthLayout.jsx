@@ -24,8 +24,8 @@ const AdminAuthLayout = () => {
         useAuth() || JSON.parse(sessionStorage.getItem("adminAuth"));
 
     return adminAuth?.admin ? (
-        <div className="grid md:grid-cols-[252px_1fr] w-screen">
-            <div className="h-screen left-[-100%] md:left-0 bg-white grid z-10 absolute md:relative  md:grid-rows-[100px_1fr] pb-4">
+        <div className="grid lg:grid-cols-[252px_1fr] w-screen">
+            <div className="h-screen left-[-100%] lg:left-0 bg-white grid z-10 absolute lg:relative  md:grid-rows-[100px_1fr] pb-4">
                 <div className="flex items-center gap-2 p-[32px]" >
                     <img className="h-[42px]" src={coatofarm} alt="coatOfArm.png" />
                     <img className="h-[30px]" src={logo} alt="" />
