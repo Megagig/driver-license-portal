@@ -1,11 +1,32 @@
+
+import { useEffect } from 'react'
+import { useOutletContext } from 'react-router-dom'
+
 import React from 'react';
 import StatCard from './components/StatCard';
 import WeeklyApplicantChart from './components/WeeklyApplicantChart';
 import RecentPaymentList from './components/RecentPaymentList';
 import ApplicantTable from './components/ApplicantTable';
 
+
 const AdminDashboard = () => {
+
+  const { setPageName } = useOutletContext()
+
+  useEffect(() => {
+    setPageName('Overview')
+  }, [])
+
   return (
+
+    <>
+      <h1 className='md:hidden font-semibold text-2xl pb-4'>OverView</h1>
+      <div>AdminDashboard</div>
+    </>
+
+  )
+}
+
     <div className="bg-gray-100 min-h-screen p-4">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
@@ -63,5 +84,6 @@ const AdminDashboard = () => {
     </div>
   );
 };
+
 
 export default AdminDashboard;
