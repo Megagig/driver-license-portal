@@ -9,6 +9,7 @@
 * {
   font-family: "Inter", sans-serif;
 }
+
 @property --num-verification {
   syntax: "<integer>";
   initial-value: 0;
@@ -34,8 +35,8 @@
     --num-users: 0;
   }
   to {
-    --num-verification: 701;
-    --num-license: 492;
+    --num-verification: 700;
+    --num-license: 400;
     --num-users: 800;
   }
 }

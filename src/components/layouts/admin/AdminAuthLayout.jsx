@@ -2,26 +2,49 @@ import { Navigate, Outlet, useLocation, useNavigation } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import ReusableModal from "../../ReusableModal";
 import Spinner from "../../Spinner";
+import SideNav from "./navigation/SideNav";
+import { Link, NavLink } from "react-router-dom"
+import coatofarm from "../../../assets/coatOfArm.png"
+import logo from "../../../assets/Logo1.svg"
+import NavBar from "./navigation/NavBar";
+import { useState } from "react";
+
+
+
 
 const AdminAuthLayout = () => {
     const { pathname } = useLocation();
     const { state } = useNavigation();
     const isLoading = state === "loading";
+    const [isSideNavOpen, setIsSideNavOpen] = useState()
+
+    const [pageName, setPageName] = useState('')
+
     const { adminAuth } =
         useAuth() || JSON.parse(sessionStorage.getItem("adminAuth"));
 
     return adminAuth?.admin ? (
-        <div className="flex w-screen min-h-screen">
-            <aside className="w-64 hidden md:inline border-r border-[#E6EFF5]">
-                Side Nav
-            </aside>
+        <div className="grid md:grid-cols-[252px_1fr] w-screen">
+            <div className="h-screen left-[-100%] md:left-0 bg-white grid z-10 absolute md:relative  md:grid-rows-[100px_1fr] pb-4">
+                <div className="flex items-center gap-2 p-[32px]" >
+                    <img className="h-[42px]" src={coatofarm} alt="coatOfArm.png" />
+                    <img className="h-[30px]" src={logo} alt="" />
 
-            <div className="flex-1 flex flex-col">
-                <header className="py-8 px-10 border-l border-b border-[#E6EFF5]">
-                    Navbar
+                </div>
+                <aside className=" h-[full] overflow-y-auto w-[252px] md:inline border-r border-[#E6EFF5]">
+                    <SideNav />
+                </aside>
+            </div>
+
+
+            <div className="grid  h-screen grid-rows-[70px_1fr] md:grid-rows-[100px_1fr]">
+                <header className=" border-l border-b h-[100px] border-[#E6EFF5]">
+                    <NavBar openSideNav={isSideNavOpen} pageName={pageName} />
                 </header>
-                <main className="bg-[#F5F7FA] flex-1 px-10 py-8">
-                    <Outlet />
+                <main className="bg-[#F5F7FA] h-[full]  overflow-y-auto flex-1 p-4 md:px-10 md:py-8">
+
+                    <Outlet context={{ pageName, setPageName }} />
+
                     <ReusableModal isOpen={isLoading}>
                         <Spinner />
                     </ReusableModal>
