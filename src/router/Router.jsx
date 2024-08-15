@@ -1,4 +1,4 @@
-import DrivingSchool from "../pages/drivingschool/DrivingSchool";
+import DrivingSchool from '../pages/drivingschool/DrivingSchool';
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AuthLayout from "../components/AuthLayout";
@@ -9,8 +9,8 @@ import AdminLayout from "../components/layouts/admin/AdminLayout";
 import ApplicationForm, { applicationFormLoader } from "../pages/applications/ApplicationForm";
 import ApplicationHome from "../pages/applications/ApplicationHome";
 import Appointment, {
-    loader as appointmentLoader,
-} from "../pages/appointment/Appointment";
+  loader as appointmentLoader,
+} from '../pages/appointment/Appointment';
 import {
     AppointmentDashboard,
     appointmentDashboardLoader,
@@ -42,9 +42,48 @@ import {
 } from "../pages/admin";
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Root />,
+  {
+    path: '/',
+    element: <Root />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: 'faq',
+        element: <Faq />,
+      },
+      {
+        path: 'support',
+        element: <Support />,
+      },
+      {
+        path: 'login',
+        element: <LoginPage />,
+      },
+      {
+        path: 'signup',
+        element: <SignupPage />,
+      },
+      {
+        path: 'verify-license',
+        element: <Verify />,
+      },
+      {
+        path: 'capture-centers',
+        element: <CaptureCenter />,
+      },
+      {
+        path: 'driving-schools',
+        element: <DrivingSchool />,
+      },
+      {
+        path: '*',
+        element: <PageNotFound />,
+      },
+      {
+        element: <AuthLayout />,
         children: [
             {
                 index: true,
@@ -120,70 +159,72 @@ const router = createBrowserRouter([
                 ],
             },
         ],
-    },
-    {
-        path: "/admin",
-        element: <AdminLayout />,
+      },
+    ],
+  },
+  {
+    path: '/admin',
+    element: <AdminLayout />,
+    children: [
+      {
+        index: true,
+        element: <Login />,
+      },
+      {
+        path: 'signup',
+        element: <SignUp />,
+      },
+      {
+        element: <AdminAuthLayout />,
         children: [
-            {
-                index: true,
-                element: <Login />,
-            },
-            {
-                path: "signup",
-                element: <SignUp />,
-            },
-            {
-                element: <AdminAuthLayout />,
-                children: [
-                    {
-                        path: "dashboard",
-                        element: <AdminDashboard />,
-                    },
-                    {
-                        path: "payments",
-                        element: <Payments />,
-                    },
-                    {
-                        path: "new-applicants",
-                        element: <NewApplicants />,
-                    },
-                    {
-                        path: "renewal",
-                        element: <Renewal />,
-                    },
-                    {
-                        path: "reissue",
-                        element: <Reissue />,
-                    },
-                    {
-                        path: "dssp",
-                        element: <Dssp />,
-                    },
-                    {
-                        path: "vio",
-                        element: <Vio />,
-                    },
-                    {
-                        path: "dlc",
-                        element: <Dlc />,
-                    },
-                    {
-                        path: "frsc",
-                        element: <Frsc />,
-                    },
-                    {
-                        path: "settings",
-                        element: <Settings />,
-                    },
-                ],
-            },
+          {
+            path: 'dashboard',
+            element: <AdminDashboard />,
+          },
+          {
+            path: 'payments',
+            element: <Payments />,
+          },
+          {
+            path: 'new-applicants',
+            element: <NewApplicants />,
+          },
+          {
+            path: 'renewal',
+            element: <Renewal />,
+          },
+          {
+            path: 'reissue',
+            element: <Reissue />,
+          },
+          {
+            path: 'dssp',
+            element: <Dssp />,
+          },
+          {
+            path: 'vio',
+            element: <Vio />,
+          },
+          {
+            path: 'dlc',
+            element: <Dlc />,
+          },
+          {
+            path: 'frsc',
+            element: <Frsc />,
+          },
+          {
+            path: 'settings',
+            element: <Settings />,
+          },
         ],
-    },
+      },
+    ],
+  },
 ]);
 
 const Router = () => {
-    return <RouterProvider router={router} />;
+  return <RouterProvider router={router} />;
 };
 
 export default Router;
