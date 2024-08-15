@@ -42,6 +42,11 @@ const Footer = () => {
                                 Contact Us
                             </Link>
                         </li>
+                        <li className="w-fit">
+                            <Link to={"/admin"} className={linkStyle}>
+                                Admin
+                            </Link>
+                        </li>
 
                     </ul>
                 </div>
