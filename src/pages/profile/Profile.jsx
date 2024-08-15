@@ -31,38 +31,50 @@ const Profile = () => {
   console.log({state})
   const [profileDetails, setProfile] = useState({...state})
   const [basicDetails, setBasicDetails] = useState({})
-
+  const [passport, setPassport] = useState(state.passport_photo)
   useEffect(()=>{
     let profileClone = new Object()
-    for(let item in state){
+    for(let item in profileDetails){
       if(item !== "passport_photo"){
       profileClone[item] = state[item]
     }}
     console.log(profileClone)
     setBasicDetails(profileClone)
-  },[])
+  },[profileDetails])
 
   console.log({profileDetails})
+
+  if(passport){
+    console.log({passport})
+    const formData = new FormData()
+    formData.append("passport_photo",passport)
+
+    console.log(formData)
+  }
 
   const editImage = async (event) => {
           
       let reader = new FileReader();
       let file = event.target.files[0];
       console.log(event.target.files[0])
-      let formData = new FormData()
-      formData.append("passport_photo",file )
-      let response = await updateProfile(user.access,formData)
-      console.log({response})
-      reader.onloadend = () => {
-  
-        setProfile({
-          ...profileDetails,
-          image: reader.result,
-          file: file
-  
-        })
-      };
-      reader.readAsDataURL(file);
+      
+              const formData = new FormData()
+              console.log(file)
+              
+              reader.onloadend =  async  () => {
+                
+                console.log(formData)
+                setPassport( reader.result)
+                if(reader.result){
+                  console.log("it is true")
+                }
+                formData.append("passport_photo",reader.result)
+                let response = await updateProfile(user.access,formData)
+                console.log({response})
+                
+              };
+              reader.readAsDataURL(file);
+              console.log(formData)
   }
  
 const updateBasicDetails = (args) => {
@@ -80,10 +92,14 @@ const updateBasicDetails = (args) => {
         <h3 className='text-[28px]/[36px] md:text-[44px]/[56px] font-bold text-custom-green'>Profile Details</h3>    
 
         <div className="w-full">
-            <ProfilePicture  
-              state={profileDetails.passport_photo}
-              editImage={editImage}
-            />
+            <form>
+              <ProfilePicture  
+                state={profileDetails.passport_photo}
+                // editImage={editImage}
+                onImageChange={editImage}
+              />
+
+            </form>
             <BasicDetails  
               state={basicDetails}
               updateBasicDetails={updateBasicDetails}

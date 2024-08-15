@@ -1,10 +1,7 @@
+import { Link } from "react-router-dom";
+import dpplaceholder from "../../assets/dashboard/dpplaceholder.svg";
 import useAuth from "../../hooks/useAuth";
-import { FaUser } from "react-icons/fa";
-import { getProfile } from "../../api";
-import Button from "../../components/utils/Button";
-import { Link } from "react-router-dom"
-import dpplaceholder from "../../assets/dashboard/dpplaceholder.svg"
-import { dashboardLinks } from "./component/data"
+import { dashboardLinks } from "./component/data";
 
 
 
