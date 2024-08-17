@@ -93,7 +93,7 @@ const Verify = () => {
 
 
     return (
-        <div className="p-4 md:px-10 xl:px-20 py-8 h-full ">
+        <div className="p-4 min-h-[30rem]  md:px-10 xl:px-20 py-8 h-full ">
             <h1 className=" text-3xl md:text-[40px] mb-4 text-custom-green text-center font-bold   ">Verify License</h1>
 
 
