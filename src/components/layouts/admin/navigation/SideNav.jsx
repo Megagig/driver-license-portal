@@ -11,12 +11,12 @@ const links = [
     {
         name: 'Payment',
         icon: (color) => <PaymentSvg color={color} />,
-        path: '/admin/payment'
+        path: '/admin/payments'
     },
     {
         name: 'New Applicant',
         icon: (color) => <NewApplicantSvg color={color} />,
-        path: '/admin/new-applicant'
+        path: '/admin/new-applicants'
 
     },
     {
@@ -58,7 +58,7 @@ const links = [
     {
         name: 'Setting',
         icon: (color) => <SettingsSvg color={color} />,
-        path: '/admin/setting'
+        path: '/admin/settings'
 
     },
     {

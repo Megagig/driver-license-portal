@@ -46,7 +46,7 @@ const router = createBrowserRouter([
     element: <div className="min-h-screen w-[dwv] overflow-x-hidden relative"><Outlet /></div>,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <Root />,
         children: [
           {
@@ -125,7 +125,7 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/admin",
+        path: "admin",
         element: <AdminLayout />,
         children: [
           {

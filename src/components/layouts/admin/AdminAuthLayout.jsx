@@ -20,8 +20,7 @@ const AdminAuthLayout = () => {
 
     const [pageName, setPageName] = useState('')
 
-    const { adminAuth } =
-        useAuth() || JSON.parse(sessionStorage.getItem("adminAuth"));
+    const { adminAuth } = useAuth();
 
     return adminAuth?.admin ? (
         <div className="grid lg:grid-cols-[252px_1fr] w-screen">

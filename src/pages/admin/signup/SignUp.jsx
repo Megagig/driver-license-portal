@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import bgImage from "../../../assets/admin/signupBg.svg";
 
 const PWD_REGEX =
@@ -18,12 +18,12 @@ const SignUp = () => {
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false)
 
-  const handleChangePassword = () =>{
+  const handleChangePassword = () => {
     setShowPassword(!showPassword)
   }
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    console.log({errors})
+    console.log({ errors })
 
     setFormData({
       ...formData,
@@ -31,7 +31,7 @@ const SignUp = () => {
     });
     setErrors({
       ...errors,
-      [name] : ""
+      [name]: ""
     })
   };
 
@@ -52,12 +52,12 @@ const SignUp = () => {
 
     // Password validation
     if (!formData.password) {
-       errors.password = 'Password is required';
+      errors.password = 'Password is required';
     } if (formData.password.length < 6) {
-       errors.password = 'Password must be at least 6 characters long';
+      errors.password = 'Password must be at least 6 characters long';
     }
-    else if(!PWD_REGEX.test(formData.password)){
-       errors.password = 'Password must be alphanumeric with special symbols';
+    else if (!PWD_REGEX.test(formData.password)) {
+      errors.password = 'Password must be alphanumeric with special symbols';
     }
 
     if (!formData.acceptedTerms) {
@@ -69,33 +69,42 @@ const SignUp = () => {
     return Object.keys(errors).length === 0;
   };
 
+
+  const createAccount = () => {
+    sessionStorage.setItem('adminLoginInfo', JSON.stringify(formData))
+  }
+
+  const navigate = useNavigate()
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("over here")
     if (validate()) {
       console.log('Form data is valid:', formData);
-      // createAccount()
+      createAccount()
+      navigate("/admin")
     } else {
       console.log('Form data is invalid:', errors);
     }
   };
   return (
-    <section style={{backgroundImage: `url(${bgImage})`}} className="w-screen h-screen flex justify-center items-center">
-      <div className="flex flex-col max-w-md p-10 rounded-md sm:p-6 bg-white border-[0.3px] border-[#B9B9B9]">
+    <section style={{ backgroundImage: `url(${bgImage})` }} className="w-screen h-screen flex justify-center items-center">
+      <div className="flex flex-col w-full max-w-md p-10 rounded-md sm:p-6 bg-white border-[0.3px] border-[#B9B9B9]">
         <div className="mb-5 text-center">
           <h1 className="my-1 text-3xl font-bold text-[#202224]">Create An Account</h1>
           <p className="text-base text-[#202224]">Create a account to continue</p>
         </div>
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-3">
-          <div>
+
+            <div>
               <label htmlFor="email" className="block mb-1 text-base text-[#202224]">Email address</label>
-              <input value={formData.email} onChange={handleChange} type="email" name="email" id="email" placeholder="esteban_schiller@gmail.com" className={`font-nunito focus-visible:outline-0 w-full px-3 py-2 text-[#202224] text-sm border rounded-md ${errors.email ? "border-orange-600":"border-[#D8D8D8]"} bg-[#F1F4F9] placeholder-[#A6A6A6]`}/>
+              <input value={formData.email} onChange={handleChange} type="email" name="email" id="email" placeholder="esteban_schiller@gmail.com" className={`font-nunito focus-visible:outline-0 w-full px-3 py-2 text-[#202224] text-sm border rounded-md ${errors.email ? "border-orange-600" : "border-[#D8D8D8]"} bg-[#F1F4F9] placeholder-[#A6A6A6]`} />
               {errors.email && <p className="text-xs text-orange-700">{errors.email}</p>}
             </div>
             <div>
               <label htmlFor="username" className="block mb-1 text-base text-[#202224]">Username</label>
-              <input value={formData.username} onChange={handleChange} type="text" name="username" id="username" placeholder="username" className={`font-nunito focus-visible:outline-0 w-full px-3 py-2 border rounded-md text-sm ${errors.username ? "border-orange-600" :"border-[#D8D8D8]"} bg-[#F1F4F9] text-[#202224] placeholder-[#A6A6A6]`}/>
+              <input value={formData.username} onChange={handleChange} type="text" name="username" id="username" placeholder="username" className={`font-nunito focus-visible:outline-0 w-full px-3 py-2 border rounded-md text-sm ${errors.username ? "border-orange-600" : "border-[#D8D8D8]"} bg-[#F1F4F9] text-[#202224] placeholder-[#A6A6A6]`} />
               {errors.username && <p className="text-xs text-orange-700">{errors.username}</p>}
             </div>
             <div>
@@ -103,9 +112,9 @@ const SignUp = () => {
                 <label htmlFor="password" className="block mb-1 text-base text-[#202224]">Password</label>
                 <a rel="noopener noreferrer" href="#" className="text-xs hover:underline text-[#202224]">Forgot password?</a>
               </div>
-              <div className={`flex items-center border rounded-md gap-1 pr-1 ${errors.password ?"border-orange-600" : "border-[#D8D8D8]"} bg-[#F1F4F9]`}>
-              <input value={formData.password} onChange={handleChange} type={ showPassword ? "text":"password"} name="password" id="password" placeholder="*****" className={`font-nunito focus-visible:outline-0 w-full px-3 py-2  text-sm  text-[#202224] placeholder-[#A6A6A6]`}/>
-              <div className='ml-auto w-fit'>{showPassword ?<FiEyeOff onClick={handleChangePassword} size={18} />: <FiEye onClick={handleChangePassword} size={18} />}</div>
+              <div className={`flex items-center border rounded-md gap-1 pr-1 ${errors.password ? "border-orange-600" : "border-[#D8D8D8]"} bg-[#F1F4F9]`}>
+                <input value={formData.password} onChange={handleChange} type={showPassword ? "text" : "password"} name="password" id="password" placeholder="*****" className={`font-nunito focus-visible:outline-0 w-full px-3 py-2  text-sm  text-[#202224] placeholder-[#A6A6A6]`} />
+                <div className='ml-auto w-fit'>{showPassword ? <FiEyeOff onClick={handleChangePassword} size={18} /> : <FiEye onClick={handleChangePassword} size={18} />}</div>
               </div>
               {errors.password && <p className="text-xs text-orange-700">{errors.password}</p>}
             </div>
@@ -125,7 +134,7 @@ const SignUp = () => {
           </div>
         </form>
       </div>
-      </section>
+    </section>
   )
 }
 

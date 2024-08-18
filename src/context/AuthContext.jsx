@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const auth = sessionStorage.getItem('auth');
-    setIsAuthenticated(!!auth);
+    setIsAuthenticated(!auth);
   }, []);
 
   return (
