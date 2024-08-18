@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import bgImage from "../../../assets/admin/signupBg.svg";
+import toast, { Toaster } from 'react-hot-toast';
 
 const PWD_REGEX =
   /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%*&_-])[A-Za-z\d!@#$%*&_-]{8,24}$/;
@@ -75,6 +76,8 @@ const SignUp = () => {
   }
 
   const navigate = useNavigate()
+  const notify = () => toast.success("Account Successfully Created")
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -82,14 +85,20 @@ const SignUp = () => {
     if (validate()) {
       console.log('Form data is valid:', formData);
       createAccount()
-      navigate("/admin")
+      notify()
+
+      setTimeout(() => {
+        navigate("/admin")
+
+      }, 3000)
     } else {
       console.log('Form data is invalid:', errors);
     }
   };
   return (
-    <section style={{ backgroundImage: `url(${bgImage})` }} className="w-screen h-screen flex justify-center items-center">
-      <div className="flex flex-col w-full max-w-md p-10 rounded-md sm:p-6 bg-white border-[0.3px] border-[#B9B9B9]">
+    <section style={{ backgroundImage: `url(${bgImage})` }} className="w-screen h-screen p-4 flex justify-center items-center">
+      <Toaster position='top-right' />
+      <div className="flex flex-col w-full max-w-md mb-10 rounded-md p-6 bg-white border-[0.3px] border-[#B9B9B9]">
         <div className="mb-5 text-center">
           <h1 className="my-1 text-3xl font-bold text-[#202224]">Create An Account</h1>
           <p className="text-base text-[#202224]">Create a account to continue</p>
