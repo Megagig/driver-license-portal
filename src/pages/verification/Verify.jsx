@@ -120,10 +120,6 @@ const Verify = () => {
             </div>
 
 
-
-
-
-
             {
                 Popup && Message
             }

@@ -5,6 +5,7 @@ import bgImage from "../../../assets/admin/admin-auth-bg.svg";
 const Login = () => {
     const navigate = useNavigate();
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [errMsg, setErrMsg] = useState("")
     const [emailBorderColor, setEmailBorderColor] = useState("");
     const [passwordBorderColor, setPasswordBorderColor] = useState(false);
     const [loginData, setLoginData] = useState({
@@ -15,7 +16,7 @@ const Login = () => {
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         const val = type === "checkbox" ? checked : value;
-
+        setErrMsg("")
         setLoginData((prev) => ({
             ...prev,
             [name]: val,
@@ -54,8 +55,17 @@ const Login = () => {
         setTimeout(() => {
             sessionStorage.setItem("adminAuth", JSON.stringify(adminAuth));
             setIsSubmitting(false);
-            navigate("/admin/dashboard");
-        }, 3000);
+            const data = JSON.parse(sessionStorage.getItem('adminLoginInfo'))
+            console.log(loginData)
+            console.log(data)
+            if ((loginData.email === data.email) && (loginData.password === data.password)) {
+                navigate("/admin/dashboard");
+                console.log("true")
+            } else {
+                setErrMsg("Incorrect email or password please check and try again")
+            }
+
+        }, 1000);
     };
 
     return (
@@ -77,6 +87,8 @@ const Login = () => {
                 </div>
 
                 <form action="" className="space-y-8">
+
+                    {errMsg && <small className="bg-red-100 p-4 text-red-700 rounded-lg">{errMsg}</small>}
                     <div className="space-y-6">
                         <div className="flex flex-col gap-2">
                             <label htmlFor="email" className="font-nunito">

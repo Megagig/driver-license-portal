@@ -11,12 +11,12 @@ const links = [
     {
         name: 'Payment',
         icon: (color) => <PaymentSvg color={color} />,
-        path: '/admin/payment'
+        path: '/admin/payments'
     },
     {
         name: 'New Applicant',
         icon: (color) => <NewApplicantSvg color={color} />,
-        path: '/admin/new-applicant'
+        path: '/admin/new-applicants'
 
     },
     {
@@ -58,7 +58,7 @@ const links = [
     {
         name: 'Setting',
         icon: (color) => <SettingsSvg color={color} />,
-        path: '/admin/setting'
+        path: '/admin/settings'
 
     },
     {
@@ -68,7 +68,7 @@ const links = [
 
     },
 ]
-const SideNav = () => {
+const SideNav = ({ closeNav }) => {
 
     const [hoverIndex, setHoverIndex] = useState(null)
 
@@ -79,7 +79,7 @@ const SideNav = () => {
         setHoverIndex(null)
     }
 
-    const navStyle = "flex hover:text-green-700 relative text-[#B1B1B1] items-center gap-4 py-[18px] font-semibold pl-[35px]"
+    const navStyle = "flex hover:text-green-700 relative text-[#B1B1B1] items-center gap-4 py-3 md:py-[18px] font-semibold pl-[35px]"
     const activeNav = "flex relative text-[#B1B1B1] items-center gap-4 py-[18px] font-semibold pl-[35px]"
 
 
@@ -104,6 +104,8 @@ const SideNav = () => {
                                         isActive ? `${navStyle} text-green-700 before:absolute before:h-full before:w-2 before:bg-green-700 before:left-0 before:rounded-r-lg ` : navStyle
                                     ].join("")
                                 } key={index}
+
+                                onClick={closeNav}
 
                                 onMouseEnter={handleMouseEnter}
                                 onMouseLeave={handleMouseLeave}
