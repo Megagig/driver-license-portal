@@ -78,7 +78,7 @@ const Login = () => {
         >
             <div className="w-full text-base max-w-md p-6 md:p-10 text-[#202224] bg-white rounded-lg space-y-8">
                 <div className="text-center space-y-3">
-                    <h1 className="text-3xl font-bold font-nunito">
+                    <h1 className="text-2xl md:text-3xl font-bold font-nunito">
                         Login to Account
                     </h1>
                     <p className="font-nunito">
@@ -86,7 +86,7 @@ const Login = () => {
                     </p>
                 </div>
 
-                <form action="" className="space-y-8">
+                <form action="" className="md:space-y-8">
 
                     {errMsg && <small className="bg-red-100 p-4 block text-red-700 rounded-lg">{errMsg}</small>}
                     <div className="space-y-6">
