@@ -99,9 +99,9 @@ const SignUp = () => {
     }
   };
   return (
-    <section style={{ backgroundImage: `url(${bgImage})` }} className="w-screen h-screen p-4 flex justify-center items-center">
+    <section style={{ backgroundImage: `url(${bgImage})` }} className="w-screen h-screen p-4 flex justify-center items-center  bg-[#4880FF]">
       <Toaster position='top-right' />
-      <div className="flex flex-col w-full max-w-md mb-10 rounded-md p-6 bg-white space-y-4 border-[0.3px] border-[#B9B9B9]">
+      <div className="flex flex-col w-full max-w-md md:p-10 rounded-md p-6 bg-white space-y-4 border-[0.3px] border-[#B9B9B9]">
         <div className="mb-5 text-center">
           <h1 className="my-1 text-2xl md:text-3xl font-semibold text-[#202224]">Create An Account</h1>
           <p className="text-base text-[#202224]">Create a account to continue</p>
