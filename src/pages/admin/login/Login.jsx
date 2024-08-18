@@ -58,7 +58,7 @@ const Login = () => {
             const data = JSON.parse(sessionStorage.getItem('adminLoginInfo'))
             console.log(loginData)
             console.log(data)
-            if ((loginData.email === data.email) && (loginData.password === data.password)) {
+            if ((loginData?.email === data?.email) && (loginData?.password === data?.password)) {
                 navigate("/admin/dashboard");
                 console.log("true")
             } else {
@@ -88,7 +88,7 @@ const Login = () => {
 
                 <form action="" className="md:space-y-8">
 
-                    {errMsg && <small className="bg-red-100 p-4 block text-red-700 rounded-lg">{errMsg}</small>}
+                    {errMsg && <small className="bg-red-100 p-4 text-center block text-red-700 rounded-lg">{errMsg}</small>}
                     <div className="space-y-6">
                         <div className="flex flex-col gap-2">
                             <label htmlFor="email" className="font-nunito">
