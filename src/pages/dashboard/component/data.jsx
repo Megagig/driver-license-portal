@@ -16,17 +16,17 @@ export const dashboardLinks = [
     {
         image: newappbg,
         name: "New Application",
-        link: '/new-application'
+        link: '/applications/new'
     },
     {
         image: renewalbg,
         name: "Renewal",
-        link: '/renewal'
+        link: '/applications/renewal'
     },
     {
         image: reissuebg,
         name: "Reissue",
-        link: '/reissue'
+        link: '/applications/reissue'
     },
     {
         image: verificationbg,
