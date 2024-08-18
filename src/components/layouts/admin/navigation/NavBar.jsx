@@ -16,6 +16,7 @@ const NavBar = ({ pageName, openNav }) => {
         <div className="flex p-4 md:pt-8 md:px-8 md:pb-6  items-center justify-between">
             <div className="text-3xl md:text-4xl md:gap-4 gap-3  flex  lg:hidden">
                 <HiMenuAlt1 onClick={openNav} className="text-green-700" />
+
                 <div className="flex items-center gap-2 lg:p-[32px]" >
                     <img className="h-6 md:h-[42px]" src={coatofarm} alt="coatOfArm.png" />
                     <img className="h-6 md:h-[30px]" src={logo} alt="" />

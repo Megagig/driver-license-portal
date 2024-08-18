@@ -1,16 +1,12 @@
-import DrivingSchool from '../pages/drivingschool/DrivingSchool';
+import DrivingSchool from "../pages/drivingschool/DrivingSchool";
 
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import AuthLayout from "../components/AuthLayout";
-import PageNotFound from '../components/PageNotFound';
 import Root from "../components/Root";
-import AdminAuthLayout from "../components/layouts/admin/AdminAuthLayout";
-import AdminLayout from "../components/layouts/admin/AdminLayout";
 import ApplicationForm, { applicationFormLoader } from "../pages/applications/ApplicationForm";
 import ApplicationHome from "../pages/applications/ApplicationHome";
 import Appointment, {
   loader as appointmentLoader,
-
 } from "../pages/appointment/Appointment";
 import {
   AppointmentDashboard,
@@ -23,9 +19,11 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import Faq from "../pages/faq/Faq";
 import HomePage from "../pages/home/HomePage";
 import Profile, { profileLoader } from "../pages/profile/Profile";
-import BookAppointment from "../pages/schedule_appointment/BookAppointment";
 import Support from "../pages/support/Support";
 import Verify from "../pages/verification/Verify";
+import PageNotFound from '../components/PageNotFound';
+import AdminLayout from "../components/layouts/admin/AdminLayout";
+import AdminAuthLayout from "../components/layouts/admin/AdminAuthLayout";
 
 import {
   AdminDashboard,
@@ -50,6 +48,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
+
         element: <Root />,
         children: [
           {
@@ -129,6 +128,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin",
+
         element: <AdminLayout />,
         children: [
           {
