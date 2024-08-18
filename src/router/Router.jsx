@@ -40,11 +40,14 @@ import {
   SignUp,
 } from "../pages/admin";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
 
-    element: <div className="min-h-screen w-[dwv] overflow-x-hidden relative"><Outlet /></div>,
+    element: <div className="min-h-screen w-[dwv] overflow-x-hidden relative">
+      <Outlet />
+    </div>,
     children: [
       {
         path: "/",
