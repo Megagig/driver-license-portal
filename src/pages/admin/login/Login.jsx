@@ -1,40 +1,35 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import bgImage from "../../../assets/admin/admin-auth-bg.svg";
+import useAuth from "../../../hooks/useAuth";
 
 const Login = () => {
     const navigate = useNavigate();
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [errMsg, setErrMsg] = useState("")
-    const [emailBorderColor, setEmailBorderColor] = useState("");
-    const [passwordBorderColor, setPasswordBorderColor] = useState(false);
+    const [errMsg, setErrMsg] = useState("");
     const [loginData, setLoginData] = useState({
         email: "",
         password: "",
     });
+    const { setAdminAuth, setIsAdminAuthenticated, isAdminAuthenticated } =
+        useAuth();
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         const val = type === "checkbox" ? checked : value;
-        setErrMsg("")
+        setErrMsg("");
         setLoginData((prev) => ({
             ...prev,
             [name]: val,
         }));
     };
 
-    // const handleFocus = (e) => {
-    //     const { value } = e.target;
-
-    //     if (!value)
-    // };
-
     const login = async (e) => {
         e.preventDefault();
 
         setIsSubmitting(true);
         const adminAuth = {
-            admin: { id: 1, nin: "22345600676", email: loginData.email },
+            admin: { id: 1, email: loginData.email },
         };
 
         // const response = await fetch("{{baseUrl}}/api/v1/users", {
@@ -52,23 +47,24 @@ const Login = () => {
         //     navigate("/admin/dashboard");
         // }
 
-        setTimeout(() => {
-            sessionStorage.setItem("adminAuth", JSON.stringify(adminAuth));
-            setIsSubmitting(false);
-            const data = JSON.parse(sessionStorage.getItem('adminLoginInfo'))
-            console.log(loginData)
-            console.log(data)
-            if ((loginData?.email === data?.email) && (loginData?.password === data?.password)) {
-                navigate("/admin/dashboard");
-                console.log("true")
-            } else {
-                setErrMsg("Incorrect email or password please check and try again")
-            }
+        const data = JSON.parse(sessionStorage.getItem("adminLoginInfo"));
 
-        }, 1000);
+        if (
+            loginData?.email === data?.email &&
+            loginData?.password === data?.password
+        ) {
+            setIsAdminAuthenticated(true);
+            setAdminAuth(adminAuth);
+            console.log("Successfully logged in!");
+            navigate("/admin/dashboard", { replace: true });
+        } else {
+            setErrMsg("Incorrect email or password please check and try again");
+        }
     };
 
-    return (
+    return isAdminAuthenticated ? (
+        <Navigate to="/admin/dashboard" replace={true} />
+    ) : (
         <div
             className={`h-screen w-screen flex px-4 justify-center items-center gap-6 bg-[#4880FF]`}
             style={{
@@ -87,8 +83,11 @@ const Login = () => {
                 </div>
 
                 <form action="" className="md:space-y-8">
-
-                    {errMsg && <small className="bg-red-100 p-4 text-center block text-red-700 rounded-lg">{errMsg}</small>}
+                    {errMsg && (
+                        <small className="bg-red-100 p-4 text-center block text-red-700 rounded-lg">
+                            {errMsg}
+                        </small>
+                    )}
                     <div className="space-y-6">
                         <div className="flex flex-col gap-2">
                             <label htmlFor="email" className="font-nunito">
