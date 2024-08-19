@@ -4,9 +4,7 @@ import { loginFields } from "../constants/FormFields";
 import FormAction from "./FormAction";
 import FormExtra from "./FormExtra";
 import Input from "./Input";
-import { Link } from "react-router-dom";
-
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { toast } from "react-hot-toast";
 import { login } from "../api";
@@ -20,7 +18,7 @@ export default function Login({ paragraph, linkUrl, linkName }) {
     const [error, setError] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const { setAuth } = useAuth();
+    const { setAuth, setIsUserAuthenticated, isUserAuthenticated } = useAuth();
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -40,8 +38,8 @@ export default function Login({ paragraph, linkUrl, linkName }) {
         const loginResponse = await login(data);
 
         if (loginResponse.access) {
+            setIsUserAuthenticated(true);
             setAuth(loginResponse);
-            sessionStorage.setItem("auth", JSON.stringify(loginResponse));
             navigate("/dashboard");
             return;
         }
@@ -50,7 +48,9 @@ export default function Login({ paragraph, linkUrl, linkName }) {
         setError("Invalid login details, please try again.");
     };
 
-    return (
+    return isUserAuthenticated ? (
+        <Navigate to="/dashboard" replace={true} />
+    ) : (
         <>
             <form className="space-y-6 px-6 py-4" onSubmit={handleSubmit}>
                 {error && (

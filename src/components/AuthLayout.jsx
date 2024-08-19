@@ -3,15 +3,12 @@ import useAuth from '../hooks/useAuth';
 
 const AuthLayout = () => {
   const { pathname } = useLocation();
-  const { auth } = useAuth();
+  const { isUserAuthenticated } = useAuth();
 
-  // Check sessionStorage if auth is not available from context
-  const authData = auth || JSON.parse(sessionStorage.getItem('auth') || '{}');
-
-  if (!authData?.access) {
+  if (!isUserAuthenticated) {
     return (
       <Navigate
-        to="/signin"
+        to="/login"
         state={{ requestedUrl: pathname, message: 'Please login to continue!' }}
         replace={true}
       />
