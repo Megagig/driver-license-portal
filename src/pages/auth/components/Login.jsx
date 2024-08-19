@@ -6,7 +6,7 @@ import FormExtra from "./FormExtra";
 import Input from "./Input";
 import { Link, useNavigate, Navigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
-import { toast } from "react-hot-toast";
+import { toast, Toaster } from "react-hot-toast";
 import { login } from "../api";
 
 const fields = loginFields;
@@ -17,6 +17,7 @@ export default function Login({ paragraph, linkUrl, linkName }) {
     const [loginState, setLoginState] = useState(fieldsState);
     const [error, setError] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [passVisible, setPassVisible] = useState(false)
 
     const { setAuth, setIsUserAuthenticated, isUserAuthenticated } = useAuth();
     const navigate = useNavigate();
@@ -24,6 +25,8 @@ export default function Login({ paragraph, linkUrl, linkName }) {
     const handleChange = (e) => {
         setLoginState({ ...loginState, [e.target.id]: e.target.value });
     };
+
+    const notify = () => toast.error("Invalid login details, please try again.");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -45,20 +48,21 @@ export default function Login({ paragraph, linkUrl, linkName }) {
         }
 
         setIsSubmitting(false);
-        setError("Invalid login details, please try again.");
+        notify();
     };
+
+
+
 
     return isUserAuthenticated ? (
         <Navigate to="/dashboard" replace={true} />
     ) : (
         <>
-            <form className="space-y-6 px-6 py-4" onSubmit={handleSubmit}>
-                {error && (
-                    <p className="bg-red-100 text-red-700 py-2 px-4 rounded-md">
-                        {error}
-                    </p>
-                )}
-                <div className="-space-y-px">
+
+
+            <form className="space-y-6" onSubmit={handleSubmit}>
+
+                <div className="grid gap-4">
                     {fields.map((field) => (
                         <Input
                             key={field.id}
@@ -68,16 +72,23 @@ export default function Login({ paragraph, linkUrl, linkName }) {
                             labelFor={field.labelFor}
                             id={field.id}
                             name={field.name}
-                            type={field.type}
+                            type={passVisible ? field.type : "text"}
                             isRequired={field.isRequired}
                             placeholder={field.placeholder}
+                            changePasswordType={() => { setPassVisible(!passVisible) }}
+
                         />
+
+
+
+
+
                     ))}
                 </div>
 
-                <FormExtra />
+
                 <button
-                    className="bg-custom-green w-full hover:bg-green-600 px-4 py-2 text-white font-medium rounded-lg mt-4"
+                    className="bg-custom-green w-full hover:bg-green-600 p-4 text-white font-medium rounded-lg "
                     onSubmit={handleSubmit}
                     type="submit"
                 >
@@ -90,11 +101,12 @@ export default function Login({ paragraph, linkUrl, linkName }) {
                         "Login"
                     )}
                 </button>
-                <p className="mt-2 text-center text-sm text-gray-600">
+                <FormExtra />
+                <p className="mt-2   text-sm text-gray-600">
                     {paragraph}{" "}
                     <Link
                         to={linkUrl}
-                        className="font-medium text-custom-green hover:text-green-800"
+                        className="font-medium text-[#15803D]"
                     >
                         {linkName}
                     </Link>
