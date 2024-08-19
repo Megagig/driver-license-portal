@@ -5,6 +5,7 @@ import DropDownMenu from "../DropdownMenu";
 import Logo from "./Logo";
 import { MdClose } from "react-icons/md";
 import CustomNavLink from "./CustomNavLink";
+import useAuth from "../../hooks/useAuth";
 
 const MobileMenu = ({
     menuState,
@@ -21,18 +22,12 @@ const MobileMenu = ({
     const { isSolutionsOpen, setIsSolutionsOpen } = solutionsState;
     const { isServicesOpen, setIsServicesOpen } = servicesState;
     const { isRealTimeOpen, setIsRealTimeOpen } = realTimeState;
+    const { userLogout } = useAuth();
     const homeLinkText = auth.user ? "Dashboard" : "Home";
     const homeLinkTo = !auth.user ? "/" : "/dashboard";
 
     const closeMobileMenu = () => {
         setIsMenuOpen(false);
-    };
-
-    const logOut = () => {
-        sessionStorage.removeItem("auth");
-        setAuth({});
-        navigate("/");
-        closeMobileMenu();
     };
 
     return (
@@ -161,7 +156,7 @@ const MobileMenu = ({
                             {auth?.user && (
                                 <div className="pt-6">
                                     <button
-                                        onClick={logOut}
+                                        onClick={userLogout}
                                         className="bg-red-800 w-full text-lg text-white font-medium px-6 py-3 rounded-md"
                                     >
                                         Logout

@@ -20,11 +20,13 @@ const AdminAuthLayout = () => {
     const isLoading = state === "loading";
     const [isSideNavOpen, setIsSideNavOpen] = useState(false)
 
+    // console.log(isLoading);
+
     const [pageName, setPageName] = useState('')
 
-    const { adminAuth } = useAuth();
+    const { isAdminAuthenticated } = useAuth();
 
-    return adminAuth?.admin ? (
+    return isAdminAuthenticated ? (
         <div className="grid  lg:grid-cols-[252px_1fr] w-screen">
             <div className={` absolute bg-[rgba(0,0,0,0.5)] w-screen lg:relative lg:w-auto z-10   ${isSideNavOpen ? 'left-0' : 'left-[-100%]'}   lg:left-0 h-screen`}>
                 <div className={`h-screen bg-white grid absolute lg:relative grid-rows-[100px_1fr] pb-4`}>
