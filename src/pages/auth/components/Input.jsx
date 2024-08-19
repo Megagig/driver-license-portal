@@ -1,9 +1,10 @@
 import { FaInfoCircle } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
-
+import { FaRegEyeSlash } from "react-icons/fa6";
+import { FaRegEye } from "react-icons/fa";
 const fixedInputClass =
-    "rounded-md appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none sm:text-sm";
+    "rounded-md bg-[#F5FFF9] relative border-[#15803cb5] appearance-none relative block w-full p-4 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none sm:text-sm";
 
 export default function Input({
     handleChange,
@@ -18,7 +19,8 @@ export default function Input({
     customClass,
     isPasswordValid,
     isPasswordMatch,
-    isEmailValid
+    isEmailValid,
+    changePasswordType
 }) {
     const inputRef = useRef();
     const { pathname } = useLocation();
@@ -28,26 +30,44 @@ export default function Input({
     const handleFocus = () => setIsInputErrorVisible(true);
 
     return (
-        <div className="my-5">
-            <label htmlFor={labelFor} className="sr-only">
+        <div className="grid gap-2">
+            <label htmlFor={labelFor} className="text-sm font-medium text-[#282828] ">
                 {labelText}
             </label>
-            <input
-                onChange={handleChange}
-                onFocus={isFocusableInput ? handleFocus : undefined}
-                value={value}
-                id={id}
-                name={name}
-                type={type}
-                ref={inputRef}
-                required={isRequired}
-                className={fixedInputClass + customClass}
-                placeholder={placeholder}
-                aria-invalid={
-                    name === "password" && isPasswordValid ? "false" : "true"
+            <div className="relative">
+                <input
+                    onChange={handleChange}
+                    onFocus={isFocusableInput ? handleFocus : undefined}
+                    value={value}
+                    id={id}
+                    name={name}
+                    type={type}
+                    ref={inputRef}
+                    required={isRequired}
+                    className={fixedInputClass + customClass + "bg-[#15803cb5]"}
+                    placeholder={placeholder}
+                    aria-invalid={
+                        name === "password" && isPasswordValid ? "false" : "true"
+                    }
+                    aria-describedby={name === "password" ? "password-note" : ""}
+                />
+
+                {
+                    (name === "password") &&
+                    <> {
+                        (type === "password")
+                            ? <FaRegEyeSlash onClick={changePasswordType} className="absolute cursor-pointer text-2xl text-[#949CA9] -translate-y-1/2  top-1/2 right-2" />
+                            : <FaRegEye onClick={changePasswordType} className="absolute  cursor-pointer  text-2xl  text-[#949CA9]  -translate-y-1/2  top-1/2 right-2" />
+                    }
+
+
+                    </>
+
                 }
-                aria-describedby={name === "password" ? "password-note" : ""}
-            />
+
+            </div>
+
+
             {isInputErrorVisible && (pathname === "/signup" && name === "password" && !isPasswordValid && (
                 <div
                     id="password-note"

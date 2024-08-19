@@ -1,6 +1,6 @@
 const loginFields = [
   {
-    labelText: 'Email address',
+    labelText: 'E-mail or License ID',
     labelFor: 'email-address',
     id: 'email',
     name: 'email',

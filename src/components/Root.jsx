@@ -23,13 +23,15 @@ const Root = () => {
     console.log({ loading })
     return (
         <div className="grid grid-rows-[auto_1fr_auto] max-w-[100svw] overflow-hidden relative min-h-screen">
+
+
             {auth || loading ?
                 <>
                     <ScrollToTop dependency={pathname} />
                     <header>
                         <NavBar />
                     </header>
-                    <main className="pt-20">
+                    <main className="pt-20 relative">
 
                         <Outlet />
                         <ReusableModal isOpen={isLoading}>

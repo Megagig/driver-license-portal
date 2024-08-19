@@ -8,17 +8,12 @@ export default function LoginHeader({
     routeMessage,
 }) {
     return (
-        <div className="">
-            <div className="flex justify-center">
-                <img
-                    alt=""
-                    className="h-14 w-14"
-                    src="./src/assets/images/business.png"
-                />
-            </div>
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        <div className="text-center">
+
+            <h2 className="mb-2 text-2xl font-semibold text-gray-900">
                 {heading}
             </h2>
+            <p className="text-[#838894]">Let's build something great</p>
 
             {routeMessage && <h4 className="font-medium text-lg text-red-600 text-center mt-6">{routeMessage}</h4>}
         </div>
