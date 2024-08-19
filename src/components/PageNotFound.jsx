@@ -1,9 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 const PageNotFound = () => {
-    const { auth } = useAuth();
+    const { pathname } = useLocation();
+    const { auth, adminAuth } = useAuth();
+    let homeUrl = ""
+
+    if (pathname.includes("admin")) {
+        homeUrl = adminAuth.admin ? "/admin/dashboard" : "/admin"
+    } else {
+        homeUrl = auth.user ? "/dashboard" : "/"
+    }
 
     return (
         <section className="flex px-10 flex-col justify-center items-center gap-6 min-h-[83vh] w-full max-w-[500px] mx-auto">
@@ -14,7 +22,7 @@ const PageNotFound = () => {
                 Sorry, the page you were looking for does not exist.
             </p>
             <Link
-                to={auth.user ? "/dashboard" : "/"}
+                to={homeUrl}
                 className="w-full py-3 bg-custom-green hover:bg-green-800 rounded-md font-bold text-lg text-center text-white"
             >
                 Return Home
