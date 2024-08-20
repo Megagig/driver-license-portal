@@ -3,8 +3,6 @@ import { useLocation } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { FaRegEye } from "react-icons/fa";
-import { FaRegEyeSlash } from "react-icons/fa6";
-import { FaRegEye } from "react-icons/fa";
 const fixedInputClass =
     "rounded-md bg-[#F5FFF9] relative border-[#15803cb5] appearance-none relative block w-full p-4 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none sm:text-sm";
     "rounded-md bg-[#F5FFF9] relative border-[#15803cb5] appearance-none relative block w-full p-4 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none sm:text-sm";
@@ -22,7 +20,6 @@ export default function Input({
     customClass,
     isPasswordValid,
     isPasswordMatch,
-    isEmailValid,
     isEmailValid,
     changePasswordType
 }) {
