@@ -25,7 +25,7 @@ const Captcha = (props) => {
                     <img className="invert object-fit w-full h-full" src={captcha} alt="captcha"/>
                 </button>
             </div>
-            <span className='font-light text-lg text-black mt-24'>nyis.nddc.gov.ng needs to review the security of your connection before proceeding.</span>
+            <span className='font-light text-lg text-black mt-24'>dannongroup.ng needs to review the security of your connection before proceeding.</span>
         </div>
     )
 }
